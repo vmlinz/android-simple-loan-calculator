@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">Simple Loan Calculator</string>
+	<string name="app_desc">Simple calculator annuity payment. It uses a simple formula for calculating the monthly payment.
+	monthlyInterest = yearlyInterest/ (100 * 12);
+	x = (amount * monthlyInterest) / (1 - (1+monthlyInterest)-monthsCount);
+	</string>
+	<string name="amount">Loan amount</string>
+	<string name="amountHint">amount &gt; 0</string>
+	<string name="interest">Yearly interest rate, %</string>
+	<string name="interestHint">rate &gt; 0</string>
+	<string name="period">Period</string>
+	<string-array name="periods">
+		<item>3 months</item>
+		<item>6 months</item>
+		<item>9 months</item>
+		<item>1 year</item>
+		<item>2 years</item>
+		<item>3 years</item>
+		<item>4 years</item>
+		<item>5 years</item>
+		<item>6 years</item>
+		<item>7 years</item>
+		<item>8 years</item>
+		<item>9 years</item>
+		<item>10 years</item>
+		<item>15 years</item>
+		<item>20 years</item>
+		<item>25 years</item>
+		<item>30 years</item>
+		<item>40 years</item>
+		<item>50 years</item>
+	</string-array>
+	<string name="calc">Calculate monthly payment</string>
+	<string name="MonthlyAmountLbl">Monthly payment</string>
+	<string name="IterestTotalLbl">Total interest</string>
+	<string name="AmountTotalLbl">Total amount (amount + interest)</string>
+	<string name="errorAmount">Please enter correct amount</string>
+	<string name="errorFixedAmount">Please enter correct fixed monthly amount</string>
+	<string name="errorInterest">Please enter correct yearly interest</string>
+	<string name="type">Type of loan</string>
+	<string-array name="types">
+		<item>Annuity</item>
+		<item>Differentiated</item>
+		<item>Fixed payments</item>		
+	</string-array>
+	<string name="fixedPayment">Fixed payment</string>
+	<string name="paymentsCount">Payments count</string>
+  <string name="schedule">Show schedule</string>
+  <string name="paymentNr">Nr.</string>
+  <string name="paymentBalance">Balance</string>
+  <string name="paymentPrincipal">Principal</string>
+  <string name="paymentInterest">Interest</string>
+  <string name="paymentTotal">Payment</string>
+  <string name="close">Close</string>
+  <string name="scheduleTitle">Loan schedule</string>
+
+</resources>

@@ -4,4 +4,8 @@ The Simple calculator for annuity, differentiated and fixed payments.
 
 =Screenshots=
 
-
+http://lh6.ggpht.com/_PgaocR0FRPA/TEcETYLRJbI/AAAAAAAAL6M/ef1Xjl1SG1U/annuity.png
+http://lh4.ggpht.com/_PgaocR0FRPA/TEcETbZX64I/AAAAAAAAL6Q/RY5bEpqdncY/annuity-result.png
+http://lh6.ggpht.com/_PgaocR0FRPA/TEcETmRAaFI/AAAAAAAAL6U/Dy0q8mwPFrU/annuity-schedule.png
+http://lh6.ggpht.com/_PgaocR0FRPA/TEcETn9EDMI/AAAAAAAAL6Y/EFVxdz8r2Ng/differentiated.png
+http://lh5.ggpht.com/_PgaocR0FRPA/TEcEUG_xSdI/AAAAAAAAL6c/r6_x0ko-hrU/fixed.png

@@ -1,0 +1,7 @@
+= Introduction =
+
+The Simple calculator for annuity, differentiated and fixed payments.
+
+=Screenshots=
+
+

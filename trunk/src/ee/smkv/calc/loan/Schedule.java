@@ -8,12 +8,14 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+
 
 /**
  * @author Andrei Samkov
  */
 public class Schedule extends Activity {
-
+  int mode = BigDecimal.ROUND_HALF_UP;
   TableLayout table;
   TableRow header , footer;
   Button closeButton;
@@ -72,10 +74,10 @@ public class Schedule extends Activity {
     TextView amount = new TextView(row.getContext());
 
     nr.setText(payment.getNr().toString());
-    balance.setText(payment.getBalance().toPlainString());
-    principal.setText(payment.getPrincipal().toPlainString());
-    interest.setText(payment.getInterest().toPlainString());
-    amount.setText(payment.getAmount().toPlainString());
+    balance.setText(payment.getBalance().setScale(2,mode).toPlainString());
+    principal.setText(payment.getPrincipal().setScale(2,mode).toPlainString());
+    interest.setText(payment.getInterest().setScale(2,mode).toPlainString());
+    amount.setText(payment.getAmount().setScale(2,mode).toPlainString());
 
     row.addView(nr);
     row.addView(balance);

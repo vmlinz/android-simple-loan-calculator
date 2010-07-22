@@ -136,19 +136,20 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
   }
 
   private void showCalculatedData() {
+    int mode = BigDecimal.ROUND_HALF_UP;
     String monthlyPayment = "";
     BigDecimal max = loan.getMaxMonthlyPayment();
     BigDecimal min = loan.getMinMonthlyPayment();
     if (max.compareTo(min) == 0) {
-      monthlyPayment = max.toPlainString();
+      monthlyPayment = max.setScale(2,mode).toPlainString();
     }
     else {
-      monthlyPayment = max.toPlainString() + " - " + min.toPlainString();
+      monthlyPayment = max.setScale(2,mode).toPlainString() + " - " + min.setScale(2,mode).toPlainString();
     }
     monthlyAmountVText.setText(monthlyPayment);
 
-    amountTotalVText.setText(loan.getTotalAmount().toPlainString());
-    interestTotalVText.setText(loan.getTotalInterests().toPlainString());
+    amountTotalVText.setText(loan.getTotalAmount().setScale(2,mode).toPlainString());
+    interestTotalVText.setText(loan.getTotalInterests().setScale(2,mode).toPlainString());
     periodTotalLabel.setText(loan.getPeriod().toString());
     scrollView.scrollTo(monthlyAmountLabel.getLeft(), monthlyAmountLabel.getTop());
     vibrator.vibrate(100);

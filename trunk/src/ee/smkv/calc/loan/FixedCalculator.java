@@ -8,7 +8,7 @@ public class FixedCalculator implements Calculator {
 
   public void calculate(Loan loan){
 
-		BigDecimal interestMonthly = loan.getInterest().divide(new BigDecimal("1200"), 8, MODE);
+		BigDecimal interestMonthly = loan.getInterest().divide(new BigDecimal("1200"), SCALE, MODE);
 		BigDecimal monthlyAmount = loan.getFixedPayment();
 		BigDecimal currentAmount = loan.getAmount();
 		BigDecimal ma = monthlyAmount;
@@ -24,10 +24,10 @@ public class FixedCalculator implements Calculator {
 
       Payment payment = new Payment();
       payment.setNr(i+1);
-      payment.setInterest(interest.setScale(2,MODE));
-      payment.setPrincipal(ma.setScale(2 , MODE));
-      payment.setBalance(currentAmount.setScale(2 , MODE));
-      payment.setAmount(amount.setScale(2 , MODE));
+      payment.setInterest(interest);
+      payment.setPrincipal(ma);
+      payment.setBalance(currentAmount);
+      payment.setAmount(amount);
 
       loan.getPayments().add(payment);
 

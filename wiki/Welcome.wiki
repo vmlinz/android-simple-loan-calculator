@@ -1,7 +1,8 @@
 = Introduction =
 
 The Simple calculator for annuity, differentiated and fixed payments.
-* Platform version: Android 1.5
+
+  * Platform version: Android 1.5
 
 =Android Market=
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=market://search?q=pname:ee.smkv.calc.loan&image=qr.png

@@ -36,7 +36,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
   Loan loan = new Loan();
   Calculator calculator;
-  Settings settingsManager;
+  StoreManager storeManager;
 
   /**
    * Called when the activity is first created.
@@ -46,16 +46,19 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
     init();
-    settingsManager = new Settings(getSharedPreferences(SETTINGS_NAME, 0));
-    settingsManager.loadTextViews(amountEText, interestEText, fixedPaymentEText);
     registerEventListeners();
+    storeManager = new StoreManager(getSharedPreferences(SETTINGS_NAME, 0));
+    storeManager.loadTextViews(amountEText, interestEText, fixedPaymentEText);
+    storeManager.loadSpinners(typeSpinner, periodSpinner);
+
   }
 
 
   @Override
   protected void onStop() {
     super.onStop();
-    settingsManager.storeTextViews(amountEText, interestEText, fixedPaymentEText);
+    storeManager.storeTextViews(amountEText, interestEText, fixedPaymentEText);
+    storeManager.storeSpinners(typeSpinner, periodSpinner);
   }
 
 
@@ -63,6 +66,8 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     calculateButton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View arg0) {
         calculate();
+        scrollView.scrollTo(monthlyAmountLabel.getLeft(), monthlyAmountLabel.getTop());
+        vibrator.vibrate(100);
       }
     });
 
@@ -141,25 +146,23 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     BigDecimal max = loan.getMaxMonthlyPayment();
     BigDecimal min = loan.getMinMonthlyPayment();
     if (max.compareTo(min) == 0) {
-      monthlyPayment = max.setScale(2,mode).toPlainString();
+      monthlyPayment = max.setScale(2, mode).toPlainString();
     }
     else {
-      monthlyPayment = max.setScale(2,mode).toPlainString() + " - " + min.setScale(2,mode).toPlainString();
+      monthlyPayment = max.setScale(2, mode).toPlainString() + " - " + min.setScale(2, mode).toPlainString();
     }
     monthlyAmountVText.setText(monthlyPayment);
 
-    amountTotalVText.setText(loan.getTotalAmount().setScale(2,mode).toPlainString());
-    interestTotalVText.setText(loan.getTotalInterests().setScale(2,mode).toPlainString());
+    amountTotalVText.setText(loan.getTotalAmount().setScale(2, mode).toPlainString());
+    interestTotalVText.setText(loan.getTotalInterests().setScale(2, mode).toPlainString());
     periodTotalLabel.setText(loan.getPeriod().toString());
-    scrollView.scrollTo(monthlyAmountLabel.getLeft(), monthlyAmountLabel.getTop());
-    vibrator.vibrate(100);
   }
 
   private void loadLoanDataFromUI() {
     loan.setAmount(getNumber(amountEText, R.string.errorAmount));
     loan.setInterest(getNumber(interestEText, R.string.errorInterest));
     loan.setPeriod(getPeriod(periodSpinner).intValue());
-    if(fixedPaymentEText.getVisibility() == View.VISIBLE){
+    if (fixedPaymentEText.getVisibility() == View.VISIBLE) {
       loan.setFixedPayment(getNumber(fixedPaymentEText, R.string.errorFixedAmount));
     }
   }
@@ -195,9 +198,8 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
   private boolean isRequiredRecalculation() {
     return
-      amountEText.getText() != null &&
-      amountEText.getText().toString() != null &&
-      amountEText.getText().toString().trim().length() > 0
+      amountEText.getText() != null && amountEText.getText().toString().trim().length() > 0
+      && interestEText.getText() != null && interestEText.getText().toString().trim().length() > 0
       && (typeSpinner.getSelectedItemPosition() != 2 ||
           (fixedPaymentEText.getText() != null && fixedPaymentEText.getText().toString().trim().length() > 0));
   }

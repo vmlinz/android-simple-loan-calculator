@@ -2,6 +2,11 @@
 
 The Simple calculator for annuity, differentiated and fixed payments.
 
+=Android Market=
+http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=market://search?q=pname:ee.smkv.calc.loan
+market://search?q=pname:ee.smkv.calc.loan
+
+
 =Screenshots=
 
 http://lh6.ggpht.com/_PgaocR0FRPA/TEcETYLRJbI/AAAAAAAAL6M/ef1Xjl1SG1U/annuity.png

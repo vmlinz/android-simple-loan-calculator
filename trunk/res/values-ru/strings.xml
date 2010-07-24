@@ -40,8 +40,8 @@
 	<string name="errorInterest">Введите корректный годовой интресс</string>
 	<string name="type">Тип кредита</string>
 	<string-array name="types">
-		<item>Аннуитетный</item>
-		<item>Дифференцированный</item>
+		<item>Аннуитетный платеж</item>
+		<item>Дифференцированный платеж</item>
 		<item>Фиксированный платеж</item>		
 	</string-array>
 	<string name="fixedPayment">Фиксированный платеж</string>
@@ -54,4 +54,13 @@
   <string name="paymentTotal">Платеж</string>
   <string name="close">Закрыть</string>
   <string name="scheduleTitle">График выплат</string>
+  <string name="typeHelpLbl">Помощь</string>
+  <string name="annuityTitleHelp">Аннуитетный платеж</string>
+  <string name="diffTitleHelp">Дифференцированный платеж</string>
+  <string name="fixedTitleHelp">Фиксированный платеж</string>
+  <string name="annuityHelp"> - это равный по сумме ежемесячный платеж по кредиту, который включает в себя сумму начисленных процентов за кредит и сумму основного долга.</string>
+  <string name="diffHelp"> - это ежемесячный платеж по кредиту, уменьшающийся к концу срока кредитования и состоит из выплачиваемой постоянной доли основного долга и процентов на невыплаченный остаток кредита.</string>
+  <string name="fixedHelp"> - это ежемесячный фиксированный возврат доли основного долга плюс процентоы за невыплаченный остаток кредита.</string>
+   
+ 
 </resources>

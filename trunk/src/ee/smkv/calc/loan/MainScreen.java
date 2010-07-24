@@ -30,7 +30,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
   EditText amountEText, interestEText, fixedPaymentEText;
   Spinner periodSpinner, typeSpinner;
-  Button calculateButton, scheduleButton;
+  Button calculateButton, scheduleButton , typeHelpButton , typeHelpCloseButton;
   ScrollView scrollView;
   Vibrator vibrator;
 
@@ -76,6 +76,13 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
         showSchedule();
       }
     });
+    
+    typeHelpButton.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View arg0) {
+        	Intent typeHelp = new Intent(MainScreen.this, TypeHelpActivity.class);
+            startActivity(typeHelp); 
+        }
+      });
     periodSpinner.setOnItemSelectedListener(this);
     typeSpinner.setOnItemSelectedListener(this);
   }
@@ -117,6 +124,8 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     periodTotalLabel = (TextView)findViewById(R.id.PeriodTotal);
     monthlyAmountLabel = (TextView)findViewById(R.id.MonthlyAmountLbl);
     scheduleButton = (Button)findViewById(R.id.ScheduleButton);
+    typeHelpButton = (Button) findViewById(R.id.TypeHelp);
+    typeHelpCloseButton = (Button) findViewById(R.id.TypeHelpClose);
   }
 
 

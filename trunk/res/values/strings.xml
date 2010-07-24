@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Simple Loan Calculator</string>
-	<string name="app_desc">Simple calculator annuity payment. It uses a simple formula for calculating the monthly payment.
-	monthlyInterest = yearlyInterest/ (100 * 12);
-	x = (amount * monthlyInterest) / (1 - (1+monthlyInterest)-monthsCount);
-	</string>
+	<string name="app_desc">Simple calculator of annuity payment.</string>
 	<string name="amount">Loan amount</string>
 	<string name="amountHint">amount &gt; 0</string>
-	<string name="interest">Yearly interest rate, %</string>
+	<string name="interest">Annual interest rate, %</string>
 	<string name="interestHint">rate &gt; 0</string>
 	<string name="period">Period</string>
 	<string-array name="periods">
@@ -37,15 +34,15 @@
 	<string name="AmountTotalLbl">Total amount (amount + interest)</string>
 	<string name="errorAmount">Please enter correct amount</string>
 	<string name="errorFixedAmount">Please enter correct fixed monthly amount</string>
-	<string name="errorInterest">Please enter correct yearly interest</string>
+	<string name="errorInterest">Please enter correct annual interest rate</string>
 	<string name="type">Type of loan</string>
 	<string-array name="types">
-		<item>Annuity</item>
-		<item>Differentiated</item>
+		<item>Annuity payments</item>
+		<item>Differentiated payments</item>
 		<item>Fixed payments</item>		
 	</string-array>
 	<string name="fixedPayment">Fixed payment</string>
-	<string name="paymentsCount">Payments count</string>
+	<string name="paymentsCount">Quantity of payments</string>
   <string name="schedule">Show schedule</string>
   <string name="paymentNr">Nr.</string>
   <string name="paymentBalance">Balance</string>
@@ -54,5 +51,11 @@
   <string name="paymentTotal">Payment</string>
   <string name="close">Close</string>
   <string name="scheduleTitle">Loan schedule</string>
-
+  <string name="typeHelpLbl">Help</string>
+  <string name="annuityTitleHelp">Annuity payments</string>
+  <string name="diffTitleHelp">Differentiated payments</string>
+  <string name="fixedTitleHelp">Fixed payments</string>
+  <string name="annuityHelp"> - is equal to the sum of the monthly payment on the loan, which includes the amount of accrued interest for the loan and the amount of principal debt.</string>
+  <string name="diffHelp"> - a monthly loan payment, decreasing towards the end of the term loan and is paid from a permanent share of principal and interest on the unpaid balance of the loan.</string>
+  <string name="fixedHelp"> - a fixed monthly repayment of principal plus a share interst for the unpaid balance of the loan.</string>
 </resources>

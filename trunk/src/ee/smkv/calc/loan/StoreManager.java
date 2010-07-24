@@ -1,7 +1,6 @@
 package ee.smkv.calc.loan;
 
 import android.content.SharedPreferences;
-import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
 

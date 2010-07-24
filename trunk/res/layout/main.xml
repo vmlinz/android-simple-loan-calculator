@@ -5,13 +5,22 @@
 	<ScrollView android:id="@+id/ScrollView"
               android:layout_width="fill_parent" android:layout_height="wrap_content">
 		<LinearLayout android:orientation="vertical"
-                  android:layout_width="fill_parent" android:layout_height="fill_parent">
+                  android:layout_width="fill_parent" android:layout_height="fill_parent" android:padding="5px">
 			<TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content" android:text="@string/type" />
-			<Spinner android:id="@+id/Type" android:layout_width="fill_parent"
+            <TableLayout android:layout_width="fill_parent" 
+            android:layout_height="wrap_content" android:stretchColumns="0">
+            <TableRow android:layout_width="fill_parent"> 
+            <Spinner android:id="@+id/Type" android:layout_width="fill_parent"
                android:layout_height="wrap_content" android:entries="@array/types">
-
-			</Spinner>
+               </Spinner>
+               <Button android:id="@+id/TypeHelp" android:text="@string/typeHelpLbl"
+              android:textStyle="bold" android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>           
+            </TableRow>
+			
+			</TableLayout>
+			
 			<TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content" android:text="@string/amount" />
 

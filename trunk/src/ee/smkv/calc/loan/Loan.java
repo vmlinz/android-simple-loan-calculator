@@ -9,6 +9,7 @@ import java.util.List;
  * @author Andrei Samkov
  */
 public class Loan implements Serializable{
+  private static final long serialVersionUID = 1L;
   private BigDecimal amount;
   private BigDecimal interest;
   private BigDecimal fixedPayment;

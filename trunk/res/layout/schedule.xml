@@ -20,7 +20,13 @@
           <TextView android:text="@string/paymentTotal" android:layout_width="fill_parent" android:textStyle="bold" android:padding="3px" />
         </TableRow>
         <TableRow android:layout_width="fill_parent" android:id="@+id/FooterRow" >
-          <Button android:layout_span="5" android:id="@+id/scheduleClose" android:text="@string/close" android:layout_height="wrap_content"  android:layout_width="fill_parent" />
+        	<TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="fill_parent" android:layout_height="wrap_content" >
+        		<TableRow>
+        		<Button  android:id="@+id/scheduleClose" android:text="@string/close" android:layout_height="wrap_content"  android:layout_width="fill_parent" />
+        		<Button  android:id="@+id/chartButton" android:text="@string/chartButton" android:layout_height="wrap_content"  android:layout_width="fill_parent" />
+        		</TableRow>
+        	</TableLayout>
+          
         </TableRow>
       </TableLayout>
     </LinearLayout>

@@ -1,6 +1,7 @@
 package ee.smkv.calc.loan;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ public class Schedule extends Activity {
   int mode = BigDecimal.ROUND_HALF_UP;
   TableLayout table;
   TableRow header , footer;
-  Button closeButton;
+  Button closeButton , chartButton;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -34,19 +35,35 @@ public class Schedule extends Activity {
         finish();
       }
     });
+    chartButton = (Button)findViewById(R.id.chartButton);
+    chartButton.setOnClickListener( new  View.OnClickListener(){
+
+        public void onClick(View view) {
+        	Loan loan = getLoan();
+        	Intent chart = new Intent(Schedule.this, ChartActivity.class);
+        	chart.putExtra(Loan.class.getName(), loan);
+            startActivity(chart);
+        }
+      });
+    show();
   }
 
   @Override
   protected void onResume() {
     super.onResume();
-    show();
+    
   }
 
   private void show() {
-    Loan loan = (Loan)getIntent().getSerializableExtra(Loan.class.getName());
+    Loan loan = getLoan();
     clearTable();
     showSchedule(loan);
   }
+
+private Loan getLoan() {
+	Loan loan = (Loan)getIntent().getSerializableExtra(Loan.class.getName());
+	return loan;
+}
 
   private void clearTable() {
     for (int i = 0 ; i < table.getChildCount() ; i ++ ){

@@ -55,9 +55,9 @@
   <string name="annuityTitleHelp">Annuity payments</string>
   <string name="diffTitleHelp">Differentiated payments</string>
   <string name="fixedTitleHelp">Fixed payments</string>
-  <string name="annuityHelp"> - is equal to the sum of the monthly payment on the loan, which includes the amount of accrued interest for the loan and the amount of principal debt.</string>
-  <string name="diffHelp"> - a monthly loan payment, decreasing towards the end of the term loan and is paid from a permanent share of principal and interest on the unpaid balance of the loan.</string>
+  <string name="annuityHelp"> - it is a value equal to the sum of the monthly payment on the loan, which includes the amount of accrued interest for the loan and the amount of principal debt.</string>
+  <string name="diffHelp"> - it is a monthly loan payment, decreasing to the end of the loan term and consist of paid permanent share of principal debt and interest on the unpaid balance of the loan.</string>
   <string name="fixedHelp"> - a fixed monthly repayment of principal plus a share interst for the unpaid balance of the loan.</string>
-  <string name="chartTitle">Chart or loan payments</string>
+  <string name="chartTitle">The loan payment chart (beta)</string>
   <string name="chartButton">Chart</string>
 </resources>

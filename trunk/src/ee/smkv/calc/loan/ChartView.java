@@ -1,6 +1,7 @@
 package ee.smkv.calc.loan;
 
-import java.math.BigDecimal;
+
+import java.text.DecimalFormat;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -8,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 public class ChartView extends View {
@@ -15,6 +17,8 @@ public class ChartView extends View {
 	Paint paint = new Paint();
 	int width = 300, heigh = 200;
 	static final int INTERST = 1 , PRINCIPAL = 2 , AMOUNT = 3;
+	static final String TAG = ChartView.class.getSimpleName();
+	static final DecimalFormat FORMAT = new DecimalFormat("0.00"); 
 	public ChartView(Context context) {
 		super(context);
 		init();
@@ -31,38 +35,82 @@ public class ChartView extends View {
 	}
 	
 	private void init() {
-		paint.setColor(0xCCCCCC00);
 		paint.setAntiAlias(true);
-		paint.setStyle(Paint.Style.STROKE);
 	}
 	
 
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		width = canvas.getWidth();
-		heigh = canvas.getHeight();
-		if(loan != null){
-			canvas.drawRect(0, 0, width, heigh, paint);
-			int max = loan.getMaxMonthlyPayment().intValue();
-			Path principal = getPath(PRINCIPAL , loan , max);
-			Path interst = getPath(INTERST ,loan , max);
-			Path amount = getPath(AMOUNT ,loan , max);
-			//paint.setStyle(Paint.Style.FILL_AND_STROKE);
-			paint.setColor(Color.BLUE);
-			canvas.drawPath(amount, paint);
-			paint.setColor(Color.YELLOW);
-			canvas.drawPath(principal, paint);
-			paint.setColor(Color.RED);
-			canvas.drawPath(interst, paint);
-			
+		width = getMeasuredWidth();
+		heigh = getMeasuredHeight() - 40;
+		if(loan != null){				
+			drawLines(canvas);
+			drawGrid(canvas);
+			drawLegend(canvas);
 		}
+	}
+
+	private void drawLegend(Canvas canvas) {
+		paint.setTextSize(12f);
+		paint.setColor(Color.BLUE);
+		canvas.drawText(getResources().getString(R.string.paymentTotal), 5, heigh + 12 , paint);
+		paint.setColor(Color.YELLOW);
+		canvas.drawText(getResources().getString(R.string.paymentPrincipal), 5, heigh + 26 , paint);
+		paint.setColor(Color.RED);
+		canvas.drawText(getResources().getString(R.string.paymentInterest), 5, heigh + 40 , paint);
+	}
+
+	private void drawGrid(Canvas canvas) {
+		paint.setColor(Color.WHITE);
+		paint.setStyle(Paint.Style.STROKE);
+		paint.setStrokeWidth(1f);
+		canvas.drawRect(0, 0, width, heigh, paint);
+		
+		paint.setStrokeWidth(0.25f);
+		paint.setTextSize(10f);		
+		
+		float max = loan.getMaxMonthlyPayment().floatValue()* 1.1f; // adds 10 %
+		
+		int gridSize = 50;
+		int xCount = (int)( width / gridSize);
+		int yCount = (int)( heigh / gridSize);
+		float xStep = width / xCount;
+		float yStep = heigh / yCount;
+		Path grid = new Path();
+		for( int i = 1 ;i < xCount; i++ ){
+			grid.moveTo(i * xStep, 0);
+			grid.lineTo(i * xStep, heigh);
+		}
+		for( int i = 1 ;i < yCount; i++ ){
+			grid.moveTo(0, i * yStep);
+			grid.lineTo(width, i * yStep);
+			float label = max -  (((i * yStep) / heigh) * max);
+			canvas.drawText(FORMAT.format(label), 3, i * yStep - 3, paint);
+		}
+		canvas.drawPath(grid, paint);
+	}
+
+	private void drawLines(Canvas canvas) {
+		float gridXStep = width / (loan.getPeriod() - 1 );
+		float max = loan.getMaxMonthlyPayment().floatValue()* 1.1f; // adds 10 %
+		Path principal = getPath(PRINCIPAL , loan , max , gridXStep );
+		Path interst = getPath(INTERST ,loan , max, gridXStep);
+		Path amount = getPath(AMOUNT ,loan , max, gridXStep);
+		
+		paint.setStyle(Paint.Style.STROKE);
+		paint.setStrokeWidth(3.0f);
+		paint.setColor(Color.BLUE);
+		canvas.drawPath(amount, paint);
+		paint.setColor(Color.YELLOW);
+		canvas.drawPath(principal, paint);
+		paint.setColor(Color.RED);
+		canvas.drawPath(interst, paint);
 	}
 	
 	
-	private Path getPath(int type, Loan loan, int max) {
+	private Path getPath(int type, Loan loan, float max , float gridXStep) {
 		Path line = new Path();
-		float xStep = width / loan.getPeriod();
 		float x = 0;
 		for(Payment payment : loan.getPayments()){
 			float f = 0;
@@ -80,9 +128,14 @@ public class ChartView extends View {
 			default:
 				break;
 			}
-			float y = f / max * heigh;
-			line.lineTo(x, heigh - y );
-			x = x + xStep;
+			float y = heigh - (f / max * heigh);
+			Log.d(TAG, type + ": draw line x = " + x + " y = " + y);
+			if(x == 0){
+				line.moveTo(x, y);
+			}else{
+				line.lineTo(x, y );
+			}
+			x = x + gridXStep;
 		}
 		return line;
 	}

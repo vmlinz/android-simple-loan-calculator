@@ -21,29 +21,35 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int Amount=0x7f070002;
-        public static final int AmountTotal=0x7f07000c;
-        public static final int Calc=0x7f070008;
-        public static final int FooterRow=0x7f070011;
-        public static final int HeaderRow=0x7f070010;
-        public static final int Interest=0x7f070003;
-        public static final int IterestTotal=0x7f07000b;
-        public static final int MonthlyAmount=0x7f07000a;
-        public static final int MonthlyAmountLbl=0x7f070009;
-        public static final int PeriodTotal=0x7f07000d;
-        public static final int ScheduleButton=0x7f07000e;
-        public static final int ScheduleTable=0x7f07000f;
-        public static final int ScrollView=0x7f070000;
-        public static final int Spinner01=0x7f070005;
-        public static final int Type=0x7f070001;
-        public static final int fixedPaymentLbl=0x7f070006;
-        public static final int fixedPaymentText=0x7f070007;
-        public static final int periodLbl=0x7f070004;
-        public static final int scheduleClose=0x7f070012;
+        public static final int Amount=0x7f070005;
+        public static final int AmountTotal=0x7f07000f;
+        public static final int Calc=0x7f07000b;
+        public static final int FooterRow=0x7f070014;
+        public static final int HeaderRow=0x7f070013;
+        public static final int Interest=0x7f070006;
+        public static final int IterestTotal=0x7f07000e;
+        public static final int LoanChart=0x7f070000;
+        public static final int MonthlyAmount=0x7f07000d;
+        public static final int MonthlyAmountLbl=0x7f07000c;
+        public static final int PeriodTotal=0x7f070010;
+        public static final int ScheduleButton=0x7f070011;
+        public static final int ScheduleTable=0x7f070012;
+        public static final int ScrollView=0x7f070002;
+        public static final int Spinner01=0x7f070008;
+        public static final int Type=0x7f070003;
+        public static final int TypeHelp=0x7f070004;
+        public static final int TypeHelpClose=0x7f070001;
+        public static final int chartButton=0x7f070016;
+        public static final int fixedPaymentLbl=0x7f070009;
+        public static final int fixedPaymentText=0x7f07000a;
+        public static final int periodLbl=0x7f070007;
+        public static final int scheduleClose=0x7f070015;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
-        public static final int schedule=0x7f030001;
+        public static final int chart=0x7f030000;
+        public static final int help=0x7f030001;
+        public static final int main=0x7f030002;
+        public static final int schedule=0x7f030003;
     }
     public static final class string {
         public static final int AmountTotalLbl=0x7f05000a;
@@ -51,14 +57,22 @@ public final class R {
         public static final int MonthlyAmountLbl=0x7f050008;
         public static final int amount=0x7f050002;
         public static final int amountHint=0x7f050003;
+        public static final int annuityHelp=0x7f05001d;
+        public static final int annuityTitleHelp=0x7f05001a;
         public static final int app_desc=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int calc=0x7f050007;
+        public static final int chartButton=0x7f050021;
+        public static final int chartTitle=0x7f050020;
         public static final int close=0x7f050017;
+        public static final int diffHelp=0x7f05001e;
+        public static final int diffTitleHelp=0x7f05001b;
         public static final int errorAmount=0x7f05000b;
         public static final int errorFixedAmount=0x7f05000c;
         public static final int errorInterest=0x7f05000d;
+        public static final int fixedHelp=0x7f05001f;
         public static final int fixedPayment=0x7f05000f;
+        public static final int fixedTitleHelp=0x7f05001c;
         public static final int interest=0x7f050004;
         public static final int interestHint=0x7f050005;
         public static final int paymentBalance=0x7f050013;
@@ -71,5 +85,6 @@ public final class R {
         public static final int schedule=0x7f050011;
         public static final int scheduleTitle=0x7f050018;
         public static final int type=0x7f05000e;
+        public static final int typeHelpLbl=0x7f050019;
     }
 }

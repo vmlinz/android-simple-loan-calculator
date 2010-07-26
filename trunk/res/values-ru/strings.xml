@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Простой кредитный калькулятор</string>
-	<string name="app_desc">простой калькулятор аннуитетного платежа. Использует простую формулу для вычисления ежемесячного платежа.
-	monthlyInterest = yearlyInterest/ (100 * 12);
-	x = (amount * monthlyInterest) / (1 - (1+monthlyInterest)-monthsCount);
-	</string>
+	<string name="app_desc">Простой калькулятор аннуитетного , дифференцированного и фиксированного платежа.</string>
 	<string name="amount">Сумма кредита</string>
 	<string name="amountHint">Сумма &gt; 0</string>
 	<string name="interest">Годовой интресс, %</string>

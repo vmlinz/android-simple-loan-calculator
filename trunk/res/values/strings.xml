@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Simple Loan Calculator</string>
-	<string name="app_desc">Simple calculator of annuity payment.</string>
+	<string name="app_desc">The Simple calculator for annuity, differentiated and fixed payments. </string>
 	<string name="amount">Loan amount</string>
 	<string name="amountHint">amount &gt; 0</string>
 	<string name="interest">Annual interest rate, %</string>

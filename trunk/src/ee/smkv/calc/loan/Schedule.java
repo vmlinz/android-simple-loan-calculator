@@ -2,6 +2,7 @@ package ee.smkv.calc.loan;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +30,7 @@ public class Schedule extends Activity {
     header = (TableRow)findViewById(R.id.HeaderRow);
     footer = (TableRow)findViewById(R.id.FooterRow);
     closeButton = (Button)findViewById(R.id.scheduleClose);
+    closeButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.close) ,null,null,null);
     closeButton.setOnClickListener( new  View.OnClickListener(){
 
       public void onClick(View view) {
@@ -36,6 +38,7 @@ public class Schedule extends Activity {
       }
     });
     chartButton = (Button)findViewById(R.id.chartButton);
+    chartButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.chart) ,null,null,null);
     chartButton.setOnClickListener( new  View.OnClickListener(){
 
         public void onClick(View view) {
@@ -56,7 +59,6 @@ public class Schedule extends Activity {
 
   private void show() {
     Loan loan = getLoan();
-    clearTable();
     showSchedule(loan);
   }
 
@@ -65,14 +67,6 @@ private Loan getLoan() {
 	return loan;
 }
 
-  private void clearTable() {
-    for (int i = 0 ; i < table.getChildCount() ; i ++ ){
-      View view = table.getChildAt(i);
-      if (view instanceof TableRow && view != header && view != footer ){
-        table.removeView(view);
-      }
-    }
-  }
 
   private void showSchedule(Loan loan) {
     int pos = 1;
@@ -83,6 +77,8 @@ private Loan getLoan() {
 
   private void addPaymentToTable(Payment payment, int pos) {
     TableRow row = new TableRow(table.getContext());
+    row.setBackgroundColor( getResources().getColor( pos % 2 == 0 ? R.color.odd : R.color.even) );
+    row.setPadding(2,4,2,4);
     table.addView(row , pos);
     TextView nr = new TextView(row.getContext());
     TextView balance = new TextView(row.getContext());
@@ -91,10 +87,19 @@ private Loan getLoan() {
     TextView amount = new TextView(row.getContext());
 
     nr.setText(payment.getNr().toString());
+    nr.setTextColor(Color.WHITE);
+
     balance.setText(payment.getBalance().setScale(2,mode).toPlainString());
+    balance.setTextColor(Color.WHITE);
+
     principal.setText(payment.getPrincipal().setScale(2,mode).toPlainString());
+    principal.setTextColor(Color.WHITE);
+
     interest.setText(payment.getInterest().setScale(2,mode).toPlainString());
+    interest.setTextColor(Color.WHITE);
+
     amount.setText(payment.getAmount().setScale(2,mode).toPlainString());
+    amount.setTextColor(Color.WHITE);
 
     row.addView(nr);
     row.addView(balance);

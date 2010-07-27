@@ -38,7 +38,7 @@
 	<string name="type">Type of loan</string>
 	<string-array name="types">
 		<item>Annuity payments</item>
-		<item>Differentiated payments</item>
+		<item>Differentiated</item>
 		<item>Fixed payments</item>		
 	</string-array>
 	<string name="fixedPayment">Fixed payment</string>

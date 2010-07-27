@@ -53,18 +53,29 @@ public class ChartView extends View {
 
 	private void drawLegend(Canvas canvas) {
 		paint.setTextSize(12f);
-		paint.setColor(Color.BLUE);
-		canvas.drawText(getResources().getString(R.string.paymentTotal), 5, heigh + 12 , paint);
+    paint.setStrokeWidth(0.25f);
+    paint.setStyle(Paint.Style.FILL_AND_STROKE);
+		paint.setColor(Color.MAGENTA);
+		canvas.drawText(getResources().getString(R.string.paymentTotal), 20, heigh + 12 , paint);
 		paint.setColor(Color.YELLOW);
-		canvas.drawText(getResources().getString(R.string.paymentPrincipal), 5, heigh + 26 , paint);
-		paint.setColor(Color.RED);
-		canvas.drawText(getResources().getString(R.string.paymentInterest), 5, heigh + 40 , paint);
+    canvas.drawText(getResources().getString(R.string.paymentPrincipal), 20, heigh + 26 , paint);
+    paint.setColor(Color.RED);
+    canvas.drawText(getResources().getString(R.string.paymentInterest), 20, heigh + 40 , paint);
+
+
+    paint.setStrokeWidth(2f);
+    paint.setColor(Color.MAGENTA);
+    canvas.drawLine(5,heigh + 10 ,15 , heigh + 10, paint);
+    paint.setColor(Color.YELLOW);
+    canvas.drawLine(5,heigh + 24 ,15 , heigh + 24, paint);
+    paint.setColor(Color.RED);
+    canvas.drawLine(5,heigh + 38 ,15 , heigh + 38, paint);
 	}
 
 	private void drawGrid(Canvas canvas) {
 		paint.setColor(Color.WHITE);
 		paint.setStyle(Paint.Style.STROKE);
-		paint.setStrokeWidth(1f);
+		paint.setStrokeWidth(2f);
 		canvas.drawRect(0, 0, width, heigh, paint);
 		
 		paint.setStrokeWidth(0.25f);
@@ -73,8 +84,8 @@ public class ChartView extends View {
 		float max = loan.getMaxMonthlyPayment().floatValue()* 1.1f; // adds 10 %
 		
 		int gridSize = 50;
-		int xCount = (int)( width / gridSize);
-		int yCount = (int)( heigh / gridSize);
+		int xCount = (int)( 1.0f * width / gridSize);
+		int yCount = (int)( 1.0f * heigh / gridSize);
 		float xStep = width / xCount;
 		float yStep = heigh / yCount;
 		Path grid = new Path();
@@ -86,7 +97,9 @@ public class ChartView extends View {
 			grid.moveTo(0, i * yStep);
 			grid.lineTo(width, i * yStep);
 			float label = max -  (((i * yStep) / heigh) * max);
+      paint.setStyle(Paint.Style.FILL_AND_STROKE);
 			canvas.drawText(FORMAT.format(label), 3, i * yStep - 3, paint);
+      paint.setStyle(Paint.Style.STROKE);
 		}
 		canvas.drawPath(grid, paint);
 	}
@@ -100,7 +113,7 @@ public class ChartView extends View {
 		
 		paint.setStyle(Paint.Style.STROKE);
 		paint.setStrokeWidth(3.0f);
-		paint.setColor(Color.BLUE);
+		paint.setColor(Color.MAGENTA);
 		canvas.drawPath(amount, paint);
 		paint.setColor(Color.YELLOW);
 		canvas.drawPath(principal, paint);

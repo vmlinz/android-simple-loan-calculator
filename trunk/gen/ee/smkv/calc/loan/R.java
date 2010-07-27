@@ -15,10 +15,17 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int border=0x7f040003;
+        public static final int even=0x7f040002;
+        public static final int odd=0x7f040001;
         public static final int result=0x7f040000;
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
+        public static final int chart=0x7f020000;
+        public static final int close=0x7f020001;
+        public static final int help=0x7f020002;
+        public static final int icon=0x7f020003;
+        public static final int table=0x7f020004;
     }
     public static final class id {
         public static final int Amount=0x7f070005;

@@ -126,6 +126,10 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     scheduleButton = (Button)findViewById(R.id.ScheduleButton);
     typeHelpButton = (Button) findViewById(R.id.TypeHelp);
     typeHelpCloseButton = (Button) findViewById(R.id.TypeHelpClose);
+
+    scheduleButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.table) ,null,null,null);
+    typeHelpButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.help) ,null,null,null);
+    typeHelpButton.setText("");
   }
 
 

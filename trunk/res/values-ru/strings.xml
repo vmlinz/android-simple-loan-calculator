@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Простой кредитный калькулятор</string>
-	<string name="app_desc">Простой калькулятор аннуитетного , дифференцированного и фиксированного платежа.</string>
-	<string name="amount">Сумма кредита</string>
-	<string name="amountHint">Сумма &gt; 0</string>
-	<string name="interest">Годовой интресс, %</string>
-	<string name="interestHint">интресс &gt; 0</string>
-	<string name="period">Период</string>
+	<string name="app_name">Lihtne Laenukalkulaator</string>
+	<string name="app_desc">Lihtne leanukalkulaator annuiteet, diferentseeritud ja määratud makse.</string>
+	<string name="amount">Laenusumma</string>
+	<string name="amountHint">summa &gt; 0</string>
+	<string name="interest">Aastaintress, %</string>
+	<string name="interestHint">intress &gt; 0</string>
+	<string name="period">Periood</string>
 	<string-array name="periods">
-		<item>3 месяца</item>
-		<item>6 месяцев</item>
-		<item>9 месяцев</item>
-		<item>1 год</item>
-		<item>2 года</item>
-		<item>3 года</item>
-		<item>4 года</item>
-		<item>5 лет</item>
-		<item>6 лет</item>
-		<item>7 лет</item>
-		<item>8 лет</item>
-		<item>9 лет</item>
-		<item>10 лет</item>
-		<item>15 лет</item>
-		<item>20 лет</item>
-		<item>25 лет</item>
-		<item>30 лет</item>
-		<item>40 лет</item>
-		<item>50 лет</item>
+		<item>3 kuud</item>
+		<item>6 kuud</item>
+		<item>9 kuud</item>
+		<item>1 aasta</item>
+		<item>2 aastat</item>
+		<item>3 aastat</item>
+		<item>4 aastat</item>
+		<item>5 aastat</item>
+		<item>6 aastat</item>
+		<item>7 aastat</item>
+		<item>8 aastat</item>
+		<item>9 aastat</item>
+		<item>10 aastat</item>
+		<item>15 aastat</item>
+		<item>20 aastat</item>
+		<item>25 aastat</item>
+		<item>30 aastat</item>
+		<item>40 aastat</item>
+		<item>50 aastat</item>
 	</string-array>
-	<string name="calc">Рассчитать месячный платеж</string>
-	<string name="MonthlyAmountLbl">Месячный платеж</string>
-	<string name="IterestTotalLbl">Всего интрессов</string>
-	<string name="AmountTotalLbl">Всего платежей (сумма + интрессы)</string>
-	<string name="errorAmount">Введите корректную сумму кредита</string>
-	<string name="errorFixedAmount">Введите корректную сумму фиксированного ежемесячного платежа</string>
-	<string name="errorInterest">Введите корректный годовой интресс</string>
-	<string name="type">Тип кредита</string>
+	<string name="calc">Arvuta kuumakse</string>
+	<string name="MonthlyAmountLbl">Kuumakse</string>
+	<string name="IterestTotalLbl">Intressid kokku</string>
+	<string name="AmountTotalLbl">Maksed kokku (summa + intress)</string>
+	<string name="errorAmount">Sisestage õige krediidisumma</string>
+	<string name="errorFixedAmount">Sisestage õige fikseeritud kuumakse</string>
+	<string name="errorInterest">Sisestage õige aastaintress</string>
+	<string name="type">Laenu tüüp</string>
 	<string-array name="types">
 		<item>Аннуитетный платеж</item>
 		<item>Дифференцированный платеж</item>
 		<item>Фиксированный платеж</item>		
 	</string-array>
 	<string name="fixedPayment">Фиксированный платеж</string>
-	<string name="paymentsCount">Количество платежей</string>
-  <string name="schedule">Показать график</string>
+	<string name="paymentsCount">Maksete arv</string>
+  <string name="schedule">Näita graafik</string>
   <string name="paymentNr">Nr.</string>
-  <string name="paymentBalance">Баланс</string>
-  <string name="paymentPrincipal">Выплата</string>
-  <string name="paymentInterest">Интресс</string>
-  <string name="paymentTotal">Платеж</string>
-  <string name="close">Закрыть</string>
-  <string name="scheduleTitle">График выплат</string>
-  <string name="typeHelpLbl">Помощь</string>
+  <string name="paymentBalance">Jääk</string>
+  <string name="paymentPrincipal">Põhiosa</string>
+  <string name="paymentInterest">Intress</string>
+  <string name="paymentTotal">Makse</string>
+  <string name="close">Sulge</string>
+  <string name="scheduleTitle">Makse graafik</string>
+  <string name="typeHelpLbl">Abi</string>
   <string name="annuityTitleHelp">Аннуитетный платеж</string>
   <string name="diffTitleHelp">Дифференцированный платеж</string>
   <string name="fixedTitleHelp">Фиксированный платеж</string>
   <string name="annuityHelp"> - это равный по сумме ежемесячный платеж по кредиту, который включает в себя сумму начисленных процентов за кредит и сумму основного долга.</string>
   <string name="diffHelp"> - это ежемесячный платеж по кредиту, уменьшающийся к концу срока кредитования и состоит из выплачиваемой постоянной доли основного долга и процентов на невыплаченный остаток кредита.</string>
   <string name="fixedHelp"> - это ежемесячный фиксированный возврат доли основного долга плюс проценты за невыплаченный остаток кредита, отличается от дифференцированного тем, что сумму фиксированного возврата вы определяете сами.</string>
-  <string name="chartTitle">График выплат по кредиту (beta)</string>
-  <string name="chartButton">График</string>
+  <string name="chartTitle">Makse graafik (beta)</string>
+  <string name="chartButton">Graafik</string>
 </resources>

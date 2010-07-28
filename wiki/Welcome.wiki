@@ -15,6 +15,9 @@ http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=market://search?q=pnam
 
 <a href="market://search?q=pname:ee.smkv.calc.loan">Android Market download link</a>
 
+=Screencast=
+
+http://www.youtube.com/watch?v=Cd90pU-AQb0
 
 =Screenshots=
 

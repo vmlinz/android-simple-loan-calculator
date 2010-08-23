@@ -6,12 +6,14 @@
 
 	<ScrollView android:id="@+id/ScrollView"
               android:layout_width="fill_parent" android:layout_height="fill_parent">
-    <LinearLayout  android:layout_width="fill_parent"  android:layout_height="wrap_content" android:padding="5px">
 
-      <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                          android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+      <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"  android:padding="3px"
                    android:orientation="vertical" android:layout_width="fill_parent"
                    android:layout_height="wrap_content" android:stretchColumns="*"
-                   android:id="@+id/ScheduleTable" >
+                   android:id="@+id/ScheduleTable">
         <TableRow android:layout_width="fill_parent" android:id="@+id/HeaderRow" android:background="@color/odd">
           <TextView android:text="@string/paymentNr" android:layout_width="fill_parent" android:textStyle="bold" android:padding="3px" />
           <TextView android:text="@string/paymentBalance" android:layout_width="fill_parent" android:textStyle="bold" android:padding="3px" />
@@ -25,10 +27,9 @@
         		<Button android:id="@+id/scheduleClose" android:text="@string/close" android:layout_height="wrap_content" android:layout_width="fill_parent" />
         		<Button android:id="@+id/chartButton" android:text="@string/chartButton" android:layout_height="wrap_content" android:layout_width="fill_parent" />
         		</TableRow>
-        	</TableLayout>
-
+        	</TableLayout>          
         </TableRow>
       </TableLayout>
-    </LinearLayout>
+    </HorizontalScrollView>
     </ScrollView>
   </LinearLayout>

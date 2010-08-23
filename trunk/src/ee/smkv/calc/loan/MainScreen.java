@@ -32,7 +32,6 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
   Spinner periodSpinner, typeSpinner;
   Button calculateButton, scheduleButton , typeHelpButton , typeHelpCloseButton;
   ScrollView scrollView;
-  Vibrator vibrator;
 
   Loan loan = new Loan();
   Calculator calculator;
@@ -67,7 +66,6 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
       public void onClick(View arg0) {
         calculate();
         scrollView.scrollTo(monthlyAmountLabel.getLeft(), monthlyAmountLabel.getTop());
-        vibrator.vibrate(100);
       }
     });
 
@@ -108,7 +106,6 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
 
   private void init() {
-    vibrator = ((Vibrator)getSystemService(VIBRATOR_SERVICE));
     amountEText = (EditText)findViewById(R.id.Amount);
     interestEText = (EditText)findViewById(R.id.Interest);
     periodSpinner = (Spinner)findViewById(R.id.Spinner01);
@@ -127,6 +124,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     typeHelpButton = (Button) findViewById(R.id.TypeHelp);
     typeHelpCloseButton = (Button) findViewById(R.id.TypeHelpClose);
 
+    calculateButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.calculator) ,null,null,null);
     scheduleButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.table) ,null,null,null);
     typeHelpButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.help) ,null,null,null);
     typeHelpButton.setText("");
@@ -135,7 +133,6 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
   protected void showError(Exception e) {
     new ErrorDialogWrapper(this , e).show();
-    vibrator.vibrate(500);
   }
 
 

@@ -28,7 +28,7 @@
 		<item>40 aastat</item>
 		<item>50 aastat</item>
 	</string-array>
-	<string name="calc">Arvuta kuumakse</string>
+	<string name="calc">Arvuta</string>
 	<string name="MonthlyAmountLbl">Kuumakse</string>
 	<string name="IterestTotalLbl">Intressid kokku</string>
 	<string name="AmountTotalLbl">Maksed kokku (summa + intress)</string>
@@ -43,7 +43,7 @@
 	</string-array>
 	<string name="fixedPayment">Määratud põhiosa</string>
 	<string name="paymentsCount">Maksete arv</string>
-  <string name="schedule">Näita graafik</string>
+  <string name="schedule">Graafik</string>
   <string name="paymentNr">Nr.</string>
   <string name="paymentBalance">Jääk</string>
   <string name="paymentPrincipal">Põhiosa</string>

@@ -28,7 +28,7 @@
 		<item>40 лет</item>
 		<item>50 лет</item>
 	</string-array>
-	<string name="calc">Рассчитать месячный платеж</string>
+	<string name="calc">Рассчитать</string>
 	<string name="MonthlyAmountLbl">Месячный платеж</string>
 	<string name="IterestTotalLbl">Всего интрессов</string>
 	<string name="AmountTotalLbl">Всего платежей (сумма + интрессы)</string>
@@ -43,7 +43,7 @@
 	</string-array>
 	<string name="fixedPayment">Фиксированный платеж</string>
 	<string name="paymentsCount">Количество платежей</string>
-  <string name="schedule">Показать график</string>
+  <string name="schedule">График</string>
   <string name="paymentNr">Nr.</string>
   <string name="paymentBalance">Баланс</string>
   <string name="paymentPrincipal">Выплата</string>

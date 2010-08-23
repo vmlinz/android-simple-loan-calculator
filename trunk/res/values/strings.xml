@@ -28,7 +28,7 @@
 		<item>40 years</item>
 		<item>50 years</item>
 	</string-array>
-	<string name="calc">Calculate monthly payment</string>
+	<string name="calc">Calculate</string>
 	<string name="MonthlyAmountLbl">Monthly payment</string>
 	<string name="IterestTotalLbl">Total interest</string>
 	<string name="AmountTotalLbl">Total amount (amount + interest)</string>
@@ -43,7 +43,7 @@
 	</string-array>
 	<string name="fixedPayment">Fixed payment</string>
 	<string name="paymentsCount">Quantity of payments</string>
-  <string name="schedule">Show schedule</string>
+  <string name="schedule">Schedule</string>
   <string name="paymentNr">Nr.</string>
   <string name="paymentBalance">Balance</string>
   <string name="paymentPrincipal">Principal</string>

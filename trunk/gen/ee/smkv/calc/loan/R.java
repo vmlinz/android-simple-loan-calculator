@@ -21,25 +21,26 @@ public final class R {
         public static final int result=0x7f040000;
     }
     public static final class drawable {
-        public static final int chart=0x7f020000;
-        public static final int close=0x7f020001;
-        public static final int help=0x7f020002;
-        public static final int icon=0x7f020003;
-        public static final int table=0x7f020004;
+        public static final int calculator=0x7f020000;
+        public static final int chart=0x7f020001;
+        public static final int close=0x7f020002;
+        public static final int help=0x7f020003;
+        public static final int icon=0x7f020004;
+        public static final int table=0x7f020005;
     }
     public static final class id {
         public static final int Amount=0x7f070005;
-        public static final int AmountTotal=0x7f07000f;
+        public static final int AmountTotal=0x7f070010;
         public static final int Calc=0x7f07000b;
         public static final int FooterRow=0x7f070014;
         public static final int HeaderRow=0x7f070013;
         public static final int Interest=0x7f070006;
-        public static final int IterestTotal=0x7f07000e;
+        public static final int IterestTotal=0x7f07000f;
         public static final int LoanChart=0x7f070000;
-        public static final int MonthlyAmount=0x7f07000d;
-        public static final int MonthlyAmountLbl=0x7f07000c;
-        public static final int PeriodTotal=0x7f070010;
-        public static final int ScheduleButton=0x7f070011;
+        public static final int MonthlyAmount=0x7f07000e;
+        public static final int MonthlyAmountLbl=0x7f07000d;
+        public static final int PeriodTotal=0x7f070011;
+        public static final int ScheduleButton=0x7f07000c;
         public static final int ScheduleTable=0x7f070012;
         public static final int ScrollView=0x7f070002;
         public static final int Spinner01=0x7f070008;

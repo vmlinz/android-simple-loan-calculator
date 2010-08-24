@@ -58,31 +58,49 @@
         </TableRow>
       </TableLayout>
 
-			<TextView android:text="@string/MonthlyAmountLbl" android:id="@+id/MonthlyAmountLbl"
-                android:layout_width="fill_parent" android:layout_height="wrap_content" />
-			<TextView android:id="@+id/MonthlyAmount"
-                android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:textStyle="bold" android:text="0.0" android:gravity="right"
-                android:textSize="20px" android:paddingRight="10px" android:textColor="@color/result" />
-			<TextView android:text="@string/IterestTotalLbl"
-                android:layout_width="fill_parent" android:layout_height="wrap_content" />
-			<TextView android:id="@+id/IterestTotal"
-                android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:textStyle="bold" android:text="0.0" android:gravity="right"
-                android:textSize="20px" android:paddingRight="10px" android:textColor="@color/result" />
-			<TextView android:text="@string/AmountTotalLbl"
-                android:layout_width="fill_parent" android:layout_height="wrap_content" />
-			<TextView android:id="@+id/AmountTotal"
-                android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:textStyle="bold" android:text="0.0" android:gravity="right"
-                android:textSize="20px" android:paddingRight="10px" android:textColor="@color/result" />
-			<TextView android:text="@string/paymentsCount"
-                android:layout_width="fill_parent" android:layout_height="wrap_content" />
-			<TextView android:id="@+id/PeriodTotal"
-                android:layout_width="fill_parent" android:layout_height="wrap_content"
-                android:textStyle="bold" android:text="0" android:gravity="right"
-                android:textSize="20px" android:paddingRight="10px" android:textColor="@color/result" />
-		
+      <LinearLayout android:id="@+id/resultContainer" 
+          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:background="@layout/roundedshape"
+                    android:padding="5px" android:layout_margin="3px">
+
+        <TextView android:text="@string/MonthlyAmountLbl" android:id="@+id/MonthlyAmountLbl"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="@color/text" />
+        <TextView android:id="@+id/MonthlyAmount"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:textStyle="bold" android:text="0.0" android:gravity="right"
+                  android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
+                  android:textColor="@color/result" />
+
+        <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="@color/border" />
+
+        <TextView android:text="@string/IterestTotalLbl"  android:textColor="@color/text"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/IterestTotal"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:textStyle="bold" android:text="0.0" android:gravity="right"
+                  android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
+                  android:textColor="@color/result" />
+
+        <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="@color/border" />
+
+        <TextView android:text="@string/AmountTotalLbl"  android:textColor="@color/text"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/AmountTotal"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:textStyle="bold" android:text="0.0" android:gravity="right"
+                  android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
+                  android:textColor="@color/result" />
+
+        <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="@color/border" />
+
+        <TextView android:text="@string/paymentsCount"  android:textColor="@color/text"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <TextView android:id="@+id/PeriodTotal"
+                  android:layout_width="fill_parent" android:layout_height="wrap_content"
+                  android:textStyle="bold" android:text="0" android:gravity="right"
+                  android:textSize="20px" android:paddingRight="10px" 
+                  android:textColor="@color/result" />
+		  </LinearLayout>
 
 </LinearLayout>
 	</ScrollView>

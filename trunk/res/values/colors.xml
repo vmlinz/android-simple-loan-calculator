@@ -1,6 +1,7 @@
 <resources>
-<color name="result">#FF6600</color>
+<color name="result">#cccccc</color>
 <color name="odd">#333333</color>
 <color name="even">#444444</color>
 <color name="border">#cccccc</color>
+<color name="text">#FFFFFF</color>
 </resources>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,6 +33,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
   Spinner periodSpinner, typeSpinner;
   Button calculateButton, scheduleButton , typeHelpButton , typeHelpCloseButton;
   ScrollView scrollView;
+  LinearLayout resultContainer;
 
   Loan loan = new Loan();
   Calculator calculator;
@@ -65,7 +67,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     calculateButton.setOnClickListener(new View.OnClickListener() {
       public void onClick(View arg0) {
         calculate();
-        scrollView.scrollTo(monthlyAmountLabel.getLeft(), monthlyAmountLabel.getTop());
+        scrollView.scrollTo(resultContainer.getLeft(), resultContainer.getTop());
       }
     });
 
@@ -123,6 +125,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     scheduleButton = (Button)findViewById(R.id.ScheduleButton);
     typeHelpButton = (Button) findViewById(R.id.TypeHelp);
     typeHelpCloseButton = (Button) findViewById(R.id.TypeHelpClose);
+    resultContainer = (LinearLayout) findViewById(R.id.resultContainer);
 
     calculateButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.calculator) ,null,null,null);
     scheduleButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.table) ,null,null,null);
@@ -179,7 +182,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
   private BigDecimal getPeriod(Spinner periodSpinner) {
     try {
-      boolean months = periodSpinner.getSelectedItemPosition() < 3;
+      boolean months = periodSpinner.getSelectedItemPosition() < 5;
       String period = (String)periodSpinner.getSelectedItem();
       DecimalFormat format = new DecimalFormat("#0");
       format.setParseBigDecimal(true);

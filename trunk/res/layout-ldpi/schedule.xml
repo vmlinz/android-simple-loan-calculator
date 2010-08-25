@@ -12,11 +12,11 @@
                    android:layout_height="wrap_content" android:stretchColumns="*"
                    android:id="@+id/ScheduleTable" android:background="@layout/roundedshape">
         <TableRow android:layout_width="fill_parent" android:id="@+id/HeaderRow" android:background="@color/odd">
-          <TextView android:text="@string/paymentNr" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" />
-          <TextView android:text="@string/paymentBalance" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" />
-          <TextView android:text="@string/paymentPrincipal" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" />
-          <TextView android:text="@string/paymentInterest" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" />
-          <TextView android:text="@string/paymentTotal" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" />
+          <TextView android:text="@string/paymentNr" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" android:textColor="@color/result" />
+          <TextView android:text="@string/paymentBalance" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" android:textColor="@color/result" />
+          <TextView android:text="@string/paymentPrincipal" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" android:textColor="@color/result" />
+          <TextView android:text="@string/paymentInterest" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" android:textColor="@color/result" />
+          <TextView android:text="@string/paymentTotal" android:layout_width="fill_parent" android:textStyle="bold" android:padding="5px" android:textColor="@color/result" />
         </TableRow>
         <TableRow android:layout_width="fill_parent" android:id="@+id/FooterRow">
         	<TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="fill_parent" android:layout_height="wrap_content">

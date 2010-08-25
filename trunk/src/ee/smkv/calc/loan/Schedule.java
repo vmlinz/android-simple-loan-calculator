@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -74,6 +75,39 @@ public class Schedule extends Activity {
     for (Payment payment : loan.getPayments()) {
       addPaymentToTable(payment, pos++);
     }
+    showTotal(loan, pos);
+  }
+
+  private void showTotal(Loan loan, int pos) {
+    TableRow row = new TableRow(table.getContext());
+
+    row.setPadding(2, 4, 2, 4);
+    table.addView(row, pos);
+
+    TextView nr = new TextView(row.getContext());
+    TextView balance = new TextView(row.getContext());
+    TextView principal = new TextView(row.getContext());
+    TextView interest = new TextView(row.getContext());
+    TextView amount = new TextView(row.getContext());
+
+    principal.setText(loan.getAmount().setScale(2, mode).toPlainString());
+    principal.setTextColor(getResources().getColor(R.color.result));
+    principal.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+    interest.setText(loan.getTotalInterests().setScale(2, mode).toPlainString());
+    interest.setTextColor(getResources().getColor(R.color.result));
+    interest.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+    amount.setText(loan.getTotalAmount().setScale(2, mode).toPlainString());
+    amount.setTextColor(getResources().getColor(R.color.result));
+    amount.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+
+    row.addView(nr);
+    row.addView(balance);
+    row.addView(principal);
+    row.addView(interest);
+    row.addView(amount);
+
   }
 
   private void addPaymentToTable(Payment payment, int pos) {

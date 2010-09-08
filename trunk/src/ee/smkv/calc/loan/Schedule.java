@@ -21,7 +21,7 @@ import java.math.BigDecimal;
  * @author Andrei Samkov
  */
 public class Schedule extends Activity {
-  int mode = BigDecimal.ROUND_HALF_UP;
+  int mode = BigDecimal.ROUND_HALF_EVEN;
   TableLayout table;
   TableRow header, footer;
   Button closeButton, chartButton;

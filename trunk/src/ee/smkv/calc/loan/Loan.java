@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class Loan implements Serializable{
   private static final long serialVersionUID = 1L;
+  private int loanType = 0;
   private BigDecimal amount;
   private BigDecimal interest;
   private BigDecimal fixedPayment;
@@ -104,6 +105,13 @@ public class Loan implements Serializable{
     this.fixedPayment = fixedPayment;
   }
 
+  public int getLoanType() {
+    return loanType;
+  }
+
+  public void setLoanType(int loanType) {
+    this.loanType = loanType;
+  }
 
   @Override
   public String toString() {
@@ -114,5 +122,45 @@ public class Loan implements Serializable{
            ", period=" + period +
            ", payments=" + payments +
            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Loan loan = (Loan)o;
+
+    if (loanType != loan.loanType) {
+      return false;
+    }
+    if (amount != null ? !amount.equals(loan.amount) : loan.amount != null) {
+      return false;
+    }
+    if (fixedPayment != null ? !fixedPayment.equals(loan.fixedPayment) : loan.fixedPayment != null) {
+      return false;
+    }
+    if (interest != null ? !interest.equals(loan.interest) : loan.interest != null) {
+      return false;
+    }
+    if (period != null ? !period.equals(loan.period) : loan.period != null) {
+      return false;
+    }
+
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = loanType;
+    result = 31 * result + (amount != null ? amount.hashCode() : 0);
+    result = 31 * result + (interest != null ? interest.hashCode() : 0);
+    result = 31 * result + (fixedPayment != null ? fixedPayment.hashCode() : 0);
+    result = 31 * result + (period != null ? period.hashCode() : 0);
+    return result;
   }
 }

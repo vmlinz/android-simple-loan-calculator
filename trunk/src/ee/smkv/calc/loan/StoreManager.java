@@ -5,12 +5,16 @@ import android.util.Log;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 /**
  * @author Andrei Samkov
  */
 public class StoreManager {
   SharedPreferences settings;
   static final String TAG = "StoreManager";
+  private static final Set<Loan> loanStore = new LinkedHashSet<Loan>();
 
   public StoreManager(SharedPreferences settings) {
     this.settings = settings;
@@ -62,4 +66,17 @@ public class StoreManager {
     }
     editor.commit();
   }
+
+  public void addLoan(Loan loan){
+    loanStore.add(loan);
+  }
+
+  public void removeLoan(Loan loan){
+    loanStore.remove(loan);
+  }
+
+  public Set<Loan> getLoans(){
+    return loanStore;
+  }
+  
 }

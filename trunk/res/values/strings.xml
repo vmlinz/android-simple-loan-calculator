@@ -42,6 +42,12 @@
 		<item>Differentiated</item>
 		<item>Fixed payments</item>		
 	</string-array>
+
+  <string-array name="shorttypes">
+		<item>Annuity</item>
+		<item>Different</item>
+		<item>Fixed</item>
+	</string-array>
 	<string name="fixedPayment">Fixed payment</string>
 	<string name="paymentsCount">Quantity of payments</string>
   <string name="schedule">Schedule</string>
@@ -61,4 +67,17 @@
   <string name="fixedHelp"> - a fixed monthly repayment of principal plus a share interst for the unpaid balance of the loan.</string>
   <string name="chartTitle">The loan payment chart (beta)</string>
   <string name="chartButton">Chart</string>
+
+  <string name="compareCleanLbl">Remove all</string>
+  <string name="compareTypeLbl">Loan type</string>
+  <string name="compareAmountLbl">Amount</string>
+  <string name="compareInterestLbl">Interest</string>
+  <string name="comparePeriodLbl">Period</string>
+  <string name="comparePaymentMaxLbl">Payment (max)</string>
+  <string name="comparePaymentMinLbl">Payment (min)</string>
+  <string name="compareInterestTotalLbl">Interests</string>
+  <string name="compareAmountTotalLbl">Total</string>
+
+  <string name="addToCompare">Add to compare</string>
+  <string name="viewCompare">Compare list</string>
 </resources>

@@ -4,7 +4,9 @@ package ee.smkv.calc.loan;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Vibrator;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,6 +23,7 @@ import java.text.ParseException;
 
 public class MainScreen extends Activity implements AdapterView.OnItemSelectedListener {
   public static final String SETTINGS_NAME = MainScreen.class.getName();
+  public static StoreManager storeManager;
   public static final Calculator[] CALCULATORS = new Calculator[]{
     new AnnuityCalculator(), new DifferentiatedCalculator(), new FixedCalculator()
   };
@@ -31,13 +34,13 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
   EditText amountEText, interestEText, fixedPaymentEText;
   Spinner periodSpinner, typeSpinner;
-  Button calculateButton, scheduleButton , typeHelpButton , typeHelpCloseButton;
+  Button calculateButton, scheduleButton, typeHelpButton, typeHelpCloseButton;
   ScrollView scrollView;
   LinearLayout resultContainer;
 
   Loan loan = new Loan();
   Calculator calculator;
-  StoreManager storeManager;
+
 
   /**
    * Called when the activity is first created.
@@ -76,13 +79,13 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
         showSchedule();
       }
     });
-    
+
     typeHelpButton.setOnClickListener(new View.OnClickListener() {
-        public void onClick(View arg0) {
-        	Intent typeHelp = new Intent(MainScreen.this, TypeHelpActivity.class);
-            startActivity(typeHelp); 
-        }
-      });
+      public void onClick(View arg0) {
+        Intent typeHelp = new Intent(MainScreen.this, TypeHelpActivity.class);
+        startActivity(typeHelp);
+      }
+    });
     periodSpinner.setOnItemSelectedListener(this);
     typeSpinner.setOnItemSelectedListener(this);
   }
@@ -123,25 +126,25 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     periodTotalLabel = (TextView)findViewById(R.id.PeriodTotal);
     monthlyAmountLabel = (TextView)findViewById(R.id.MonthlyAmountLbl);
     scheduleButton = (Button)findViewById(R.id.ScheduleButton);
-    typeHelpButton = (Button) findViewById(R.id.TypeHelp);
-    typeHelpCloseButton = (Button) findViewById(R.id.TypeHelpClose);
-    resultContainer = (LinearLayout) findViewById(R.id.resultContainer);
+    typeHelpButton = (Button)findViewById(R.id.TypeHelp);
+    typeHelpCloseButton = (Button)findViewById(R.id.TypeHelpClose);
+    resultContainer = (LinearLayout)findViewById(R.id.resultContainer);
 
-    calculateButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.calculator) ,null,null,null);
-    scheduleButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.table) ,null,null,null);
-    typeHelpButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.help) ,null,null,null);
+    calculateButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.calculator), null, null, null);
+    scheduleButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.table), null, null, null);
+    typeHelpButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.help), null, null, null);
     typeHelpButton.setText("");
   }
 
 
   protected void showError(Exception e) {
-    new ErrorDialogWrapper(this , e).show();
+    new ErrorDialogWrapper(this, e).show();
   }
 
 
   private void calculate() {
     try {
-      loan.reset();
+      loan = new Loan();
       loadLoanDataFromUI();
       calculator.calculate(loan);
       showCalculatedData();
@@ -172,6 +175,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
   }
 
   private void loadLoanDataFromUI() {
+    loan.setLoanType( typeSpinner.getSelectedItemPosition() );
     loan.setAmount(getNumber(amountEText, R.string.errorAmount));
     loan.setInterest(getNumber(interestEText, R.string.errorInterest));
     loan.setPeriod(getPeriod(periodSpinner).intValue());
@@ -226,5 +230,33 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
   public void onNothingSelected(AdapterView<?> adapterView) {
     //ignore
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.mainmenu, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.addToCompareMenu:
+        if (loan != null) {
+          storeManager.addLoan(loan);
+          openCompareActivity();
+        }
+        break;
+      case R.id.viewCompareMenu:
+        openCompareActivity();
+        break;
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
+  private void openCompareActivity() {
+    Intent compareActivityIntent = new Intent(MainScreen.this, CompareActivity.class);
+    startActivity(compareActivityIntent);
   }
 }

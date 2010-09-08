@@ -42,6 +42,12 @@
 		<item>Дифференцированный</item>
 		<item>Фиксированный платеж</item>		
 	</string-array>
+
+  <string-array name="shorttypes">
+		<item>Аннуитет</item>
+		<item>Дифферен.</item>
+		<item>Фиксир.</item>		
+	</string-array>
 	<string name="fixedPayment">Фиксированный платеж</string>
 	<string name="paymentsCount">Количество платежей</string>
   <string name="schedule">График</string>
@@ -61,4 +67,18 @@
   <string name="fixedHelp"> - это ежемесячный фиксированный возврат доли основного долга плюс проценты за невыплаченный остаток кредита, отличается от дифференцированного тем, что сумму фиксированного возврата вы определяете сами.</string>
   <string name="chartTitle">График выплат по кредиту (beta)</string>
   <string name="chartButton">График</string>
+
+
+  <string name="compareCleanLbl">Очистить</string>
+  <string name="compareTypeLbl">Тип</string>
+  <string name="compareAmountLbl">Сумма</string>
+  <string name="compareInterestLbl">Интресс</string>
+  <string name="comparePeriodLbl">Период</string>
+  <string name="comparePaymentMaxLbl">Платеж (max)</string>
+  <string name="comparePaymentMinLbl">Платеж (min)</string>
+  <string name="compareInterestTotalLbl">Интрессов</string>
+  <string name="compareAmountTotalLbl">Всего</string>
+
+  <string name="addToCompare">Добавить в сравнение</string>
+  <string name="viewCompare">Список сранения</string>
 </resources>

@@ -42,6 +42,11 @@
 		<item>Fikseeritud põhiosa</item>
 		<item>Määratud põhiosa</item>
 	</string-array>
+  <string-array name="shorttypes">
+		<item>Annuiteet</item>
+		<item>Fikseeritud</item>
+		<item>Määratud</item>
+	</string-array>
 	<string name="fixedPayment">Määratud põhiosa</string>
 	<string name="paymentsCount">Maksete arv</string>
   <string name="schedule">Graafik</string>
@@ -60,4 +65,19 @@
   <string name="diffHelp"> - võrdsed põhiosa tagasimaksed millele lisandub intress. Kuna intressi arvestatakse laenusumma jäägilt, on intressimaksed alguses suuremad, hiljem aga väiksemad.</string>
   <string name="fixedHelp"> - võrdsed põhiosa tagasimaksed kogu perioodi vältel millele lisandub intress laenusumma jäägilt. Põhiosa tagasimakse suurust määrab laenuvõtja.</string>
   <string name="chartButton">Graafik</string>
+
+
+  <string name="compareCleanLbl">Kustuta</string>
+  <string name="compareTypeLbl">Laenu tüüp</string>
+  <string name="compareAmountLbl">Laenusumma</string>
+  <string name="compareInterestLbl">Intress</string>
+  <string name="comparePeriodLbl">Maksete arv</string>
+  <string name="comparePaymentMaxLbl">Makse (max)</string>
+  <string name="comparePaymentMinLbl">Makse (min)</string>
+  <string name="compareInterestTotalLbl">Intressid</string>
+  <string name="compareAmountTotalLbl">Kokku</string>
+
+  <string name="addToCompare">Lisa võrdlusse</string>
+  <string name="viewCompare">Vaata võrdlused</string>
+
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+ <item android:id="@+id/addToCompareMenu" android:title="@string/addToCompare" android:icon="@drawable/add" />
+ <item android:id="@+id/viewCompareMenu" android:title="@string/viewCompare"  android:icon="@drawable/compare"/>
+</menu>

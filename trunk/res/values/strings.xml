@@ -68,15 +68,16 @@
   <string name="chartTitle">The loan payment chart (beta)</string>
   <string name="chartButton">Chart</string>
 
+  <string name="compareTitle">Loans compare</string>
   <string name="compareCleanLbl">Remove all</string>
-  <string name="compareTypeLbl">Loan type</string>
-  <string name="compareAmountLbl">Amount</string>
-  <string name="compareInterestLbl">Interest</string>
-  <string name="comparePeriodLbl">Period</string>
-  <string name="comparePaymentMaxLbl">Payment (max)</string>
-  <string name="comparePaymentMinLbl">Payment (min)</string>
-  <string name="compareInterestTotalLbl">Interests</string>
-  <string name="compareAmountTotalLbl">Total</string>
+  <string name="compareTypeLbl">Loan type:</string>
+  <string name="compareAmountLbl">Amount:</string>
+  <string name="compareInterestLbl">Interest, %:</string>
+  <string name="comparePeriodLbl">Period, m:</string>
+  <string name="comparePaymentMaxLbl">Payment (max):</string>
+  <string name="comparePaymentMinLbl">Payment (min):</string>
+  <string name="compareInterestTotalLbl">Interests:</string>
+  <string name="compareAmountTotalLbl">Total:</string>
 
   <string name="addToCompare">Add to compare</string>
   <string name="viewCompare">Compare list</string>

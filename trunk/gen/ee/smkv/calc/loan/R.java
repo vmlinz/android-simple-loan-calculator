@@ -81,7 +81,7 @@ public final class R {
         public static final int AmountTotalLbl=0x7f05000a;
         public static final int IterestTotalLbl=0x7f050009;
         public static final int MonthlyAmountLbl=0x7f050008;
-        public static final int addToCompare=0x7f05002b;
+        public static final int addToCompare=0x7f05002c;
         public static final int amount=0x7f050002;
         public static final int amountHint=0x7f050003;
         public static final int annuityHelp=0x7f05001d;
@@ -92,15 +92,16 @@ public final class R {
         public static final int chartButton=0x7f050021;
         public static final int chartTitle=0x7f050020;
         public static final int close=0x7f050017;
-        public static final int compareAmountLbl=0x7f050024;
-        public static final int compareAmountTotalLbl=0x7f05002a;
-        public static final int compareCleanLbl=0x7f050022;
-        public static final int compareInterestLbl=0x7f050025;
-        public static final int compareInterestTotalLbl=0x7f050029;
-        public static final int comparePaymentMaxLbl=0x7f050027;
-        public static final int comparePaymentMinLbl=0x7f050028;
-        public static final int comparePeriodLbl=0x7f050026;
-        public static final int compareTypeLbl=0x7f050023;
+        public static final int compareAmountLbl=0x7f050025;
+        public static final int compareAmountTotalLbl=0x7f05002b;
+        public static final int compareCleanLbl=0x7f050023;
+        public static final int compareInterestLbl=0x7f050026;
+        public static final int compareInterestTotalLbl=0x7f05002a;
+        public static final int comparePaymentMaxLbl=0x7f050028;
+        public static final int comparePaymentMinLbl=0x7f050029;
+        public static final int comparePeriodLbl=0x7f050027;
+        public static final int compareTitle=0x7f050022;
+        public static final int compareTypeLbl=0x7f050024;
         public static final int diffHelp=0x7f05001e;
         public static final int diffTitleHelp=0x7f05001b;
         public static final int errorAmount=0x7f05000b;
@@ -122,6 +123,6 @@ public final class R {
         public static final int scheduleTitle=0x7f050018;
         public static final int type=0x7f05000e;
         public static final int typeHelpLbl=0x7f050019;
-        public static final int viewCompare=0x7f05002c;
+        public static final int viewCompare=0x7f05002d;
     }
 }

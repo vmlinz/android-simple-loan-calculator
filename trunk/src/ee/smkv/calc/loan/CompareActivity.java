@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -54,7 +56,7 @@ public class CompareActivity extends Activity implements View.OnClickListener {
   private View createLoanView(final LinearLayout container, final Loan loan) {
     final LinearLayout cell = new LinearLayout(container.getContext());
     cell.setOrientation(LinearLayout.VERTICAL);
-    cell.setPadding(5, 5, 5, 5);
+    //cell.setPadding(5, 5, 5, 5);
     appendField(cell, getResources().getStringArray(R.array.shorttypes)[loan.getLoanType()]);
     appendField(cell, loan.getAmount().setScale(2, mode).toPlainString());
     appendField(cell, loan.getInterest().setScale(2, mode).toPlainString());
@@ -67,9 +69,9 @@ public class CompareActivity extends Activity implements View.OnClickListener {
 
     LinearLayout buttonBar = new LinearLayout(cell.getContext());
 
-    ImageView removeBtn = new ImageView(buttonBar.getContext());
+    ImageButton removeBtn = new ImageButton(buttonBar.getContext());
     removeBtn.setImageResource(R.drawable.minus);
-    removeBtn.setPadding(5,5,5,5);
+    removeBtn.setPadding(5, 5, 5, 5);
     removeBtn.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         MainScreen.storeManager.removeLoan(loan);
@@ -79,9 +81,9 @@ public class CompareActivity extends Activity implements View.OnClickListener {
     buttonBar.addView(removeBtn);
 
 
-    ImageView scheduleBtn = new ImageView(buttonBar.getContext());
+    ImageButton scheduleBtn = new ImageButton(buttonBar.getContext());
     scheduleBtn.setImageResource(R.drawable.tablesmall);
-    scheduleBtn.setPadding(5,5,5,5);
+    scheduleBtn.setPadding(5, 5, 5, 5);
     scheduleBtn.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
         Intent scheduleActivityIntent = new Intent(CompareActivity.this, Schedule.class);
@@ -99,6 +101,10 @@ public class CompareActivity extends Activity implements View.OnClickListener {
     item.setText(t);
     item.setPadding(5, 5, 5, 5);
     cell.addView(item);
+    View line = new View(cell.getContext());
+    line.setBackgroundColor(getResources().getColor(R.color.border));
+    line.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT , 1));
+    cell.addView(line);
   }
 
   public void onClick(View view) {
@@ -107,14 +113,23 @@ public class CompareActivity extends Activity implements View.OnClickListener {
         finish();
         break;
       case R.id.cleanCompare:
-
-        for (Loan loan : loans) {
-          MainScreen.storeManager.removeLoan(loan);
-          container.removeViewAt(1);
-        }
-
+        clearAll();
         break;
 
+    }
+  }
+
+  private void clearAll() {
+    try {
+
+        for( int i = container.getChildCount() ; i > 1 ; i--){
+          container.removeViewAt(i-1);
+        }  
+        MainScreen.storeManager.removeLoans(loans);
+
+    }
+    catch (Exception e) {
+      Log.v(CompareActivity.class.getSimpleName(), e.getMessage(), e);
     }
   }
 

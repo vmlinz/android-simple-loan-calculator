@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="ee.smkv.calc.loan"
-          android:versionCode="7" android:versionName="2.7">
+          android:versionCode="8" android:versionName="2.8">
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:description="@string/app_desc">
         <activity android:label="@string/app_name" android:name="MainScreen">
             <intent-filter>
@@ -12,7 +12,7 @@
       <activity android:name=".Schedule" android:label="@string/scheduleTitle" />
       <activity android:name="TypeHelpActivity" android:label="@string/typeHelpLbl" android:theme="@android:style/Theme.Dialog" />
       <activity android:name="ChartActivity" android:label="@string/chartTitle" />
-      <activity android:name=".CompareActivity" android:label="Compare" />
+      <activity android:name=".CompareActivity" android:label="@string/compareTitle" />
 
     </application>
     <uses-sdk android:minSdkVersion="3" />

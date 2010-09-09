@@ -75,6 +75,10 @@ public class StoreManager {
     loanStore.remove(loan);
   }
 
+  public void removeLoans(Set<Loan> loans){
+    loanStore.removeAll(loans);
+  }
+
   public Set<Loan> getLoans(){
     return loanStore;
   }

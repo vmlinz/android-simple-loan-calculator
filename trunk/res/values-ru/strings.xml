@@ -68,16 +68,16 @@
   <string name="chartTitle">График выплат по кредиту (beta)</string>
   <string name="chartButton">График</string>
 
-
+   <string name="compareTitle">Сравнение кредмтов</string>
   <string name="compareCleanLbl">Очистить</string>
-  <string name="compareTypeLbl">Тип</string>
-  <string name="compareAmountLbl">Сумма</string>
-  <string name="compareInterestLbl">Интресс</string>
-  <string name="comparePeriodLbl">Период</string>
-  <string name="comparePaymentMaxLbl">Платеж (max)</string>
-  <string name="comparePaymentMinLbl">Платеж (min)</string>
-  <string name="compareInterestTotalLbl">Интрессов</string>
-  <string name="compareAmountTotalLbl">Всего</string>
+  <string name="compareTypeLbl">Тип:</string>
+  <string name="compareAmountLbl">Сумма:</string>
+  <string name="compareInterestLbl">Интресс, %:</string>
+  <string name="comparePeriodLbl">Период, м:</string>
+  <string name="comparePaymentMaxLbl">Платеж (max):</string>
+  <string name="comparePaymentMinLbl">Платеж (min):</string>
+  <string name="compareInterestTotalLbl">Интрессов:</string>
+  <string name="compareAmountTotalLbl">Всего:</string>
 
   <string name="addToCompare">Добавить в сравнение</string>
   <string name="viewCompare">Список сранения</string>

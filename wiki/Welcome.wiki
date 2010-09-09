@@ -21,6 +21,11 @@ http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=market://search?q=pnam
 
 =Screenshots=
 
+v2.8
+
+http://lh3.ggpht.com/_PgaocR0FRPA/TIj0MbmRUfI/AAAAAAAAMWU/JMz6eosY4MA/6.png
+http://lh6.ggpht.com/_PgaocR0FRPA/TIj0MYEEUWI/AAAAAAAAMWY/EVWJv0SlDDs/7.png
+
 v2.6
 
 http://lh4.ggpht.com/_PgaocR0FRPA/THUD7HEu6qI/AAAAAAAAMPQ/MuKuJio7Yp4/1.png

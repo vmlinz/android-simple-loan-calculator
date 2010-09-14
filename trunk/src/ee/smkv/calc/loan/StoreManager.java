@@ -45,7 +45,7 @@ public class StoreManager {
     try {
 
       int anInt = settings.getInt("" + spinner.getId(), 0);
-      if(anInt < spinner.getChildCount()) {
+      if(anInt < spinner.getCount()) {
         spinner.setSelection(anInt);
       }
     }

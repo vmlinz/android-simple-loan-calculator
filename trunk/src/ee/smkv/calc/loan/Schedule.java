@@ -83,7 +83,7 @@ public class Schedule extends Activity {
       appendHtmlBars(loan, sb);
 
       sb.append("<button id='closeBtn' onclick='window.schedule.finish();'>")
-      .append(URLEncoder.encode(getResources().getString(R.string.close),UTF))
+      .append(encode(R.string.close))
       .append("</button>");
     }
     catch (Exception e) {
@@ -95,18 +95,22 @@ public class Schedule extends Activity {
     return sb.append("</body></html>").toString();
   }
 
+  private String encode(int id) throws UnsupportedEncodingException {
+    return URLEncoder.encode(getResources().getString(id),UTF).replaceAll("\\+"," ");
+  }
+
   private void appendHtmlScheduleTable(Loan loan, StringBuilder sb) throws UnsupportedEncodingException {
     sb
       .append("<table><tr class=\"odd\"><th>")
-      .append(URLEncoder.encode(getResources().getString(R.string.paymentNr) , UTF))
+      .append(encode(R.string.paymentNr))
       .append("</th><th>")
-      .append(URLEncoder.encode(getResources().getString(R.string.paymentBalance),UTF))
+      .append(encode(R.string.paymentBalance))
       .append("</th><th>")
-      .append(URLEncoder.encode(getResources().getString(R.string.paymentPrincipal),UTF))
+      .append(encode(R.string.paymentPrincipal))
       .append("</th><th>")
-      .append(URLEncoder.encode(getResources().getString(R.string.paymentInterest),UTF))
+      .append(encode(R.string.paymentInterest))
       .append("</th><th>")
-      .append(URLEncoder.encode(getResources().getString(R.string.paymentTotal),UTF))
+      .append(encode(R.string.paymentTotal))
       .append("</th></tr>");
     int i = 0;
     for (Payment payment : loan.getPayments()) {
@@ -150,13 +154,13 @@ public class Schedule extends Activity {
               "<td><table class='bar' height='200px'><tr><td></td></tr></table></td>" +
               "</tr>")
       .append("<tr><th>")
-      .append(URLEncoder.encode(getResources().getString(R.string.chartAmount),UTF)).append("<br />")
+      .append(encode(R.string.chartAmount)).append("<br />")
       .append(loan.getAmount().setScale(2, mode).toPlainString())
       .append("</th><th>")
-      .append(URLEncoder.encode(getResources().getString(R.string.chartInterest),UTF)).append("<br />")
+      .append(encode(R.string.chartInterest)).append("<br />")
       .append(loan.getTotalInterests().setScale(2, mode).toPlainString())
       .append("</th><th>")
-      .append(URLEncoder.encode(getResources().getString(R.string.chartTotal),UTF)).append("<br />")
+      .append(encode(R.string.chartTotal)).append("<br />")
       .append(loan.getTotalAmount().setScale(2, mode).toPlainString())
       .append("</th></tr>")
       .append("</table>");

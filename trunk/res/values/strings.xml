@@ -24,10 +24,6 @@
 		<item>10 years</item>
 		<item>15 years</item>
 		<item>20 years</item>
-		<item>25 years</item>
-		<item>30 years</item>
-		<item>40 years</item>
-		<item>50 years</item>
 	</string-array>
 	<string name="calc">Calculate</string>
 	<string name="MonthlyAmountLbl">Monthly payment</string>
@@ -81,4 +77,11 @@
 
   <string name="addToCompare">Add to compare</string>
   <string name="viewCompare">Compare list</string>
+
+
+  <string name="scheduleLoading">Loading of loan schedule, please wait....</string>
+  <string name="chartAmount">Amount</string>
+  <string name="chartInterest">Interest</string>
+  <string name="chartTotal">Total</string>
+
 </resources>

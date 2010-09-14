@@ -43,7 +43,11 @@ public class StoreManager {
 
   private void loadSpinner(Spinner spinner) {
     try {
-      spinner.setSelection(settings.getInt("" + spinner.getId(), 0));
+
+      int anInt = settings.getInt("" + spinner.getId(), 0);
+      if(anInt < spinner.getChildCount()) {
+        spinner.setSelection(anInt);
+      }
     }
     catch (Exception e) {
       Log.e(TAG, e.toString());

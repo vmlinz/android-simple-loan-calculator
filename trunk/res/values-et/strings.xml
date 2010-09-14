@@ -24,10 +24,6 @@
 		<item>10 aastat</item>
 		<item>15 aastat</item>
 		<item>20 aastat</item>
-		<item>25 aastat</item>
-		<item>30 aastat</item>
-		<item>40 aastat</item>
-		<item>50 aastat</item>
 	</string-array>
 	<string name="calc">Arvuta</string>
 	<string name="MonthlyAmountLbl">Kuumakse</string>
@@ -79,5 +75,9 @@
 
   <string name="addToCompare">Lisa võrdlusse</string>
   <string name="viewCompare">Vaata võrdlused</string>
+  <string name="scheduleLoading">Makse graafik laaditakse....</string>
 
+  <string name="chartAmount">Laenusumma</string>
+  <string name="chartInterest">Intress</string>
+  <string name="chartTotal">Kokku</string>
 </resources>

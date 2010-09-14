@@ -2,23 +2,19 @@ package ee.smkv.calc.loan;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
+import android.util.Log;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
+
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.net.URLEncoder;
+
 
 
 /**
@@ -27,66 +23,144 @@ import java.util.HashMap;
 public class Schedule extends Activity {
   int mode = BigDecimal.ROUND_HALF_EVEN;
   TableLayout table;
-  TableRow header, footer;
-  Button closeButton, chartButton;
+  protected static final String UTF = "UTF-8";
 
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.schedule2);
-    //    table = (TableLayout)findViewById(R.id.ScheduleTable);
-    //    header = (TableRow)findViewById(R.id.HeaderRow);
-    //    footer = (TableRow)findViewById(R.id.FooterRow);
-    closeButton = (Button)findViewById(R.id.scheduleClose);
-    closeButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.close), null, null, null);
-    closeButton.setOnClickListener(new View.OnClickListener() {
+    final WebView webview = new WebView(this);
+    WebSettings webSettings = webview.getSettings();
+    webSettings.setJavaScriptEnabled(true);
+    webSettings.setSupportZoom(false);
 
-      public void onClick(View view) {
-        finish();
-      }
-    });
-    chartButton = (Button)findViewById(R.id.chartButton);
-    chartButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.chart), null, null, null);
-    chartButton.setOnClickListener(new View.OnClickListener() {
+    webview.addJavascriptInterface(this , "schedule");
 
-      public void onClick(View view) {
-        Loan loan = getLoan();
-        Intent chart = new Intent(Schedule.this, ChartActivity.class);
-        chart.putExtra(Loan.class.getName(), loan);
-        startActivity(chart);
-      }
-    });
-
-    final Loan loan = getLoan();
-    //showSchedule(loan);
-
+    setContentView(webview);
     AsyncTask task = new AsyncTask() {
+      private final ProgressDialog dialog = new ProgressDialog(Schedule.this);
+
+      @Override
+      protected void onPreExecute() {
+        this.dialog.setMessage(getResources().getString(R.string.scheduleLoading));
+        this.dialog.show();
+      }
+
       @Override
       protected Object doInBackground(Object... objects) {
-
-        ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
-        for (Payment payment : loan.getPayments()) {
-          HashMap<String, String> map = new HashMap<String, String>();
-          map.put("nr", payment.getNr().toString());
-          map.put("balance", payment.getBalance().setScale(2, mode).toPlainString());
-          map.put("principal", payment.getPrincipal().setScale(2, mode).toPlainString());
-          map.put("interest", payment.getInterest().setScale(2, mode).toPlainString());
-          map.put("amount", payment.getAmount().setScale(2, mode).toPlainString());
-          mylist.add(map);
-        }
-
-        ListView list = (ListView)findViewById(R.id.SCHEDULE);
-        SimpleAdapter mSchedule = new SimpleAdapter(Schedule.this, mylist, R.layout.schedulerow,
-                                                    new String[]{"nr", "balance", "principal", "interest", "amount"},
-                                                    new int[]{R.id.NR_CELL, R.id.BALANCE_CELL, R.id.PRINCIPAL_CELL, R.id.INTEREST_CELL, R.id.PAYMENT_CELL});
-        list.setAdapter(mSchedule);
-
+        final Loan loan = getLoan();
+        webview.loadData( createHtml(loan), "text/html", UTF);
         return null;
       }
-    };
 
+      @Override
+      protected void onPostExecute(final Object unused) {
+        if (this.dialog.isShowing()) {
+          this.dialog.dismiss();
+        }
+      }
+
+    };
     task.execute();
+  }
+
+  private String createHtml(Loan loan) {
+    StringBuilder sb = new StringBuilder();
+    sb.append("<html><head><style>" +
+              "body{background:#000000;color:#ffffff;}" +
+              "table{border-spacing:0px 0px; font-size:11px; width:100%25}" +
+              "td{padding:5px; }" +
+              "th{padding:5px;text-align:left;}" +
+              ".odd{background:#555555;}" +
+              ".even{background:#777777;}" +
+              ".bars td{vertical-align:bottom; width:30%25}" +
+              ".bar{width:100%25;background:#CCCCCC;}" +
+              "#closeBtn{width:100%25;padding:10px}" +
+              "</style></head><body>");
+
+    try {
+      appendHtmlScheduleTable(loan, sb);
+      appendHtmlBars(loan, sb);
+
+      sb.append("<button id='closeBtn' onclick='window.schedule.finish();'>")
+      .append(URLEncoder.encode(getResources().getString(R.string.close),UTF))
+      .append("</button>");
+    }
+    catch (Exception e) {
+      Log.v(Schedule.class.getSimpleName() , e.getMessage(), e);
+    }
+
+
+
+    return sb.append("</body></html>").toString();
+  }
+
+  private void appendHtmlScheduleTable(Loan loan, StringBuilder sb) throws UnsupportedEncodingException {
+    sb
+      .append("<table><tr class=\"odd\"><th>")
+      .append(URLEncoder.encode(getResources().getString(R.string.paymentNr) , UTF))
+      .append("</th><th>")
+      .append(URLEncoder.encode(getResources().getString(R.string.paymentBalance),UTF))
+      .append("</th><th>")
+      .append(URLEncoder.encode(getResources().getString(R.string.paymentPrincipal),UTF))
+      .append("</th><th>")
+      .append(URLEncoder.encode(getResources().getString(R.string.paymentInterest),UTF))
+      .append("</th><th>")
+      .append(URLEncoder.encode(getResources().getString(R.string.paymentTotal),UTF))
+      .append("</th></tr>");
+    int i = 0;
+    for (Payment payment : loan.getPayments()) {
+      sb.append("<tr class=\"")
+        .append(i++ % 2 == 0 ? "even" : "odd")
+        .append("\"><td>")
+        .append(payment.getNr().toString())
+        .append("</td><td>")
+        .append(payment.getBalance().setScale(2, mode).toPlainString())
+        .append("</td><td>")
+        .append(payment.getPrincipal().setScale(2, mode).toPlainString())
+        .append("</td><td>")
+        .append(payment.getInterest().setScale(2, mode).toPlainString())
+        .append("</td><td>")
+        .append(payment.getAmount().setScale(2, mode).toPlainString())
+        .append("</td></tr>");
+    }
+    sb
+      .append("<tr><th>&nbsp;</th><th>&nbsp;</th><th>")
+      .append(loan.getAmount().setScale(2, mode).toPlainString())
+      .append("</th><th>")
+      .append(loan.getTotalInterests().setScale(2, mode).toPlainString())
+      .append("</th><th>")
+      .append(loan.getTotalAmount().setScale(2, mode).toPlainString())
+      .append("</th></tr>")
+      .append("</table>");
+  }
+
+
+  private void appendHtmlBars(Loan loan, StringBuilder sb) throws UnsupportedEncodingException {
+
+    BigDecimal amount = loan.getAmount().multiply(new BigDecimal("200")).divide(loan.getTotalAmount() ,0 , mode);
+    BigDecimal interest = loan.getTotalInterests().multiply(new BigDecimal("200")).divide(loan.getTotalAmount() ,0 , mode);
+
+    sb
+      .append("<table class='bars' height='200px'>" +
+              "</tr>" +
+              "<tr>" +
+              "<td><table class='bar' height='" + amount.toPlainString() +"px'><tr><td></td></tr></table></td>" +
+              "<td><table class='bar' height='" + interest.toPlainString() +"px'><tr><td></td></tr></table></td>" +
+              "<td><table class='bar' height='200px'><tr><td></td></tr></table></td>" +
+              "</tr>")
+      .append("<tr><th>")
+      .append(URLEncoder.encode(getResources().getString(R.string.chartAmount),UTF)).append("<br />")
+      .append(loan.getAmount().setScale(2, mode).toPlainString())
+      .append("</th><th>")
+      .append(URLEncoder.encode(getResources().getString(R.string.chartInterest),UTF)).append("<br />")
+      .append(loan.getTotalInterests().setScale(2, mode).toPlainString())
+      .append("</th><th>")
+      .append(URLEncoder.encode(getResources().getString(R.string.chartTotal),UTF)).append("<br />")
+      .append(loan.getTotalAmount().setScale(2, mode).toPlainString())
+      .append("</th></tr>")
+      .append("</table>");
+
   }
 
   @Override
@@ -100,77 +174,4 @@ public class Schedule extends Activity {
     return (Loan)getIntent().getSerializableExtra(Loan.class.getName());
   }
 
-
-  private void showSchedule(Loan loan) {
-    int pos = 1;
-    for (Payment payment : loan.getPayments()) {
-      addPaymentToTable(payment, pos++);
-    }
-    showTotal(loan, pos);
-  }
-
-  private void showTotal(Loan loan, int pos) {
-    TableRow row = new TableRow(table.getContext());
-
-    row.setPadding(2, 4, 2, 4);
-    table.addView(row, pos);
-
-    TextView nr = new TextView(row.getContext());
-    TextView balance = new TextView(row.getContext());
-    TextView principal = new TextView(row.getContext());
-    TextView interest = new TextView(row.getContext());
-    TextView amount = new TextView(row.getContext());
-
-    principal.setText(loan.getAmount().setScale(2, mode).toPlainString());
-    principal.setTextColor(getResources().getColor(R.color.result));
-    principal.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-
-    interest.setText(loan.getTotalInterests().setScale(2, mode).toPlainString());
-    interest.setTextColor(getResources().getColor(R.color.result));
-    interest.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-
-    amount.setText(loan.getTotalAmount().setScale(2, mode).toPlainString());
-    amount.setTextColor(getResources().getColor(R.color.result));
-    amount.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
-
-    row.addView(nr);
-    row.addView(balance);
-    row.addView(principal);
-    row.addView(interest);
-    row.addView(amount);
-
-  }
-
-  private void addPaymentToTable(Payment payment, int pos) {
-    TableRow row = new TableRow(table.getContext());
-    row.setBackgroundColor(getResources().getColor(pos % 2 == 0 ? R.color.odd : R.color.even));
-    row.setPadding(2, 4, 2, 4);
-    table.addView(row, pos);
-    TextView nr = new TextView(row.getContext());
-    TextView balance = new TextView(row.getContext());
-    TextView principal = new TextView(row.getContext());
-    TextView interest = new TextView(row.getContext());
-    TextView amount = new TextView(row.getContext());
-
-    nr.setText(payment.getNr().toString());
-    nr.setTextColor(Color.WHITE);
-
-    balance.setText(payment.getBalance().setScale(2, mode).toPlainString());
-    balance.setTextColor(Color.WHITE);
-
-    principal.setText(payment.getPrincipal().setScale(2, mode).toPlainString());
-    principal.setTextColor(Color.WHITE);
-
-    interest.setText(payment.getInterest().setScale(2, mode).toPlainString());
-    interest.setTextColor(Color.WHITE);
-
-    amount.setText(payment.getAmount().setScale(2, mode).toPlainString());
-    amount.setTextColor(Color.WHITE);
-
-    row.addView(nr);
-    row.addView(balance);
-    row.addView(principal);
-    row.addView(interest);
-    row.addView(amount);
-  }
 }

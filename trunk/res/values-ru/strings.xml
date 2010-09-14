@@ -24,15 +24,11 @@
 		<item>10 лет</item>
 		<item>15 лет</item>
 		<item>20 лет</item>
-		<item>25 лет</item>
-		<item>30 лет</item>
-		<item>40 лет</item>
-		<item>50 лет</item>
 	</string-array>
 	<string name="calc">Рассчитать</string>
 	<string name="MonthlyAmountLbl">Месячный платеж</string>
 	<string name="IterestTotalLbl">Величина переплаты</string>
-	<string name="AmountTotalLbl">Всего платежей (сумма + интрессы)</string>
+	<string name="AmountTotalLbl">Полная сумма</string>
 	<string name="errorAmount">Введите корректную сумму кредита</string>
 	<string name="errorFixedAmount">Введите корректную сумму фиксированного ежемесячного платежа</string>
 	<string name="errorInterest">Введите корректный годовой процент</string>
@@ -81,4 +77,10 @@
 
   <string name="addToCompare">Добавить в сравнение</string>
   <string name="viewCompare">Список сранения</string>
+
+  <string name="scheduleLoading">Загрузка графика ....</string>
+
+    <string name="chartAmount">Заем</string>
+  <string name="chartInterest">Проценты</string>
+  <string name="chartTotal">Всего</string>
 </resources>

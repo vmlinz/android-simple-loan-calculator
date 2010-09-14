@@ -49,7 +49,8 @@ public class Schedule extends Activity {
       @Override
       protected Object doInBackground(Object... objects) {
         final Loan loan = getLoan();
-        webview.loadData( createHtml(loan), "text/html", UTF);
+//        webview.loadData( createHtml(loan), "text/html", UTF);
+        webview.loadDataWithBaseURL (null, createHtml(loan), "text/html", UTF, "about:blank");
         return null;
       }
 
@@ -68,14 +69,14 @@ public class Schedule extends Activity {
     StringBuilder sb = new StringBuilder();
     sb.append("<html><head><style>" +
               "body{background:#000000;color:#ffffff;}" +
-              "table{border-spacing:0px 0px; font-size:11px; width:100%25}" +
+              "table{border-spacing:0px 0px; font-size:11px; width:100%}" +
               "td{padding:5px; }" +
               "th{padding:5px;text-align:left;}" +
               ".odd{background:#555555;}" +
               ".even{background:#777777;}" +
-              ".bars td{vertical-align:bottom; width:30%25}" +
-              ".bar{width:100%25;background:#CCCCCC;}" +
-              "#closeBtn{width:100%25;padding:10px}" +
+              ".bars td{vertical-align:bottom; width:30%}" +
+              ".bar{width:100%;background:#CCCCCC;}" +
+              "#closeBtn{width:100%;padding:10px}" +
               "</style></head><body>");
 
     try {
@@ -96,7 +97,8 @@ public class Schedule extends Activity {
   }
 
   private String encode(int id) throws UnsupportedEncodingException {
-    return URLEncoder.encode(getResources().getString(id),UTF).replaceAll("\\+"," ");
+    //return URLEncoder.encode(getResources().getString(id),UTF).replaceAll("\\+"," ");
+    return getResources().getString(id);
   }
 
   private void appendHtmlScheduleTable(Loan loan, StringBuilder sb) throws UnsupportedEncodingException {

@@ -51,7 +51,7 @@
 	<string name="fixedPayment">Fixed payment</string>
 	<string name="paymentsCount">Quantity of payments</string>
   <string name="schedule">Schedule</string>
-  <string name="paymentNr">Nr.</string>
+  <string name="paymentNr">Nr</string>
   <string name="paymentBalance">Balance</string>
   <string name="paymentPrincipal">Principal</string>
   <string name="paymentInterest">Interest</string>

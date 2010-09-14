@@ -50,7 +50,7 @@
 	<string name="fixedPayment">Määratud põhiosa</string>
 	<string name="paymentsCount">Maksete arv</string>
   <string name="schedule">Graafik</string>
-  <string name="paymentNr">Nr.</string>
+  <string name="paymentNr">Nr</string>
   <string name="paymentBalance">Jääk</string>
   <string name="paymentPrincipal">Põhiosa</string>
   <string name="paymentInterest">Intress</string>

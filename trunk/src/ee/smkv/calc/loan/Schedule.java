@@ -10,11 +10,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -30,10 +34,10 @@ public class Schedule extends Activity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.schedule);
-    table = (TableLayout)findViewById(R.id.ScheduleTable);
-    header = (TableRow)findViewById(R.id.HeaderRow);
-    footer = (TableRow)findViewById(R.id.FooterRow);
+    setContentView(R.layout.schedule2);
+    //    table = (TableLayout)findViewById(R.id.ScheduleTable);
+    //    header = (TableRow)findViewById(R.id.HeaderRow);
+    //    footer = (TableRow)findViewById(R.id.FooterRow);
     closeButton = (Button)findViewById(R.id.scheduleClose);
     closeButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.close), null, null, null);
     closeButton.setOnClickListener(new View.OnClickListener() {
@@ -54,8 +58,35 @@ public class Schedule extends Activity {
       }
     });
 
-    Loan loan = getLoan();
-    showSchedule(loan);
+    final Loan loan = getLoan();
+    //showSchedule(loan);
+
+    AsyncTask task = new AsyncTask() {
+      @Override
+      protected Object doInBackground(Object... objects) {
+
+        ArrayList<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
+        for (Payment payment : loan.getPayments()) {
+          HashMap<String, String> map = new HashMap<String, String>();
+          map.put("nr", payment.getNr().toString());
+          map.put("balance", payment.getBalance().setScale(2, mode).toPlainString());
+          map.put("principal", payment.getPrincipal().setScale(2, mode).toPlainString());
+          map.put("interest", payment.getInterest().setScale(2, mode).toPlainString());
+          map.put("amount", payment.getAmount().setScale(2, mode).toPlainString());
+          mylist.add(map);
+        }
+
+        ListView list = (ListView)findViewById(R.id.SCHEDULE);
+        SimpleAdapter mSchedule = new SimpleAdapter(Schedule.this, mylist, R.layout.schedulerow,
+                                                    new String[]{"nr", "balance", "principal", "interest", "amount"},
+                                                    new int[]{R.id.NR_CELL, R.id.BALANCE_CELL, R.id.PRINCIPAL_CELL, R.id.INTEREST_CELL, R.id.PAYMENT_CELL});
+        list.setAdapter(mSchedule);
+
+        return null;
+      }
+    };
+
+    task.execute();
   }
 
   @Override

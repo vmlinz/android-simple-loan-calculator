@@ -105,7 +105,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
   private void showSchedule() {
     Intent scheduleActivityIntent = new Intent(MainScreen.this, Schedule.class);
-    scheduleActivityIntent.putExtra(Loan.class.getName(), loan);
+    Schedule.loan = loan;
     startActivity(scheduleActivityIntent);
   }
 

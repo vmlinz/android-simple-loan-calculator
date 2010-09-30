@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="ee.smkv.calc.loan"
-          android:versionCode="12" android:versionName="2.9.3 - 25 and 30 years period returned back">
+          android:versionCode="13" android:versionName="2.9.4 - opening loan schedule performance fix">
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:description="@string/app_desc">
         <activity android:label="@string/app_name" android:name="MainScreen">
             <intent-filter>

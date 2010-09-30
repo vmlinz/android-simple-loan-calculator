@@ -24,6 +24,7 @@ public class Schedule extends Activity {
   int mode = BigDecimal.ROUND_HALF_EVEN;
   TableLayout table;
   protected static final String UTF = "UTF-8";
+  public static Loan loan;
 
 
   @Override
@@ -177,7 +178,8 @@ public class Schedule extends Activity {
 
 
   private Loan getLoan() {
-    return (Loan)getIntent().getSerializableExtra(Loan.class.getName());
+//    return (Loan)getIntent().getSerializableExtra(Loan.class.getName());
+    return  loan;
   }
 
 }

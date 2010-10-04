@@ -49,18 +49,19 @@ public class CompareActivity extends Activity implements View.OnClickListener {
   private void showLoans(Set<Loan> loans) {
 
     for (Loan loan : loans) {
-      container.addView(createLoanView(container, loan), container.getChildCount());
+      if(loan != null){
+        container.addView(createLoanView(container, loan), container.getChildCount());
+      }
     }
   }
 
   private View createLoanView(final LinearLayout container, final Loan loan) {
     final LinearLayout cell = new LinearLayout(container.getContext());
     cell.setOrientation(LinearLayout.VERTICAL);
-    //cell.setPadding(5, 5, 5, 5);
     appendField(cell, getResources().getStringArray(R.array.shorttypes)[loan.getLoanType()]);
-    appendField(cell, loan.getAmount().setScale(2, mode).toPlainString());
-    appendField(cell, loan.getInterest().setScale(2, mode).toPlainString());
-    appendField(cell, loan.getPeriod().toString());
+    if(loan.getAmount() != null) appendField(cell, loan.getAmount().setScale(2, mode).toPlainString());
+    if(loan.getInterest() != null)appendField(cell, loan.getInterest().setScale(2, mode).toPlainString());
+    if(loan.getPeriod() != null)appendField(cell, loan.getPeriod().toString());
     appendField(cell, loan.getMaxMonthlyPayment().setScale(2, mode).toPlainString());
     appendField(cell, loan.getMinMonthlyPayment().setScale(2, mode).toPlainString());
     appendField(cell, loan.getTotalInterests().setScale(2, mode).toPlainString());

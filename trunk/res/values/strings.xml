@@ -26,6 +26,10 @@
 		<item>20 years</item>
 		<item>25 years</item>
 		<item>30 years</item>
+		<item>35 years</item>
+		<item>40 years</item>
+		<item>45 years</item>
+		<item>50 years</item>
 	</string-array>
 	<string name="calc">Calculate</string>
 	<string name="MonthlyAmountLbl">Monthly payment</string>

@@ -26,6 +26,10 @@
 		<item>20 лет</item>
 		<item>25 лет</item>
 		<item>30 лет</item>
+    <item>35 лет</item>
+		<item>40 лет</item>
+		<item>45 лет</item>
+		<item>50 лет</item>
 	</string-array>
 	<string name="calc">Рассчитать</string>
 	<string name="MonthlyAmountLbl">Месячный платеж</string>

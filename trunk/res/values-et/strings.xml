@@ -26,6 +26,10 @@
 		<item>20 aastat</item>
 		<item>25 aastat</item>
 		<item>30 aastat</item>
+    <item>35 aastat</item>
+		<item>40 aastat</item>
+		<item>45 aastat</item>
+		<item>50 aastat</item>
 	</string-array>
 	<string name="calc">Arvuta</string>
 	<string name="MonthlyAmountLbl">Kuumakse</string>

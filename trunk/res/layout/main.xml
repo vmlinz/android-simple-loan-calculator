@@ -27,6 +27,9 @@
 			<EditText android:id="@+id/Amount" android:layout_width="fill_parent"
                 android:layout_height="wrap_content" android:numeric="decimal" android:inputType="phone"
                 android:hint="@string/amountHint" />
+
+      
+
 			<TextView android:text="@string/interest"
                 android:layout_width="fill_parent" android:layout_height="wrap_content" />
 			<EditText android:id="@+id/Interest" android:layout_width="fill_parent"

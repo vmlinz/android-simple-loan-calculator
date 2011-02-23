@@ -81,6 +81,8 @@
 
   <string name="addToCompare">Lisa võrdlusse</string>
   <string name="viewCompare">Vaata võrdlused</string>
+  <string name="exportToEmail">Eposti eksport</string>
+  <string name="exportToExcel">Exceli eksport</string>
   <string name="scheduleLoading">Makse graafik laaditakse....</string>
 
   <string name="chartAmount">Laenusumma</string>

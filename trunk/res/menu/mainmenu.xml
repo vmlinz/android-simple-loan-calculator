@@ -3,4 +3,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
  <item android:id="@+id/addToCompareMenu" android:title="@string/addToCompare" android:icon="@drawable/add" />
  <item android:id="@+id/viewCompareMenu" android:title="@string/viewCompare"  android:icon="@drawable/compare"/>
+ <item android:id="@+id/exportEmailMenu" android:title="@string/exportToEmail"  android:icon="@drawable/mail"/>
+ <item android:id="@+id/exportExcelMenu" android:title="@string/exportToExcel"  android:icon="@drawable/excel"/>
 </menu>

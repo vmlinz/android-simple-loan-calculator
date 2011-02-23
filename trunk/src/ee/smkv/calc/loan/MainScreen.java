@@ -202,7 +202,9 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
   private BigDecimal getNumber(EditText text, int errorCode) {
     BigDecimal decimal;
     try {
-      decimal = new BigDecimal(text.getText().toString());
+      String val = text.getText().toString();
+      val = val.replace(',','.');
+      decimal = new BigDecimal(val);
     }
     catch (Exception e) {
       throw new RuntimeException("" + getResources().getText(errorCode));

@@ -82,7 +82,9 @@
   <string name="compareAmountTotalLbl">Всего:</string>
 
   <string name="addToCompare">Добавить в сравнение</string>
-  <string name="viewCompare">Список сранения</string>
+  <string name="viewCompare">Список сравнения</string>
+  <string name="exportToEmail">Экспорт на Email</string>
+  <string name="exportToExcel">Экспорт в Excel</string>
 
   <string name="scheduleLoading">Загрузка графика ....</string>
 

@@ -83,6 +83,8 @@
 
   <string name="addToCompare">Add to compare</string>
   <string name="viewCompare">Compare list</string>
+  <string name="exportToEmail">Export to Email</string>
+  <string name="exportToExcel">Export to Excel</string>
 
 
   <string name="scheduleLoading">Loading of loan schedule, please wait....</string>

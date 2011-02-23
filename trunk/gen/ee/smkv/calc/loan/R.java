@@ -29,11 +29,13 @@ public final class R {
         public static final int clean=0x7f020003;
         public static final int close=0x7f020004;
         public static final int compare=0x7f020005;
-        public static final int help=0x7f020006;
-        public static final int icon=0x7f020007;
-        public static final int minus=0x7f020008;
-        public static final int table=0x7f020009;
-        public static final int tablesmall=0x7f02000a;
+        public static final int excel=0x7f020006;
+        public static final int help=0x7f020007;
+        public static final int icon=0x7f020008;
+        public static final int mail=0x7f020009;
+        public static final int minus=0x7f02000a;
+        public static final int table=0x7f02000b;
+        public static final int tablesmall=0x7f02000c;
     }
     public static final class id {
         public static final int Amount=0x7f080008;
@@ -54,6 +56,8 @@ public final class R {
         public static final int addToCompareMenu=0x7f080016;
         public static final int cleanCompare=0x7f080003;
         public static final int closeCompare=0x7f080002;
+        public static final int exportEmailMenu=0x7f080018;
+        public static final int exportExcelMenu=0x7f080019;
         public static final int fixedPaymentLbl=0x7f08000c;
         public static final int fixedPaymentText=0x7f08000d;
         public static final int loansContainer=0x7f080001;
@@ -83,11 +87,11 @@ public final class R {
         public static final int app_desc=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int calc=0x7f050007;
-        public static final int chartAmount=0x7f05002f;
+        public static final int chartAmount=0x7f050031;
         public static final int chartButton=0x7f050021;
-        public static final int chartInterest=0x7f050030;
+        public static final int chartInterest=0x7f050032;
         public static final int chartTitle=0x7f050020;
-        public static final int chartTotal=0x7f050031;
+        public static final int chartTotal=0x7f050033;
         public static final int close=0x7f050017;
         public static final int compareAmountLbl=0x7f050025;
         public static final int compareAmountTotalLbl=0x7f05002b;
@@ -104,6 +108,8 @@ public final class R {
         public static final int errorAmount=0x7f05000b;
         public static final int errorFixedAmount=0x7f05000c;
         public static final int errorInterest=0x7f05000d;
+        public static final int exportToEmail=0x7f05002e;
+        public static final int exportToExcel=0x7f05002f;
         public static final int fixedHelp=0x7f05001f;
         public static final int fixedPayment=0x7f05000f;
         public static final int fixedTitleHelp=0x7f05001c;
@@ -117,7 +123,7 @@ public final class R {
         public static final int paymentsCount=0x7f050010;
         public static final int period=0x7f050006;
         public static final int schedule=0x7f050011;
-        public static final int scheduleLoading=0x7f05002e;
+        public static final int scheduleLoading=0x7f050030;
         public static final int scheduleTitle=0x7f050018;
         public static final int type=0x7f05000e;
         public static final int typeHelpLbl=0x7f050019;

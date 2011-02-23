@@ -91,5 +91,7 @@
   <string name="chartAmount">Amount</string>
   <string name="chartInterest">Interest</string>
   <string name="chartTotal">Total</string>
+  <string name="sendEmail">Send E-mail</string>
+  <string name="fileCreated">Export file was created with name </string>
 
 </resources>

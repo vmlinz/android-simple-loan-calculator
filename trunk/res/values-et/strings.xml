@@ -88,4 +88,6 @@
   <string name="chartAmount">Laenusumma</string>
   <string name="chartInterest">Intress</string>
   <string name="chartTotal">Kokku</string>
+  <string name="sendEmail">Saada E-posti</string>
+  <string name="fileCreated">Export oli loodud nimega </string>
 </resources>

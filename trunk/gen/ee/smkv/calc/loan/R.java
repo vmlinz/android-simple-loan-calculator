@@ -110,6 +110,7 @@ public final class R {
         public static final int errorInterest=0x7f05000d;
         public static final int exportToEmail=0x7f05002e;
         public static final int exportToExcel=0x7f05002f;
+        public static final int fileCreated=0x7f050035;
         public static final int fixedHelp=0x7f05001f;
         public static final int fixedPayment=0x7f05000f;
         public static final int fixedTitleHelp=0x7f05001c;
@@ -125,6 +126,7 @@ public final class R {
         public static final int schedule=0x7f050011;
         public static final int scheduleLoading=0x7f050030;
         public static final int scheduleTitle=0x7f050018;
+        public static final int sendEmail=0x7f050034;
         public static final int type=0x7f05000e;
         public static final int typeHelpLbl=0x7f050019;
         public static final int viewCompare=0x7f05002d;

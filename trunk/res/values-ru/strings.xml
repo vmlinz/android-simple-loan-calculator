@@ -91,4 +91,6 @@
     <string name="chartAmount">Заем</string>
   <string name="chartInterest">Проценты</string>
   <string name="chartTotal">Всего</string>
+  <string name="sendEmail">Послать на E-mail</string>
+  <string name="fileCreated">Экспорт файл был создан с именем </string>
 </resources>

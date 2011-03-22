@@ -2,18 +2,28 @@ package ee.smkv.calc.loan;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.PeriodicSync;
 import android.net.Uri;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -39,16 +49,20 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
 
   TextView
     fixedPaymentLabel, periodLabel, periodTotalLabel, monthlyAmountLabel,
-    monthlyAmountVText, amountTotalVText, interestTotalVText;
+    monthlyAmountVText, amountTotalVText, interestTotalVText,
+    periodLblYear, periodLblMonth;
 
-  EditText amountEText, interestEText, fixedPaymentEText;
-  Spinner periodSpinner, typeSpinner;
-  Button calculateButton, scheduleButton, typeHelpButton, typeHelpCloseButton;
+  EditText amountEText, interestEText, fixedPaymentEText, periodYear, periodMonth;
+  Spinner typeSpinner;
+  Button calculateButton, scheduleButton, typeHelpButton, typeHelpCloseButton,
+    periodIncYear, periodDecYear, periodIncMonth, periodDecMonth;
   ScrollView scrollView;
   LinearLayout resultContainer;
 
   Loan loan = new Loan();
   Calculator calculator;
+
+  int periodInMonths = 0;
 
 
   /**
@@ -61,17 +75,22 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     init();
     registerEventListeners();
     storeManager = new StoreManager(getSharedPreferences(SETTINGS_NAME, 0));
-    storeManager.loadTextViews(amountEText, interestEText, fixedPaymentEText);
-    storeManager.loadSpinners(typeSpinner, periodSpinner);
-
+    storeManager.loadTextViews(amountEText, interestEText, fixedPaymentEText, periodYear, periodMonth);
+    storeManager.loadSpinners(typeSpinner);
+    if (periodYear.getText().toString() == null || periodYear.getText().toString().length() == 0 ) {
+      periodYear.setText("0");
+    }
+    if ( periodMonth.getText().toString() == null || periodMonth.getText().toString().length() == 0 ) {
+      periodMonth.setText("0");
+    }
   }
 
 
   @Override
   protected void onStop() {
     super.onStop();
-    storeManager.storeTextViews(amountEText, interestEText, fixedPaymentEText);
-    storeManager.storeSpinners(typeSpinner, periodSpinner);
+    storeManager.storeTextViews(amountEText, interestEText, fixedPaymentEText, periodYear, periodMonth);
+    storeManager.storeSpinners(typeSpinner);
   }
 
 
@@ -95,9 +114,112 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
         startActivity(typeHelp);
       }
     });
-    periodSpinner.setOnItemSelectedListener(this);
+
+    View.OnClickListener periodListener = new View.OnClickListener() {
+      public void onClick(View view) {
+        if (view == periodIncYear) {
+          periodYear.setText("" + (Integer.valueOf(periodYear.getText().toString()) + 1));
+        }
+        else if (view == periodDecYear) {
+          periodYear.setText("" + (Integer.valueOf(periodYear.getText().toString()) - 1));
+        }
+        else if (view == periodIncMonth) {
+          periodMonth.setText("" + (Integer.valueOf(periodMonth.getText().toString()) + 1));
+        }
+        else if (view == periodDecMonth) {
+          periodMonth.setText("" + (Integer.valueOf(periodMonth.getText().toString()) - 1));
+        }
+      }
+    };
+
+    periodIncYear.setOnClickListener(periodListener);
+    periodDecYear.setOnClickListener(periodListener);
+    periodIncMonth.setOnClickListener(periodListener);
+    periodDecMonth.setOnClickListener(periodListener);
+
+
+    periodYear.addTextChangedListener(new TextWatcher() {
+      public void afterTextChanged(Editable editable) {
+      }
+
+      public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+      }
+
+      public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        changePeriod(periodYear);
+      }
+    });
+    periodMonth.addTextChangedListener(new TextWatcher() {
+      public void afterTextChanged(Editable editable) {
+      }
+
+      public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+      }
+
+      public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        changePeriod(periodMonth);
+      }
+    });
+
+
     typeSpinner.setOnItemSelectedListener(this);
   }
+
+  private void changePeriod(EditText editable) {
+    if (periodYear.getText().toString() != null && periodYear.getText().toString().length() > 0 &&
+        periodMonth.getText().toString() != null && periodMonth.getText().toString().length() > 0) {
+      if (editable == periodYear) {
+        Integer value = Integer.valueOf(periodYear.getText().toString());
+        if (value != null && value > 50) {
+          value = 50;
+          periodYear.setText("50");
+        }
+        if (value != null && value < 0) {
+          value = 0;
+          periodYear.setText("0");
+        }
+        if (value == null) {
+          value = 0;
+          periodLblYear.setText(getResources().getString(R.string.periodYear0));
+        }
+        else if (value == 1) {
+          periodLblYear.setText(getResources().getString(R.string.periodYear1));
+        }
+        else if (value > 1 && value < 5) {
+          periodLblYear.setText(getResources().getString(R.string.periodYear2));
+        }
+        else {
+          periodLblYear.setText(getResources().getString(R.string.periodYear5));
+        }
+
+      }
+      if (editable == periodMonth) {
+        Integer value = Integer.valueOf(periodMonth.getText().toString());
+        if (value != null && value > 12) {
+          value = 12;
+          periodMonth.setText("12");
+        }
+        if (value != null && value < 0) {
+          value = 0;
+          periodMonth.setText("0");
+        }
+        if (value == null) {
+          value = 0;
+          periodLblMonth.setText(getResources().getString(R.string.periodMonth0));
+        }
+        else if (value == 1) {
+          periodLblMonth.setText(getResources().getString(R.string.periodMonth1));
+        }
+        else if (value > 1 && value < 5) {
+          periodLblMonth.setText(getResources().getString(R.string.periodMonth2));
+        }
+        else {
+          periodLblMonth.setText(getResources().getString(R.string.periodMonth5));
+        }
+      }
+    }
+  }
+
 
   private void changeCalculatorType() {
     setTitle((String)typeSpinner.getSelectedItem());
@@ -109,7 +231,6 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     fixedPaymentLabel.setVisibility(!fixed ? View.GONE : View.VISIBLE);
     fixedPaymentEText.setVisibility(!fixed ? View.GONE : View.VISIBLE);
     periodLabel.setVisibility(fixed ? View.GONE : View.VISIBLE);
-    periodSpinner.setVisibility(fixed ? View.GONE : View.VISIBLE);
   }
 
   private void showSchedule() {
@@ -122,7 +243,6 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
   private void init() {
     amountEText = (EditText)findViewById(R.id.Amount);
     interestEText = (EditText)findViewById(R.id.Interest);
-    periodSpinner = (Spinner)findViewById(R.id.Spinner01);
     monthlyAmountVText = (TextView)findViewById(R.id.MonthlyAmount);
     amountTotalVText = (TextView)findViewById(R.id.AmountTotal);
     interestTotalVText = (TextView)findViewById(R.id.IterestTotal);
@@ -143,6 +263,17 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     scheduleButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.table), null, null, null);
     typeHelpButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.help), null, null, null);
     typeHelpButton.setText("");
+
+    periodIncYear = (Button)findViewById(R.id.periodIncYear);
+    periodDecYear = (Button)findViewById(R.id.periodDecYear);
+    periodIncMonth = (Button)findViewById(R.id.periodIncMonth);
+    periodDecMonth = (Button)findViewById(R.id.periodDecMonth);
+
+    periodLblYear = (TextView)findViewById(R.id.periodLblYear);
+    periodLblMonth = (TextView)findViewById(R.id.periodLblMonth);
+
+    periodYear = (EditText)findViewById(R.id.periodYear);
+    periodMonth = (EditText)findViewById(R.id.periodMonth);
   }
 
 
@@ -155,9 +286,11 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     try {
       loan = new Loan();
       loadLoanDataFromUI();
-      calculator.calculate(loan);
-      showCalculatedData();
-      scheduleButton.setEnabled(true);
+      if (periodInMonths > 0) {
+        calculator.calculate(loan);
+        showCalculatedData();
+        scheduleButton.setEnabled(true);
+      }
     }
     catch (Exception e) {
       showError(e);
@@ -184,10 +317,21 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
   }
 
   private void loadLoanDataFromUI() {
-    loan.setLoanType( typeSpinner.getSelectedItemPosition() );
+    loan.setLoanType(typeSpinner.getSelectedItemPosition());
     loan.setAmount(getNumber(amountEText, R.string.errorAmount));
     loan.setInterest(getNumber(interestEText, R.string.errorInterest));
-    loan.setPeriod(getPeriod(periodSpinner).intValue());
+
+    try {
+      if (periodYear.getText().toString() != null && periodYear.getText().toString().length() > 0 &&
+          periodMonth.getText().toString() != null && periodMonth.getText().toString().length() > 0) {
+        periodInMonths = Integer.valueOf(periodYear.getText().toString()) * 12 + Integer.valueOf(periodMonth.getText().toString());
+      }
+    }
+    catch (NumberFormatException e) {
+      showError(e);
+    }
+
+    loan.setPeriod(periodInMonths);
     if (fixedPaymentEText.getVisibility() == View.VISIBLE) {
       loan.setFixedPayment(getNumber(fixedPaymentEText, R.string.errorFixedAmount));
     }
@@ -212,7 +356,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     BigDecimal decimal;
     try {
       String val = text.getText().toString();
-      val = val.replace(',','.');
+      val = val.replace(',', '.');
       decimal = new BigDecimal(val);
     }
     catch (Exception e) {
@@ -267,7 +411,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
         break;
       case R.id.exportExcelMenu:
         File file = exportToCSVFile();
-        new OkDialogWrapper(this , getResources().getString(R.string.fileCreated) + file.getName()).show();
+        new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + file.getName()).show();
         break;
 
     }
@@ -280,13 +424,13 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     emailIntent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name) + " - export");
 
     StringBuilder sb = new StringBuilder();
-    new TextScheduleCreator(loan,getResources()).appendTextScheduleTable(sb);
+    new TextScheduleCreator(loan, getResources()).appendTextScheduleTable(sb);
     emailIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
-    emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile( exportToCSVFile()));
-    startActivity(Intent.createChooser(emailIntent,  getResources().getString(R.string.sendEmail)));
+    emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(exportToCSVFile()));
+    startActivity(Intent.createChooser(emailIntent, getResources().getString(R.string.sendEmail)));
   }
 
-  private File exportToCSVFile(){
+  private File exportToCSVFile() {
     try {
       CSVScheduleCreator csvScheduleCreator = new CSVScheduleCreator(loan, getResources());
       csvScheduleCreator.assertDataWriteEnabled();

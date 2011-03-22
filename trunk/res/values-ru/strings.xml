@@ -93,4 +93,15 @@
   <string name="chartTotal">Всего</string>
   <string name="sendEmail">Послать на E-mail</string>
   <string name="fileCreated">Экспорт файл был создан с именем </string>
+
+
+  <string name="periodYear0">Лет</string>
+  <string name="periodYear1">Год</string>
+  <string name="periodYear2">Года</string>
+  <string name="periodYear5">Лет</string>
+
+  <string name="periodMonth0">Месяцев</string>
+  <string name="periodMonth1">Месяц</string>
+  <string name="periodMonth2">Месяца</string>
+  <string name="periodMonth5">Месяцев</string>
 </resources>

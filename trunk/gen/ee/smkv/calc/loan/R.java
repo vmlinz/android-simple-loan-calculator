@@ -9,6 +9,7 @@ package ee.smkv.calc.loan;
 
 public final class R {
     public static final class array {
+        public static final int periodTypes=0x7f060003;
         public static final int periods=0x7f060000;
         public static final int shorttypes=0x7f060002;
         public static final int types=0x7f060001;
@@ -39,31 +40,38 @@ public final class R {
     }
     public static final class id {
         public static final int Amount=0x7f080008;
-        public static final int AmountTotal=0x7f080014;
-        public static final int Calc=0x7f08000e;
+        public static final int AmountTotal=0x7f08001b;
+        public static final int Calc=0x7f080015;
         public static final int Interest=0x7f080009;
-        public static final int IterestTotal=0x7f080013;
+        public static final int IterestTotal=0x7f08001a;
         public static final int LoanChart=0x7f080000;
-        public static final int MonthlyAmount=0x7f080012;
-        public static final int MonthlyAmountLbl=0x7f080011;
-        public static final int PeriodTotal=0x7f080015;
-        public static final int ScheduleButton=0x7f08000f;
+        public static final int MonthlyAmount=0x7f080019;
+        public static final int MonthlyAmountLbl=0x7f080018;
+        public static final int PeriodTotal=0x7f08001c;
+        public static final int ScheduleButton=0x7f080016;
         public static final int ScrollView=0x7f080005;
-        public static final int Spinner01=0x7f08000b;
         public static final int Type=0x7f080006;
         public static final int TypeHelp=0x7f080007;
         public static final int TypeHelpClose=0x7f080004;
-        public static final int addToCompareMenu=0x7f080016;
+        public static final int addToCompareMenu=0x7f08001d;
         public static final int cleanCompare=0x7f080003;
         public static final int closeCompare=0x7f080002;
-        public static final int exportEmailMenu=0x7f080018;
-        public static final int exportExcelMenu=0x7f080019;
-        public static final int fixedPaymentLbl=0x7f08000c;
-        public static final int fixedPaymentText=0x7f08000d;
+        public static final int exportEmailMenu=0x7f08001f;
+        public static final int exportExcelMenu=0x7f080020;
+        public static final int fixedPaymentLbl=0x7f080013;
+        public static final int fixedPaymentText=0x7f080014;
         public static final int loansContainer=0x7f080001;
+        public static final int periodDecMonth=0x7f08000f;
+        public static final int periodDecYear=0x7f08000b;
+        public static final int periodIncMonth=0x7f080011;
+        public static final int periodIncYear=0x7f08000d;
         public static final int periodLbl=0x7f08000a;
-        public static final int resultContainer=0x7f080010;
-        public static final int viewCompareMenu=0x7f080017;
+        public static final int periodLblMonth=0x7f080012;
+        public static final int periodLblYear=0x7f08000e;
+        public static final int periodMonth=0x7f080010;
+        public static final int periodYear=0x7f08000c;
+        public static final int resultContainer=0x7f080017;
+        public static final int viewCompareMenu=0x7f08001e;
     }
     public static final class layout {
         public static final int chart=0x7f030000;
@@ -123,6 +131,14 @@ public final class R {
         public static final int paymentTotal=0x7f050016;
         public static final int paymentsCount=0x7f050010;
         public static final int period=0x7f050006;
+        public static final int periodMonth0=0x7f05003a;
+        public static final int periodMonth1=0x7f05003b;
+        public static final int periodMonth2=0x7f05003c;
+        public static final int periodMonth5=0x7f05003d;
+        public static final int periodYear0=0x7f050036;
+        public static final int periodYear1=0x7f050037;
+        public static final int periodYear2=0x7f050038;
+        public static final int periodYear5=0x7f050039;
         public static final int schedule=0x7f050011;
         public static final int scheduleLoading=0x7f050030;
         public static final int scheduleTitle=0x7f050018;

@@ -94,4 +94,20 @@
   <string name="sendEmail">Send E-mail</string>
   <string name="fileCreated">Export file was created with name </string>
 
+  <string-array name="periodTypes">
+		<item>Months</item>
+		<item>Years</item>
+	</string-array>
+
+  <string name="periodYear0">Year</string>
+  <string name="periodYear1">Year</string>
+  <string name="periodYear2">Years</string>
+  <string name="periodYear5">Years</string>
+
+  <string name="periodMonth0">Month</string>
+  <string name="periodMonth1">Month</string>
+  <string name="periodMonth2">Months</string>
+  <string name="periodMonth5">Months</string>
+
+
 </resources>

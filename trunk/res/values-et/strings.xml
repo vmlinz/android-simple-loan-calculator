@@ -90,4 +90,14 @@
   <string name="chartTotal">Kokku</string>
   <string name="sendEmail">Saada E-posti</string>
   <string name="fileCreated">Export oli loodud nimega </string>
+
+  <string name="periodYear0">Aastat</string>
+  <string name="periodYear1">Aasta</string>
+  <string name="periodYear2">Aastat</string>
+  <string name="periodYear5">Aastat</string>
+
+  <string name="periodMonth0">Kuud</string>
+  <string name="periodMonth1">Kuu</string>
+  <string name="periodMonth2">Kuud</string>
+  <string name="periodMonth5">Kuud</string>
 </resources>

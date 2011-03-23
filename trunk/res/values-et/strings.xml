@@ -100,4 +100,6 @@
   <string name="periodMonth1">Kuu</string>
   <string name="periodMonth2">Kuud</string>
   <string name="periodMonth5">Kuud</string>
+
+  <string name="msgCalculated">Maks on arvutatud</string>
 </resources>

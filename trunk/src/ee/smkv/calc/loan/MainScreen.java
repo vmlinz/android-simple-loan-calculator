@@ -29,6 +29,7 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import ee.smkv.calc.loan.export.CSVScheduleCreator;
 import ee.smkv.calc.loan.export.TextScheduleCreator;
 
@@ -262,6 +263,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
         periodIncMonth = (Button) findViewById(R.id.periodIncMonth);
         periodDecMonth = (Button) findViewById(R.id.periodDecMonth);
 
+
         periodLblYear = (TextView) findViewById(R.id.periodLblYear);
         periodLblMonth = (TextView) findViewById(R.id.periodLblMonth);
 
@@ -283,6 +285,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
                 calculator.calculate(loan);
                 showCalculatedData();
                 scheduleButton.setEnabled(true);
+                Toast.makeText(this, getResources().getText(R.string.msgCalculated), Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
             showError(e);
@@ -340,7 +343,8 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
                 amountEText.getText() != null && amountEText.getText().toString().trim().length() > 0
                         && interestEText.getText() != null && interestEText.getText().toString().trim().length() > 0
                         && (typeSpinner.getSelectedItemPosition() != 2 ||
-                        (fixedPaymentEText.getText() != null && fixedPaymentEText.getText().toString().trim().length() > 0));
+                        (fixedPaymentEText.getText() != null && fixedPaymentEText.getText().toString().trim().length() > 0) &&
+                periodInMonths > 0);
     }
 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

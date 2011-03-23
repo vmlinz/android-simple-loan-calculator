@@ -35,6 +35,7 @@ public class Schedule extends Activity {
     WebSettings webSettings = webview.getSettings();
     webSettings.setJavaScriptEnabled(true);
     webSettings.setSupportZoom(false);
+    webview.setBackgroundDrawable(getResources().getDrawable(R.drawable.background));
 
     webview.addJavascriptInterface(this, "schedule");
 

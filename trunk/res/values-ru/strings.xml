@@ -104,4 +104,6 @@
   <string name="periodMonth1">Месяц</string>
   <string name="periodMonth2">Месяца</string>
   <string name="periodMonth5">Месяцев</string>
+
+  <string name="msgCalculated">Платеж рассчитан</string>
 </resources>

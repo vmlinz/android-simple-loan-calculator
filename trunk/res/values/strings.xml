@@ -109,5 +109,6 @@
   <string name="periodMonth2">Months</string>
   <string name="periodMonth5">Months</string>
 
+  <string name="msgCalculated">Calculation success</string>
 
 </resources>

@@ -25,18 +25,20 @@ public final class R {
     }
     public static final class drawable {
         public static final int add=0x7f020000;
-        public static final int calculator=0x7f020001;
-        public static final int chart=0x7f020002;
-        public static final int clean=0x7f020003;
-        public static final int close=0x7f020004;
-        public static final int compare=0x7f020005;
-        public static final int excel=0x7f020006;
-        public static final int help=0x7f020007;
-        public static final int icon=0x7f020008;
-        public static final int mail=0x7f020009;
-        public static final int minus=0x7f02000a;
-        public static final int table=0x7f02000b;
-        public static final int tablesmall=0x7f02000c;
+        public static final int background=0x7f020001;
+        public static final int bg=0x7f020002;
+        public static final int calculator=0x7f020003;
+        public static final int chart=0x7f020004;
+        public static final int clean=0x7f020005;
+        public static final int close=0x7f020006;
+        public static final int compare=0x7f020007;
+        public static final int excel=0x7f020008;
+        public static final int help=0x7f020009;
+        public static final int icon=0x7f02000a;
+        public static final int mail=0x7f02000b;
+        public static final int minus=0x7f02000c;
+        public static final int table=0x7f02000d;
+        public static final int tablesmall=0x7f02000e;
     }
     public static final class id {
         public static final int Amount=0x7f080008;
@@ -124,6 +126,7 @@ public final class R {
         public static final int fixedTitleHelp=0x7f05001c;
         public static final int interest=0x7f050004;
         public static final int interestHint=0x7f050005;
+        public static final int msgCalculated=0x7f05003e;
         public static final int paymentBalance=0x7f050013;
         public static final int paymentInterest=0x7f050015;
         public static final int paymentNr=0x7f050012;

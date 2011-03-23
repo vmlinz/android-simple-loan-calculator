@@ -12,15 +12,22 @@ public class FixedCalculator implements Calculator {
 		BigDecimal monthlyAmount = loan.getFixedPayment();
 		BigDecimal currentAmount = loan.getAmount();
 		BigDecimal ma = monthlyAmount;
+    BigDecimal interest = null;
+    BigDecimal amount= null;
     int i = 0;
+
+    if( loan.getAmount().divide(loan.getFixedPayment() ,0,MODE).intValue() > 1000){
+      throw new RuntimeException("Too small fixed payment part. Count of payments is over 1000 and mobile device can't calculate too big periods.");
+    }
+
 		while(currentAmount.compareTo(BigDecimal.ZERO) > 0){
 
       if(currentAmount.compareTo(ma)< 0){
           ma = currentAmount;
       }
 
-			BigDecimal interest =  currentAmount.multiply(interestMonthly);
-      BigDecimal amount=  interest.add(ma) ;
+			interest =  currentAmount.multiply(interestMonthly);
+      amount   =  interest.add(ma) ;
 
       Payment payment = new Payment();
       payment.setNr(i+1);

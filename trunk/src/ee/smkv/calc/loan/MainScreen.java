@@ -225,6 +225,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
         fixedPaymentLabel.setVisibility(!fixed ? View.GONE : View.VISIBLE);
         fixedPaymentEText.setVisibility(!fixed ? View.GONE : View.VISIBLE);
         periodLabel.setVisibility(fixed ? View.GONE : View.VISIBLE);
+        findViewById(R.id.periodLayout).setVisibility(fixed ? View.GONE : View.VISIBLE);
     }
 
     private void showSchedule() {
@@ -281,7 +282,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
         try {
             loan = new Loan();
             loadLoanDataFromUI();
-            if (periodInMonths > 0) {
+            if ((loan.getLoanType() != 2 && periodInMonths > 0) || (loan.getLoanType() == 2 && loan.getFixedPayment() != null && BigDecimal.ZERO.compareTo( loan.getFixedPayment())<0)) {
                 calculator.calculate(loan);
                 showCalculatedData();
                 scheduleButton.setEnabled(true);

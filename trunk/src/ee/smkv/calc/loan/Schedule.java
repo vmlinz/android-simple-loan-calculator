@@ -71,7 +71,8 @@ public class Schedule extends Activity {
   private String createHtml(Loan loan) {
     HtmlScheduleCreator creator = new HtmlScheduleCreator(loan, getResources());
     StringBuilder sb = new StringBuilder();
-    sb.append("<html><head><style>" +
+      String script = LoanChart.getScript();
+      sb.append("<html><head><style>" +
               "body{background:#000000;color:#ffffff;}" +
               "table{border-spacing:0px 0px; font-size:11px; width:100%}" +
               "td{padding:5px; }" +
@@ -81,15 +82,15 @@ public class Schedule extends Activity {
               ".bars td{vertical-align:bottom; width:30%}" +
               ".bar{width:100%;background:#CCCCCC;}" +
               "#closeBtn{width:100%;padding:10px}" +
-              "</style><script>")
-      .append(LoanChart.getScript())
+              "</style><script> ")
+      .append(script)
       .append("</script>")
       .append("</head><body>");
 
     try {
       creator.appendHtmlScheduleTable(sb);
-      //creator.appendHtmlBars(sb);
       creator.appendHtmlChart(sb);
+      sb.append("<div id=\"log\">Debug: </div>");
       creator.appendHtmlButtons(sb);
     }
     catch (Exception e) {
@@ -97,7 +98,8 @@ public class Schedule extends Activity {
     }
 
 
-    return sb.append("</body></html>").toString();
+      String html = sb.append("</body></html>").toString();
+      return html;
   }
 
 
@@ -121,4 +123,39 @@ public class Schedule extends Activity {
   }
 
 
+  public float[] getInterestPointsData() {
+    return LoanChart.getPoints(loan, LoanChart.INTERESTS);
+  }
+
+  public float[] getPrincipalPointsData() {
+    return LoanChart.getPoints(loan, LoanChart.PRINCIPAL);
+  }
+
+  public float[] getPaymentPointsData() {
+    return LoanChart.getPoints(loan, LoanChart.PAYMENT);
+  }
+
+  public float[] getXLabels() {
+    return LoanChart.getPoints(loan, LoanChart.LABEL);
+  }
+
+  public String getPieTitle(){
+      return getResources().getString(R.string.chartTitle);
+  }
+
+  public String getLoanAmountLabel(){
+      return getResources().getString(R.string.amount);
+  }
+
+  public String getLoanInterestLabel(){
+      return getResources().getString(R.string.interest);
+  }
+
+  public float getLoanAmount(){
+      return  loan.getAmount().floatValue();
+  }
+
+  public float getLoanInterest(){
+      return  loan.getTotalInterests().floatValue();
+  }
 }

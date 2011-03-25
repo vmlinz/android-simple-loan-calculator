@@ -6,13 +6,18 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.TableLayout;
 import ee.smkv.calc.loan.chart.LoanChart;
+import ee.smkv.calc.loan.export.Exporter;
 import ee.smkv.calc.loan.export.HtmlScheduleCreator;
 
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -157,4 +162,28 @@ public class Schedule extends Activity {
   public float getLoanInterest(){
       return  loan.getTotalInterests().floatValue();
   }
+
+
+  @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.schedulemenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.exportEmailMenu:
+                Exporter.sendToEmail(loan, getResources(), this);
+                break;
+            case R.id.exportExcelMenu:
+                File file = Exporter.exportToCSVFile(loan , getResources());
+                new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' +file.getName()).show();
+                break;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

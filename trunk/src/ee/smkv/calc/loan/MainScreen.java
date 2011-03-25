@@ -31,6 +31,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import ee.smkv.calc.loan.export.CSVScheduleCreator;
+import ee.smkv.calc.loan.export.Exporter;
 import ee.smkv.calc.loan.export.TextScheduleCreator;
 
 import java.io.File;
@@ -379,48 +380,18 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
                 openCompareActivity();
                 break;
             case R.id.exportEmailMenu:
-                sendToEmail();
+                Exporter.sendToEmail(loan , getResources() , this);
                 break;
             case R.id.exportExcelMenu:
-                File file = exportToCSVFile();
-                new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + file.getName()).show();
+                File file = Exporter.exportToCSVFile(loan , getResources());
+                new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
                 break;
 
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void sendToEmail() {
-        final Intent emailIntent = new Intent(Intent.ACTION_SEND);
-        emailIntent.setType("text/text");
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getResources().getString(R.string.app_name) + " - export");
 
-        StringBuilder sb = new StringBuilder();
-        new TextScheduleCreator(loan, getResources()).appendTextScheduleTable(sb);
-        emailIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
-        emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(exportToCSVFile()));
-        startActivity(Intent.createChooser(emailIntent, getResources().getString(R.string.sendEmail)));
-    }
-
-    private File exportToCSVFile() {
-        try {
-            CSVScheduleCreator csvScheduleCreator = new CSVScheduleCreator(loan, getResources());
-            csvScheduleCreator.assertDataWriteEnabled();
-            String fileName = csvScheduleCreator.getFileName();
-            File externalStorageDirectory = Environment.getExternalStorageDirectory();
-            File file = new File(externalStorageDirectory.getPath() + File.separator + fileName);
-
-            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), CSVScheduleCreator.ENCODING);
-            csvScheduleCreator.createSchedule(writer);
-            writer.flush();
-            writer.close();
-            return file;
-        } catch (Exception e) {
-            showError(e);
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     private void openCompareActivity() {
         Intent compareActivityIntent = new Intent(MainScreen.this, CompareActivity.class);

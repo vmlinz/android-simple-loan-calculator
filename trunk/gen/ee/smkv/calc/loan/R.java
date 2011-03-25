@@ -62,16 +62,16 @@ public final class R {
         public static final int fixedPaymentLbl=0x7f080013;
         public static final int fixedPaymentText=0x7f080014;
         public static final int loansContainer=0x7f080000;
-        public static final int periodDecMonth=0x7f08000f;
-        public static final int periodDecYear=0x7f08000b;
-        public static final int periodIncMonth=0x7f080011;
-        public static final int periodIncYear=0x7f08000d;
+        public static final int periodDecMonth=0x7f080010;
+        public static final int periodDecYear=0x7f08000c;
+        public static final int periodIncMonth=0x7f080012;
+        public static final int periodIncYear=0x7f08000e;
         public static final int periodLayout=0x7f08000a;
         public static final int periodLbl=0x7f080009;
-        public static final int periodLblMonth=0x7f080012;
-        public static final int periodLblYear=0x7f08000e;
-        public static final int periodMonth=0x7f080010;
-        public static final int periodYear=0x7f08000c;
+        public static final int periodLblMonth=0x7f08000f;
+        public static final int periodLblYear=0x7f08000b;
+        public static final int periodMonth=0x7f080011;
+        public static final int periodYear=0x7f08000d;
         public static final int resultContainer=0x7f080017;
         public static final int viewCompareMenu=0x7f08001e;
     }
@@ -83,6 +83,7 @@ public final class R {
     }
     public static final class menu {
         public static final int mainmenu=0x7f070000;
+        public static final int schedulemenu=0x7f070001;
     }
     public static final class string {
         public static final int AmountTotalLbl=0x7f05000a;

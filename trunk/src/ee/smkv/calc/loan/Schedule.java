@@ -16,6 +16,7 @@ import ee.smkv.calc.loan.export.HtmlScheduleCreator;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -26,12 +27,12 @@ public class Schedule extends Activity {
   TableLayout table;
   protected static final String UTF = "UTF-8";
   public static Loan loan;
-
+  WebView webview = null;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    final WebView webview = new WebView(this);
+    webview = new WebView(this);
     WebSettings webSettings = webview.getSettings();
     webSettings.setJavaScriptEnabled(true);
     webSettings.setSupportZoom(false);
@@ -52,7 +53,6 @@ public class Schedule extends Activity {
       @Override
       protected Object doInBackground(Object... objects) {
         final Loan loan = getLoan();
-        //        webview.loadData( createHtml(loan), "text/html", UTF);
         webview.loadDataWithBaseURL(null, createHtml(loan), "text/html", UTF, "about:blank");
         return null;
       }
@@ -73,15 +73,7 @@ public class Schedule extends Activity {
     StringBuilder sb = new StringBuilder();
       String script = LoanChart.getScript();
       sb.append("<html><head><style>" +
-              "body{background:#000000;color:#ffffff;}" +
-              "table{border-spacing:0px 0px; font-size:11px; width:100%}" +
-              "td{padding:5px; }" +
-              "th{padding:5px;text-align:left;}" +
-              ".odd{background:#555555;}" +
-              ".even{background:#777777;}" +
-              ".bars td{vertical-align:bottom; width:30%}" +
-              ".bar{width:100%;background:#CCCCCC;}" +
-              "#closeBtn{width:100%;padding:10px}" +
+              "body{background:#FFF;color:#111; font-family:Verdana;}table{border-spacing:0px 0px; font-size:11px; width:100%}td{padding:5px; }th{padding:5px;text-align:left;}.odd{background:#EEE;}.odd th{border-bottom: 1px solid black;} .odd td{border-bottom: 1px solid #CCC;}.even{background:#FAFAFA;}#closeBtn{width:100%;padding:10px} table{border-radius: 5px;}" +
               "</style><script> ")
       .append(script)
       .append("</script>")
@@ -89,8 +81,7 @@ public class Schedule extends Activity {
 
     try {
       creator.appendHtmlScheduleTable(sb);
-      creator.appendHtmlChart(sb);
-      sb.append("<div id=\"log\">Debug: </div>");
+      creator.appendHtmlChart(sb , webview.getWidth()-10 , 200 );
       creator.appendHtmlButtons(sb);
     }
     catch (Exception e) {
@@ -123,20 +114,28 @@ public class Schedule extends Activity {
   }
 
 
-  public float[] getInterestPointsData() {
-    return LoanChart.getPoints(loan, LoanChart.INTERESTS);
+  public String getInterestPointsData() {
+    float[] points = LoanChart.getPoints(loan, LoanChart.INTERESTS);
+    return Arrays.toString(points);
   }
 
-  public float[] getPrincipalPointsData() {
-    return LoanChart.getPoints(loan, LoanChart.PRINCIPAL);
+  public String getPrincipalPointsData() {
+    float[] points = LoanChart.getPoints(loan, LoanChart.PRINCIPAL);
+    return Arrays.toString(points);
   }
 
-  public float[] getPaymentPointsData() {
-    return LoanChart.getPoints(loan, LoanChart.PAYMENT);
+  public String getPaymentPointsData() {
+    float[] points = LoanChart.getPoints(loan, LoanChart.PAYMENT);
+     return Arrays.toString(points);
   }
 
-  public float[] getXLabels() {
-    return LoanChart.getPoints(loan, LoanChart.LABEL);
+  public String getXLabels() {
+      float[] points = LoanChart.getPoints(loan, LoanChart.LABEL);
+      String[] labels = new String[ points.length];
+      for (int i = 0 ; i < points.length ; i++){
+          labels[i] = "" + Float.valueOf(points[i]).intValue();
+      }
+      return Arrays.toString(labels);
   }
 
   public String getPieTitle(){
@@ -148,7 +147,7 @@ public class Schedule extends Activity {
   }
 
   public String getLoanInterestLabel(){
-      return getResources().getString(R.string.interest);
+      return getResources().getString(R.string.paymentInterest);
   }
 
   public float getLoanAmount(){

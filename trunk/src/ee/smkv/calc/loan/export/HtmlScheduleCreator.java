@@ -100,9 +100,9 @@ public class HtmlScheduleCreator {
       .append("</button>");
   }
 
-  public void appendHtmlChart(StringBuilder sb) {
-    sb.append("<canvas id=\"pie\" width=\"300\" height=\"150\">Pie diagramm</canvas>")
-      .append("<canvas id=\"line\" width=\"300\" height=\"150\">Loan amotrization</canvas>")
+  public void appendHtmlChart(StringBuilder sb , int width , int height) {
+    sb.append("<canvas id=\"pie\" width=\""+width+"\" height=\""+height+"\">Pie diagramm</canvas>")
+      .append("<canvas id=\"line\" width=\""+width+"\" height=\""+height+"\">Loan amotrization</canvas>")
      ;
   }
 

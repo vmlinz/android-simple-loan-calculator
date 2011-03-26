@@ -2,136 +2,159 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical" android:layout_width="fill_parent"
               android:layout_height="fill_parent" android:background="@drawable/background">
-	<ScrollView android:id="@+id/ScrollView"
-              android:layout_width="fill_parent" android:layout_height="wrap_content">
-		<LinearLayout android:orientation="vertical"
-                  android:layout_width="fill_parent" android:layout_height="fill_parent" android:padding="5px">
-			<TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:text="@string/type"/>
-      <TableLayout android:layout_width="fill_parent"
-                   android:layout_height="wrap_content" android:stretchColumns="0">
-            <TableRow android:layout_width="fill_parent">
-            <Spinner android:id="@+id/Type" android:layout_width="fill_parent"
-                     android:layout_height="wrap_content" android:entries="@array/types">
-               </Spinner>
-               <Button android:id="@+id/TypeHelp" android:text="@string/typeHelpLbl"
-                       android:textStyle="bold" android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"/>
-            </TableRow>
-			</TableLayout>
+    <ScrollView android:id="@+id/ScrollView"
+                android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="fill_parent" android:layout_height="fill_parent" android:padding="5px">
+            <TextView android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:text="@string/type"/>
+            <TableLayout android:layout_width="fill_parent"
+                         android:layout_height="wrap_content" android:stretchColumns="0">
+                <TableRow android:layout_width="fill_parent">
+                    <Spinner android:id="@+id/Type" android:layout_width="fill_parent"
+                             android:layout_height="wrap_content" android:entries="@array/types">
+                    </Spinner>
+                    <Button android:id="@+id/TypeHelp" android:text="@string/typeHelpLbl"
+                            android:textStyle="bold" android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                </TableRow>
+            </TableLayout>
 
-			<TextView android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:text="@string/amount"/>
+            <TextView android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:text="@string/amount"/>
 
-			<EditText android:id="@+id/Amount" android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:numeric="decimal" android:inputType="phone"
-                android:hint="@string/amountHint"/>
-
-
-
-			<TextView android:text="@string/interest"
-                android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-			<EditText android:id="@+id/Interest" android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:numeric="decimal" android:inputType="phone"
-                android:hint="@string/interestHint"/>
-
-			<TextView android:id="@+id/periodLbl" android:text="@string/period"
-                android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+            <EditText android:id="@+id/Amount" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:numeric="decimal" android:inputType="phone"
+                      android:hint="@string/amountHint"/>
 
 
-      <TableLayout android:id="@+id/periodLayout" android:layout_span="2" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@layout/roundedshape">
-        <TableRow>
-        	 <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
-              <TextView android:id="@+id/periodLblYear" android:text="Years" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="@color/result"/>
-              <TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:text="@string/interest"
+                      android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+            <EditText android:id="@+id/Interest" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:numeric="decimal" android:inputType="phone"
+                      android:hint="@string/interestHint"/>
+
+            <TextView android:id="@+id/periodLbl" android:text="@string/period"
+                      android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+
+
+            <TableLayout android:id="@+id/periodLayout" android:layout_span="2" android:stretchColumns="*"
+                         android:layout_width="wrap_content" android:layout_height="wrap_content"
+                         android:background="@layout/periodblock">
                 <TableRow>
-                  <Button android:id="@+id/periodDecYear" android:text="  -  " android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="-3dip"/>
-                  <EditText android:id="@+id/periodYear" android:text="0" android:layout_width="fill_parent" android:layout_height="wrap_content"
-                         android:numeric="decimal" android:inputType="phone" android:layout_marginRight="-3dip" android:layout_marginLeft="-3dip"/>
-                  <Button android:id="@+id/periodIncYear" android:text="  +  " android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-3dip"/>
-        	      </TableRow>
-             </TableLayout>
-        	 </LinearLayout>
-          <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
-              <TextView android:id="@+id/periodLblMonth" android:text="Months" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="@color/result"/>
-              <TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+                        <TextView android:id="@+id/periodLblYear" android:text="Years"
+                                  android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                  android:textColor="@color/result"/>
+                        <TableLayout android:layout_span="5" android:stretchColumns="*"
+                                     android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <TableRow>
+                                <Button android:id="@+id/periodDecYear" android:text="  -  " android:textStyle="bold"
+                                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                        android:layout_marginRight="-3dip"/>
+                                <EditText android:id="@+id/periodYear" android:text="0"
+                                          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                          android:numeric="decimal" android:inputType="phone"
+                                          android:layout_marginRight="-3dip" android:layout_marginLeft="-3dip"/>
+                                <Button android:id="@+id/periodIncYear" android:text="  +  " android:textStyle="bold"
+                                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                        android:layout_marginLeft="-3dip"/>
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+                        <TextView android:id="@+id/periodLblMonth" android:text="Months"
+                                  android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                  android:textColor="@color/result"/>
+                        <TableLayout android:layout_span="5" android:stretchColumns="*"
+                                     android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <TableRow>
+                                <Button android:id="@+id/periodDecMonth" android:text="  -  " android:textStyle="bold"
+                                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                        android:layout_marginRight="-3dip"/>
+                                <EditText android:id="@+id/periodMonth" android:text="0"
+                                          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                          android:numeric="decimal" android:inputType="phone"
+                                          android:layout_marginRight="-3dip" android:layout_marginLeft="-3dip"/>
+                                <Button android:id="@+id/periodIncMonth" android:text="  +  " android:textStyle="bold"
+                                        android:layout_width="fill_parent" android:layout_height="wrap_content"
+                                        android:layout_marginLeft="-3dip"/>
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+
+            <View android:layout_width="fill_parent" android:layout_height="7dip"></View>
+            <TextView android:id="@+id/fixedPaymentLbl"
+                      android:text="@string/fixedPayment" android:visibility="gone"
+                      android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+            <EditText android:id="@+id/fixedPaymentText" android:layout_width="fill_parent"
+                      android:layout_height="wrap_content" android:visibility="gone" android:numeric="decimal"
+                      android:inputType="phone"/>
+
+            <TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="wrap_content"
+                         android:layout_height="wrap_content">
                 <TableRow>
-                  <Button android:id="@+id/periodDecMonth" android:text="  -  " android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="-3dip"/>
-                  <EditText android:id="@+id/periodMonth" android:text="0" android:layout_width="fill_parent" android:layout_height="wrap_content"
-                          android:numeric="decimal" android:inputType="phone" android:layout_marginRight="-3dip" android:layout_marginLeft="-3dip"/>
-                  <Button android:id="@+id/periodIncMonth" android:text="  +  " android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-3dip"/>
-        	      </TableRow>
-              </TableLayout>
-        	 </LinearLayout>
-        </TableRow>
-      </TableLayout>
+                    <Button android:id="@+id/Calc" android:text="@string/calc"
+                            android:textStyle="bold" android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"/>
+                    <Button android:text="@string/schedule" android:id="@+id/ScheduleButton" android:enabled="false"
+                            android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+                </TableRow>
+            </TableLayout>
 
 
+            <LinearLayout android:id="@+id/resultContainer"
+                          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical" android:background="@layout/roundedshape"
+                          android:padding="5px" android:layout_margin="3px">
 
+                <TextView android:text="@string/MonthlyAmountLbl" android:id="@+id/MonthlyAmountLbl"
+                          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textColor="@color/text"/>
+                <TextView android:id="@+id/MonthlyAmount"
+                          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textStyle="bold" android:text="0.0" android:gravity="right"
+                          android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
+                          android:textColor="@color/result"/>
 
-			<TextView android:id="@+id/fixedPaymentLbl"
-                android:text="@string/fixedPayment" android:visibility="gone"
-                android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-			<EditText android:id="@+id/fixedPaymentText" android:layout_width="fill_parent"
-                android:layout_height="wrap_content" android:visibility="gone" android:numeric="decimal"
-                android:inputType="phone"/>
+                <View android:layout_width="fill_parent" android:layout_height="1dip"
+                      android:background="@color/border"/>
 
-      <TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TableRow>
-        	<Button android:id="@+id/Calc" android:text="@string/calc"
-                  android:textStyle="bold" android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"/>
-        	<Button android:text="@string/schedule" android:id="@+id/ScheduleButton" android:enabled="false"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-        </TableRow>
-      </TableLayout>
+                <TextView android:text="@string/IterestTotalLbl" android:textColor="@color/text"
+                          android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/IterestTotal"
+                          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textStyle="bold" android:text="0.0" android:gravity="right"
+                          android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
+                          android:textColor="@color/result"/>
 
+                <View android:layout_width="fill_parent" android:layout_height="1dip"
+                      android:background="@color/border"/>
 
+                <TextView android:text="@string/AmountTotalLbl" android:textColor="@color/text"
+                          android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/AmountTotal"
+                          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textStyle="bold" android:text="0.0" android:gravity="right"
+                          android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
+                          android:textColor="@color/result"/>
 
-      <LinearLayout android:id="@+id/resultContainer"
-                    android:layout_width="fill_parent" android:layout_height="wrap_content"
-                    android:orientation="vertical" android:background="@layout/roundedshape"
-                    android:padding="5px" android:layout_margin="3px">
+                <View android:layout_width="fill_parent" android:layout_height="1dip"
+                      android:background="@color/border"/>
 
-        <TextView android:text="@string/MonthlyAmountLbl" android:id="@+id/MonthlyAmountLbl"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="@color/text"/>
-        <TextView android:id="@+id/MonthlyAmount"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content"
-                  android:textStyle="bold" android:text="0.0" android:gravity="right"
-                  android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
-                  android:textColor="@color/result"/>
+                <TextView android:text="@string/paymentsCount" android:textColor="@color/text"
+                          android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/PeriodTotal"
+                          android:layout_width="fill_parent" android:layout_height="wrap_content"
+                          android:textStyle="bold" android:text="0" android:gravity="right"
+                          android:textSize="20px" android:paddingRight="10px"
+                          android:textColor="@color/result"/>
+            </LinearLayout>
 
-        <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="@color/border"/>
-
-        <TextView android:text="@string/IterestTotalLbl" android:textColor="@color/text"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/IterestTotal"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content"
-                  android:textStyle="bold" android:text="0.0" android:gravity="right"
-                  android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
-                  android:textColor="@color/result"/>
-
-        <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="@color/border"/>
-
-        <TextView android:text="@string/AmountTotalLbl" android:textColor="@color/text"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/AmountTotal"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content"
-                  android:textStyle="bold" android:text="0.0" android:gravity="right"
-                  android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
-                  android:textColor="@color/result"/>
-
-        <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="@color/border"/>
-
-        <TextView android:text="@string/paymentsCount" android:textColor="@color/text"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/PeriodTotal"
-                  android:layout_width="fill_parent" android:layout_height="wrap_content"
-                  android:textStyle="bold" android:text="0" android:gravity="right"
-                  android:textSize="20px" android:paddingRight="10px"
-                  android:textColor="@color/result"/>
-		  </LinearLayout>
-
-</LinearLayout>
-	</ScrollView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

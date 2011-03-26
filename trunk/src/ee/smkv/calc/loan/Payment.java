@@ -7,61 +7,72 @@ import java.math.BigDecimal;
  * @author Andrei Samkov
  */
 public class Payment implements Serializable {
-  private static final long serialVersionUID = 1L;
-  private Integer nr;
-  private BigDecimal balance;
-  private BigDecimal principal;
-  private BigDecimal interest;
-  private BigDecimal amount;
+    private static final long serialVersionUID = 1L;
+    private Integer nr;
+    private BigDecimal balance;
+    private BigDecimal principal;
+    private BigDecimal interest;
+    private BigDecimal amount;
 
-  public Integer getNr() {
-    return nr;
-  }
+    public Payment(Integer nr, BigDecimal balance, BigDecimal principal, BigDecimal interest, BigDecimal amount) {
+        this.nr = nr;
+        this.balance = balance;
+        this.principal = principal;
+        this.interest = interest;
+        this.amount = amount;
+    }
 
-  public void setNr(Integer nr) {
-    this.nr = nr;
-  }
+    public Payment() {
+    }
 
-  public BigDecimal getBalance() {
-    return balance;
-  }
+    public Integer getNr() {
+        return nr;
+    }
 
-  public void setBalance(BigDecimal balance) {
-    this.balance = balance;
-  }
+    public void setNr(Integer nr) {
+        this.nr = nr;
+    }
 
-  public BigDecimal getPrincipal() {
-    return principal;
-  }
+    public BigDecimal getBalance() {
+        return balance;
+    }
 
-  public void setPrincipal(BigDecimal principal) {
-    this.principal = principal;
-  }
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
 
-  public BigDecimal getInterest() {
-    return interest;
-  }
+    public BigDecimal getPrincipal() {
+        return principal;
+    }
 
-  public void setInterest(BigDecimal interest) {
-    this.interest = interest;
-  }
+    public void setPrincipal(BigDecimal principal) {
+        this.principal = principal;
+    }
 
-  public BigDecimal getAmount() {
-    return amount;
-  }
+    public BigDecimal getInterest() {
+        return interest;
+    }
 
-  public void setAmount(BigDecimal amount) {
-    this.amount = amount;
-  }
+    public void setInterest(BigDecimal interest) {
+        this.interest = interest;
+    }
 
-  @Override
-  public String toString() {
-    return "Payment{" +
-           "nr=" + nr +
-           ", balance=" + balance +
-           ", principal=" + principal +
-           ", interest=" + interest +
-           ", amount=" + amount +
-           '}';
-  }
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "nr=" + nr +
+                ", balance=" + balance +
+                ", principal=" + principal +
+                ", interest=" + interest +
+                ", amount=" + amount +
+                '}';
+    }
 }

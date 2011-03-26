@@ -190,13 +190,13 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
                 periodLblYear.setText(getResources().getString(R.string.periodYear0));
             } else if (value == 1) {
                 periodLblYear.setText(getResources().getString(R.string.periodYear1));
-            } else if ((value > 1 && value < 5) ||(value > 21 && value < 25) ||(value > 31 && value < 35) ||(value > 41 && value < 45) ) {
+            } else if ((value > 1 && value < 5) || (value > 21 && value < 25) || (value > 31 && value < 35) || (value > 41 && value < 45)) {
                 periodLblYear.setText(getResources().getString(R.string.periodYear2));
             } else {
                 periodLblYear.setText(getResources().getString(R.string.periodYear5));
             }
 
-        } else  if (editable == periodMonth) {
+        } else if (editable == periodMonth) {
             int value = getInteger(periodMonth);
             if (value > 12) {
                 periodMonth.setText("12");
@@ -212,6 +212,8 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
                 periodLblMonth.setText(getResources().getString(R.string.periodMonth5));
             }
         }
+
+        scheduleButton.setEnabled(false);
 
     }
 
@@ -283,7 +285,7 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
         try {
             loan = new Loan();
             loadLoanDataFromUI();
-            if ((loan.getLoanType() != 2 && periodInMonths > 0) || (loan.getLoanType() == 2 && loan.getFixedPayment() != null && BigDecimal.ZERO.compareTo( loan.getFixedPayment())<0)) {
+            if ((loan.getLoanType() != 2 && periodInMonths > 0) || (loan.getLoanType() == 2 && loan.getFixedPayment() != null && BigDecimal.ZERO.compareTo(loan.getFixedPayment()) < 0)) {
                 calculator.calculate(loan);
                 showCalculatedData();
                 scheduleButton.setEnabled(true);
@@ -341,12 +343,12 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     }
 
     private boolean isRequiredRecalculation() {
-        return
+        return calculator != null &&
                 amountEText.getText() != null && amountEText.getText().toString().trim().length() > 0
-                        && interestEText.getText() != null && interestEText.getText().toString().trim().length() > 0
-                        && (typeSpinner.getSelectedItemPosition() != 2 ||
-                        (fixedPaymentEText.getText() != null && fixedPaymentEText.getText().toString().trim().length() > 0) &&
-                periodInMonths > 0);
+                && interestEText.getText() != null && interestEText.getText().toString().trim().length() > 0
+                && (typeSpinner.getSelectedItemPosition() != 2 ||
+                (fixedPaymentEText.getText() != null && fixedPaymentEText.getText().toString().trim().length() > 0) &&
+                        periodInMonths > 0);
     }
 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -368,7 +370,30 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        if (!scheduleButton.isEnabled() && item.getItemId() != R.id.viewCompareMenu) {
+            DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    if (i == DialogInterface.BUTTON_POSITIVE) {
+                        calculate();
+                    }
+                    menuAction(item);
+                }
+            };
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Recalculate loan?")
+                    .setCancelable(false)//TODO translate
+                    .setPositiveButton("Yes", onClickListener)
+                    .setNegativeButton("No", onClickListener);
+            builder.create().show();
+        } else {
+            menuAction(item);
+        }
+
+        return false;//
+    }
+
+    private boolean menuAction(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.addToCompareMenu:
                 if (loan != null) {
@@ -380,17 +405,16 @@ public class MainScreen extends Activity implements AdapterView.OnItemSelectedLi
                 openCompareActivity();
                 break;
             case R.id.exportEmailMenu:
-                Exporter.sendToEmail(loan , getResources() , this);
+                Exporter.sendToEmail(loan, getResources(), this);
                 break;
             case R.id.exportExcelMenu:
-                File file = Exporter.exportToCSVFile(loan , getResources());
+                File file = Exporter.exportToCSVFile(loan, getResources());
                 new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
                 break;
 
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
-
 
 
     private void openCompareActivity() {

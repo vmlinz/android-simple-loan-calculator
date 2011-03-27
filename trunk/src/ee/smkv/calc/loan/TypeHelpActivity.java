@@ -11,7 +11,7 @@ public class TypeHelpActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.help);
 	    
-	    Button closeButton = (Button)findViewById(R.id.TypeHelpClose);
+	    Button closeButton = (Button)findViewById(R.id.typeHelpCloseButton);
       closeButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.close) ,null,null,null);
 	    closeButton.setOnClickListener( new  View.OnClickListener(){
 

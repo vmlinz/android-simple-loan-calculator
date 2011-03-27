@@ -46,13 +46,10 @@ public class MainActivity extends Activity implements
     TextView
             fixedPaymentLabel,
             periodLabel,
-            periodTotalLabel,
-            monthlyAmountLabel,
-            monthlyAmountVText,
-            amountTotalVText,
-            interestTotalVText,
-            periodLblYear,
-            periodLblMonth;
+            resultPeriodTotalText,
+            resultMonthlyPaymentText,
+            resultAmountTotalText,
+            resultInterestTotalText;
 
     EditText
             amountEdit,
@@ -73,7 +70,7 @@ public class MainActivity extends Activity implements
             periodMonthPlusButton,
             periodMonthMinusButton;
 
-    ScrollView scrollView;
+    ScrollView mainScrollView;
 
     ViewGroup
             resultContainer,
@@ -98,46 +95,50 @@ public class MainActivity extends Activity implements
     }
 
     private void loadSharedPreferences() {
-        storeManager = new StoreManager(getSharedPreferences(SETTINGS_NAME, 0));
-        storeManager.loadTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit);
-        storeManager.loadSpinners(loanTypeSpinner);
-        if (periodYearEdit.getText() == null || periodYearEdit.getText().length() == 0) {
-            periodYearEdit.setText(ZERO);
-        }
-        if (periodMonthEdit.getText() == null || periodMonthEdit.getText().length() == 0) {
-            periodMonthEdit.setText(ZERO);
+        try {
+            storeManager = new StoreManager(getSharedPreferences(SETTINGS_NAME, 0));
+            storeManager.loadTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit);
+            storeManager.loadSpinners(loanTypeSpinner);
+            if (periodYearEdit.getText() == null || periodYearEdit.getText().length() == 0) {
+                periodYearEdit.setText(ZERO);
+            }
+            if (periodMonthEdit.getText() == null || periodMonthEdit.getText().length() == 0) {
+                periodMonthEdit.setText(ZERO);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
 
     private void init() {
-        amountEdit = (EditText) findViewById(R.id.Amount);
-        interestEdit = (EditText) findViewById(R.id.Interest);
-        monthlyAmountVText = (TextView) findViewById(R.id.MonthlyAmount);
-        amountTotalVText = (TextView) findViewById(R.id.AmountTotal);
-        interestTotalVText = (TextView) findViewById(R.id.IterestTotal);
-        calculateButton = (Button) findViewById(R.id.Calc);
-        scrollView = (ScrollView) findViewById(R.id.ScrollView);
-        loanTypeSpinner = (Spinner) findViewById(R.id.Type);
-        fixedPaymentLabel = (TextView) findViewById(R.id.fixedPaymentLbl);
-        periodLabel = (TextView) findViewById(R.id.periodLbl);
-        fixedPaymentEdit = (EditText) findViewById(R.id.fixedPaymentText);
-        periodTotalLabel = (TextView) findViewById(R.id.PeriodTotal);
-        monthlyAmountLabel = (TextView) findViewById(R.id.MonthlyAmountLbl);
-        scheduleButton = (Button) findViewById(R.id.ScheduleButton);
-        typeHelpButton = (Button) findViewById(R.id.TypeHelp);
-        typeHelpCloseButton = (Button) findViewById(R.id.TypeHelpClose);
-        resultContainer = (ViewGroup) findViewById(R.id.resultContainer);
-        periodLayout = (ViewGroup) findViewById(R.id.periodLayout);
+        amountEdit               = (EditText) findViewById(R.id.amountEdit);
+        interestEdit             = (EditText) findViewById(R.id.interestEdit);
+        fixedPaymentEdit         = (EditText) findViewById(R.id.fixedPaymentEdit);
+        periodYearEdit           = (EditText) findViewById(R.id.periodYearEdit);
+        periodMonthEdit          = (EditText) findViewById(R.id.periodMonthEdit);
 
-        periodYearPlusButton = (Button) findViewById(R.id.periodIncYear);
-        periodYearMinusButton = (Button) findViewById(R.id.periodDecYear);
-        periodMonthPlusButton = (Button) findViewById(R.id.periodIncMonth);
-        periodMonthMinusButton = (Button) findViewById(R.id.periodDecMonth);
-        periodLblYear = (TextView) findViewById(R.id.periodLblYear);
-        periodLblMonth = (TextView) findViewById(R.id.periodLblMonth);
-        periodYearEdit = (EditText) findViewById(R.id.periodYear);
-        periodMonthEdit = (EditText) findViewById(R.id.periodMonth);
+        resultMonthlyPaymentText = (TextView) findViewById(R.id.resultMonthlyPaymentText);
+        resultAmountTotalText    = (TextView) findViewById(R.id.resultAmountTotalText);
+        resultInterestTotalText = (TextView) findViewById(R.id.resultIterestTotalText);
+        resultPeriodTotalText    = (TextView) findViewById(R.id.resultPeriodTotalText);
+        fixedPaymentLabel        = (TextView) findViewById(R.id.fixedPaymentLabel);
+        periodLabel              = (TextView) findViewById(R.id.periodLabel);
+
+        loanTypeSpinner          = (Spinner) findViewById(R.id.loanTypeSpinner);
+
+        calculateButton          = (Button) findViewById(R.id.calculateButton);
+        periodYearPlusButton     = (Button) findViewById(R.id.periodYearPlusButton);
+        periodYearMinusButton    = (Button) findViewById(R.id.periodYearMinusButton);
+        periodMonthPlusButton    = (Button) findViewById(R.id.periodMonthPlusButton);
+        periodMonthMinusButton   = (Button) findViewById(R.id.periodMonthMinusButton);
+        scheduleButton           = (Button) findViewById(R.id.scheduleButton);
+        typeHelpButton           = (Button) findViewById(R.id.loanTypeHelpButton);
+        typeHelpCloseButton      = (Button) findViewById(R.id.typeHelpCloseButton);
+
+        resultContainer          = (ViewGroup) findViewById(R.id.resultContainer);
+        periodLayout             = (ViewGroup) findViewById(R.id.periodLayout);
+        mainScrollView           = (ScrollView) findViewById(R.id.mainScrollView);
     }
 
     private void setIconsToButtons() {
@@ -150,9 +151,13 @@ public class MainActivity extends Activity implements
     @Override
     protected void onStop() {
         super.onStop();
-        storeManager.storeTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit);
-        storeManager.storeSpinners(loanTypeSpinner);
-        loanState = LOAN_INIT;
+        try {
+            storeManager.storeTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit);
+            storeManager.storeSpinners(loanTypeSpinner);
+            loanState = LOAN_INIT;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void registerEventListeners() {
@@ -169,12 +174,16 @@ public class MainActivity extends Activity implements
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 checkFixPeriod(periodYearEdit);
                 checkFixPeriod(periodMonthEdit);
-                scheduleButton.setEnabled(false);
-                loanState = LOAN_INVALID;
+                invalidateLoan();
             }
         };
         periodYearEdit.addTextChangedListener(myTextWatcher);
         periodMonthEdit.addTextChangedListener(myTextWatcher);
+    }
+
+    private void invalidateLoan() {
+        loanState = LOAN_INVALID;
+        scheduleButton.setEnabled(false);
     }
 
     public void onClick(View view) {
@@ -182,7 +191,7 @@ public class MainActivity extends Activity implements
             if (view == calculateButton) {
                 calculate();
                 if (loanState == LOAN_CALCULATED) {
-                    scrollView.scrollTo(resultContainer.getLeft(), resultContainer.getTop());
+                    mainScrollView.scrollTo(resultContainer.getLeft(), resultContainer.getTop());
                 }
             } else if (view == scheduleButton) {
                 showSchedule();
@@ -248,7 +257,7 @@ public class MainActivity extends Activity implements
 
     private void calculate() {
         try {
-            loanState = LOAN_INVALID;
+            invalidateLoan();
             loan = new Loan();
             loadLoanDataFromUI();
             if (isLoanReadyForCalculation(loan)) {
@@ -310,11 +319,11 @@ public class MainActivity extends Activity implements
         } else {
             monthlyPayment = max.setScale(2, Calculator.MODE).toPlainString() + " - " + min.setScale(2, Calculator.MODE).toPlainString();
         }
-        monthlyAmountVText.setText(monthlyPayment);
+        resultMonthlyPaymentText.setText(monthlyPayment);
 
-        amountTotalVText.setText(loan.getTotalAmount().setScale(2, Calculator.MODE).toPlainString());
-        interestTotalVText.setText(loan.getTotalInterests().setScale(2, Calculator.MODE).toPlainString());
-        periodTotalLabel.setText(loan.getPeriod().toString());
+        resultAmountTotalText.setText(loan.getTotalAmount().setScale(2, Calculator.MODE).toPlainString());
+        resultInterestTotalText.setText(loan.getTotalInterests().setScale(2, Calculator.MODE).toPlainString());
+        resultPeriodTotalText.setText(loan.getPeriod().toString());
 
         Toast.makeText(this, getResources().getText(R.string.msgCalculated), Toast.LENGTH_SHORT).show();
     }
@@ -341,7 +350,7 @@ public class MainActivity extends Activity implements
 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         changeCalculatorType();
-        loanState = LOAN_INVALID;
+        invalidateLoan();
         if (isLoanReadyForCalculation(loan)) {
             loanState = LOAN_VALID;
             calculate();

@@ -21,7 +21,7 @@
           <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fixedHelp" android:paddingBottom="10px"/>
           
                   
-          <Button android:id="@+id/TypeHelpClose" android:text="@string/close" android:layout_height="wrap_content"  android:layout_width="fill_parent" />
+          <Button android:id="@+id/typeHelpCloseButton" android:text="@string/close" android:layout_height="wrap_content"  android:layout_width="fill_parent" />
     	</LinearLayout>
     </ScrollView>
 </LinearLayout>

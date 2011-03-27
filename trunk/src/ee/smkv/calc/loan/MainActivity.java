@@ -94,6 +94,9 @@ public class MainActivity extends Activity implements
         setIconsToButtons();
         loadSharedPreferences();
         registerEventListeners();
+        if( isLoanReadyForCalculation(loan)){
+            calculate();
+        }
     }
 
     private void loadSharedPreferences() {
@@ -156,7 +159,6 @@ public class MainActivity extends Activity implements
         try {
             storeManager.storeTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit);
             storeManager.storeSpinners(loanTypeSpinner);
-            loanState = LOAN_INIT;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -173,14 +175,14 @@ public class MainActivity extends Activity implements
         periodMonthMinusButton.setOnClickListener(this);
 
         MyTextWatcher myYearTextWatcher = new MyTextWatcher() {
-            public void afterTextChanged(Editable editable) {
+            public void onChange(Editable editable) {
                 checkFixPeriod(periodYearEdit , editable);
                 invalidateLoan();
             }
         };
 
         MyTextWatcher myMonthTextWatcher = new MyTextWatcher() {
-            public void afterTextChanged(Editable editable) {
+            public void onChange(Editable editable) {
                 checkFixPeriod(periodMonthEdit, editable);
                 invalidateLoan();
             }
@@ -388,9 +390,8 @@ public class MainActivity extends Activity implements
                     if (i == DialogInterface.BUTTON_POSITIVE) {
                         calculate();
                     }
-                    if (loanState == LOAN_CALCULATED) {
-                        menuAction(item);
-                    }
+                    menuAction(item);
+
                 }
             };
 

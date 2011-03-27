@@ -2,12 +2,12 @@ package ee.smkv.calc.loan.utils;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.EditText;
 
 public abstract class MyTextWatcher implements TextWatcher {
+    CharSequence value;
 
     public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        //do nothing
+        value = charSequence;
     }
 
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -15,7 +15,11 @@ public abstract class MyTextWatcher implements TextWatcher {
     }
 
     public void afterTextChanged(Editable editable) {
-        //do nothing
+        if( value == null || !value.toString().equals(editable.toString())){
+            onChange(editable);
+        }
     }
+
+    public abstract void onChange(Editable editable);
 
 }

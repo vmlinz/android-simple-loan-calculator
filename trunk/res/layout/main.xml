@@ -43,7 +43,7 @@
                 <TableRow>
                     <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
                                   android:orientation="vertical">
-                        <TextView  android:text="@string/periodTypeYear"
+                        <TextView  android:text="@string/periodTypeYear" android:gravity="center"
                                   android:layout_width="fill_parent" android:layout_height="wrap_content"
                                   android:textColor="@color/result"/>
                         <TableLayout android:layout_span="5" android:stretchColumns="*"
@@ -64,7 +64,7 @@
                     </LinearLayout>
                     <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
                                   android:orientation="vertical">
-                        <TextView android:text="@string/periodTypeMonth"
+                        <TextView android:text="@string/periodTypeMonth"  android:gravity="center"
                                   android:layout_width="fill_parent" android:layout_height="wrap_content"
                                   android:textColor="@color/result"/>
                         <TableLayout android:layout_span="5" android:stretchColumns="*"
@@ -153,7 +153,9 @@
                           android:textSize="20px" android:paddingRight="10px"
                           android:textColor="@color/result"/>
             </LinearLayout>
-
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+                      android:textColor="@color/result" android:textSize="12sp" android:text="by Andrei Samkov"
+                      android:gravity="right" android:paddingRight="7dp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

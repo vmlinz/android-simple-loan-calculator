@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import ee.smkv.calc.loan.model.Loan;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -85,8 +86,8 @@ public class CompareActivity extends Activity implements View.OnClickListener {
     scheduleBtn.setPadding(5, 5, 5, 5);
     scheduleBtn.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        Intent scheduleActivityIntent = new Intent(CompareActivity.this, Schedule.class);        
-        Schedule.loan = loan;
+        Intent scheduleActivityIntent = new Intent(CompareActivity.this, ScheduleActivity.class);
+        ScheduleActivity.loan = loan;
         startActivity(scheduleActivityIntent);
       }
     });

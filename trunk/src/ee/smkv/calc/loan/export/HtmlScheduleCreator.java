@@ -1,14 +1,11 @@
 package ee.smkv.calc.loan.export;
 
 import android.content.res.Resources;
-import ee.smkv.calc.loan.Loan;
-import ee.smkv.calc.loan.Payment;
+import ee.smkv.calc.loan.model.Loan;
+import ee.smkv.calc.loan.model.Payment;
 import ee.smkv.calc.loan.R;
-import ee.smkv.calc.loan.chart.LoanChart;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
-import java.util.Arrays;
 
 /**
  * @author samko

@@ -15,6 +15,7 @@ import android.widget.TableLayout;
 import ee.smkv.calc.loan.chart.LoanChart;
 import ee.smkv.calc.loan.export.Exporter;
 import ee.smkv.calc.loan.export.HtmlScheduleCreator;
+import ee.smkv.calc.loan.model.Loan;
 import ee.smkv.calc.loan.utils.OkDialogWrapper;
 
 
@@ -27,7 +28,7 @@ import java.util.Arrays;
 /**
  * @author Andrei Samkov
  */
-public class Schedule extends Activity {
+public class ScheduleActivity extends Activity {
     int mode = BigDecimal.ROUND_HALF_EVEN;
     TableLayout table;
     protected static final String UTF = "UTF-8";
@@ -47,7 +48,7 @@ public class Schedule extends Activity {
 
         setContentView(webview);
         AsyncTask task = new AsyncTask() {
-            private final ProgressDialog dialog = new ProgressDialog(Schedule.this);
+            private final ProgressDialog dialog = new ProgressDialog(ScheduleActivity.this);
 
             @Override
             protected void onPreExecute() {
@@ -89,7 +90,7 @@ public class Schedule extends Activity {
             creator.appendHtmlChart(sb, webview.getWidth() - 10, 200);
             creator.appendHtmlButtons(sb);
         } catch (Exception e) {
-            Log.v(Schedule.class.getSimpleName(), e.getMessage(), e);
+            Log.v(ScheduleActivity.class.getSimpleName(), e.getMessage(), e);
         }
 
 

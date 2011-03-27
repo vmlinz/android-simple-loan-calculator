@@ -1,13 +1,11 @@
 package ee.smkv.calc.loan.chart;
 
-import ee.smkv.calc.loan.Loan;
-import ee.smkv.calc.loan.Payment;
+import ee.smkv.calc.loan.model.Loan;
+import ee.smkv.calc.loan.model.Payment;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 /**
  * @author samko

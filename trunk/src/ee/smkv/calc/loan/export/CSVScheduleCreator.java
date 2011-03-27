@@ -2,14 +2,11 @@ package ee.smkv.calc.loan.export;
 
 import android.content.res.Resources;
 import android.os.Environment;
-import ee.smkv.calc.loan.Loan;
-import ee.smkv.calc.loan.Payment;
+import ee.smkv.calc.loan.model.Loan;
+import ee.smkv.calc.loan.model.Payment;
 import ee.smkv.calc.loan.R;
 
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.math.BigDecimal;
 

@@ -1,8 +1,12 @@
-package ee.smkv.calc.loan;
+package ee.smkv.calc.loan.calculators;
+
+import ee.smkv.calc.loan.Calculator;
+import ee.smkv.calc.loan.model.Loan;
+import ee.smkv.calc.loan.model.Payment;
 
 import java.math.BigDecimal;
 
-public class DifferentiatedCalculator implements Calculator{
+public class DifferentiatedCalculator implements Calculator {
 	
 
 	public void calculate(Loan loan){

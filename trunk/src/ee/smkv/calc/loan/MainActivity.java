@@ -14,7 +14,11 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import ee.smkv.calc.loan.calculators.AnnuityCalculator;
+import ee.smkv.calc.loan.calculators.DifferentiatedCalculator;
+import ee.smkv.calc.loan.calculators.FixedCalculator;
 import ee.smkv.calc.loan.export.Exporter;
+import ee.smkv.calc.loan.model.Loan;
 import ee.smkv.calc.loan.utils.*;
 
 import java.io.File;
@@ -229,8 +233,8 @@ public class MainActivity extends Activity implements
 
 
     private void showSchedule() {
-        Schedule.loan = loan;
-        startActivity(new Intent(MainActivity.this, Schedule.class));
+        ScheduleActivity.loan = loan;
+        startActivity(new Intent(MainActivity.this, ScheduleActivity.class));
     }
 
 

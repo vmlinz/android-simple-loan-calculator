@@ -1,4 +1,4 @@
-package ee.smkv.calc.loan;
+package ee.smkv.calc.loan.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

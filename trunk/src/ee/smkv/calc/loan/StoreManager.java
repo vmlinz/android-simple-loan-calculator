@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Spinner;
 import android.widget.TextView;
+import ee.smkv.calc.loan.model.Loan;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

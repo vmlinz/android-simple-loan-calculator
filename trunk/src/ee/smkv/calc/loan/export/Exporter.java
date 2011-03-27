@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Environment;
-import ee.smkv.calc.loan.Loan;
+import ee.smkv.calc.loan.model.Loan;
 import ee.smkv.calc.loan.R;
 
 import java.io.File;

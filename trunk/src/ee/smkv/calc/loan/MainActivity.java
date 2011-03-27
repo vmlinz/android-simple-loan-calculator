@@ -26,6 +26,16 @@ import ee.smkv.calc.loan.utils.*;
 import java.io.File;
 import java.math.BigDecimal;
 
+//TODO раздел дополнительно
+//TODO комиссия:
+// 1. одноразовая комиссия - фиксированная сумма
+// 2. одноразовая комиссия от суммы кредита
+// 3. ежемесячная комиссия от суммы кредита
+// 4. ежемесячная комиссия от остатка задолженности
+// 5. ежемесячная комиссия - фиксированная сумма
+
+//TODO первый взнос:
+
 
 public class MainActivity extends Activity implements
         AdapterView.OnItemSelectedListener,

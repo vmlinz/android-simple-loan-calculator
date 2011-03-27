@@ -45,13 +45,13 @@ public final class R {
         public static final int tablesmall=0x7f020014;
     }
     public static final class id {
-        public static final int addToCompareMenu=0x7f08001a;
+        public static final int addToCompareMenu=0x7f08001b;
         public static final int amountEdit=0x7f080007;
-        public static final int calculateButton=0x7f080013;
+        public static final int calculateButton=0x7f080014;
         public static final int cleanCompareButton=0x7f080002;
         public static final int closeCompareButton=0x7f080001;
-        public static final int exportEmailMenu=0x7f08001c;
-        public static final int exportExcelMenu=0x7f08001d;
+        public static final int exportEmailMenu=0x7f08001d;
+        public static final int exportExcelMenu=0x7f08001e;
         public static final int fixedPaymentEdit=0x7f080012;
         public static final int fixedPaymentLabel=0x7f080011;
         public static final int interestEdit=0x7f080008;
@@ -59,6 +59,7 @@ public final class R {
         public static final int loanTypeSpinner=0x7f080005;
         public static final int loansContainer=0x7f080000;
         public static final int mainScrollView=0x7f080004;
+        public static final int moreText=0x7f080013;
         public static final int periodLabel=0x7f080009;
         public static final int periodLayout=0x7f08000a;
         public static final int periodMonthEdit=0x7f08000f;
@@ -67,14 +68,14 @@ public final class R {
         public static final int periodYearEdit=0x7f08000c;
         public static final int periodYearMinusButton=0x7f08000b;
         public static final int periodYearPlusButton=0x7f08000d;
-        public static final int resultAmountTotalText=0x7f080018;
-        public static final int resultContainer=0x7f080015;
-        public static final int resultIterestTotalText=0x7f080017;
-        public static final int resultMonthlyPaymentText=0x7f080016;
-        public static final int resultPeriodTotalText=0x7f080019;
-        public static final int scheduleButton=0x7f080014;
+        public static final int resultAmountTotalText=0x7f080019;
+        public static final int resultContainer=0x7f080016;
+        public static final int resultIterestTotalText=0x7f080018;
+        public static final int resultMonthlyPaymentText=0x7f080017;
+        public static final int resultPeriodTotalText=0x7f08001a;
+        public static final int scheduleButton=0x7f080015;
         public static final int typeHelpCloseButton=0x7f080003;
-        public static final int viewCompareMenu=0x7f08001b;
+        public static final int viewCompareMenu=0x7f08001c;
     }
     public static final class layout {
         public static final int compare=0x7f030000;

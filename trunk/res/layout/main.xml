@@ -86,13 +86,35 @@
                 </TableRow>
             </TableLayout>
 
-            <View android:layout_width="fill_parent" android:layout_height="7dip"></View>
+
             <TextView android:id="@+id/fixedPaymentLabel"
                       android:text="@string/fixedPayment" android:visibility="gone"
                       android:layout_width="fill_parent" android:layout_height="wrap_content"/>
             <EditText android:id="@+id/fixedPaymentEdit" android:layout_width="fill_parent"
                       android:layout_height="wrap_content" android:visibility="gone" android:numeric="decimal"
                       android:inputType="phone"/>
+            <View android:layout_width="fill_parent" android:layout_height="7dip"></View>
+            <!--<TableLayout android:layout_width="fill_parent"-->
+                         <!--android:layout_height="wrap_content" android:stretchColumns="0">-->
+                <!--<TableRow android:layout_width="fill_parent" android:gravity="center_vertical">-->
+                    <!--<View android:layout_width="fill_parent" android:layout_height="1dip" android:background="#555555"></View>-->
+                    <!--<TextView android:id="@+id/moreText"-->
+                      <!--android:text="more..." android:background="#555555" android:padding="3dp"-->
+                      <!--android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"/>-->
+                <!--</TableRow>-->
+            <!--</TableLayout>-->
+            <!--<View android:layout_width="fill_parent" android:layout_height="7dip"></View>-->
+
+            <!--<TableLayout android:layout_width="fill_parent"-->
+                         <!--android:layout_height="wrap_content" android:stretchColumns="0">-->
+                <!--<TableRow android:layout_width="fill_parent">-->
+                    <!--<TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="First payment" />-->
+                <!--</TableRow>-->
+                <!--<TableRow android:layout_width="fill_parent">-->
+                    <!--<EditText android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />-->
+                    <!--<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="%" />-->
+                <!--</TableRow>-->
+            <!--</TableLayout>-->
 
             <TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="wrap_content"
                          android:layout_height="wrap_content">

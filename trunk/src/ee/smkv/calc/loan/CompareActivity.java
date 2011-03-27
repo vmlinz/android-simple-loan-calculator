@@ -1,7 +1,6 @@
 package ee.smkv.calc.loan;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -39,8 +37,8 @@ public class CompareActivity extends Activity implements View.OnClickListener {
     cleanButton.setOnClickListener(this);
     cleanButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.clean), null, null, null);
 
-    if (MainScreen.storeManager != null) {
-      loans = MainScreen.storeManager.getLoans();
+    if (MainActivity.storeManager != null) {
+      loans = MainActivity.storeManager.getLoans();
     }
     showLoans(loans);
 
@@ -75,7 +73,7 @@ public class CompareActivity extends Activity implements View.OnClickListener {
     removeBtn.setPadding(5, 5, 5, 5);
     removeBtn.setOnClickListener(new View.OnClickListener() {
       public void onClick(View view) {
-        MainScreen.storeManager.removeLoan(loan);
+        MainActivity.storeManager.removeLoan(loan);
         container.removeView(cell);
       }
     });
@@ -126,7 +124,7 @@ public class CompareActivity extends Activity implements View.OnClickListener {
         for( int i = container.getChildCount() ; i > 1 ; i--){
           container.removeViewAt(i-1);
         }  
-        MainScreen.storeManager.removeLoans(loans);
+        MainActivity.storeManager.removeLoans(loans);
 
     }
     catch (Exception e) {

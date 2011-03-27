@@ -1,4 +1,4 @@
-package ee.smkv.calc.loan;
+package ee.smkv.calc.loan.utils;
 
 import android.app.Activity;
 import android.app.AlertDialog;

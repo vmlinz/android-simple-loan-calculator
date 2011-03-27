@@ -15,13 +15,13 @@ import android.widget.TableLayout;
 import ee.smkv.calc.loan.chart.LoanChart;
 import ee.smkv.calc.loan.export.Exporter;
 import ee.smkv.calc.loan.export.HtmlScheduleCreator;
+import ee.smkv.calc.loan.utils.OkDialogWrapper;
 
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.List;
 
 
 /**

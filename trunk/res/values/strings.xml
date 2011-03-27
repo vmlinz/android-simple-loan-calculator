@@ -1,114 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">Simple Loan Calculator</string>
-	<string name="app_desc">The Simple calculator for annuity, differentiated and fixed payments. </string>
-	<string name="amount">Loan amount</string>
-	<string name="amountHint">amount &gt; 0</string>
-	<string name="interest">Annual interest rate, %</string>
-	<string name="interestHint">rate &gt; 0</string>
-	<string name="period">Period</string>
-	<string-array name="periods">
-		<item>3 months</item>
-		<item>6 months</item>
-		<item>9 months</item>
-		<item>12 months</item>
-		<item>18 months</item>
-		<item>2 years</item>
-		<item>3 years</item>
-		<item>4 years</item>
-		<item>5 years</item>
-		<item>6 years</item>
-		<item>7 years</item>
-		<item>8 years</item>
-		<item>9 years</item>
-		<item>10 years</item>
-		<item>15 years</item>
-		<item>20 years</item>
-		<item>25 years</item>
-		<item>30 years</item>
-		<item>35 years</item>
-		<item>40 years</item>
-		<item>45 years</item>
-		<item>50 years</item>
-	</string-array>
-	<string name="calc">Calculate</string>
-	<string name="MonthlyAmountLbl">Monthly payment</string>
-	<string name="IterestTotalLbl">Total interest</string>
-	<string name="AmountTotalLbl">Total amount (amount + interest)</string>
-	<string name="errorAmount">Please enter correct amount</string>
-	<string name="errorFixedAmount">Please enter correct fixed monthly amount</string>
-	<string name="errorInterest">Please enter correct annual interest rate</string>
-	<string name="type">Type of loan</string>
-	<string-array name="types">
-		<item>Annuity payments</item>
-		<item>Differentiated</item>
-		<item>Fixed payments</item>		
-	</string-array>
+    <string name="app_name">Simple Loan Calculator</string>
+    <string name="app_desc">The Simple calculator for annuity, differentiated and fixed payments.</string>
+    <string name="amount">Loan amount</string>
+    <string name="amountHint">amount &gt; 0</string>
+    <string name="interest">Annual interest rate, %</string>
+    <string name="interestHint">rate &gt; 0</string>
+    <string name="period">Period</string>
+    <string name="calc">Calculate</string>
+    <string name="MonthlyAmountLbl">Monthly payment</string>
+    <string name="IterestTotalLbl">Total interest</string>
+    <string name="AmountTotalLbl">Total amount (amount + interest)</string>
+    <string name="errorAmount">Please enter correct amount</string>
+    <string name="errorFixedAmount">Please enter correct fixed monthly amount</string>
+    <string name="errorInterest">Please enter correct annual interest rate</string>
+    <string name="errorPeriod">Please enter correct period</string>
+    <string name="type">Type of loan</string>
+    <string-array name="types">
+        <item>Annuity payments</item>
+        <item>Differentiated</item>
+        <item>Fixed payments</item>
+    </string-array>
 
-  <string-array name="shorttypes">
-		<item>Annuity</item>
-		<item>Different</item>
-		<item>Fixed</item>
-	</string-array>
-	<string name="fixedPayment">Fixed payment</string>
-	<string name="paymentsCount">Quantity of payments</string>
-  <string name="schedule">Schedule</string>
-  <string name="paymentNr">Nr</string>
-  <string name="paymentBalance">Balance</string>
-  <string name="paymentPrincipal">Principal</string>
-  <string name="paymentInterest">Interest</string>
-  <string name="paymentTotal">Payment</string>
-  <string name="close">Close</string>
-  <string name="scheduleTitle">Loan schedule</string>
-  <string name="typeHelpLbl">Help</string>
-  <string name="annuityTitleHelp">Annuity payments</string>
-  <string name="diffTitleHelp">Differentiated payments</string>
-  <string name="fixedTitleHelp">Fixed payments</string>
-  <string name="annuityHelp"> - it is a value equal to the sum of the monthly payment on the loan, which includes the amount of accrued interest for the loan and the amount of principal debt.</string>
-  <string name="diffHelp"> - it is a monthly loan payment, decreasing to the end of the loan term and consist of paid permanent share of principal debt and interest on the unpaid balance of the loan.</string>
-  <string name="fixedHelp"> - a fixed monthly repayment of principal plus a share interst for the unpaid balance of the loan.</string>
-  <string name="chartTitle">The loan payment chart (beta)</string>
-  <string name="chartButton">Chart</string>
+    <string-array name="shorttypes">
+        <item>Annuity</item>
+        <item>Different</item>
+        <item>Fixed</item>
+    </string-array>
+    <string name="fixedPayment">Fixed payment</string>
+    <string name="paymentsCount">Quantity of payments</string>
+    <string name="schedule">Schedule</string>
+    <string name="paymentNr">Nr</string>
+    <string name="paymentBalance">Balance</string>
+    <string name="paymentPrincipal">Principal</string>
+    <string name="paymentInterest">Interest</string>
+    <string name="paymentTotal">Payment</string>
+    <string name="close">Close</string>
+    <string name="scheduleTitle">Loan schedule</string>
+    <string name="typeHelpLbl">Help</string>
+    <string name="annuityTitleHelp">Annuity payments</string>
+    <string name="diffTitleHelp">Differentiated payments</string>
+    <string name="fixedTitleHelp">Fixed payments</string>
+    <string name="annuityHelp">- it is a value equal to the sum of the monthly payment on the loan, which includes the
+        amount of accrued interest for the loan and the amount of principal debt.
+    </string>
+    <string name="diffHelp">- it is a monthly loan payment, decreasing to the end of the loan term and consist of paid
+        permanent share of principal debt and interest on the unpaid balance of the loan.
+    </string>
+    <string name="fixedHelp">- a fixed monthly repayment of principal plus a share interst for the unpaid balance of the
+        loan.
+    </string>
+    <string name="chartTitle">The loan payment chart (beta)</string>
+    <string name="chartButton">Chart</string>
 
-  <string name="compareTitle">Loans compare</string>
-  <string name="compareCleanLbl">Remove all</string>
-  <string name="compareTypeLbl">Loan type:</string>
-  <string name="compareAmountLbl">Amount:</string>
-  <string name="compareInterestLbl">Interest, %:</string>
-  <string name="comparePeriodLbl">Period, m:</string>
-  <string name="comparePaymentMaxLbl">Payment (max):</string>
-  <string name="comparePaymentMinLbl">Payment (min):</string>
-  <string name="compareInterestTotalLbl">Interests:</string>
-  <string name="compareAmountTotalLbl">Total:</string>
+    <string name="compareTitle">Loans compare</string>
+    <string name="compareCleanLbl">Remove all</string>
+    <string name="compareTypeLbl">Loan type:</string>
+    <string name="compareAmountLbl">Amount:</string>
+    <string name="compareInterestLbl">Interest, %:</string>
+    <string name="comparePeriodLbl">Period, m:</string>
+    <string name="comparePaymentMaxLbl">Payment (max):</string>
+    <string name="comparePaymentMinLbl">Payment (min):</string>
+    <string name="compareInterestTotalLbl">Interests:</string>
+    <string name="compareAmountTotalLbl">Total:</string>
 
-  <string name="addToCompare">Add to compare</string>
-  <string name="viewCompare">Compare list</string>
-  <string name="exportToEmail">Export to Email</string>
-  <string name="exportToExcel">Export to Excel</string>
+    <string name="addToCompare">Add to compare</string>
+    <string name="viewCompare">Compare list</string>
+    <string name="exportToEmail">Export to Email</string>
+    <string name="exportToExcel">Export to Excel</string>
 
 
-  <string name="scheduleLoading">Loading of loan schedule, please wait....</string>
-  <string name="chartAmount">Amount</string>
-  <string name="chartInterest">Interest</string>
-  <string name="chartTotal">Total</string>
-  <string name="sendEmail">Send E-mail</string>
-  <string name="fileCreated">Export file was created with name </string>
+    <string name="scheduleLoading">Loading of loan schedule, please wait....</string>
+    <string name="chartAmount">Amount</string>
+    <string name="chartInterest">Interest</string>
+    <string name="chartTotal">Total</string>
+    <string name="sendEmail">Send E-mail</string>
+    <string name="fileCreated">Export file was created with name</string>
 
-  <string-array name="periodTypes">
-		<item>Months</item>
-		<item>Years</item>
-	</string-array>
+    <string name="periodTypeYear">Year</string>
+    <string name="periodTypeMonth">Month</string>
 
-  <string name="periodYear0">Year</string>
-  <string name="periodYear1">Year</string>
-  <string name="periodYear2">Years</string>
-  <string name="periodYear5">Years</string>
+    <string name="msgCalculated">Calculation success</string>
 
-  <string name="periodMonth0">Month</string>
-  <string name="periodMonth1">Month</string>
-  <string name="periodMonth2">Months</string>
-  <string name="periodMonth5">Months</string>
-
-  <string name="msgCalculated">Calculation success</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="recalculateLoanQuestion">Do you want recalculate loan?</string>
 
 </resources>

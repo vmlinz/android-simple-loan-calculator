@@ -32,11 +32,17 @@ public final class R {
         public static final int compare=0x7f020007;
         public static final int excel=0x7f020008;
         public static final int help=0x7f020009;
-        public static final int icon=0x7f02000a;
-        public static final int mail=0x7f02000b;
-        public static final int minus=0x7f02000c;
-        public static final int table=0x7f02000d;
-        public static final int tablesmall=0x7f02000e;
+        public static final int ic_tab_chart=0x7f02000a;
+        public static final int ic_tab_chart_selected=0x7f02000b;
+        public static final int ic_tab_chart_unselected=0x7f02000c;
+        public static final int ic_tab_table=0x7f02000d;
+        public static final int ic_tab_table_selected=0x7f02000e;
+        public static final int ic_tab_table_unselected=0x7f02000f;
+        public static final int icon=0x7f020010;
+        public static final int mail=0x7f020011;
+        public static final int minus=0x7f020012;
+        public static final int table=0x7f020013;
+        public static final int tablesmall=0x7f020014;
     }
     public static final class id {
         public static final int addToCompareMenu=0x7f08001a;
@@ -76,6 +82,7 @@ public final class R {
         public static final int main=0x7f030002;
         public static final int periodblock=0x7f030003;
         public static final int roundedshape=0x7f030004;
+        public static final int schedule=0x7f030005;
     }
     public static final class menu {
         public static final int mainmenu=0x7f070000;

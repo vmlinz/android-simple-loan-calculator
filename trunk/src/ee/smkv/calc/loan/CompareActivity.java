@@ -91,8 +91,8 @@ public class CompareActivity extends Activity implements View.OnClickListener {
         scheduleButton.setPadding(10, 5, 10, 5);
         scheduleButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                ScheduleActivity.loan = loan;
-                startActivity(new Intent(CompareActivity.this, ScheduleActivity.class));
+                ScheduleTabActivity.loan = loan;
+                startActivity(new Intent(CompareActivity.this, ScheduleTabActivity.class));
             }
         });
         buttonBar.addView(scheduleButton);

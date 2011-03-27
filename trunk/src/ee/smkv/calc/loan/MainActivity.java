@@ -243,8 +243,8 @@ public class MainActivity extends Activity implements
 
 
     private void showSchedule() {
-        ScheduleActivity.loan = loan;
-        startActivity(new Intent(MainActivity.this, ScheduleActivity.class));
+        ScheduleTabActivity.loan = loan;
+        startActivity(new Intent(MainActivity.this, ScheduleTabActivity.class));
     }
 
 

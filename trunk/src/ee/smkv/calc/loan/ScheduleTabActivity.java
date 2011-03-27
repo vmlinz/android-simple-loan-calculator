@@ -16,12 +16,13 @@ public class ScheduleTabActivity extends TabActivity {
 
         TabHost.TabSpec tableTabSpec = getTabHost()
                 .newTabSpec("table")
-                .setIndicator("Table", getResources().getDrawable(R.drawable.ic_tab_table))
+                .setIndicator(getResources().getString(R.string.tabSchedule)
+                        , getResources().getDrawable(R.drawable.ic_tab_table))
                 .setContent(new Intent(this, ScheduleTableActivity.class));
 
         TabHost.TabSpec chartTabSpec = getTabHost()
                 .newTabSpec("chart")
-                .setIndicator("Chart", getResources().getDrawable(R.drawable.ic_tab_chart))
+                .setIndicator(getResources().getString(R.string.tabChart), getResources().getDrawable(R.drawable.ic_tab_chart))
                 .setContent(new Intent(this, ScheduleChartActivity.class));
 
         getTabHost().addTab(tableTabSpec);

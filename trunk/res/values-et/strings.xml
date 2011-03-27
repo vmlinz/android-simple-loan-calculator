@@ -81,6 +81,8 @@
     <string name="no">Ei</string>
     <string name="recalculateLoanQuestion">Kas tahate laenu ülearvutada?</string>
 
+    <string name="tabSchedule">Maksegraafik</string>
+    <string name="tabChart">Charts</string>
 
     <string name="msgCalculated">Maks on arvutatud</string>
 </resources>

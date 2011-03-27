@@ -86,4 +86,7 @@
     <string name="no">No</string>
     <string name="recalculateLoanQuestion">Do you want recalculate loan?</string>
 
+    <string name="tabSchedule">Schedule</string>
+    <string name="tabChart">Charts</string>
+
 </resources>

@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -171,15 +172,21 @@ public class MainActivity extends Activity implements
         periodMonthPlusButton.setOnClickListener(this);
         periodMonthMinusButton.setOnClickListener(this);
 
-        MyTextWatcher myTextWatcher = new MyTextWatcher() {
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                checkFixPeriod(periodYearEdit);
-                checkFixPeriod(periodMonthEdit);
+        MyTextWatcher myYearTextWatcher = new MyTextWatcher() {
+            public void afterTextChanged(Editable editable) {
+                checkFixPeriod(periodYearEdit , editable);
                 invalidateLoan();
             }
         };
-        periodYearEdit.addTextChangedListener(myTextWatcher);
-        periodMonthEdit.addTextChangedListener(myTextWatcher);
+
+        MyTextWatcher myMonthTextWatcher = new MyTextWatcher() {
+            public void afterTextChanged(Editable editable) {
+                checkFixPeriod(periodMonthEdit, editable);
+                invalidateLoan();
+            }
+        };
+        periodYearEdit.addTextChangedListener(myYearTextWatcher);
+        periodMonthEdit.addTextChangedListener(myMonthTextWatcher);
     }
 
     private void invalidateLoan() {
@@ -217,17 +224,20 @@ public class MainActivity extends Activity implements
 
     }
 
-    private void checkFixPeriod(EditText editable) {
-        Integer max = editable == periodMonthEdit ? 12 : 50;
+    private void checkFixPeriod(EditText editText, Editable editable) {
+        Integer max = editText == periodMonthEdit ? 12 : 50;
         try {
-            Integer value = ViewUtil.getIntegerValue(periodYearEdit);
+            Integer value = ViewUtil.getIntegerValue(editText);
             if (value > max) {
-                editable.setText(value.toString());
+                editable.clear();
+                editable.append(max.toString());
             } else if (value < 0) {
-                editable.setText(ZERO);
+                editable.clear();
+                editable.append(ZERO);
             }
         } catch (EditTextNumberFormatException e) {
-            editable.setText(ZERO);
+            editable.clear();
+            editable.append(ZERO);
         }
     }
 

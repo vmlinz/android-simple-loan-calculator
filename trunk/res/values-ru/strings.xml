@@ -84,5 +84,8 @@
     <string name="no">Нет</string>
     <string name="recalculateLoanQuestion">Хотите пересчитать кредит?</string>
 
+    <string name="tabSchedule">Таблица выплат</string>
+    <string name="tabChart">Графики</string>
+
     <string name="msgCalculated">Платеж рассчитан</string>
 </resources>

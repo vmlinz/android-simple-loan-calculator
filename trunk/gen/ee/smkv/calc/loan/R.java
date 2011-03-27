@@ -146,6 +146,8 @@ public final class R {
         public static final int scheduleLoading=0x7f050031;
         public static final int scheduleTitle=0x7f050019;
         public static final int sendEmail=0x7f050035;
+        public static final int tabChart=0x7f05003e;
+        public static final int tabSchedule=0x7f05003d;
         public static final int type=0x7f05000f;
         public static final int typeHelpLbl=0x7f05001a;
         public static final int viewCompare=0x7f05002e;

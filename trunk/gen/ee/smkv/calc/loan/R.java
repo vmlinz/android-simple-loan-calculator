@@ -42,8 +42,8 @@ public final class R {
         public static final int addToCompareMenu=0x7f08001a;
         public static final int amountEdit=0x7f080007;
         public static final int calculateButton=0x7f080013;
-        public static final int cleanCompare=0x7f080002;
-        public static final int closeCompare=0x7f080001;
+        public static final int cleanCompareButton=0x7f080002;
+        public static final int closeCompareButton=0x7f080001;
         public static final int exportEmailMenu=0x7f08001c;
         public static final int exportExcelMenu=0x7f08001d;
         public static final int fixedPaymentEdit=0x7f080012;

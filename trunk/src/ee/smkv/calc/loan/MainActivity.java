@@ -15,8 +15,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import ee.smkv.calc.loan.calculators.AnnuityCalculator;
+import ee.smkv.calc.loan.calculators.Calculator;
 import ee.smkv.calc.loan.calculators.DifferentiatedCalculator;
-import ee.smkv.calc.loan.calculators.FixedCalculator;
+import ee.smkv.calc.loan.calculators.FixedPaymentCalculator;
 import ee.smkv.calc.loan.export.Exporter;
 import ee.smkv.calc.loan.model.Loan;
 import ee.smkv.calc.loan.utils.*;
@@ -32,7 +33,7 @@ public class MainActivity extends Activity implements
     public static StoreManager storeManager;
 
     public static final Calculator[] CALCULATORS = new Calculator[]{
-            new AnnuityCalculator(), new DifferentiatedCalculator(), new FixedCalculator()
+            new AnnuityCalculator(), new DifferentiatedCalculator(), new FixedPaymentCalculator()
     };
     private static final String ZERO = "0";
 
@@ -233,7 +234,7 @@ public class MainActivity extends Activity implements
     private void changeCalculatorType() {
         setTitle((String) loanTypeSpinner.getSelectedItem());
         calculator = CALCULATORS[loanTypeSpinner.getSelectedItemPosition()];
-        boolean isFixedPayment = calculator instanceof FixedCalculator;
+        boolean isFixedPayment = calculator instanceof FixedPaymentCalculator;
         fixedPaymentLabel.setVisibility(isFixedPayment ? View.VISIBLE : View.GONE);
         fixedPaymentEdit.setVisibility(isFixedPayment ? View.VISIBLE : View.GONE);
         periodLabel.setVisibility(isFixedPayment ? View.GONE : View.VISIBLE);
@@ -273,7 +274,7 @@ public class MainActivity extends Activity implements
     }
 
     private void loadLoanDataFromUI() {
-        boolean isFixedPayment = calculator instanceof FixedCalculator;
+        boolean isFixedPayment = calculator instanceof FixedPaymentCalculator;
         try {
             loan.setLoanType(loanTypeSpinner.getSelectedItemPosition());
             loan.setAmount(ViewUtil.getBigDecimalValue(amountEdit));
@@ -336,7 +337,7 @@ public class MainActivity extends Activity implements
         if (loan.getInterest() == null || loan.getInterest().compareTo(BigDecimal.ZERO) <= 0) {
             return false;
         }
-        boolean isFixedPayment = calculator instanceof FixedCalculator;
+        boolean isFixedPayment = calculator instanceof FixedPaymentCalculator;
         if (isFixedPayment && (loan.getFixedPayment() == null || loan.getFixedPayment().compareTo(BigDecimal.ZERO) <= 0)) {
             return false;
         }

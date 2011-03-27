@@ -1,4 +1,4 @@
-package ee.smkv.calc.loan;
+package ee.smkv.calc.loan.calculators;
 
 import ee.smkv.calc.loan.model.Loan;
 

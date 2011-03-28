@@ -88,4 +88,9 @@
     <string name="tabChart">Графики</string>
 
     <string name="msgCalculated">Платеж рассчитан</string>
+    <string name="more">еще...</string>
+    <string name="downPayment">Первый взнос</string>
+    <string name="disposableCommission">Одноразовая комиссия (комиссия банка)</string>
+    <string name="monthlyCommission">Ежемесячная комиссия (комиссия банка)</string>
+
 </resources>

@@ -61,14 +61,18 @@ public class MainActivity extends Activity implements
             resultPeriodTotalText,
             resultMonthlyPaymentText,
             resultAmountTotalText,
-            resultInterestTotalText;
+            resultInterestTotalText,
+            moreText;
 
     EditText
             amountEdit,
             interestEdit,
             fixedPaymentEdit,
             periodYearEdit,
-            periodMonthEdit;
+            periodMonthEdit,
+            downPaymentEdit,
+            disposableCommissionEdit,
+            monthlyCommissionEdit;
 
     Spinner loanTypeSpinner;
 
@@ -86,7 +90,8 @@ public class MainActivity extends Activity implements
 
     ViewGroup
             resultContainer,
-            periodLayout;
+            periodLayout,
+            advancedViewGroup;
 
     Loan loan = new Loan();
 
@@ -132,13 +137,17 @@ public class MainActivity extends Activity implements
         fixedPaymentEdit         = (EditText) findViewById(R.id.fixedPaymentEdit);
         periodYearEdit           = (EditText) findViewById(R.id.periodYearEdit);
         periodMonthEdit          = (EditText) findViewById(R.id.periodMonthEdit);
+        downPaymentEdit          = (EditText) findViewById(R.id.downPaymentEdit);
+        disposableCommissionEdit = (EditText) findViewById(R.id.disposableCommissionEdit);
+        monthlyCommissionEdit    = (EditText) findViewById(R.id.monthlyCommissionEdit);
 
         resultMonthlyPaymentText = (TextView) findViewById(R.id.resultMonthlyPaymentText);
         resultAmountTotalText    = (TextView) findViewById(R.id.resultAmountTotalText);
-        resultInterestTotalText = (TextView) findViewById(R.id.resultIterestTotalText);
+        resultInterestTotalText  = (TextView) findViewById(R.id.resultIterestTotalText);
         resultPeriodTotalText    = (TextView) findViewById(R.id.resultPeriodTotalText);
         fixedPaymentLabel        = (TextView) findViewById(R.id.fixedPaymentLabel);
         periodLabel              = (TextView) findViewById(R.id.periodLabel);
+        moreText                 = (TextView) findViewById(R.id.moreText);
 
         loanTypeSpinner          = (Spinner) findViewById(R.id.loanTypeSpinner);
 
@@ -154,6 +163,7 @@ public class MainActivity extends Activity implements
         resultContainer          = (ViewGroup) findViewById(R.id.resultContainer);
         periodLayout             = (ViewGroup) findViewById(R.id.periodLayout);
         mainScrollView           = (ScrollView) findViewById(R.id.mainScrollView);
+        advancedViewGroup        = (ViewGroup) findViewById(R.id.advancedViewGroup);
     }
 
     private void setIconsToButtons() {
@@ -183,6 +193,7 @@ public class MainActivity extends Activity implements
         periodYearMinusButton.setOnClickListener(this);
         periodMonthPlusButton.setOnClickListener(this);
         periodMonthMinusButton.setOnClickListener(this);
+        moreText.setOnClickListener(this);
 
         MyTextWatcher myYearTextWatcher = new MyTextWatcher() {
             public void onChange(Editable editable) {
@@ -225,6 +236,9 @@ public class MainActivity extends Activity implements
                 periodMonthEdit.setText(Integer.valueOf(ViewUtil.getIntegerValue(periodMonthEdit) + 1).toString());
             } else if (view == periodMonthMinusButton) {
                 periodMonthEdit.setText(Integer.valueOf(ViewUtil.getIntegerValue(periodMonthEdit) - 1).toString());
+            } else if (view == moreText) {
+                boolean isAdvancedShowed  = advancedViewGroup.getVisibility() == View.VISIBLE;
+                advancedViewGroup.setVisibility( isAdvancedShowed ? View.GONE : View.VISIBLE);
             }
         } catch (EditTextNumberFormatException e) {
             if (e.editText == periodYearEdit) {

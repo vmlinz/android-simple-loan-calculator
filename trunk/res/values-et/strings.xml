@@ -85,4 +85,9 @@
     <string name="tabChart">Charts</string>
 
     <string name="msgCalculated">Maks on arvutatud</string>
+
+    <string name="more">veel...</string>
+    <string name="downPayment">Esimene sissemaks</string>
+    <string name="disposableCommission">Ühekordne komisjon (panga teenustasu)</string>
+    <string name="monthlyCommission">Kuu komisjon (panga teenustasu)</string>
 </resources>

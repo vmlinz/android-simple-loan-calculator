@@ -89,4 +89,10 @@
     <string name="tabSchedule">Schedule</string>
     <string name="tabChart">Charts</string>
 
+    <string name="more">more...</string>
+    <string name="downPayment">Down payment</string>
+    <string name="disposableCommission">Disposable commission (bank fee)</string>
+    <string name="monthlyCommission">Monthly commission (bank fee)</string>
+
+
 </resources>

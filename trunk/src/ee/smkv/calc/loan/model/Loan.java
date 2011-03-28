@@ -10,6 +10,10 @@ import java.util.List;
  */
 public class Loan implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    private static final int PERCENT = 0;
+    private static final int VALUE = 1;
+
     private int loanType = 0;
     private BigDecimal amount = BigDecimal.ZERO;
     private BigDecimal interest = BigDecimal.ZERO;
@@ -21,19 +25,44 @@ public class Loan implements Serializable {
     private BigDecimal minimalPayment = BigDecimal.ZERO;
     private BigDecimal maximalPayment = BigDecimal.ZERO;
 
+    private BigDecimal downPayment;
+    private BigDecimal disposableCommission;
+    private BigDecimal monthlyCommission;
+
+    private int downPaymentType;
+    private int disposableCommissionType;
+    private int monthlyCommissionType;
+
+    private BigDecimal downPaymentPayment;
+    private BigDecimal disposableCommissionPayment;
+    private BigDecimal monthlyCommissionPayment;
+
+    private BigDecimal commissionsTotal = BigDecimal.ZERO;
+
     public void setPayments(List<Payment> payments) {
         this.payments = payments;
         totalInterests = BigDecimal.ZERO;
         minimalPayment = BigDecimal.ZERO;
         maximalPayment = BigDecimal.ZERO;
+        commissionsTotal = BigDecimal.ZERO;
+
+        if (disposableCommissionPayment != null) {
+            commissionsTotal = commissionsTotal.add(disposableCommissionPayment);
+        }
+
         for (Payment payment : payments) {
-           totalInterests = totalInterests.add(payment.getInterest());
-           if (minimalPayment.equals(BigDecimal.ZERO)){
-               minimalPayment = payment.getAmount();
-           }else{
-               minimalPayment = minimalPayment.min( payment.getAmount());
-           }
-           maximalPayment = maximalPayment.max(payment.getAmount());
+            totalInterests = totalInterests.add(payment.getInterest());
+            if (minimalPayment.equals(BigDecimal.ZERO)) {
+                minimalPayment = payment.getAmount();
+            } else {
+                minimalPayment = minimalPayment.min(payment.getAmount());
+            }
+            maximalPayment = maximalPayment.max(payment.getAmount());
+
+
+            if (payment.getCommission() != null) {
+                commissionsTotal = commissionsTotal.add(payment.getCommission());
+            }
         }
     }
 
@@ -98,54 +127,79 @@ public class Loan implements Serializable {
         this.loanType = loanType;
     }
 
-    @Override
-    public String toString() {
-        return "Loan{" +
-                "amount=" + amount +
-                ", interest=" + interest +
-                ", fixedPayment=" + fixedPayment +
-                ", period=" + period +
-                ", payments=" + payments +
-                '}';
+    public BigDecimal getMonthlyCommission() {
+        return monthlyCommission;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Loan loan = (Loan) o;
-
-        if (loanType != loan.loanType) {
-            return false;
-        }
-        if (amount != null ? !amount.equals(loan.amount) : loan.amount != null) {
-            return false;
-        }
-        if (fixedPayment != null ? !fixedPayment.equals(loan.fixedPayment) : loan.fixedPayment != null) {
-            return false;
-        }
-        if (interest != null ? !interest.equals(loan.interest) : loan.interest != null) {
-            return false;
-        }
-        if (period != null ? !period.equals(loan.period) : loan.period != null) {
-            return false;
-        }
-
-        return true;
+    public void setMonthlyCommission(BigDecimal monthlyCommission) {
+        this.monthlyCommission = monthlyCommission;
     }
 
-    @Override
-    public int hashCode() {
-        int result = loanType;
-        result = 31 * result + (amount != null ? amount.hashCode() : 0);
-        result = 31 * result + (interest != null ? interest.hashCode() : 0);
-        result = 31 * result + (fixedPayment != null ? fixedPayment.hashCode() : 0);
-        result = 31 * result + (period != null ? period.hashCode() : 0);
-        return result;
+    public BigDecimal getDisposableCommission() {
+        return disposableCommission;
+    }
+
+    public void setDisposableCommission(BigDecimal disposableCommission) {
+        this.disposableCommission = disposableCommission;
+    }
+
+    public BigDecimal getDownPayment() {
+        return downPayment;
+    }
+
+    public void setDownPayment(BigDecimal downPayment) {
+        this.downPayment = downPayment;
+    }
+
+    public int getDownPaymentType() {
+        return downPaymentType;
+    }
+
+    public void setDownPaymentType(int downPaymentType) {
+        this.downPaymentType = downPaymentType;
+    }
+
+    public int getDisposableCommissionType() {
+        return disposableCommissionType;
+    }
+
+    public void setDisposableCommissionType(int disposableCommissionType) {
+        this.disposableCommissionType = disposableCommissionType;
+    }
+
+    public int getMonthlyCommissionType() {
+        return monthlyCommissionType;
+    }
+
+    public void setMonthlyCommissionType(int monthlyCommissionType) {
+        this.monthlyCommissionType = monthlyCommissionType;
+    }
+
+    public BigDecimal getDownPaymentPayment() {
+        return downPaymentPayment;
+    }
+
+    public void setDownPaymentPayment(BigDecimal downPaymentPayment) {
+        this.downPaymentPayment = downPaymentPayment;
+    }
+
+    public BigDecimal getMonthlyCommissionPayment() {
+        return monthlyCommissionPayment;
+    }
+
+    public void setMonthlyCommissionPayment(BigDecimal monthlyCommissionPayment) {
+        this.monthlyCommissionPayment = monthlyCommissionPayment;
+    }
+
+    public BigDecimal getDisposableCommissionPayment() {
+        return disposableCommissionPayment;
+    }
+
+    public void setDisposableCommissionPayment(BigDecimal disposableCommissionPayment) {
+        this.disposableCommissionPayment = disposableCommissionPayment;
+    }
+
+    public BigDecimal getCommissionsTotal() {
+        return commissionsTotal;
     }
 }

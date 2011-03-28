@@ -13,6 +13,7 @@ public class Payment implements Serializable {
     private BigDecimal principal;
     private BigDecimal interest;
     private BigDecimal amount;
+    private BigDecimal commission;
 
     public Payment(Integer nr, BigDecimal balance, BigDecimal principal, BigDecimal interest, BigDecimal amount) {
         this.nr = nr;
@@ -65,14 +66,11 @@ public class Payment implements Serializable {
         this.amount = amount;
     }
 
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "nr=" + nr +
-                ", balance=" + balance +
-                ", principal=" + principal +
-                ", interest=" + interest +
-                ", amount=" + amount +
-                '}';
+    public BigDecimal getCommission() {
+        return commission;
+    }
+
+    public void setCommission(BigDecimal commission) {
+        this.commission = commission;
     }
 }

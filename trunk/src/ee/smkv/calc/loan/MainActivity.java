@@ -26,16 +26,6 @@ import ee.smkv.calc.loan.utils.*;
 import java.io.File;
 import java.math.BigDecimal;
 
-//TODO раздел дополнительно
-//TODO комиссия:
-// 1. одноразовая комиссия - фиксированная сумма
-// 2. одноразовая комиссия от суммы кредита
-// 3. ежемесячная комиссия от суммы кредита
-// 4. ежемесячная комиссия от остатка задолженности
-// 5. ежемесячная комиссия - фиксированная сумма
-
-//TODO первый взнос:
-
 
 public class MainActivity extends Activity implements
         AdapterView.OnItemSelectedListener,
@@ -86,6 +76,11 @@ public class MainActivity extends Activity implements
             periodMonthPlusButton,
             periodMonthMinusButton;
 
+    PercentValueSwitchButton
+            downPaymentButton,
+            disposableCommissionButton,
+            monthlyCommissionButton;
+
     ScrollView mainScrollView;
 
     ViewGroup
@@ -125,6 +120,8 @@ public class MainActivity extends Activity implements
             if (periodMonthEdit.getText() == null || periodMonthEdit.getText().length() == 0) {
                 periodMonthEdit.setText(ZERO);
             }
+
+             //TODO  load downPaymentEdit,  disposableCommissionEdit,  monthlyCommissionEdit ... etc
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -132,38 +129,42 @@ public class MainActivity extends Activity implements
 
 
     private void init() {
-        amountEdit               = (EditText) findViewById(R.id.amountEdit);
-        interestEdit             = (EditText) findViewById(R.id.interestEdit);
-        fixedPaymentEdit         = (EditText) findViewById(R.id.fixedPaymentEdit);
-        periodYearEdit           = (EditText) findViewById(R.id.periodYearEdit);
-        periodMonthEdit          = (EditText) findViewById(R.id.periodMonthEdit);
-        downPaymentEdit          = (EditText) findViewById(R.id.downPaymentEdit);
-        disposableCommissionEdit = (EditText) findViewById(R.id.disposableCommissionEdit);
-        monthlyCommissionEdit    = (EditText) findViewById(R.id.monthlyCommissionEdit);
+        amountEdit                  = (EditText) findViewById(R.id.amountEdit);
+        interestEdit                = (EditText) findViewById(R.id.interestEdit);
+        fixedPaymentEdit            = (EditText) findViewById(R.id.fixedPaymentEdit);
+        periodYearEdit              = (EditText) findViewById(R.id.periodYearEdit);
+        periodMonthEdit             = (EditText) findViewById(R.id.periodMonthEdit);
+        downPaymentEdit             = (EditText) findViewById(R.id.downPaymentEdit);
+        disposableCommissionEdit    = (EditText) findViewById(R.id.disposableCommissionEdit);
+        monthlyCommissionEdit       = (EditText) findViewById(R.id.monthlyCommissionEdit);
 
-        resultMonthlyPaymentText = (TextView) findViewById(R.id.resultMonthlyPaymentText);
-        resultAmountTotalText    = (TextView) findViewById(R.id.resultAmountTotalText);
-        resultInterestTotalText  = (TextView) findViewById(R.id.resultIterestTotalText);
-        resultPeriodTotalText    = (TextView) findViewById(R.id.resultPeriodTotalText);
-        fixedPaymentLabel        = (TextView) findViewById(R.id.fixedPaymentLabel);
-        periodLabel              = (TextView) findViewById(R.id.periodLabel);
-        moreText                 = (TextView) findViewById(R.id.moreText);
+        resultMonthlyPaymentText    = (TextView) findViewById(R.id.resultMonthlyPaymentText);
+        resultAmountTotalText       = (TextView) findViewById(R.id.resultAmountTotalText);
+        resultInterestTotalText     = (TextView) findViewById(R.id.resultIterestTotalText);
+        resultPeriodTotalText       = (TextView) findViewById(R.id.resultPeriodTotalText);
+        fixedPaymentLabel           = (TextView) findViewById(R.id.fixedPaymentLabel);
+        periodLabel                 = (TextView) findViewById(R.id.periodLabel);
+        moreText                    = (TextView) findViewById(R.id.moreText);
 
-        loanTypeSpinner          = (Spinner) findViewById(R.id.loanTypeSpinner);
+        loanTypeSpinner             = (Spinner) findViewById(R.id.loanTypeSpinner);
 
-        calculateButton          = (Button) findViewById(R.id.calculateButton);
-        periodYearPlusButton     = (Button) findViewById(R.id.periodYearPlusButton);
-        periodYearMinusButton    = (Button) findViewById(R.id.periodYearMinusButton);
-        periodMonthPlusButton    = (Button) findViewById(R.id.periodMonthPlusButton);
-        periodMonthMinusButton   = (Button) findViewById(R.id.periodMonthMinusButton);
-        scheduleButton           = (Button) findViewById(R.id.scheduleButton);
-        typeHelpButton           = (Button) findViewById(R.id.loanTypeHelpButton);
-        typeHelpCloseButton      = (Button) findViewById(R.id.typeHelpCloseButton);
+        calculateButton             = (Button) findViewById(R.id.calculateButton);
+        periodYearPlusButton        = (Button) findViewById(R.id.periodYearPlusButton);
+        periodYearMinusButton       = (Button) findViewById(R.id.periodYearMinusButton);
+        periodMonthPlusButton       = (Button) findViewById(R.id.periodMonthPlusButton);
+        periodMonthMinusButton      = (Button) findViewById(R.id.periodMonthMinusButton);
+        scheduleButton              = (Button) findViewById(R.id.scheduleButton);
+        typeHelpButton              = (Button) findViewById(R.id.loanTypeHelpButton);
+        typeHelpCloseButton         = (Button) findViewById(R.id.typeHelpCloseButton);
 
-        resultContainer          = (ViewGroup) findViewById(R.id.resultContainer);
-        periodLayout             = (ViewGroup) findViewById(R.id.periodLayout);
-        mainScrollView           = (ScrollView) findViewById(R.id.mainScrollView);
-        advancedViewGroup        = (ViewGroup) findViewById(R.id.advancedViewGroup);
+        resultContainer             = (ViewGroup) findViewById(R.id.resultContainer);
+        periodLayout                = (ViewGroup) findViewById(R.id.periodLayout);
+        mainScrollView              = (ScrollView) findViewById(R.id.mainScrollView);
+        advancedViewGroup           = (ViewGroup) findViewById(R.id.advancedViewGroup);
+
+        downPaymentButton           = (PercentValueSwitchButton) findViewById(R.id.downPaymentButton);
+        disposableCommissionButton  = (PercentValueSwitchButton) findViewById(R.id.disposableCommissionButton);
+        monthlyCommissionButton     = (PercentValueSwitchButton) findViewById(R.id.monthlyCommissionButton);
     }
 
     private void setIconsToButtons() {
@@ -179,6 +180,7 @@ public class MainActivity extends Activity implements
         try {
             storeManager.storeTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit);
             storeManager.storeSpinners(loanTypeSpinner);
+            //TODO  save downPaymentEdit,  disposableCommissionEdit,  monthlyCommissionEdit ... etc
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -309,14 +311,12 @@ public class MainActivity extends Activity implements
         }
     }
 
-    private void loadLoanDataFromUI() {
+    private boolean loadLoanDataFromUI() {
         boolean isFixedPayment = calculator instanceof FixedPaymentCalculator;
         try {
             loan.setLoanType(loanTypeSpinner.getSelectedItemPosition());
             loan.setAmount(ViewUtil.getBigDecimalValue(amountEdit));
             loan.setInterest(ViewUtil.getBigDecimalValue(interestEdit));
-
-
 
             if (isFixedPayment) {
                 loan.setFixedPayment(ViewUtil.getBigDecimalValue(fixedPaymentEdit));
@@ -326,15 +326,28 @@ public class MainActivity extends Activity implements
                 loan.setPeriod(years * 12 + months);
             }
 
-            if(loan.getAmount().compareTo(BigDecimal.ZERO) <= 0){
+            if (loan.getAmount().compareTo(BigDecimal.ZERO) <= 0) {
                 showError(R.string.errorAmount);
-            }else if(loan.getInterest().compareTo(BigDecimal.ZERO) <= 0){
+                return false;
+            } else if (loan.getInterest().compareTo(BigDecimal.ZERO) <= 0) {
                 showError(R.string.errorInterest);
-            }else if( !isFixedPayment && loan.getPeriod() <= 0){
+                return false;
+            } else if (!isFixedPayment && loan.getPeriod() <= 0) {
                 showError(R.string.errorPeriod);
-            }else if( isFixedPayment && loan.getFixedPayment().compareTo(BigDecimal.ZERO) <= 0){
+                return false;
+            } else if (isFixedPayment && loan.getFixedPayment().compareTo(BigDecimal.ZERO) <= 0) {
                 showError(R.string.errorFixedAmount);
+                return false;
             }
+
+            loan.setDownPaymentType(downPaymentButton.isPercent() ? Loan.PERCENT : Loan.VALUE);
+            loan.setDisposableCommissionType(disposableCommissionButton.isPercent() ? Loan.PERCENT : Loan.VALUE);
+            loan.setMonthlyCommissionType(monthlyCommissionButton.isPercent() ? Loan.PERCENT : Loan.VALUE);
+
+            loan.setDownPayment(ViewUtil.getBigDecimalValue(downPaymentEdit));
+            loan.setDisposableCommission(ViewUtil.getBigDecimalValue(disposableCommissionEdit));
+            loan.setMonthlyCommission(ViewUtil.getBigDecimalValue(monthlyCommissionEdit));
+
 
         } catch (EditTextNumberFormatException e) {
             if (e.editText == amountEdit) {
@@ -344,7 +357,11 @@ public class MainActivity extends Activity implements
             } else if (e.editText == fixedPaymentEdit) {
                 showError(R.string.errorFixedAmount);
             }
+
+            //TODO  check errors for downPaymentEdit,  disposableCommissionEdit,  monthlyCommissionEdit
+            return false;
         }
+        return true;
     }
 
     private void showCalculatedData() {

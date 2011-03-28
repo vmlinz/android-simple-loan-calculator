@@ -11,8 +11,8 @@ import java.util.List;
 public class Loan implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private static final int PERCENT = 0;
-    private static final int VALUE = 1;
+    public static final int PERCENT = 0;
+    public static final int VALUE = 1;
 
     private int loanType = 0;
     private BigDecimal amount = BigDecimal.ZERO;

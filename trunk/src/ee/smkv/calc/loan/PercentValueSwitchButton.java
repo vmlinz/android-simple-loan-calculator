@@ -41,4 +41,8 @@ public class PercentValueSwitchButton extends Button implements View.OnClickList
         percent = !percent;
         changeIcon();
     }
+
+    public boolean isPercent() {
+        return percent;
+    }
 }

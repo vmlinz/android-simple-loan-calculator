@@ -6,28 +6,12 @@ import ee.smkv.calc.loan.model.Payment;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class AnnuityCalculator implements Calculator {
+public class AnnuityCalculator extends AbstractCalculator {
 
 
     public void calculate(Loan loan) {
-        BigDecimal amount = loan.getAmount();
-
-        BigDecimal downPayment = loan.getDownPayment();
-        if (downPayment != null && downPayment.compareTo(BigDecimal.ZERO) != 0) {
-            if (loan.getDownPaymentType() == Loan.PERCENT) {
-                downPayment = downPayment.multiply(amount).divide(new BigDecimal("100"), SCALE, MODE);
-            }
-            loan.setDownPaymentPayment(downPayment);
-            amount = amount.subtract(downPayment);
-        }
-
-        BigDecimal disposableCommission = loan.getDisposableCommission();
-        if (disposableCommission != null && disposableCommission.compareTo(BigDecimal.ZERO) != 0) {
-            if (loan.getDisposableCommissionType() == Loan.PERCENT) {
-                disposableCommission = disposableCommission.multiply(amount).divide(new BigDecimal("100"), SCALE, MODE);
-            }
-            loan.setDisposableCommissionPayment(disposableCommission);
-        }
+        BigDecimal amount = calculateAmountWithDownPayment(loan);
+        addDisposableCommission(loan, amount);
 
         BigDecimal one = BigDecimal.ONE;
         BigDecimal interestMonthly = loan.getInterest().divide(new BigDecimal("1200"), SCALE, MODE);
@@ -47,22 +31,14 @@ public class AnnuityCalculator implements Calculator {
             p.setInterest(interest);
             p.setPrincipal(principal);
 
-            BigDecimal monthlyCommission = loan.getMonthlyCommission();
-            if (monthlyCommission != null && monthlyCommission.compareTo(BigDecimal.ZERO) != 0) {
-                if (loan.getMonthlyCommissionType() == Loan.PERCENT) {
-                    monthlyCommission = monthlyCommission.multiply(payment).divide(new BigDecimal("100"), SCALE, MODE);
-                }
-                p.setCommission(monthlyCommission);
-                p.setAmount(payment.add(monthlyCommission));
-            } else {
-                p.setAmount(payment);
-            }
+            addPaymentWithCommission(loan, p, payment);
 
             payments.add(p);
             balance = balance.subtract(principal);
         }
         loan.setPayments(payments);
     }
+
 
 
 }

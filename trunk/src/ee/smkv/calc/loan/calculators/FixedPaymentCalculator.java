@@ -6,17 +6,19 @@ import ee.smkv.calc.loan.model.Payment;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-public class FixedPaymentCalculator implements Calculator {
+public class FixedPaymentCalculator extends AbstractCalculator {
 
 
     public void calculate(Loan loan) {
+        BigDecimal currentAmount = calculateAmountWithDownPayment(loan);
+        addDisposableCommission(loan, currentAmount);
 
         BigDecimal interestMonthly = loan.getInterest().divide(new BigDecimal("1200"), SCALE, MODE);
         BigDecimal monthlyAmount = loan.getFixedPayment();
-        BigDecimal currentAmount = loan.getAmount();
+
         BigDecimal ma = monthlyAmount;
         BigDecimal interest = BigDecimal.ZERO;
-        BigDecimal amount   = BigDecimal.ZERO;
+        BigDecimal payment = BigDecimal.ZERO;
         int i = 0;
 
         if (loan.getAmount().divide(loan.getFixedPayment(), 0, MODE).intValue() > 1000) {
@@ -30,16 +32,17 @@ public class FixedPaymentCalculator implements Calculator {
             }
 
             interest = currentAmount.multiply(interestMonthly);
-            amount = interest.add(ma);
+            payment = interest.add(ma);
 
-            Payment payment = new Payment();
-            payment.setNr(i + 1);
-            payment.setInterest(interest);
-            payment.setPrincipal(ma);
-            payment.setBalance(currentAmount);
-            payment.setAmount(amount);
+            Payment p = new Payment();
+            p.setNr(i + 1);
+            p.setInterest(interest);
+            p.setPrincipal(ma);
+            p.setBalance(currentAmount);
 
-            payments.add(payment);
+            addPaymentWithCommission(loan, p, payment);
+
+            payments.add(p);
 
             currentAmount = currentAmount.subtract(ma);
             i++;

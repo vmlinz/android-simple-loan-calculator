@@ -5,6 +5,8 @@ import android.util.Log;
 import ee.smkv.calc.loan.chart.LoanChart;
 import ee.smkv.calc.loan.export.HtmlScheduleCreator;
 import ee.smkv.calc.loan.model.Loan;
+
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 
@@ -53,6 +55,11 @@ public class ScheduleChartActivity extends AbstractScheduleActivity {
         return Arrays.toString(points);
     }
 
+    public String getCommissionPointsData() {
+        float[] points = LoanChart.getPoints(getLoan(), LoanChart.COMMISSION);
+        return Arrays.toString(points);
+    }
+
     public String getPrincipalPointsData() {
         float[] points = LoanChart.getPoints(getLoan(), LoanChart.PRINCIPAL);
         return Arrays.toString(points);
@@ -77,28 +84,29 @@ public class ScheduleChartActivity extends AbstractScheduleActivity {
         return "[\"" +
                 getResources().getString(R.string.paymentPrincipal) + "\",\"" +
                 getResources().getString(R.string.paymentInterest) + "\",\"" +
-                getResources().getString(R.string.paymentTotal) + "\"]";
+                getResources().getString(R.string.paymentTotal) + "\",\"" +
+                getResources().getString(R.string.paymentCommission) + "\"]";
     }
 
     public String getPieTitle() {
-//        return getResources().getString(R.string.chartTitle);
         return "";
     }
 
-    public String getLoanAmountLabel() {
-        return getResources().getString(R.string.amount);
+    public String getPieLabels(){
+      return "[\"" +
+              getResources().getString(R.string.amount)  + "\",\""
+              + getResources().getString(R.string.paymentInterest) +
+              ( getLoan().getCommissionsTotal() != null && getLoan().getCommissionsTotal().compareTo(BigDecimal.ZERO)!=0?
+              "\",\"" +  getResources().getString(R.string.paymentCommission) : "")
+              + "\"]";
+
     }
 
-    public String getLoanInterestLabel() {
-        return getResources().getString(R.string.paymentInterest);
-    }
-
-    public float getLoanAmount() {
-        return getLoan().getAmount().floatValue();
-    }
-
-    public float getLoanInterest() {
-        return getLoan().getTotalInterests().floatValue();
+    public String getPieValues(){
+       return "[" + getLoan().getAmount().floatValue() + ","
+               + getLoan().getTotalInterests().floatValue() +
+               ( getLoan().getCommissionsTotal() != null && getLoan().getCommissionsTotal().compareTo(BigDecimal.ZERO)!=0?
+              "," +  getLoan().getCommissionsTotal().floatValue() : "") + "]";
     }
 
 }

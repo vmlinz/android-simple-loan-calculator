@@ -11,7 +11,7 @@ import java.io.InputStream;
  * @author samko
  */
 public class LoanChart {
-    public final static int INTERESTS = 0, PRINCIPAL = 1, PAYMENT = 2, LABEL = 3;
+    public final static int INTERESTS = 0, PRINCIPAL = 1, PAYMENT = 2, COMMISSION = 3, LABEL = 4;
 
     public static String getScript() {
         StringBuilder sb = new StringBuilder();
@@ -51,6 +51,8 @@ public class LoanChart {
                 return p.getPrincipal().floatValue();
             case PAYMENT:
                 return p.getAmount().floatValue();
+            case COMMISSION:
+                return p.getCommission().floatValue();
             case LABEL:
                 return p.getNr().floatValue();
         }

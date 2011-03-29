@@ -84,8 +84,9 @@ public class ScheduleChartActivity extends AbstractScheduleActivity {
         return "[\"" +
                 getResources().getString(R.string.paymentPrincipal) + "\",\"" +
                 getResources().getString(R.string.paymentInterest) + "\",\"" +
-                getResources().getString(R.string.paymentTotal) + "\",\"" +
-                getResources().getString(R.string.paymentCommission) + "\"]";
+                getResources().getString(R.string.paymentTotal) +
+                (hasCommission() ? "\",\"" + getResources().getString(R.string.paymentCommission): "")
+                + "\"]";
     }
 
     public String getPieTitle() {
@@ -93,20 +94,22 @@ public class ScheduleChartActivity extends AbstractScheduleActivity {
     }
 
     public String getPieLabels(){
-      return "[\"" +
+        return "[\"" +
               getResources().getString(R.string.amount)  + "\",\""
               + getResources().getString(R.string.paymentInterest) +
-              ( getLoan().getCommissionsTotal() != null && getLoan().getCommissionsTotal().compareTo(BigDecimal.ZERO)!=0?
-              "\",\"" +  getResources().getString(R.string.paymentCommission) : "")
+              (hasCommission() ? "\",\"" +  getResources().getString(R.string.paymentCommission) : "")
               + "\"]";
 
     }
 
+    private boolean hasCommission() {
+        return getLoan().getCommissionsTotal() != null && getLoan().getCommissionsTotal().compareTo(BigDecimal.ZERO) != 0;
+    }
+
     public String getPieValues(){
-       return "[" + getLoan().getAmount().floatValue() + ","
+        return "[" + getLoan().getAmount().floatValue() + ","
                + getLoan().getTotalInterests().floatValue() +
-               ( getLoan().getCommissionsTotal() != null && getLoan().getCommissionsTotal().compareTo(BigDecimal.ZERO)!=0?
-              "," +  getLoan().getCommissionsTotal().floatValue() : "") + "]";
+               ( hasCommission() ? "," +  getLoan().getCommissionsTotal().floatValue() : "") + "]";
     }
 
 }

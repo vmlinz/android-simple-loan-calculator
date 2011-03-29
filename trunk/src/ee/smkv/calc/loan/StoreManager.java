@@ -21,6 +21,20 @@ public class StoreManager {
         this.settings = settings;
     }
 
+    public boolean getBoolean(String name){
+        try {
+            return settings.getBoolean(name , false);
+        } catch (Exception e) {
+            Log.e(TAG, e.toString());
+        }
+        return false;
+    }
+
+    public void setBoolean(String name , boolean value){
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(name , value);
+    }
+
     public void loadTextViews(TextView... views) {
         for (TextView view : views) {
             loadTextView(view);
@@ -34,6 +48,7 @@ public class StoreManager {
             Log.e(TAG, e.toString());
         }
     }
+
 
     public void loadSpinners(Spinner... spinners) {
         for (Spinner spinner : spinners) {
@@ -57,6 +72,28 @@ public class StoreManager {
         SharedPreferences.Editor editor = settings.edit();
         for (TextView view : views) {
             editor.putString("" + view.getId(), view.getText().toString());
+        }
+        editor.commit();
+    }
+
+    public void loadPercentButtons(PercentValueSwitchButton... views) {
+        for (PercentValueSwitchButton view : views) {
+            loadPercentButton(view);
+        }
+    }
+
+    private void loadPercentButton(PercentValueSwitchButton view) {
+        try {
+            view.setPercent(settings.getBoolean("" + view.getId(), true));
+        } catch (Exception e) {
+            Log.e(TAG, e.toString());
+        }
+    }
+
+    public void storePercentButtons(PercentValueSwitchButton... views) {
+        SharedPreferences.Editor editor = settings.edit();
+        for (PercentValueSwitchButton view : views) {
+            editor.putBoolean("" + view.getId(), view.isPercent());
         }
         editor.commit();
     }

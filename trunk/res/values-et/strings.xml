@@ -33,6 +33,7 @@
     <string name="paymentBalance">Jääk</string>
     <string name="paymentPrincipal">Põhiosa</string>
     <string name="paymentInterest">Intress</string>
+    <string name="paymentCommission">Komisjon</string>
     <string name="paymentTotal">Makse</string>
     <string name="close">Sulge</string>
     <string name="scheduleTitle">Makse graafik</string>
@@ -86,8 +87,11 @@
 
     <string name="msgCalculated">Maks on arvutatud</string>
 
-    <string name="more">veel...</string>
+    <string name="expand"> Näita rohkem </string>
+    <string name="hide"> Peita </string>
     <string name="downPayment">Esimene sissemaks</string>
-    <string name="disposableCommission">Ühekordne komisjon (panga teenustasu)</string>
-    <string name="monthlyCommission">Kuu komisjon (panga teenustasu)</string>
+    <string name="donPaymentTotalLabel">Esimene sissemaks</string>
+    <string name="disposableCommission">Ühekordne komisjon</string>
+    <string name="monthlyCommission">Kuu komisjon</string>
+    <string name="commissionTotalLabel">Komisjonid kokku</string>
 </resources>

@@ -34,6 +34,7 @@
     <string name="paymentBalance">Balance</string>
     <string name="paymentPrincipal">Principal</string>
     <string name="paymentInterest">Interest</string>
+    <string name="paymentCommission">Commission</string>
     <string name="paymentTotal">Payment</string>
     <string name="close">Close</string>
     <string name="scheduleTitle">Loan schedule</string>
@@ -89,10 +90,13 @@
     <string name="tabSchedule">Schedule</string>
     <string name="tabChart">Charts</string>
 
-    <string name="more">more...</string>
+    <string name="expand"> Advanced </string>
+    <string name="hide"> Hide </string>
     <string name="downPayment">Down payment</string>
-    <string name="disposableCommission">Disposable commission (bank fee)</string>
-    <string name="monthlyCommission">Monthly commission (bank fee)</string>
+    <string name="donPaymentTotalLabel">Down payment</string>
+    <string name="disposableCommission">Disposable commission</string>
+    <string name="monthlyCommission">Monthly commission</string>
+    <string name="commissionTotalLabel">Commission total</string>
 
 
 </resources>

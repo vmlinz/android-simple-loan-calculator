@@ -45,4 +45,8 @@ public class PercentValueSwitchButton extends Button implements View.OnClickList
     public boolean isPercent() {
         return percent;
     }
+
+    public void setPercent(boolean percent) {
+        this.percent = percent;
+    }
 }

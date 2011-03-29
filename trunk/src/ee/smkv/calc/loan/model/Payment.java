@@ -8,12 +8,12 @@ import java.math.BigDecimal;
  */
 public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
-    private Integer nr;
-    private BigDecimal balance;
-    private BigDecimal principal;
-    private BigDecimal interest;
-    private BigDecimal amount;
-    private BigDecimal commission;
+    private Integer nr = 0;
+    private BigDecimal balance = BigDecimal.ZERO;
+    private BigDecimal principal = BigDecimal.ZERO;
+    private BigDecimal interest = BigDecimal.ZERO;
+    private BigDecimal amount = BigDecimal.ZERO;
+    private BigDecimal commission = BigDecimal.ZERO;
 
     public Payment(Integer nr, BigDecimal balance, BigDecimal principal, BigDecimal interest, BigDecimal amount) {
         this.nr = nr;

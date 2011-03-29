@@ -106,14 +106,14 @@
                     <View android:layout_width="fill_parent" android:layout_height="1dip"
                           android:background="#555555"></View>
                     <TextView android:id="@+id/moreText"
-                              android:text="@string/more" android:background="#555555" android:padding="3dp"
+                              android:text="@string/expand" android:background="#555555" android:padding="5dp"
                               android:layout_width="wrap_content" android:layout_height="wrap_content"
                               android:clickable="true"/>
                 </TableRow>
             </TableLayout>
             <LinearLayout android:id="@+id/advancedViewGroup" android:orientation="vertical"
                           android:layout_width="fill_parent" android:layout_height="wrap_content"
-                          android:padding="5dp" android:visibility="gone">
+                          android:visibility="gone">
 
 
                 <TableLayout android:layout_width="fill_parent"
@@ -202,6 +202,36 @@
 
                 <View android:layout_width="fill_parent" android:layout_height="1dip"
                       android:background="@color/border"/>
+
+                <LinearLayout android:id="@+id/resultDownPaymentGroupView" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content" android:visibility="gone" android:orientation="vertical">
+
+                    <TextView android:text="@string/donPaymentTotalLabel" android:textColor="@color/text"
+                              android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/resultDownPaymentTotalText"
+                              android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:textStyle="bold" android:text="0.0" android:gravity="right"
+                              android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
+                              android:textColor="@color/result"/>
+
+                    <View android:layout_width="fill_parent" android:layout_height="1dip"
+                          android:background="@color/border"/>
+                </LinearLayout>
+
+                <LinearLayout android:id="@+id/resultCommissionsGroupView" android:layout_width="fill_parent"
+                              android:layout_height="wrap_content" android:visibility="gone" android:orientation="vertical">
+
+                    <TextView android:text="@string/commissionTotalLabel" android:textColor="@color/text"
+                              android:layout_width="fill_parent" android:layout_height="wrap_content"/>
+                    <TextView android:id="@+id/resultCommissionsTotalText"
+                              android:layout_width="fill_parent" android:layout_height="wrap_content"
+                              android:textStyle="bold" android:text="0.0" android:gravity="right"
+                              android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
+                              android:textColor="@color/result"/>
+
+                    <View android:layout_width="fill_parent" android:layout_height="1dip"
+                          android:background="@color/border"/>
+                </LinearLayout>
 
                 <TextView android:text="@string/AmountTotalLbl" android:textColor="@color/text"
                           android:layout_width="fill_parent" android:layout_height="wrap_content"/>

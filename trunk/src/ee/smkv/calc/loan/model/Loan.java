@@ -67,7 +67,12 @@ public class Loan implements Serializable {
     }
 
     public BigDecimal getTotalAmount() {
-        return amount.add(totalInterests);
+        BigDecimal total = amount.add(totalInterests);
+
+        if( getCommissionsTotal() != null && getCommissionsTotal().compareTo(BigDecimal.ZERO) != 0){
+            total = total.add( getCommissionsTotal());
+        }
+        return total;
     }
 
     public BigDecimal getTotalInterests() {

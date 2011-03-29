@@ -42,6 +42,7 @@ public class MainActivity extends Activity implements
     private static final int LOAN_INVALID = 1;
     private static final int LOAN_VALID = 2;
     private static final int LOAN_CALCULATED = 3;
+    private static final String IS_ADVANCED_SHOWED = "IsAdvancedShowed";
 
     private int loanState = LOAN_INIT;
 
@@ -52,7 +53,9 @@ public class MainActivity extends Activity implements
             resultMonthlyPaymentText,
             resultAmountTotalText,
             resultInterestTotalText,
-            moreText;
+            moreText,
+            resultDownPaymentTotalText,
+            resultCommissionsTotalText;
 
     EditText
             amountEdit,
@@ -86,7 +89,9 @@ public class MainActivity extends Activity implements
     ViewGroup
             resultContainer,
             periodLayout,
-            advancedViewGroup;
+            advancedViewGroup,
+            resultDownPaymentGroupView,
+            resultCommissionsGroupView;
 
     Loan loan = new Loan();
 
@@ -112,8 +117,10 @@ public class MainActivity extends Activity implements
     private void loadSharedPreferences() {
         try {
             storeManager = new StoreManager(getSharedPreferences(SETTINGS_NAME, 0));
-            storeManager.loadTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit);
+            storeManager.loadTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit,
+                    downPaymentEdit , disposableCommissionEdit , monthlyCommissionEdit);
             storeManager.loadSpinners(loanTypeSpinner);
+            storeManager.loadPercentButtons( downPaymentButton , disposableCommissionButton , monthlyCommissionButton );
             if (periodYearEdit.getText() == null || periodYearEdit.getText().length() == 0) {
                 periodYearEdit.setText(ZERO);
             }
@@ -121,12 +128,29 @@ public class MainActivity extends Activity implements
                 periodMonthEdit.setText(ZERO);
             }
 
-             //TODO  load downPaymentEdit,  disposableCommissionEdit,  monthlyCommissionEdit ... etc
+            boolean isAdvancedShowed = storeManager.getBoolean(IS_ADVANCED_SHOWED);
+            advancedViewGroup.setVisibility( !isAdvancedShowed ? View.GONE : View.VISIBLE);
+            moreText.setText( !isAdvancedShowed ? R.string.expand : R.string.hide );
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        try {
+            storeManager.storeTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit,
+                    downPaymentEdit , disposableCommissionEdit , monthlyCommissionEdit);
+            storeManager.storeSpinners(loanTypeSpinner);
+            storeManager.storePercentButtons(downPaymentButton, disposableCommissionButton, monthlyCommissionButton);
+            storeManager.setBoolean(IS_ADVANCED_SHOWED , advancedViewGroup.getVisibility() == View.VISIBLE );
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private void init() {
         amountEdit                  = (EditText) findViewById(R.id.amountEdit);
@@ -145,6 +169,8 @@ public class MainActivity extends Activity implements
         fixedPaymentLabel           = (TextView) findViewById(R.id.fixedPaymentLabel);
         periodLabel                 = (TextView) findViewById(R.id.periodLabel);
         moreText                    = (TextView) findViewById(R.id.moreText);
+        resultDownPaymentTotalText  = (TextView) findViewById(R.id.resultDownPaymentTotalText);
+        resultCommissionsTotalText  = (TextView) findViewById(R.id.resultCommissionsTotalText);
 
         loanTypeSpinner             = (Spinner) findViewById(R.id.loanTypeSpinner);
 
@@ -157,33 +183,23 @@ public class MainActivity extends Activity implements
         typeHelpButton              = (Button) findViewById(R.id.loanTypeHelpButton);
         typeHelpCloseButton         = (Button) findViewById(R.id.typeHelpCloseButton);
 
+        mainScrollView              = (ScrollView) findViewById(R.id.mainScrollView);
         resultContainer             = (ViewGroup) findViewById(R.id.resultContainer);
         periodLayout                = (ViewGroup) findViewById(R.id.periodLayout);
-        mainScrollView              = (ScrollView) findViewById(R.id.mainScrollView);
         advancedViewGroup           = (ViewGroup) findViewById(R.id.advancedViewGroup);
+        resultDownPaymentGroupView  = (ViewGroup) findViewById(R.id.resultDownPaymentGroupView);
+        resultCommissionsGroupView  = (ViewGroup) findViewById(R.id.resultCommissionsGroupView);
 
         downPaymentButton           = (PercentValueSwitchButton) findViewById(R.id.downPaymentButton);
         disposableCommissionButton  = (PercentValueSwitchButton) findViewById(R.id.disposableCommissionButton);
         monthlyCommissionButton     = (PercentValueSwitchButton) findViewById(R.id.monthlyCommissionButton);
     }
 
+
     private void setIconsToButtons() {
         calculateButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.calculator), null, null, null);
         scheduleButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.table), null, null, null);
         typeHelpButton.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(R.drawable.help), null, null, null);
-    }
-
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        try {
-            storeManager.storeTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit);
-            storeManager.storeSpinners(loanTypeSpinner);
-            //TODO  save downPaymentEdit,  disposableCommissionEdit,  monthlyCommissionEdit ... etc
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private void registerEventListeners() {
@@ -241,6 +257,7 @@ public class MainActivity extends Activity implements
             } else if (view == moreText) {
                 boolean isAdvancedShowed  = advancedViewGroup.getVisibility() == View.VISIBLE;
                 advancedViewGroup.setVisibility( isAdvancedShowed ? View.GONE : View.VISIBLE);
+                moreText.setText( isAdvancedShowed ? R.string.expand : R.string.hide );
             }
         } catch (EditTextNumberFormatException e) {
             if (e.editText == periodYearEdit) {
@@ -375,7 +392,24 @@ public class MainActivity extends Activity implements
         }
         resultMonthlyPaymentText.setText(monthlyPayment);
 
-        resultAmountTotalText.setText(loan.getTotalAmount().setScale(2, Calculator.MODE).toPlainString());
+        BigDecimal totalAmount = loan.getTotalAmount();
+
+        if( loan.getDownPaymentPayment() != null && loan.getDownPaymentPayment().compareTo(BigDecimal.ZERO)!=0){
+            resultDownPaymentGroupView.setVisibility(View.VISIBLE);
+            resultDownPaymentTotalText.setText(loan.getDownPaymentPayment().setScale(2, Calculator.MODE).toPlainString());
+        }else{
+            resultDownPaymentGroupView.setVisibility(View.GONE);
+        }
+
+        if( loan.getCommissionsTotal() != null && loan.getCommissionsTotal().compareTo(BigDecimal.ZERO)!=0){
+            resultCommissionsGroupView.setVisibility(View.VISIBLE);
+            resultCommissionsTotalText.setText(loan.getCommissionsTotal().setScale(2, Calculator.MODE).toPlainString());
+        }else{
+            resultCommissionsGroupView.setVisibility(View.GONE);
+        }
+
+
+        resultAmountTotalText.setText(totalAmount.setScale(2, Calculator.MODE).toPlainString());
         resultInterestTotalText.setText(loan.getTotalInterests().setScale(2, Calculator.MODE).toPlainString());
         resultPeriodTotalText.setText(loan.getPeriod().toString());
 

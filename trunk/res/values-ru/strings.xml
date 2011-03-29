@@ -34,6 +34,7 @@
     <string name="paymentBalance">Баланс</string>
     <string name="paymentPrincipal">Выплата</string>
     <string name="paymentInterest">Проценты</string>
+    <string name="paymentCommission">Комиссия</string>
     <string name="paymentTotal">Платеж</string>
     <string name="close">Закрыть</string>
     <string name="scheduleTitle">График выплат</string>
@@ -88,9 +89,12 @@
     <string name="tabChart">Графики</string>
 
     <string name="msgCalculated">Платеж рассчитан</string>
-    <string name="more">еще...</string>
+    <string name="expand"> Развернуть </string>
+    <string name="hide"> Свернуть </string>
     <string name="downPayment">Первый взнос</string>
-    <string name="disposableCommission">Одноразовая комиссия (комиссия банка)</string>
-    <string name="monthlyCommission">Ежемесячная комиссия (комиссия банка)</string>
+    <string name="donPaymentTotalLabel">Первый взнос</string>
+    <string name="disposableCommission">Одноразовая комиссия</string>
+    <string name="monthlyCommission">Ежемесячная комиссия</string>
+    <string name="commissionTotalLabel">Комиссия всего</string>
 
 </resources>

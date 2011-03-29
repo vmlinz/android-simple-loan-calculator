@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class PercentValueSwitchButton extends Button implements View.OnClickListener {
-
+    private OnClickListener listener;
     private boolean percent = true;
 
     public PercentValueSwitchButton(Context context) {
@@ -27,19 +27,27 @@ public class PercentValueSwitchButton extends Button implements View.OnClickList
 
     private void init() {
         changeIcon();
-        this.setOnClickListener(this);
+        super.setOnClickListener(this);
+    }
+
+    @Override
+    public void setOnClickListener(OnClickListener l) {
+        listener = l;
     }
 
     private void changeIcon() {
         Drawable icon = percent ?
                 getResources().getDrawable(R.drawable.percent) :
-                getResources().getDrawable(R.drawable.dolar);
+                getResources().getDrawable(R.drawable.value);
         setCompoundDrawablesWithIntrinsicBounds(icon, null, null, null);
     }
 
     public void onClick(View view) {
         percent = !percent;
         changeIcon();
+        if(listener!=null){
+            listener.onClick(this);
+        }
     }
 
     public boolean isPercent() {

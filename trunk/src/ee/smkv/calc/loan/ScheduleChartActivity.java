@@ -56,8 +56,12 @@ public class ScheduleChartActivity extends AbstractScheduleActivity {
     }
 
     public String getCommissionPointsData() {
-        float[] points = LoanChart.getPoints(getLoan(), LoanChart.COMMISSION);
-        return Arrays.toString(points);
+        if (hasCommission()) {
+            float[] points = LoanChart.getPoints(getLoan(), LoanChart.COMMISSION);
+            return Arrays.toString(points);
+        } else {
+            return "[0]";
+        }
     }
 
     public String getPrincipalPointsData() {

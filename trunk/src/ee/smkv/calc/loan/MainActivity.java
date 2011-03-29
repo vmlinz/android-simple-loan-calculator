@@ -228,6 +228,19 @@ public class MainActivity extends Activity implements
         };
         periodYearEdit.addTextChangedListener(myYearTextWatcher);
         periodMonthEdit.addTextChangedListener(myMonthTextWatcher);
+
+        MyTextWatcher invalidateWatcher = new MyTextWatcher() {
+            public void onChange(Editable editable) {
+                invalidateLoan();
+            }
+        };
+        downPaymentEdit.addTextChangedListener(invalidateWatcher);
+        disposableCommissionEdit.addTextChangedListener(invalidateWatcher);
+        monthlyCommissionEdit.addTextChangedListener(invalidateWatcher);
+
+        downPaymentButton.setOnClickListener(this);
+        disposableCommissionButton.setOnClickListener(this);
+        monthlyCommissionButton.setOnClickListener(this);
     }
 
     private void invalidateLoan() {
@@ -258,6 +271,8 @@ public class MainActivity extends Activity implements
                 boolean isAdvancedShowed  = advancedViewGroup.getVisibility() == View.VISIBLE;
                 advancedViewGroup.setVisibility( isAdvancedShowed ? View.GONE : View.VISIBLE);
                 moreText.setText( isAdvancedShowed ? R.string.expand : R.string.hide );
+            }else if( view == downPaymentButton || view == disposableCommissionButton || view == monthlyCommissionButton){
+                invalidateLoan();
             }
         } catch (EditTextNumberFormatException e) {
             if (e.editText == periodYearEdit) {

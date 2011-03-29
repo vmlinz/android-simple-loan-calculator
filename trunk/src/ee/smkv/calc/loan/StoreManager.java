@@ -33,6 +33,7 @@ public class StoreManager {
     public void setBoolean(String name , boolean value){
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(name , value);
+        editor.commit();
     }
 
     public void loadTextViews(TextView... views) {

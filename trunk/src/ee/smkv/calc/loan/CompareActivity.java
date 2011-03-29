@@ -63,12 +63,14 @@ public class CompareActivity extends Activity implements View.OnClickListener {
         appendField(cell, getResources().getStringArray(R.array.shorttypes)[loan.getLoanType()]);
 
         if (loan.getAmount() != null)   appendField(cell, loan.getAmount().setScale(2, mode).toPlainString());
+        if (loan.getDownPaymentPayment() != null)   appendField(cell, loan.getDownPaymentPayment().setScale(2, mode).toPlainString());
         if (loan.getInterest() != null) appendField(cell, loan.getInterest().setScale(2, mode).toPlainString());
         if (loan.getPeriod() != null)   appendField(cell, loan.getPeriod().toString());
 
         appendField(cell, loan.getMaxMonthlyPayment().setScale(2, mode).toPlainString());
         appendField(cell, loan.getMinMonthlyPayment().setScale(2, mode).toPlainString());
         appendField(cell, loan.getTotalInterests().setScale(2, mode).toPlainString());
+        appendField(cell, loan.getCommissionsTotal().setScale(2, mode).toPlainString());
         appendField(cell, loan.getTotalAmount().setScale(2, mode).toPlainString());
 
 

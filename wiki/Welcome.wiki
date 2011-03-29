@@ -14,11 +14,11 @@ x = ( amount * monthlyInterest ) / ( 1 - ( 1 / (( 1 + monthlyInterest ) ^ months
 =Android Market=
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=market://search?q=pname:ee.smkv.calc.loan&image=qr.png
 
-<a href="market://search?q=pname:ee.smkv.calc.loan">Android Market download link</a>
+market://search?q=pname:ee.smkv.calc.loan  - Android Market download link
 
 =Screencast=
 
-<wiki:video url="http://www.youtube.com/watch?v=Cd90pU-AQb0"/>
+<wiki:video url="http://www.youtube.com/watch?v=1_o9EWhXNaA"/>
 
 =Screenshots=
 v3.0.0

@@ -36,6 +36,7 @@ public class MainActivity extends Activity implements
     public static final Calculator[] CALCULATORS = new Calculator[]{
             new AnnuityCalculator(), new DifferentiatedCalculator(), new FixedPaymentCalculator()
     };
+
     private static final String ZERO = "0";
 
     private static final int LOAN_INIT = 0;
@@ -401,9 +402,9 @@ public class MainActivity extends Activity implements
         BigDecimal max = loan.getMaxMonthlyPayment();
         BigDecimal min = loan.getMinMonthlyPayment();
         if (max.compareTo(min) == 0) {
-            monthlyPayment = max.setScale(2, Calculator.MODE).toPlainString();
+            monthlyPayment = ViewUtil.formatBigDecimal(max);
         } else {
-            monthlyPayment = max.setScale(2, Calculator.MODE).toPlainString() + " - " + min.setScale(2, Calculator.MODE).toPlainString();
+            monthlyPayment = ViewUtil.formatBigDecimal(max) + " - " + ViewUtil.formatBigDecimal(min);
         }
         resultMonthlyPaymentText.setText(monthlyPayment);
 
@@ -411,21 +412,21 @@ public class MainActivity extends Activity implements
 
         if( loan.getDownPaymentPayment() != null && loan.getDownPaymentPayment().compareTo(BigDecimal.ZERO)!=0){
             resultDownPaymentGroupView.setVisibility(View.VISIBLE);
-            resultDownPaymentTotalText.setText(loan.getDownPaymentPayment().setScale(2, Calculator.MODE).toPlainString());
+            resultDownPaymentTotalText.setText(ViewUtil.formatBigDecimal(loan.getDownPaymentPayment()));
         }else{
             resultDownPaymentGroupView.setVisibility(View.GONE);
         }
 
         if( loan.getCommissionsTotal() != null && loan.getCommissionsTotal().compareTo(BigDecimal.ZERO)!=0){
             resultCommissionsGroupView.setVisibility(View.VISIBLE);
-            resultCommissionsTotalText.setText(loan.getCommissionsTotal().setScale(2, Calculator.MODE).toPlainString());
+            resultCommissionsTotalText.setText(ViewUtil.formatBigDecimal(loan.getCommissionsTotal()));
         }else{
             resultCommissionsGroupView.setVisibility(View.GONE);
         }
 
 
-        resultAmountTotalText.setText(totalAmount.setScale(2, Calculator.MODE).toPlainString());
-        resultInterestTotalText.setText(loan.getTotalInterests().setScale(2, Calculator.MODE).toPlainString());
+        resultAmountTotalText.setText(ViewUtil.formatBigDecimal(totalAmount));
+        resultInterestTotalText.setText(ViewUtil.formatBigDecimal(loan.getTotalInterests()));
         resultPeriodTotalText.setText(loan.getPeriod().toString());
 
         Toast.makeText(this, getResources().getText(R.string.msgCalculated), Toast.LENGTH_SHORT).show();

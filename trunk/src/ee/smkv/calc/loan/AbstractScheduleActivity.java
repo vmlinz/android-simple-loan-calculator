@@ -78,7 +78,7 @@ public abstract class AbstractScheduleActivity extends Activity{
     }
 
     protected String getStyle() {
-        return "body{background:#FFF;color:#111; font-family:Verdana;}table{border-spacing:0px 0px; font-size:11px; width:100%}td{padding:5px; }th{padding:5px;text-align:left;}.odd{background:#EEE;}.odd th{border-bottom: 1px solid black;} .odd td{border-bottom: 1px solid #CCC;}.even{background:#FAFAFA;}#closeBtn{width:100%;padding:10px} table{border-radius: 5px;}";
+        return "body{background:#FFF;color:#111; font-family:Verdana;}table{border-spacing:0px 0px; font-size:11px; width:100%}td{padding:5px;white-space:nowrap; }th{padding:5px;text-align:left;white-space:nowrap;}.odd{background:#EEE;}.odd th{border-bottom: 1px solid black;} .odd td{border-bottom: 1px solid #CCC;}.even{background:#FAFAFA;}#closeBtn{width:100%;padding:10px} table{border-radius: 5px;}";
     }
 
     protected abstract Activity getActivity();

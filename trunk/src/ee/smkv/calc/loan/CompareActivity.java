@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -12,7 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import ee.smkv.calc.loan.calculators.Calculator;
 import ee.smkv.calc.loan.model.Loan;
+import ee.smkv.calc.loan.utils.ViewUtil;
 
+import java.math.RoundingMode;
 import java.util.Collections;
 import java.util.Set;
 
@@ -21,7 +24,7 @@ import java.util.Set;
  */
 public class CompareActivity extends Activity implements View.OnClickListener {
     Set<Loan> loans = Collections.emptySet();
-    int mode = Calculator.MODE;
+    RoundingMode mode = Calculator.MODE;
     private LinearLayout container;
     private Button closeButton;
     private Button cleanButton;
@@ -62,16 +65,16 @@ public class CompareActivity extends Activity implements View.OnClickListener {
         cell.setOrientation(LinearLayout.VERTICAL);
         appendField(cell, getResources().getStringArray(R.array.shorttypes)[loan.getLoanType()]);
 
-        if (loan.getAmount() != null)   appendField(cell, loan.getAmount().setScale(2, mode).toPlainString());
-        if (loan.getDownPaymentPayment() != null)   appendField(cell, loan.getDownPaymentPayment().setScale(2, mode).toPlainString());
-        if (loan.getInterest() != null) appendField(cell, loan.getInterest().setScale(2, mode).toPlainString());
+        if (loan.getAmount() != null)   appendField(cell, ViewUtil.formatBigDecimal(loan.getAmount()));
+        if (loan.getDownPaymentPayment() != null)   appendField(cell, ViewUtil.formatBigDecimal(loan.getDownPaymentPayment()));
+        if (loan.getInterest() != null) appendField(cell, ViewUtil.formatBigDecimal(loan.getInterest()));
         if (loan.getPeriod() != null)   appendField(cell, loan.getPeriod().toString());
 
-        appendField(cell, loan.getMaxMonthlyPayment().setScale(2, mode).toPlainString());
-        appendField(cell, loan.getMinMonthlyPayment().setScale(2, mode).toPlainString());
-        appendField(cell, loan.getTotalInterests().setScale(2, mode).toPlainString());
-        appendField(cell, loan.getCommissionsTotal().setScale(2, mode).toPlainString());
-        appendField(cell, loan.getTotalAmount().setScale(2, mode).toPlainString());
+        appendField(cell, ViewUtil.formatBigDecimal(loan.getMaxMonthlyPayment()));
+        appendField(cell, ViewUtil.formatBigDecimal(loan.getMinMonthlyPayment()));
+        appendField(cell, ViewUtil.formatBigDecimal(loan.getTotalInterests()));
+        appendField(cell, ViewUtil.formatBigDecimal(loan.getCommissionsTotal()));
+        appendField(cell, ViewUtil.formatBigDecimal(loan.getTotalAmount()));
 
 
         LinearLayout buttonBar = new LinearLayout(cell.getContext());
@@ -106,6 +109,7 @@ public class CompareActivity extends Activity implements View.OnClickListener {
         TextView item = new TextView(cell.getContext());
         item.setText(t);
         item.setPadding(5, 5, 5, 5);
+        item.setGravity(Gravity.RIGHT);
         cell.addView(item);
         View line = new View(cell.getContext());
         line.setBackgroundColor(getResources().getColor(R.color.border));

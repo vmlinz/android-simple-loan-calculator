@@ -185,7 +185,7 @@
                           android:textColor="@color/text"/>
                 <TextView android:id="@+id/resultMonthlyPaymentText"
                           android:layout_width="fill_parent" android:layout_height="wrap_content"
-                          android:textStyle="bold" android:text="0.0" android:gravity="right"
+                          android:textStyle="bold" android:text="0.00" android:gravity="right"
                           android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
                           android:textColor="@color/result"/>
 
@@ -196,7 +196,7 @@
                           android:layout_width="fill_parent" android:layout_height="wrap_content"/>
                 <TextView android:id="@+id/resultIterestTotalText"
                           android:layout_width="fill_parent" android:layout_height="wrap_content"
-                          android:textStyle="bold" android:text="0.0" android:gravity="right"
+                          android:textStyle="bold" android:text="0.00" android:gravity="right"
                           android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
                           android:textColor="@color/result"/>
 
@@ -210,7 +210,7 @@
                               android:layout_width="fill_parent" android:layout_height="wrap_content"/>
                     <TextView android:id="@+id/resultDownPaymentTotalText"
                               android:layout_width="fill_parent" android:layout_height="wrap_content"
-                              android:textStyle="bold" android:text="0.0" android:gravity="right"
+                              android:textStyle="bold" android:text="0.00" android:gravity="right"
                               android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
                               android:textColor="@color/result"/>
 
@@ -225,7 +225,7 @@
                               android:layout_width="fill_parent" android:layout_height="wrap_content"/>
                     <TextView android:id="@+id/resultCommissionsTotalText"
                               android:layout_width="fill_parent" android:layout_height="wrap_content"
-                              android:textStyle="bold" android:text="0.0" android:gravity="right"
+                              android:textStyle="bold" android:text="0.00" android:gravity="right"
                               android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
                               android:textColor="@color/result"/>
 
@@ -237,7 +237,7 @@
                           android:layout_width="fill_parent" android:layout_height="wrap_content"/>
                 <TextView android:id="@+id/resultAmountTotalText"
                           android:layout_width="fill_parent" android:layout_height="wrap_content"
-                          android:textStyle="bold" android:text="0.0" android:gravity="right"
+                          android:textStyle="bold" android:text="0.00" android:gravity="right"
                           android:textSize="20px" android:paddingRight="10px" android:paddingBottom="5px"
                           android:textColor="@color/result"/>
 
@@ -253,7 +253,7 @@
                           android:textColor="@color/result"/>
             </LinearLayout>
             <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
-                      android:textColor="@color/result" android:textSize="12sp" android:text="by Andrei Samkov"
+                      android:textColor="@color/result" android:textSize="12sp" android:text="Developed by Andrei Samkov ©2011"
                       android:gravity="right" android:paddingRight="7dp"/>
         </LinearLayout>
     </ScrollView>

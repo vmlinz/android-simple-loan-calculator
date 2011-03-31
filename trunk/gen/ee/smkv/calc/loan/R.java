@@ -137,8 +137,11 @@ public final class R {
         public static final int donPaymentTotalLabel=0x7f050043;
         public static final int downPayment=0x7f050042;
         public static final int errorAmount=0x7f05000b;
+        public static final int errorDispCommission=0x7f050048;
+        public static final int errorDownPayment=0x7f050047;
         public static final int errorFixedAmount=0x7f05000c;
         public static final int errorInterest=0x7f05000d;
+        public static final int errorMonthlyCommission=0x7f050049;
         public static final int errorPeriod=0x7f05000e;
         public static final int expand=0x7f050040;
         public static final int exportToEmail=0x7f050030;

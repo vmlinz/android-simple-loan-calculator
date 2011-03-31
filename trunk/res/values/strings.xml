@@ -11,10 +11,10 @@
     <string name="MonthlyAmountLbl">Monthly payment</string>
     <string name="IterestTotalLbl">Total interest</string>
     <string name="AmountTotalLbl">Total amount (amount + interest)</string>
-    <string name="errorAmount">Please enter correct amount</string>
-    <string name="errorFixedAmount">Please enter correct fixed monthly amount</string>
-    <string name="errorInterest">Please enter correct annual interest rate</string>
-    <string name="errorPeriod">Please enter correct period</string>
+    <string name="errorAmount">Please enter a correct amount</string>
+    <string name="errorFixedAmount">Please enter a correct fixed monthly amount</string>
+    <string name="errorInterest">Please enter a correct annual interest rate</string>
+    <string name="errorPeriod">Please enter a correct period</string>
     <string name="type">Type of loan</string>
     <string-array name="types">
         <item>Annuity payments</item>
@@ -97,6 +97,10 @@
     <string name="disposableCommission">Disposable commission</string>
     <string name="monthlyCommission">Monthly commission</string>
     <string name="commissionTotalLabel">Commission total</string>
+
+    <string name="errorDownPayment">Please enter a valid down payment or leave empty</string>
+    <string name="errorDispCommission">Please enter a valid disposable commission or leave empty</string>
+    <string name="errorMonthlyCommission">Please enter a valid monthly commission or leave empty</string>
 
 
 </resources>

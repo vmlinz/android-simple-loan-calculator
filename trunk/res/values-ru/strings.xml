@@ -97,4 +97,8 @@
     <string name="monthlyCommission">Ежемесячная комиссия</string>
     <string name="commissionTotalLabel">Комиссия всего</string>
 
+    <string name="errorDownPayment">Пожалуйста введите корректный первый взнос или оставте поле пустым</string>
+    <string name="errorDispCommission">Пожалуйста введите корректную одноразовою комиссию или оставте поле пустым</string>
+    <string name="errorMonthlyCommission">Пожалуйста введите корректную месячную комиссию или оставте поле пустым</string>
+
 </resources>

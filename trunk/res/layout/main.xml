@@ -141,7 +141,7 @@
                                   android:text="" android:numeric="decimal" android:inputType="phone"/>
                         <ee.smkv.calc.loan.PercentValueSwitchButton android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text=""
+                                                                    android:text="" percent="false"
                                                                     android:id="@+id/disposableCommissionButton"/>
                     </TableRow>
                     <TableRow android:layout_width="fill_parent">
@@ -154,7 +154,7 @@
                                   android:text="" android:numeric="decimal" android:inputType="phone"/>
                         <ee.smkv.calc.loan.PercentValueSwitchButton android:layout_width="wrap_content"
                                                                     android:layout_height="wrap_content"
-                                                                    android:text=""
+                                                                    android:text=""  percent="false"
                                                                     android:id="@+id/monthlyCommissionButton"/>
                     </TableRow>
                 </TableLayout>

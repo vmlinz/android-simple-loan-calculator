@@ -389,9 +389,15 @@ public class MainActivity extends Activity implements
                 showError(R.string.errorInterest);
             } else if (e.editText == fixedPaymentEdit) {
                 showError(R.string.errorFixedAmount);
+            } else if (e.editText == downPaymentEdit) {
+                showError(R.string.errorDownPayment);
+            } else if (e.editText == disposableCommissionEdit) {
+                showError(R.string.errorDispCommission);
+            } else if (e.editText == monthlyCommissionEdit) {
+                showError(R.string.errorMonthlyCommission);
             }
-
-            //TODO  check errors for downPaymentEdit,  disposableCommissionEdit,  monthlyCommissionEdit
+            e.editText.requestFocus();
+            mainScrollView.scrollTo(e.editText.getLeft(), e.editText.getTop());
             return false;
         }
         return true;

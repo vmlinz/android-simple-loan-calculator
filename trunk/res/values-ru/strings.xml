@@ -5,11 +5,11 @@
     <string name="amount">Сумма кредита</string>
     <string name="amountHint">Сумма &gt; 0</string>
     <string name="interest">Годовая процентная ставка, %</string>
-    <string name="interestHint">роцентная ставка &gt; 0</string>
+    <string name="interestHint">Процентная ставка &gt; 0</string>
     <string name="period">Период</string>
     <string name="calc">Рассчитать</string>
     <string name="MonthlyAmountLbl">Месячный платеж</string>
-    <string name="IterestTotalLbl">Величина переплаты</string>
+    <string name="IterestTotalLbl">Величина переплаты процентов</string>
     <string name="AmountTotalLbl">Полная сумма</string>
     <string name="errorAmount">Введите корректную сумму кредита</string>
     <string name="errorFixedAmount">Введите корректную сумму фиксированного ежемесячного платежа</string>
@@ -96,6 +96,12 @@
     <string name="disposableCommission">Одноразовая комиссия</string>
     <string name="monthlyCommission">Ежемесячная комиссия</string>
     <string name="commissionTotalLabel">Комиссия всего</string>
+
+    <string name="downPaymentHint">(сумма или процент от суммы кркдита)</string>
+    <string name="disposableCommissionHint">(сумма или процент от суммы кркдита)</string>
+    <string name="monthlyCommissionHint">(сумма или процент от суммы платежа)</string>
+
+    <string name="valuePercentHint">сумма или процент</string>
 
     <string name="errorDownPayment">Пожалуйста введите корректный первый взнос или оставте поле пустым</string>
     <string name="errorDispCommission">Пожалуйста введите корректную одноразовою комиссию или оставте поле пустым</string>

@@ -134,14 +134,16 @@ public final class R {
         public static final int diffHelp=0x7f050020;
         public static final int diffTitleHelp=0x7f05001d;
         public static final int disposableCommission=0x7f050044;
+        public static final int disposableCommissionHint=0x7f050048;
         public static final int donPaymentTotalLabel=0x7f050043;
         public static final int downPayment=0x7f050042;
+        public static final int downPaymentHint=0x7f050047;
         public static final int errorAmount=0x7f05000b;
-        public static final int errorDispCommission=0x7f050048;
-        public static final int errorDownPayment=0x7f050047;
+        public static final int errorDispCommission=0x7f05004c;
+        public static final int errorDownPayment=0x7f05004b;
         public static final int errorFixedAmount=0x7f05000c;
         public static final int errorInterest=0x7f05000d;
-        public static final int errorMonthlyCommission=0x7f050049;
+        public static final int errorMonthlyCommission=0x7f05004d;
         public static final int errorPeriod=0x7f05000e;
         public static final int expand=0x7f050040;
         public static final int exportToEmail=0x7f050030;
@@ -154,6 +156,7 @@ public final class R {
         public static final int interest=0x7f050004;
         public static final int interestHint=0x7f050005;
         public static final int monthlyCommission=0x7f050045;
+        public static final int monthlyCommissionHint=0x7f050049;
         public static final int msgCalculated=0x7f05003a;
         public static final int no=0x7f05003c;
         public static final int paymentBalance=0x7f050014;
@@ -175,6 +178,7 @@ public final class R {
         public static final int tabSchedule=0x7f05003e;
         public static final int type=0x7f05000f;
         public static final int typeHelpLbl=0x7f05001b;
+        public static final int valuePercentHint=0x7f05004a;
         public static final int viewCompare=0x7f05002f;
         public static final int yes=0x7f05003b;
     }

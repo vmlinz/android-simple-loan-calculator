@@ -98,6 +98,12 @@
     <string name="monthlyCommission">Monthly commission</string>
     <string name="commissionTotalLabel">Commission total</string>
 
+    <string name="downPaymentHint">(value or percent from loan amount)</string>
+    <string name="disposableCommissionHint">(value or percent from loan amount)</string>
+    <string name="monthlyCommissionHint">(value or percent from monthly payment)</string>
+
+    <string name="valuePercentHint">value or percent</string>
+
     <string name="errorDownPayment">Please enter a valid down payment or leave empty</string>
     <string name="errorDispCommission">Please enter a valid disposable commission or leave empty</string>
     <string name="errorMonthlyCommission">Please enter a valid monthly commission or leave empty</string>

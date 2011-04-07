@@ -54,7 +54,7 @@
     <string name="chartTitle">График выплат по кредиту (БЕТА)</string>
     <string name="chartButton">График</string>
 
-    <string name="compareTitle">Сравнение кредмтов</string>
+    <string name="compareTitle">Сравнение кредитов</string>
     <string name="compareCleanLbl">Очистить</string>
     <string name="compareTypeLbl">Тип:</string>
     <string name="compareAmountLbl">Сумма:</string>
@@ -97,8 +97,8 @@
     <string name="monthlyCommission">Ежемесячная комиссия</string>
     <string name="commissionTotalLabel">Комиссия всего</string>
 
-    <string name="downPaymentHint">(сумма или процент от суммы кркдита)</string>
-    <string name="disposableCommissionHint">(сумма или процент от суммы кркдита)</string>
+    <string name="downPaymentHint">(сумма или процент от суммы кредита)</string>
+    <string name="disposableCommissionHint">(сумма или процент от суммы кредита)</string>
     <string name="monthlyCommissionHint">(сумма или процент от суммы платежа)</string>
 
     <string name="valuePercentHint">сумма или процент</string>

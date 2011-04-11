@@ -16,7 +16,7 @@ import java.io.OutputStreamWriter;
  * @author samko
  */
 public class Exporter {
-  public static void sendToEmail(Loan loan, Resources resources, Activity activity) {
+  public static void sendToEmail(Loan loan, Resources resources, Activity activity) throws FileCreationException {
         final Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/text");
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, resources.getString(R.string.app_name) + " - export");
@@ -28,7 +28,7 @@ public class Exporter {
         activity.startActivity(Intent.createChooser(emailIntent, resources.getString(R.string.sendEmail)));
     }
 
-    public static File exportToCSVFile(Loan loan, Resources resources) {
+    public static File exportToCSVFile(Loan loan, Resources resources) throws FileCreationException {
         try {
             CSVScheduleCreator csvScheduleCreator = new CSVScheduleCreator(loan, resources);
             csvScheduleCreator.assertDataWriteEnabled();
@@ -42,8 +42,7 @@ public class Exporter {
             writer.close();
             return file;
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+           throw new FileCreationException("Creating file on SD card fail: " +e.getMessage() , e);
         }
     }
 }

@@ -9,7 +9,9 @@ import android.view.MenuItem;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import ee.smkv.calc.loan.export.Exporter;
+import ee.smkv.calc.loan.export.FileCreationException;
 import ee.smkv.calc.loan.model.Loan;
+import ee.smkv.calc.loan.utils.ErrorDialogWrapper;
 import ee.smkv.calc.loan.utils.OkDialogWrapper;
 
 import java.io.File;
@@ -64,15 +66,19 @@ public abstract class AbstractScheduleActivity extends Activity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.exportEmailMenu:
-                Exporter.sendToEmail(getLoan(), getResources(), getActivity());
-                break;
-            case R.id.exportExcelMenu:
-                File file = Exporter.exportToCSVFile(getLoan(), getResources());
-                new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
-                break;
+        try {
+            switch (item.getItemId()) {
+                case R.id.exportEmailMenu:
+                    Exporter.sendToEmail(getLoan(), getResources(), getActivity());
+                    break;
+                case R.id.exportExcelMenu:
+                    File file = Exporter.exportToCSVFile(getLoan(), getResources());
+                    new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
+                    break;
 
+            }
+        } catch (FileCreationException e) {
+            new ErrorDialogWrapper(this, e.getMessage()).show();
         }
         return super.onOptionsItemSelected(item);
     }

@@ -20,6 +20,7 @@ import ee.smkv.calc.loan.calculators.Calculator;
 import ee.smkv.calc.loan.calculators.DifferentiatedCalculator;
 import ee.smkv.calc.loan.calculators.FixedPaymentCalculator;
 import ee.smkv.calc.loan.export.Exporter;
+import ee.smkv.calc.loan.export.FileCreationException;
 import ee.smkv.calc.loan.model.Loan;
 import ee.smkv.calc.loan.utils.*;
 
@@ -505,24 +506,28 @@ public class MainActivity extends Activity implements
     }
 
     private boolean menuAction(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.addToCompareMenu:
-                if (loan != null) {
-                    storeManager.addLoan(loan);
+        try {
+            switch (item.getItemId()) {
+                case R.id.addToCompareMenu:
+                    if (loan != null) {
+                        storeManager.addLoan(loan);
+                        openCompareActivity();
+                    }
+                    break;
+                case R.id.viewCompareMenu:
                     openCompareActivity();
-                }
-                break;
-            case R.id.viewCompareMenu:
-                openCompareActivity();
-                break;
-            case R.id.exportEmailMenu:
-                Exporter.sendToEmail(loan, getResources(), this);
-                break;
-            case R.id.exportExcelMenu:
-                File file = Exporter.exportToCSVFile(loan, getResources());
-                new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
-                break;
+                    break;
+                case R.id.exportEmailMenu:
+                    Exporter.sendToEmail(loan, getResources(), this);
+                    break;
+                case R.id.exportExcelMenu:
+                    File file = Exporter.exportToCSVFile(loan, getResources());
+                    new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
+                    break;
 
+            }
+        } catch (FileCreationException e) {
+            new ErrorDialogWrapper(this, e.getMessage()).show();
         }
         return true;
     }

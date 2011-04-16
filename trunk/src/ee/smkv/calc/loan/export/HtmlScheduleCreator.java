@@ -11,22 +11,15 @@ import java.math.BigDecimal;
 /**
  * @author samko
  */
-public class HtmlScheduleCreator {
-
-    int mode = BigDecimal.ROUND_HALF_EVEN;
-    Resources resources;
-    Loan loan;
-    boolean hasDownPayment;
-    boolean hasMonthlyCommission;
-    boolean hasDisposableCommission;
+public class HtmlScheduleCreator extends AbstractScheduleCreator {
 
 
     public HtmlScheduleCreator(Loan loan, Resources resources) {
-        this.loan = loan;
-        this.resources = resources;
-        hasDownPayment = loan.getDownPaymentPayment() != null && loan.getDownPaymentPayment().compareTo(BigDecimal.ZERO) != 0;
-        hasMonthlyCommission = loan.getMonthlyCommissionPayment() != null && loan.getMonthlyCommissionPayment().compareTo(BigDecimal.ZERO) != 0;
-        hasDisposableCommission = loan.getDisposableCommissionPayment() != null && loan.getDisposableCommissionPayment().compareTo(BigDecimal.ZERO) != 0;
+        super(resources, loan);
+    }
+
+    protected String encode(int id) {
+        return resources.getString(id);
     }
 
     public void appendHtmlScheduleTable(StringBuilder sb) {
@@ -140,9 +133,5 @@ public class HtmlScheduleCreator {
                 .append("\">Loan amotrization</canvas>");
     }
 
-
-    private String encode(int id) {
-        return resources.getString(id);
-    }
 
 }

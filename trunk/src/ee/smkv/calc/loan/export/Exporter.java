@@ -25,6 +25,7 @@ public class Exporter {
         new TextScheduleCreator(loan, resources).appendTextScheduleTable(sb);
         emailIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
         emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(exportToCSVFile(loan,resources)));
+        emailIntent.setType("text/csv");
         activity.startActivity(Intent.createChooser(emailIntent, resources.getString(R.string.sendEmail)));
     }
 

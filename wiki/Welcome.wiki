@@ -21,6 +21,11 @@ market://search?q=pname:ee.smkv.calc.loan  - Android Market download link
 <wiki:video url="http://www.youtube.com/watch?v=1_o9EWhXNaA"/>
 
 =Screenshots=
+v3.1.4 Galaxy Tab 7" landscape mode
+https://lh3.googleusercontent.com/-t2wFggxR_mU/TmC9zdhZL9I/AAAAAAAANZI/1EPgqUq0On4/s912/Selection_006.png
+https://lh6.googleusercontent.com/-FZJK6Q5fo3I/TmC91vLXQaI/AAAAAAAANZI/zqkopLcH7FI/s912/Selection_008.png
+https://lh5.googleusercontent.com/-RUMuhnA-b04/TmC92hpm56I/AAAAAAAANZI/jekpKpKXWbM/s912/Selection_007.png
+
 v3.0.0
 
 https://lh3.googleusercontent.com/_PgaocR0FRPA/TY8yAx0M9dI/AAAAAAAAMtk/_qwAmwEJ0Gs/mainscreen.png

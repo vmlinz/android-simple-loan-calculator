@@ -14,7 +14,14 @@ x = ( amount * monthlyInterest ) / ( 1 - ( 1 / (( 1 + monthlyInterest ) ^ months
 =Android Market=
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=market://search?q=pname:ee.smkv.calc.loan&image=qr.png
 
-market://search?q=pname:ee.smkv.calc.loan  - Android Market download link
+    # [market://search?q=pname:ee.smkv.calc.loan Android Market]      
+    # [https://market.android.com/details?id=ee.smkv.calc.loan Android Market Web]
+
+*Please make a donation with PayPal*
+
+[https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=55FUYZRV3Y27L&lc=EE&item_name=Simple%20Loan%20Calculator%20%2d%20Donate&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif]
+
+----
 
 =Screencast=
 

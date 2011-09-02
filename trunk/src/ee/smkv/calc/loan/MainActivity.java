@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.*;
@@ -482,7 +483,7 @@ public class MainActivity extends Activity implements
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
 
-        if (loanState < LOAN_CALCULATED && item.getItemId() != R.id.viewCompareMenu) {
+        if (loanState < LOAN_CALCULATED && item.getItemId() != R.id.viewCompareMenu && item.getItemId() != R.id.donateMenu) {
             DialogInterface.OnClickListener onClickListener = new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     if (i == DialogInterface.BUTTON_POSITIVE) {
@@ -523,6 +524,11 @@ public class MainActivity extends Activity implements
                 case R.id.exportExcelMenu:
                     File file = Exporter.exportToCSVFile(loan, getResources());
                     new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
+                    break;
+
+                case R.id.donateMenu:
+                    Uri uri = Uri.parse( "http://samkov.pri.ee/simple-loan-calculator/" );
+			              startActivity( new Intent( Intent.ACTION_VIEW, uri ) );
                     break;
 
             }

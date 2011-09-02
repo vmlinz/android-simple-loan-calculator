@@ -94,4 +94,6 @@
     <string name="disposableCommission">Ühekordne komisjon</string>
     <string name="monthlyCommission">Kuu komisjon</string>
     <string name="commissionTotalLabel">Komisjonid kokku</string>
+
+    <string name="donate">Tee annetus</string>
 </resources>

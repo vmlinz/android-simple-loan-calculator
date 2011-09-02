@@ -41,10 +41,11 @@ public final class R {
         public static final int icon=0x7f020010;
         public static final int mail=0x7f020011;
         public static final int minus=0x7f020012;
-        public static final int percent=0x7f020013;
-        public static final int table=0x7f020014;
-        public static final int tablesmall=0x7f020015;
-        public static final int value=0x7f020016;
+        public static final int paypal=0x7f020013;
+        public static final int percent=0x7f020014;
+        public static final int table=0x7f020015;
+        public static final int tablesmall=0x7f020016;
+        public static final int value=0x7f020017;
     }
     public static final class id {
         public static final int addToCompareMenu=0x7f080026;
@@ -55,6 +56,7 @@ public final class R {
         public static final int closeCompareButton=0x7f080001;
         public static final int disposableCommissionButton=0x7f080018;
         public static final int disposableCommissionEdit=0x7f080017;
+        public static final int donateMenu=0x7f08002a;
         public static final int downPaymentButton=0x7f080016;
         public static final int downPaymentEdit=0x7f080015;
         public static final int exportEmailMenu=0x7f080028;
@@ -136,6 +138,7 @@ public final class R {
         public static final int disposableCommission=0x7f050044;
         public static final int disposableCommissionHint=0x7f050048;
         public static final int donPaymentTotalLabel=0x7f050043;
+        public static final int donate=0x7f05004e;
         public static final int downPayment=0x7f050042;
         public static final int downPaymentHint=0x7f050047;
         public static final int errorAmount=0x7f05000b;

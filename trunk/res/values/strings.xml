@@ -108,5 +108,6 @@
     <string name="errorDispCommission">Please enter a valid disposable commission or leave empty</string>
     <string name="errorMonthlyCommission">Please enter a valid monthly commission or leave empty</string>
 
+    <string name="donate">Make a donation</string>
 
 </resources>

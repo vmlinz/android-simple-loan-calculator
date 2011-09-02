@@ -2,6 +2,8 @@ package ee.smkv.calc.loan;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -63,12 +65,11 @@ public abstract class AbstractScheduleActivity extends Activity {
 
   @Override
   protected void onStop() {
-    if (generatingTask != null){
+    if (generatingTask != null) {
       generatingTask.cancel(true);
     }
     super.onStop();
   }
-
 
 
   @Override
@@ -87,6 +88,10 @@ public abstract class AbstractScheduleActivity extends Activity {
         case R.id.exportExcelMenu:
           File file = Exporter.exportToCSVFile(getLoan(), getResources());
           new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
+          break;
+        case R.id.donateMenu:
+          Uri uri = Uri.parse("http://samkov.pri.ee/simple-loan-calculator/");
+          startActivity(new Intent(Intent.ACTION_VIEW, uri));
           break;
 
       }

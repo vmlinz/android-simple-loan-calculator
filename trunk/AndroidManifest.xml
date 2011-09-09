@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="ee.smkv.calc.loan"
-          android:versionCode="30" android:versionName="3.1.4" android:installLocation="auto">
+          android:versionCode="31" android:versionName="3.1.4" android:installLocation="auto">
     <application android:icon="@drawable/icon" android:label="@string/app_name" android:description="@string/app_desc"
                  android:debuggable="false">
         <activity android:name=".MainActivity" android:label="@string/app_name" >

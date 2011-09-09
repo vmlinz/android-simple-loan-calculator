@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -542,4 +544,22 @@ public class MainActivity extends Activity implements
     private void openCompareActivity() {
         startActivity(new Intent(MainActivity.this, CompareActivity.class));
     }
+
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+
+    if(newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO){
+       setInputType(InputType.TYPE_NULL, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit);
+    }else{
+      setInputType(InputType.TYPE_CLASS_PHONE, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit);
+    }
+
+    super.onConfigurationChanged(newConfig);
+  }
+
+  private void setInputType(int type , EditText ... fields){
+    for (EditText field: fields){
+      field.setInputType(type);
+    }
+  }
 }

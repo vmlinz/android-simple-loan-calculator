@@ -36,7 +36,7 @@
             <EditText android:id="@+id/amountEdit"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
-                      android:numeric="decimal"
+                      
                       android:inputType="phone"
                       android:hint="@string/amountHint"/>
 
@@ -48,7 +48,7 @@
             <EditText android:id="@+id/interestEdit"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
-                      android:numeric="decimal"
+                      
                       android:inputType="phone"
                       android:hint="@string/interestHint"/>
 
@@ -89,7 +89,7 @@
                                           android:text="0"
                                           android:layout_width="30sp"
                                           android:layout_height="wrap_content"
-                                          android:numeric="decimal"
+                                          
                                           android:inputType="phone"
                                           android:layout_marginRight="-3dip"
                                           android:layout_marginLeft="-3dip"/>
@@ -125,7 +125,7 @@
                                           android:text="0"
                                           android:layout_width="30sp"
                                           android:layout_height="wrap_content"
-                                          android:numeric="decimal"
+                                          
                                           android:inputType="phone"
                                           android:layout_marginRight="-3dip"
                                           android:layout_marginLeft="-3dip"/>
@@ -152,7 +152,7 @@
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:visibility="gone"
-                      android:numeric="decimal"
+                      
                       android:inputType="phone"/>
             <View android:layout_width="fill_parent" android:layout_height="7dip"/>
 
@@ -197,7 +197,7 @@
                         <EditText android:id="@+id/downPaymentEdit"
                                   android:layout_width="fill_parent"
                                   android:layout_height="wrap_content"
-                                  android:numeric="decimal"
+                                  
                                   android:inputType="phone"
                                   android:hint="@string/valuePercentHint"/>
                         <ee.smkv.calc.loan.PercentValueSwitchButton android:layout_width="wrap_content"
@@ -222,7 +222,7 @@
                         <EditText android:id="@+id/disposableCommissionEdit"
                                   android:layout_width="fill_parent"
                                   android:layout_height="wrap_content"
-                                  android:numeric="decimal"
+                                  
                                   android:inputType="phone"
                                   android:hint="@string/valuePercentHint"/>
                         <ee.smkv.calc.loan.PercentValueSwitchButton android:layout_width="wrap_content"
@@ -247,7 +247,7 @@
                         <EditText android:id="@+id/monthlyCommissionEdit"
                                   android:layout_width="fill_parent"
                                   android:layout_height="wrap_content"
-                                  android:numeric="decimal"
+                                  
                                   android:inputType="phone"
                                   android:hint="@string/valuePercentHint"/>
                         <ee.smkv.calc.loan.PercentValueSwitchButton android:layout_width="wrap_content"

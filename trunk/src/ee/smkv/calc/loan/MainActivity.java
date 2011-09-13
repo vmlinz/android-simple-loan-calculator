@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.view.*;
 import android.widget.AdapterView;
@@ -47,9 +48,10 @@ public class MainActivity extends Activity implements
     private static final int LOAN_INVALID = 1;
     private static final int LOAN_VALID = 2;
     private static final int LOAN_CALCULATED = 3;
-    private static final String IS_ADVANCED_SHOWED = "IsAdvancedShowed";
+  private static final String IS_ADVANCED_SHOWED = "IsAdvancedShowed";
+  protected static final PriceInputFilter PRICE_INPUT_FILTER = new PriceInputFilter();
 
-    private int loanState = LOAN_INIT;
+  private int loanState = LOAN_INIT;
 
     TextView
             fixedPaymentLabel,
@@ -111,6 +113,7 @@ public class MainActivity extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         init();
+        setPriceInputFilter(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit);
         setIconsToButtons();
         loadSharedPreferences();
         registerEventListeners();
@@ -239,6 +242,9 @@ public class MainActivity extends Activity implements
                 invalidateLoan();
             }
         };
+
+
+
         downPaymentEdit.addTextChangedListener(invalidateWatcher);
         disposableCommissionEdit.addTextChangedListener(invalidateWatcher);
         monthlyCommissionEdit.addTextChangedListener(invalidateWatcher);
@@ -246,6 +252,16 @@ public class MainActivity extends Activity implements
         downPaymentButton.setOnClickListener(this);
         disposableCommissionButton.setOnClickListener(this);
         monthlyCommissionButton.setOnClickListener(this);
+
+
+
+    }
+
+    private void setPriceInputFilter(EditText ... fields){
+      for (EditText field: fields){
+        field.setFilters(new InputFilter[]{PRICE_INPUT_FILTER});
+      }
+
     }
 
     private void invalidateLoan() {
@@ -550,8 +566,10 @@ public class MainActivity extends Activity implements
 
     if(newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO){
        setInputType(InputType.TYPE_NULL, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit);
+       Toast.makeText(this, "HARD-keyboard", Toast.LENGTH_SHORT).show();
     }else{
       setInputType(InputType.TYPE_CLASS_PHONE, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit);
+      Toast.makeText(this, "SOFT-keyboard", Toast.LENGTH_SHORT).show();
     }
 
     super.onConfigurationChanged(newConfig);

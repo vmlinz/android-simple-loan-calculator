@@ -566,10 +566,10 @@ public class MainActivity extends Activity implements
 
     if(newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO){
        setInputType(InputType.TYPE_NULL, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit);
-       Toast.makeText(this, "HARD-keyboard", Toast.LENGTH_SHORT).show();
+       //Toast.makeText(this, "HARD-keyboard", Toast.LENGTH_SHORT).show();
     }else{
       setInputType(InputType.TYPE_CLASS_PHONE, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit);
-      Toast.makeText(this, "SOFT-keyboard", Toast.LENGTH_SHORT).show();
+      //Toast.makeText(this, "SOFT-keyboard", Toast.LENGTH_SHORT).show();
     }
 
     super.onConfigurationChanged(newConfig);

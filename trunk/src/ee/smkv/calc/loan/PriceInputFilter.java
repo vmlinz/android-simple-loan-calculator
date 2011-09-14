@@ -1,5 +1,6 @@
 package ee.smkv.calc.loan;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormatSymbols;
 import java.util.regex.Pattern;
 
@@ -12,16 +13,18 @@ public class PriceInputFilter implements InputFilter {
   public CharSequence filter(CharSequence source, int start, int end,  Spanned dest, int dstart, int dend) {
 
     String checkedText = dest.toString() + source.toString();
-    String pattern = getPattern();
 
-    if (!Pattern.matches(pattern, checkedText)) {
+
+    try {
+
+      new BigDecimal(checkedText.replace(',','.'));
+    }
+    catch (Exception e) {
       return "";
     }
+
 
     return null;
   }
 
-  private String getPattern() {
-    return "[0-9]+([.,]{1}||[.,]{1}[0-9]{})?";
-  }
 }

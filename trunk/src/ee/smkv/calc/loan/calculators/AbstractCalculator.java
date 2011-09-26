@@ -54,7 +54,9 @@ public abstract class AbstractCalculator implements Calculator {
    */
   protected BigDecimal calculateEffectiveInterestRate(Loan loan) {
 
-    double loanAmount = loan.getAmount().doubleValue() - (loan.getDownPaymentPayment()!= null ? loan.getDownPaymentPayment().doubleValue() : 0);
+    double loanAmount = loan.getAmount().doubleValue() -
+                        (loan.getDownPaymentPayment()!= null ? loan.getDownPaymentPayment().doubleValue() : 0)-
+                        (loan.getDisposableCommissionPayment()!= null ? loan.getDisposableCommissionPayment().doubleValue() : 0);
     double realInterest = loan.getInterest().doubleValue() / 100;
 
     double[] payments = new double[loan.getPeriod()];

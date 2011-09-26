@@ -62,7 +62,8 @@ public class MainActivity extends Activity implements
             resultInterestTotalText,
             moreText,
             resultDownPaymentTotalText,
-            resultCommissionsTotalText;
+            resultCommissionsTotalText,
+            effectiveInterestText;
 
     EditText
             amountEdit,
@@ -179,6 +180,7 @@ public class MainActivity extends Activity implements
         moreText                    = (TextView) findViewById(R.id.moreText);
         resultDownPaymentTotalText  = (TextView) findViewById(R.id.resultDownPaymentTotalText);
         resultCommissionsTotalText  = (TextView) findViewById(R.id.resultCommissionsTotalText);
+        effectiveInterestText       = (TextView) findViewById(R.id.effectiveInterestText);
 
         loanTypeSpinner             = (Spinner) findViewById(R.id.loanTypeSpinner);
 
@@ -360,6 +362,7 @@ public class MainActivity extends Activity implements
                 loanState = LOAN_CALCULATED;
             }
         } catch (Exception e) {
+            e.printStackTrace();
             showError(e);
         }
     }
@@ -454,6 +457,8 @@ public class MainActivity extends Activity implements
         resultAmountTotalText.setText(ViewUtil.formatBigDecimal(totalAmount));
         resultInterestTotalText.setText(ViewUtil.formatBigDecimal(loan.getTotalInterests()));
         resultPeriodTotalText.setText(loan.getPeriod().toString());
+
+        effectiveInterestText.setText(ViewUtil.formatBigDecimal(loan.getEffectiveInterestRate())  + "%");
 
         Toast.makeText(this, getResources().getText(R.string.msgCalculated), Toast.LENGTH_SHORT).show();
     }

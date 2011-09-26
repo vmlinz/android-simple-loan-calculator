@@ -39,6 +39,8 @@ public class Loan implements Serializable {
 
     private BigDecimal commissionsTotal = BigDecimal.ZERO;
 
+    private BigDecimal effectiveInterestRate = BigDecimal.ZERO;
+
     public void setPayments(List<Payment> payments) {
         this.payments = payments;
         totalInterests = BigDecimal.ZERO;
@@ -206,5 +208,13 @@ public class Loan implements Serializable {
 
     public BigDecimal getCommissionsTotal() {
         return commissionsTotal;
+    }
+
+    public BigDecimal getEffectiveInterestRate() {
+      return effectiveInterestRate;
+    }
+
+    public void setEffectiveInterestRate(BigDecimal effectiveInterestRate) {
+      this.effectiveInterestRate = effectiveInterestRate;
     }
 }

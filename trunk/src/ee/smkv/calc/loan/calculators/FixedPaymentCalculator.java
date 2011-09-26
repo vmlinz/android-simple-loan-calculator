@@ -50,6 +50,7 @@ public class FixedPaymentCalculator extends AbstractCalculator {
 
         loan.setPeriod(i);
         loan.setPayments(payments);
+        loan.setEffectiveInterestRate(calculateEffectiveInterestRate(loan));
     }
 
 }

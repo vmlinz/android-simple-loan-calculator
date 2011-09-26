@@ -48,7 +48,7 @@ public final class R {
         public static final int value=0x7f020017;
     }
     public static final class id {
-        public static final int addToCompareMenu=0x7f080026;
+        public static final int addToCompareMenu=0x7f080027;
         public static final int advancedViewGroup=0x7f080014;
         public static final int amountEdit=0x7f080007;
         public static final int calculateButton=0x7f08001b;
@@ -56,11 +56,12 @@ public final class R {
         public static final int closeCompareButton=0x7f080001;
         public static final int disposableCommissionButton=0x7f080018;
         public static final int disposableCommissionEdit=0x7f080017;
-        public static final int donateMenu=0x7f08002a;
+        public static final int donateMenu=0x7f08002b;
         public static final int downPaymentButton=0x7f080016;
         public static final int downPaymentEdit=0x7f080015;
-        public static final int exportEmailMenu=0x7f080028;
-        public static final int exportExcelMenu=0x7f080029;
+        public static final int effectiveInterestText=0x7f080024;
+        public static final int exportEmailMenu=0x7f080029;
+        public static final int exportExcelMenu=0x7f08002a;
         public static final int fixedPaymentEdit=0x7f080012;
         public static final int fixedPaymentLabel=0x7f080011;
         public static final int interestEdit=0x7f080008;
@@ -79,7 +80,7 @@ public final class R {
         public static final int periodYearEdit=0x7f08000c;
         public static final int periodYearMinusButton=0x7f08000b;
         public static final int periodYearPlusButton=0x7f08000d;
-        public static final int resultAmountTotalText=0x7f080024;
+        public static final int resultAmountTotalText=0x7f080025;
         public static final int resultCommissionsGroupView=0x7f080022;
         public static final int resultCommissionsTotalText=0x7f080023;
         public static final int resultContainer=0x7f08001d;
@@ -87,10 +88,10 @@ public final class R {
         public static final int resultDownPaymentTotalText=0x7f080021;
         public static final int resultIterestTotalText=0x7f08001f;
         public static final int resultMonthlyPaymentText=0x7f08001e;
-        public static final int resultPeriodTotalText=0x7f080025;
+        public static final int resultPeriodTotalText=0x7f080026;
         public static final int scheduleButton=0x7f08001c;
         public static final int typeHelpCloseButton=0x7f080003;
-        public static final int viewCompareMenu=0x7f080027;
+        public static final int viewCompareMenu=0x7f080028;
     }
     public static final class layout {
         public static final int compare=0x7f030000;
@@ -141,6 +142,7 @@ public final class R {
         public static final int donate=0x7f05004e;
         public static final int downPayment=0x7f050042;
         public static final int downPaymentHint=0x7f050047;
+        public static final int effectiveInterestLbl=0x7f05004f;
         public static final int errorAmount=0x7f05000b;
         public static final int errorDispCommission=0x7f05004c;
         public static final int errorDownPayment=0x7f05004b;

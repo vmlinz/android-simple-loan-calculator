@@ -12,9 +12,9 @@
             </TableRow>
           </TableLayout>
           <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/amount" android:textStyle="normal" />
-          <EditText android:id="@+id/amountEdit" android:layout_width="fill_parent" android:layout_height="wrap_content"  android:inputType="phone" android:hint="@string/amountHint" />
+          <EditText android:id="@+id/amountEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="phone" android:hint="@string/amountHint" />
           <TextView android:text="@string/interest" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal" />
-          <EditText android:id="@+id/interestEdit" android:layout_width="fill_parent" android:layout_height="wrap_content"  android:inputType="phone" android:hint="@string/interestHint" />
+          <EditText android:id="@+id/interestEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="phone" android:hint="@string/interestHint" />
           <TextView android:id="@+id/periodLabel" android:text="@string/period" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal" />
           <TableLayout android:id="@+id/periodLayout" android:layout_span="2" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@layout/periodblock">
             <TableRow>
@@ -23,8 +23,7 @@
                 <TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content">
                   <TableRow>
                     <Button android:id="@+id/periodYearMinusButton" android:text=" -" android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="-3dip" />
-                    <EditText android:id="@+id/periodYearEdit" android:text="0" android:layout_width="30sp" android:layout_height="wrap_content"  android:inputType="phone" android:layout_marginRight="-3dip"
-                    android:layout_marginLeft="-3dip" />
+                    <EditText android:id="@+id/periodYearEdit" android:text="0" android:layout_width="30sp" android:layout_height="wrap_content" android:inputType="phone" android:layout_marginRight="-3dip" android:layout_marginLeft="-3dip" />
                     <Button android:id="@+id/periodYearPlusButton" android:text=" +" android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-3dip" />
                   </TableRow>
                 </TableLayout>
@@ -34,8 +33,7 @@
                 <TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content">
                   <TableRow>
                     <Button android:id="@+id/periodMonthMinusButton" android:text=" -" android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="-3dip" />
-                    <EditText android:id="@+id/periodMonthEdit" android:text="0" android:layout_width="30sp" android:layout_height="wrap_content"  android:inputType="phone" android:layout_marginRight="-3dip"
-                    android:layout_marginLeft="-3dip" />
+                    <EditText android:id="@+id/periodMonthEdit" android:text="0" android:layout_width="30sp" android:layout_height="wrap_content" android:inputType="phone" android:layout_marginRight="-3dip" android:layout_marginLeft="-3dip" />
                     <Button android:id="@+id/periodMonthPlusButton" android:text=" +" android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-3dip" />
                   </TableRow>
                 </TableLayout>
@@ -43,7 +41,7 @@
             </TableRow>
           </TableLayout>
           <TextView android:id="@+id/fixedPaymentLabel" android:text="@string/fixedPayment" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal" />
-          <EditText android:id="@+id/fixedPaymentEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:visibility="gone"  android:inputType="phone" />
+          <EditText android:id="@+id/fixedPaymentEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:visibility="gone" android:inputType="phone" />
           <View android:layout_width="fill_parent" android:layout_height="7dip" />
           <!--Advanced-->
           <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:stretchColumns="0">
@@ -57,7 +55,7 @@
             <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/downPaymentHint" android:textStyle="italic" />
             <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:stretchColumns="0">
               <TableRow android:layout_width="fill_parent">
-                <EditText android:id="@+id/downPaymentEdit" android:layout_width="fill_parent" android:layout_height="wrap_content"  android:inputType="phone" android:hint="@string/valuePercentHint" />
+                <EditText android:id="@+id/downPaymentEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="phone" android:hint="@string/valuePercentHint" />
                 <ee.smkv.calc.loan.PercentValueSwitchButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:id="@+id/downPaymentButton" />
               </TableRow>
             </TableLayout>
@@ -65,7 +63,7 @@
             <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/disposableCommissionHint" android:textStyle="italic" />
             <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:stretchColumns="0">
               <TableRow android:layout_width="fill_parent">
-                <EditText android:id="@+id/disposableCommissionEdit" android:layout_width="fill_parent" android:layout_height="wrap_content"  android:inputType="phone" android:hint="@string/valuePercentHint" />
+                <EditText android:id="@+id/disposableCommissionEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="phone" android:hint="@string/valuePercentHint" />
                 <ee.smkv.calc.loan.PercentValueSwitchButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" percent="false" android:id="@+id/disposableCommissionButton" />
               </TableRow>
             </TableLayout>
@@ -73,14 +71,13 @@
             <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/monthlyCommissionHint" android:textStyle="italic" />
             <TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:stretchColumns="0">
               <TableRow android:layout_width="fill_parent">
-                <EditText android:id="@+id/monthlyCommissionEdit" android:layout_width="fill_parent" android:layout_height="wrap_content"  android:inputType="phone" android:hint="@string/valuePercentHint" />
+                <EditText android:id="@+id/monthlyCommissionEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="phone" android:hint="@string/valuePercentHint" />
                 <ee.smkv.calc.loan.PercentValueSwitchButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" percent="false" android:id="@+id/monthlyCommissionButton" />
               </TableRow>
             </TableLayout>
           </LinearLayout>
           <View android:layout_width="fill_parent" android:layout_height="7dip"></View>
           <!--Advanced END-->
-
         </LinearLayout>
       </ScrollView>
       <ScrollView android:id="@+id/mainScrollView" android:layout_width="fill_parent" android:layout_height="wrap_content">
@@ -112,6 +109,10 @@
               android:paddingRight="10px" android:paddingBottom="5px" android:textColor="@color/result" />
               <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="@color/border" />
             </LinearLayout>
+            <TextView android:text="@string/effectiveInterestLbl" android:textColor="@color/text" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:id="@+id/effectiveInterestText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="bold" android:text="0.00" android:gravity="right" android:textSize="20px" android:paddingRight="10px"
+            android:paddingBottom="5px" android:textColor="@color/result" />
+            <View android:layout_width="fill_parent" android:layout_height="1dip" android:background="@color/border" />
             <TextView android:text="@string/AmountTotalLbl" android:textColor="@color/text" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <TextView android:id="@+id/resultAmountTotalText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="bold" android:text="0.00" android:gravity="right" android:textSize="20px" android:paddingRight="10px"
             android:paddingBottom="5px" android:textColor="@color/result" />

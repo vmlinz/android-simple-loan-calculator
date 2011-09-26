@@ -109,5 +109,6 @@
     <string name="errorMonthlyCommission">Please enter a valid monthly commission or leave empty</string>
 
     <string name="donate">Make a donation</string>
+    <string name="effectiveInterestLbl">Effective rate</string>
 
 </resources>

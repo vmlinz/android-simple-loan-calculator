@@ -108,5 +108,6 @@
     <string name="errorMonthlyCommission">Пожалуйста введите корректную месячную комиссию или оставте поле пустым</string>
 
     <string name="donate">Сделать пожертвование</string>
+    <string name="effectiveInterestLbl">Эффективная ставка</string>
 
 </resources>

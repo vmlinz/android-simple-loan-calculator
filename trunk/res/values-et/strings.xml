@@ -96,4 +96,5 @@
     <string name="commissionTotalLabel">Komisjonid kokku</string>
 
     <string name="donate">Tee annetus</string>
+    <string name="effectiveInterestLbl">Krediidi kulukuse määr</string>
 </resources>

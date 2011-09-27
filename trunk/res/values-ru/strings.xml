@@ -111,7 +111,7 @@
     <string name="effectiveInterestLbl">Эффективная ставка, %</string>
     <string name="effectiveInterestCompareLbl">Эффект. ставка, %</string>
     <string name="effectiveRateBtn">Эффект.</string>
-    <string name="eff2NominalConvTitle">Введмте эффективную ставку</string>
-    <string name="eff2NominalConvMessage">Расчет номинальной процентной ставки, основанного на эффективной ставке. (расчет игнорирует первоначальный взнос и комиссии)</string>
+    <string name="eff2NominalConvTitle">Введите эффективную ставку</string>
+    <string name="eff2NominalConvMessage">Расчет номинальной процентной ставки на основаннии эффективной ставки. (расчет игнорирует первоначальный взнос и комиссии)</string>
 
 </resources>

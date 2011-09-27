@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,11 +29,15 @@ public class CompareActivity extends Activity implements View.OnClickListener {
     private LinearLayout container;
     private Button closeButton;
     private Button cleanButton;
+    private int lineWidth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compare);
+
+
+        lineWidth = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
 
         container = (LinearLayout) findViewById(R.id.loansContainer);
 
@@ -115,7 +120,7 @@ public class CompareActivity extends Activity implements View.OnClickListener {
         cell.addView(item);
         View line = new View(cell.getContext());
         line.setBackgroundColor(getResources().getColor(R.color.border));
-        line.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, 1));
+        line.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, lineWidth));
         cell.addView(line);
     }
 

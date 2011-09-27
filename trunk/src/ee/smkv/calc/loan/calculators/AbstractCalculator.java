@@ -83,9 +83,14 @@ public abstract class AbstractCalculator implements Calculator {
     int i;
     double x1 = 0;
     double x2 = realInterest * 10; // x10 greater
-
-    for (i = 0; i < 20; i++) {
+    double lastKnownX = 0;
+    for (i = 0; i < 100; i++) { // max 100 iterations
       double x = (x1 + x2) / 2; //average
+      if( Math.round(lastKnownX * 100000 ) == Math.round(x * 100000) ){
+        System.out.println("Done in " + i + " iterations");
+        break; // breaks iterations then accuracy is 2 symbols after coma
+      }
+      lastKnownX = x;
       double a = calcLoanAmountUsingEffectiveRate(payments, x , periodBetweenPayments);
 
       if (loanAmount < a) {

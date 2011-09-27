@@ -48,7 +48,8 @@ public abstract class AbstractCalculator implements Calculator {
    * Calculation of effective rate of loan using iterative approach: <br /><br />
    * <code>loanAmount = SUM(i=1 to i=payments.length) { payments[i] / (( 1 + effectiveRate ) ^ (i/12)) }</code>
    * <br /><br />
-   * https://www.riigiteataja.ee/akt/189731
+   * <li>https://www.riigiteataja.ee/akt/13363716</li>
+   * <li>https://www.riigiteataja.ee/aktilisa/0000/1336/3716/13363719.pdf</li>
    * @param loan Loan
    * @return Effective rate
    */

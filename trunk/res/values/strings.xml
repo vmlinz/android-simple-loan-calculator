@@ -109,6 +109,10 @@
     <string name="errorMonthlyCommission">Please enter a valid monthly commission or leave empty</string>
 
     <string name="donate">Make a donation</string>
-    <string name="effectiveInterestLbl">Effective rate</string>
+    <string name="effectiveInterestLbl">Effective rate ,%</string>
+    <string name="effectiveInterestCompareLbl">Effective rate ,%</string>
+    <string name="effectiveRateBtn">Eff.</string>
+    <string name="eff2NominalConvTitle">Enter effective rate</string>
+    <string name="eff2NominalConvMessage">Calculating of nominal interest rate based on effective rate. (calculation ignores down payments and commissions)</string>
 
 </resources>

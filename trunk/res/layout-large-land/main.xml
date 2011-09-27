@@ -14,7 +14,19 @@
           <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/amount" android:textStyle="normal" />
           <EditText android:id="@+id/amountEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="phone" android:hint="@string/amountHint" />
           <TextView android:text="@string/interest" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal" />
-          <EditText android:id="@+id/interestEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:inputType="phone" android:hint="@string/interestHint" />
+          <TableLayout android:layout_width="fill_parent"
+                         android:layout_height="wrap_content"
+                         android:stretchColumns="0">
+                <TableRow android:layout_width="fill_parent">
+                  <EditText android:id="@+id/interestEdit"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+
+                      android:inputType="phone"
+                      android:hint="@string/interestHint"/>
+                  <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/effectiveRateBtn" android:id="@+id/effectiveRateBtn" />
+                </TableRow>
+            </TableLayout>
           <TextView android:id="@+id/periodLabel" android:text="@string/period" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal" />
           <TableLayout android:id="@+id/periodLayout" android:layout_span="2" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@layout/periodblock">
             <TableRow>

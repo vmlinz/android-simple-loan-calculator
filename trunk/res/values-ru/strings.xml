@@ -108,6 +108,10 @@
     <string name="errorMonthlyCommission">Пожалуйста введите корректную месячную комиссию или оставте поле пустым</string>
 
     <string name="donate">Сделать пожертвование</string>
-    <string name="effectiveInterestLbl">Эффективная ставка</string>
+    <string name="effectiveInterestLbl">Эффективная ставка, %</string>
+    <string name="effectiveInterestCompareLbl">Эффект. ставка, %</string>
+    <string name="effectiveRateBtn">Эффект.</string>
+    <string name="eff2NominalConvTitle">Введмте эффективную ставку</string>
+    <string name="eff2NominalConvMessage">Расчет номинальной процентной ставки, основанного на эффективной ставке. (расчет игнорирует первоначальный взнос и комиссии)</string>
 
 </resources>

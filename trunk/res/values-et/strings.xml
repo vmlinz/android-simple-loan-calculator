@@ -96,5 +96,9 @@
     <string name="commissionTotalLabel">Komisjonid kokku</string>
 
     <string name="donate">Tee annetus</string>
-    <string name="effectiveInterestLbl">Krediidi kulukuse määr</string>
+    <string name="effectiveInterestLbl">Krediidi kulukuse määr , %</string>
+    <string name="effectiveInterestCompareLbl">Kulukuse määr , %</string>
+    <string name="effectiveRateBtn">KKM.</string>
+    <string name="eff2NominalConvTitle">Sissestage kulukuse määr</string>
+    <string name="eff2NominalConvMessage">Calculating of nominal interest rate based on effective rate. (calculation ignores down payments and commissions)</string>
 </resources>

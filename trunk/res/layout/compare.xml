@@ -33,6 +33,11 @@
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
                         <View android:layout_width="fill_parent" android:layout_height="1dip"
                               android:background="@color/border"/>
+                        <TextView android:text="@string/effectiveInterestCompareLbl" android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content" android:textStyle="normal"
+                                  android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
+                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                              android:background="@color/border"/>
                         <TextView android:text="@string/comparePeriodLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
@@ -58,6 +63,7 @@
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
                         <View android:layout_width="fill_parent" android:layout_height="1dip"
                               android:background="@color/border"/>
+
                         <TextView android:text="@string/compareAmountTotalLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>

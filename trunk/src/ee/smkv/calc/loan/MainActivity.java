@@ -574,8 +574,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
           Exporter.sendToEmail(loan, getResources(), this);
           break;
         case R.id.exportExcelMenu:
-          File file = Exporter.exportToCSVFile(loan, getResources());
-          new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
+          File file = Exporter.exportToCSVFile(loan, getResources(), this);
+          new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getAbsolutePath()).show();
           break;
 
         case R.id.donateMenu:

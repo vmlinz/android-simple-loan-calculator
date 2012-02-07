@@ -23,20 +23,16 @@ public class CSVScheduleCreator extends AbstractScheduleCreator {
     }
 
 
-    public void assertDataWriteEnabled() {
-
-    String state = Environment.getExternalStorageState();
-
-    if (Environment.MEDIA_MOUNTED.equals(state)) {
-      // OK
-    }
-    else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-      // We can only read the media
-      throw new RuntimeException("We can only read the media"); //TODO localize message
-    }
-    else {
-     throw new RuntimeException("media not available"); //TODO localize message
-    }
+    public void checkExternalStorageState() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            // OK
+        } else if (Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            // We can only read the media
+            throw new RuntimeException("We can only read the media"); //TODO localize message
+        } else {
+            throw new RuntimeException("media not available"); //TODO localize message
+        }
 
     }
 

@@ -86,8 +86,8 @@ public abstract class AbstractScheduleActivity extends Activity {
           Exporter.sendToEmail(getLoan(), getResources(), getActivity());
           break;
         case R.id.exportExcelMenu:
-          File file = Exporter.exportToCSVFile(getLoan(), getResources());
-          new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getName()).show();
+          File file = Exporter.exportToCSVFile(getLoan(), getResources(), getActivity());
+          new OkDialogWrapper(this, getResources().getString(R.string.fileCreated) + ' ' + file.getAbsolutePath()).show();
           break;
         case R.id.donateMenu:
           Uri uri = Uri.parse("http://samkov.pri.ee/simple-loan-calculator/");

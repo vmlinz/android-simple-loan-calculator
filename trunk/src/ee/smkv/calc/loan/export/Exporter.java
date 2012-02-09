@@ -48,7 +48,7 @@ public class Exporter {
         csvScheduleCreator.checkExternalStorageState();
         String fileName = csvScheduleCreator.getFileName();
 
-        File externalStorageDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        File externalStorageDirectory = Environment.getExternalStoragePublicDirectory("");
         File file = new File(externalStorageDirectory, fileName);
         saveToFile(file, csvScheduleCreator);
         return file;

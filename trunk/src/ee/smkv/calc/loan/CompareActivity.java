@@ -37,7 +37,7 @@ public class CompareActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.compare);
 
 
-        lineWidth = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
+        lineWidth = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, 1, getResources().getDisplayMetrics());
 
         container = (LinearLayout) findViewById(R.id.loansContainer);
 

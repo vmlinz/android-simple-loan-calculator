@@ -16,58 +16,58 @@
                         <TextView android:text="@string/compareTypeLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text="@string/compareAmountLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text="@string/downPayment" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text="@string/compareInterestLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text="@string/effectiveInterestCompareLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text="@string/comparePeriodLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text="@string/comparePaymentMaxLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text="@string/comparePaymentMinLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text="@string/compareInterestTotalLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text="@string/paymentCommission" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
 
                         <TextView android:text="@string/compareAmountTotalLbl" android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="normal"
                                   android:textColor="@color/text" android:padding="5px" android:gravity="right"/>
-                        <View android:layout_width="fill_parent" android:layout_height="1dip"
+                        <View android:layout_width="fill_parent" android:layout_height="1px"
                               android:background="@color/border"/>
                         <TextView android:text=" " android:layout_width="wrap_content"
                                   android:layout_height="wrap_content" android:textStyle="bold"

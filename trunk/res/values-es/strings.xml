@@ -95,7 +95,7 @@
 
 <string name="tabChart">Graficas</string>
 
-<string name="expand"> Avanzado </string>
+<string name="expand"> Avanzado... </string>
 <string name="hide"> Ocultar </string>
 <string name="downPayment">Cuota inicial</string>
 <string name="donPaymentTotalLabel">Cuota inicial</string>

@@ -89,7 +89,7 @@
     <string name="tabChart">Графики</string>
 
     <string name="msgCalculated">Платеж рассчитан</string>
-    <string name="expand"> Развернуть </string>
+    <string name="expand"> Развернуть... </string>
     <string name="hide"> Свернуть </string>
     <string name="downPayment">Первый взнос</string>
     <string name="donPaymentTotalLabel">Первый взнос</string>

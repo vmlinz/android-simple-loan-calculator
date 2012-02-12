@@ -176,7 +176,8 @@
                           android:background="#555555"/>
                     <TextView android:id="@+id/moreText"
                               android:text="@string/expand"
-                              android:background="#555555"
+                              android:background="@drawable/advanced_button_background"
+                              android:textColor="@color/buttonText"
                               android:padding="5dp"
                               android:layout_width="wrap_content"
                               android:layout_height="wrap_content"

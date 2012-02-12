@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
@@ -99,9 +100,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         periodMonthEdit.setText(ZERO);
       }
 
-      boolean isAdvancedShowed = storeManager.getBoolean(IS_ADVANCED_SHOWED);
-      advancedViewGroup.setVisibility(!isAdvancedShowed ? View.GONE : View.VISIBLE);
-      moreText.setText(!isAdvancedShowed ? R.string.expand : R.string.hide);
+        setupAdvancedButton(true);
 
     }
     catch (Exception e) {
@@ -109,8 +108,17 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     }
   }
 
+    private void setupAdvancedButton( boolean init) {
+        boolean show = init ? storeManager.getBoolean(IS_ADVANCED_SHOWED) : advancedViewGroup.getVisibility() != View.VISIBLE;
+        advancedViewGroup.setVisibility( show ? View.VISIBLE : View.GONE);
+        moreText.setText( show ? R.string.hide : R.string.expand);
+        int arrow = show ? R.drawable.arrowup : R.drawable.arrowdown ;
+        Drawable img = getApplicationContext().getResources().getDrawable(arrow);
+        moreText.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+    }
 
-  @Override
+
+    @Override
   protected void onStop() {
     super.onStop();
     try {
@@ -299,9 +307,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
       }
       else if (view == moreText) {
-        boolean isAdvancedShowed = advancedViewGroup.getVisibility() == View.VISIBLE;
-        advancedViewGroup.setVisibility(isAdvancedShowed ? View.GONE : View.VISIBLE);
-        moreText.setText(isAdvancedShowed ? R.string.expand : R.string.hide);
+        setupAdvancedButton(false);
       }
       else if (view == downPaymentButton || view == disposableCommissionButton || view == monthlyCommissionButton) {
         invalidateLoan();

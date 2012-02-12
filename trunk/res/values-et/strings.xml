@@ -87,7 +87,7 @@
 
     <string name="msgCalculated">Maks on arvutatud</string>
 
-    <string name="expand"> Näita rohkem </string>
+    <string name="expand"> Näita rohkem... </string>
     <string name="hide"> Peita </string>
     <string name="downPayment">Esimene sissemaks</string>
     <string name="donPaymentTotalLabel">Esimene sissemaks</string>

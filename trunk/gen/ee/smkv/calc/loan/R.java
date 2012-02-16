@@ -30,6 +30,9 @@ public final class R {
         public static final int odd=0x7f040001;
         public static final int result=0x7f040000;
         public static final int text=0x7f040004;
+        public static final int textEditBackground=0x7f04000f;
+        public static final int textEditBorder=0x7f040011;
+        public static final int textEditColor=0x7f040010;
     }
     public static final class drawable {
         public static final int add=0x7f020000;
@@ -59,9 +62,12 @@ public final class R {
         public static final int minus=0x7f020018;
         public static final int paypal=0x7f020019;
         public static final int percent=0x7f02001a;
-        public static final int table=0x7f02001b;
-        public static final int tablesmall=0x7f02001c;
-        public static final int value=0x7f02001d;
+        public static final int period_minus_button=0x7f02001b;
+        public static final int period_pluss_button=0x7f02001c;
+        public static final int period_value=0x7f02001d;
+        public static final int table=0x7f02001e;
+        public static final int tablesmall=0x7f02001f;
+        public static final int value=0x7f020020;
     }
     public static final class id {
         public static final int addToCompareMenu=0x7f080028;

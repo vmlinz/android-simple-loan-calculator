@@ -17,4 +17,8 @@
     <color name="buttonPressedBorder">#EA6700</color>
 
     <color name="buttonText">#000000</color>
+
+    <color name="textEditBackground">#FFFFFF</color>
+    <color name="textEditColor">#000000</color>
+    <color name="textEditBorder">#C3C3C3</color>
 </resources>

@@ -28,30 +28,106 @@
                 </TableRow>
             </TableLayout>
           <TextView android:id="@+id/periodLabel" android:text="@string/period" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal" />
-          <TableLayout android:id="@+id/periodLayout" android:layout_span="2" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@layout/periodblock">
-            <TableRow>
-              <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                <TextView android:text="@string/periodTypeYear" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="@color/result" />
-                <TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                  <TableRow>
-                    <Button android:id="@+id/periodYearMinusButton" android:text=" -" android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="-3dip" />
-                    <EditText android:id="@+id/periodYearEdit" android:text="0" android:layout_width="30sp" android:layout_height="wrap_content" android:inputType="phone" android:layout_marginRight="-3dip" android:layout_marginLeft="-3dip" />
-                    <Button android:id="@+id/periodYearPlusButton" android:text=" +" android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-3dip" />
-                  </TableRow>
-                </TableLayout>
-              </LinearLayout>
-              <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                <TextView android:text="@string/periodTypeMonth" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="@color/result" />
-                <TableLayout android:layout_span="5" android:stretchColumns="*" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                  <TableRow>
-                    <Button android:id="@+id/periodMonthMinusButton" android:text=" -" android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="-3dip" />
-                    <EditText android:id="@+id/periodMonthEdit" android:text="0" android:layout_width="30sp" android:layout_height="wrap_content" android:inputType="phone" android:layout_marginRight="-3dip" android:layout_marginLeft="-3dip" />
-                    <Button android:id="@+id/periodMonthPlusButton" android:text=" +" android:textStyle="bold" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="-3dip" />
-                  </TableRow>
-                </TableLayout>
-              </LinearLayout>
-            </TableRow>
-          </TableLayout>
+          <TableLayout android:id="@+id/periodLayout"
+                         android:layout_span="2"
+                         android:stretchColumns="*"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:background="@layout/periodblock">
+                <TableRow>
+                    <LinearLayout android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+                        <View android:layout_width="fill_parent"
+                              android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+                        <TextView android:text="@string/periodTypeYear"
+                                  android:gravity="center"
+                                  android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content"
+                                  android:textColor="@color/result"/>
+                        <TableLayout android:layout_span="5"
+                                     android:stretchColumns="*"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content">
+                            <TableRow>
+                                <Button android:id="@+id/periodYearMinusButton"
+                                        android:text="  -  "
+                                        android:textStyle="bold"
+                                        android:layout_width="30sp"
+                                        android:layout_height="40dip"
+                                        android:background="@drawable/period_minus_button"/>
+                                <EditText android:id="@+id/periodYearEdit"
+                                          android:text="0"
+                                          android:layout_width="30sp"
+                                          android:layout_height="40dip"
+                                          android:background="@drawable/period_value"
+                                          android:inputType="phone"
+                                          android:gravity="center"
+                                          android:layout_marginTop="1dip"
+                                        />
+                                <Button android:id="@+id/periodYearPlusButton"
+                                        android:text="  +  "
+                                        android:textStyle="bold"
+                                        android:layout_width="30sp"
+                                        android:layout_height="40dip"
+                                        android:background="@drawable/period_pluss_button"/>
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+                        <View android:layout_width="fill_parent"
+                              android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+                        <TextView android:text="@string/periodTypeMonth"
+                                  android:gravity="center"
+                                  android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content"
+                                  android:textColor="@color/result"/>
+                        <TableLayout android:layout_span="5"
+                                     android:stretchColumns="*"
+                                     android:layout_width="wrap_content"
+                                     android:layout_height="wrap_content">
+                            <TableRow>
+                                <Button android:id="@+id/periodMonthMinusButton"
+                                        android:text="  -  "
+                                        android:textStyle="bold"
+                                        android:layout_width="30sp"
+                                        android:layout_height="40dip"
+                                        android:background="@drawable/period_minus_button"/>
+                                <EditText android:id="@+id/periodMonthEdit"
+                                          android:text="0"
+                                          android:layout_width="30sp"
+                                          android:layout_height="40dip"
+                                          android:background="@drawable/period_value"
+                                          android:inputType="phone"
+                                          android:gravity="center"
+                                        android:layout_marginTop="1dip"/>
+                                <Button android:id="@+id/periodMonthPlusButton"
+                                        android:text="  +  "
+                                        android:textStyle="bold"
+                                        android:layout_width="30sp"
+                                        android:layout_height="40dip"
+                                        android:background="@drawable/period_pluss_button"/>
+                            </TableRow>
+                        </TableLayout>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content"
+                                  android:orientation="vertical">
+                        <View android:layout_width="fill_parent"
+                              android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
           <TextView android:id="@+id/fixedPaymentLabel" android:text="@string/fixedPayment" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal" />
           <EditText android:id="@+id/fixedPaymentEdit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:visibility="gone" android:inputType="phone" />
           <View android:layout_width="fill_parent" android:layout_height="7dip" />

@@ -28,14 +28,17 @@ public class Loan implements Serializable {
     private BigDecimal downPayment;
     private BigDecimal disposableCommission;
     private BigDecimal monthlyCommission;
+    private BigDecimal residue;
 
     private int downPaymentType;
     private int disposableCommissionType;
     private int monthlyCommissionType;
+    private int residueType;
 
     private BigDecimal downPaymentPayment;
     private BigDecimal disposableCommissionPayment;
     private BigDecimal monthlyCommissionPayment;
+    private BigDecimal residuePayment;
 
     private BigDecimal commissionsTotal = BigDecimal.ZERO;
 
@@ -216,5 +219,29 @@ public class Loan implements Serializable {
 
     public void setEffectiveInterestRate(BigDecimal effectiveInterestRate) {
       this.effectiveInterestRate = effectiveInterestRate;
+    }
+
+    public BigDecimal getResiduePayment() {
+        return residuePayment;
+    }
+
+    public void setResiduePayment(BigDecimal residuePayment) {
+        this.residuePayment = residuePayment;
+    }
+
+    public int getResidueType() {
+        return residueType;
+    }
+
+    public void setResidueType(int residueType) {
+        this.residueType = residueType;
+    }
+
+    public BigDecimal getResidue() {
+        return residue;
+    }
+
+    public void setResidue(BigDecimal residue) {
+        this.residue = residue;
     }
 }

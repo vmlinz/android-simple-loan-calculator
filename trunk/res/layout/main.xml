@@ -285,6 +285,31 @@
                                                                     android:id="@+id/monthlyCommissionButton"/>
                     </TableRow>
                 </TableLayout>
+
+                <TextView android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          android:text="@string/residue"
+                          android:textStyle="normal"/>
+                <TextView android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          android:text="@string/residueHint"
+                          android:textStyle="italic"/>
+                <TableLayout android:layout_width="fill_parent"
+                             android:layout_height="wrap_content"
+                             android:stretchColumns="0">
+                    <TableRow android:layout_width="fill_parent">
+                        <EditText android:id="@+id/residueEdit"
+                                  android:layout_width="fill_parent"
+                                  android:layout_height="wrap_content"
+
+                                  android:inputType="phone"
+                                  android:hint="@string/valuePercentHint"/>
+                        <ee.smkv.calc.loan.PercentValueSwitchButton android:layout_width="wrap_content"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:text="" percent="false"
+                                                                    android:id="@+id/residueButton"/>
+                    </TableRow>
+                </TableLayout>
             </LinearLayout>
 
             <View android:layout_width="fill_parent" android:layout_height="7dip"></View>

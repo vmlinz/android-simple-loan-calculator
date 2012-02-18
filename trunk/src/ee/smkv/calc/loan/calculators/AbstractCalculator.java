@@ -7,11 +7,13 @@ import java.math.BigDecimal;
 
 public abstract class AbstractCalculator implements Calculator {
 
+    public static final BigDecimal B100 = new BigDecimal("100");
+
     protected void addPaymentWithCommission(Loan loan, Payment p, BigDecimal payment) {
         BigDecimal monthlyCommission = loan.getMonthlyCommission();
         if (monthlyCommission != null && monthlyCommission.compareTo(BigDecimal.ZERO) != 0) {
             if (loan.getMonthlyCommissionType() == Loan.PERCENT) {
-                monthlyCommission = monthlyCommission.multiply(payment).divide(new BigDecimal("100"), SCALE, MODE);
+                monthlyCommission = monthlyCommission.multiply(payment).divide(B100, SCALE, MODE);
             }
             p.setCommission(monthlyCommission);
             p.setAmount(payment.add(monthlyCommission));
@@ -24,7 +26,7 @@ public abstract class AbstractCalculator implements Calculator {
         BigDecimal disposableCommission = loan.getDisposableCommission();
         if (disposableCommission != null && disposableCommission.compareTo(BigDecimal.ZERO) != 0) {
             if (loan.getDisposableCommissionType() == Loan.PERCENT) {
-                disposableCommission = disposableCommission.multiply(amount).divide(new BigDecimal("100"), SCALE, MODE);
+                disposableCommission = disposableCommission.multiply(amount).divide(B100, SCALE, MODE);
             }
             loan.setDisposableCommissionPayment(disposableCommission);
         }
@@ -36,7 +38,7 @@ public abstract class AbstractCalculator implements Calculator {
         BigDecimal downPayment = loan.getDownPayment();
         if (downPayment != null && downPayment.compareTo(BigDecimal.ZERO) != 0) {
             if (loan.getDownPaymentType() == Loan.PERCENT) {
-                downPayment = downPayment.multiply(amount).divide(new BigDecimal("100"), SCALE, MODE);
+                downPayment = downPayment.multiply(amount).divide(B100, SCALE, MODE);
             }
             loan.setDownPaymentPayment(downPayment);
             amount = amount.subtract(downPayment);
@@ -121,7 +123,12 @@ public abstract class AbstractCalculator implements Calculator {
   }
 
 
-
-
-
+    protected BigDecimal getResiduePayment(Loan loan) {
+        boolean hasResidue = loan.getResidue() != null && loan.getResidue().compareTo( BigDecimal.ZERO) > 0;
+        if(hasResidue){
+            return loan.getResidueType() == Loan.PERCENT ? loan.getAmount().multiply( loan.getResidue()).divide(B100, SCALE, MODE)  : loan.getResidue();
+        }else{
+            return BigDecimal.ZERO;
+        }
+    }
 }

@@ -101,4 +101,7 @@
     <string name="effectiveRateBtn">KKM.</string>
     <string name="eff2NominalConvTitle">Sissestage kulukuse määr</string>
     <string name="eff2NominalConvMessage">Calculating of nominal interest rate based on effective rate. (calculation ignores down payments and commissions)</string>
+
+    <string name="residue">Viimane maks (lean jäägiga)</string>
+
 </resources>

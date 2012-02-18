@@ -114,4 +114,8 @@
     <string name="eff2NominalConvTitle">Введите эффективную ставку</string>
     <string name="eff2NominalConvMessage">Расчет номинальной процентной ставки на основаннии эффективной ставки. (расчет игнорирует первоначальный взнос и комиссии)</string>
 
+    <string name="residue">Последний платеж (кредит с остатком)</string>
+    <string name="residueHint">(сумма или процент от суммы кредита)</string>
+    <string name="errorResidue">Введите корректную сумму остатка</string>
+
 </resources>

@@ -70,21 +70,21 @@ public final class R {
         public static final int value=0x7f020020;
     }
     public static final class id {
-        public static final int addToCompareMenu=0x7f080028;
+        public static final int addToCompareMenu=0x7f08002a;
         public static final int advancedViewGroup=0x7f080015;
         public static final int amountEdit=0x7f080007;
-        public static final int calculateButton=0x7f08001c;
+        public static final int calculateButton=0x7f08001e;
         public static final int cleanCompareButton=0x7f080002;
         public static final int closeCompareButton=0x7f080001;
         public static final int disposableCommissionButton=0x7f080019;
         public static final int disposableCommissionEdit=0x7f080018;
-        public static final int donateMenu=0x7f08002c;
+        public static final int donateMenu=0x7f08002e;
         public static final int downPaymentButton=0x7f080017;
         public static final int downPaymentEdit=0x7f080016;
-        public static final int effectiveInterestText=0x7f080025;
+        public static final int effectiveInterestText=0x7f080027;
         public static final int effectiveRateBtn=0x7f080009;
-        public static final int exportEmailMenu=0x7f08002a;
-        public static final int exportExcelMenu=0x7f08002b;
+        public static final int exportEmailMenu=0x7f08002c;
+        public static final int exportExcelMenu=0x7f08002d;
         public static final int fixedPaymentEdit=0x7f080013;
         public static final int fixedPaymentLabel=0x7f080012;
         public static final int interestEdit=0x7f080008;
@@ -103,18 +103,20 @@ public final class R {
         public static final int periodYearEdit=0x7f08000d;
         public static final int periodYearMinusButton=0x7f08000c;
         public static final int periodYearPlusButton=0x7f08000e;
-        public static final int resultAmountTotalText=0x7f080026;
-        public static final int resultCommissionsGroupView=0x7f080023;
-        public static final int resultCommissionsTotalText=0x7f080024;
-        public static final int resultContainer=0x7f08001e;
-        public static final int resultDownPaymentGroupView=0x7f080021;
-        public static final int resultDownPaymentTotalText=0x7f080022;
-        public static final int resultIterestTotalText=0x7f080020;
-        public static final int resultMonthlyPaymentText=0x7f08001f;
-        public static final int resultPeriodTotalText=0x7f080027;
-        public static final int scheduleButton=0x7f08001d;
+        public static final int residueButton=0x7f08001d;
+        public static final int residueEdit=0x7f08001c;
+        public static final int resultAmountTotalText=0x7f080028;
+        public static final int resultCommissionsGroupView=0x7f080025;
+        public static final int resultCommissionsTotalText=0x7f080026;
+        public static final int resultContainer=0x7f080020;
+        public static final int resultDownPaymentGroupView=0x7f080023;
+        public static final int resultDownPaymentTotalText=0x7f080024;
+        public static final int resultIterestTotalText=0x7f080022;
+        public static final int resultMonthlyPaymentText=0x7f080021;
+        public static final int resultPeriodTotalText=0x7f080029;
+        public static final int scheduleButton=0x7f08001f;
         public static final int typeHelpCloseButton=0x7f080003;
-        public static final int viewCompareMenu=0x7f080029;
+        public static final int viewCompareMenu=0x7f08002b;
     }
     public static final class layout {
         public static final int compare=0x7f030000;
@@ -177,6 +179,7 @@ public final class R {
         public static final int errorInterest=0x7f05000d;
         public static final int errorMonthlyCommission=0x7f05004d;
         public static final int errorPeriod=0x7f05000e;
+        public static final int errorResidue=0x7f050056;
         public static final int expand=0x7f050040;
         public static final int exportToEmail=0x7f050030;
         public static final int exportToExcel=0x7f050031;
@@ -202,6 +205,8 @@ public final class R {
         public static final int periodTypeMonth=0x7f050039;
         public static final int periodTypeYear=0x7f050038;
         public static final int recalculateLoanQuestion=0x7f05003d;
+        public static final int residue=0x7f050054;
+        public static final int residueHint=0x7f050055;
         public static final int schedule=0x7f050012;
         public static final int scheduleLoading=0x7f050032;
         public static final int scheduleTitle=0x7f05001a;

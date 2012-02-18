@@ -52,13 +52,13 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
   TextView fixedPaymentLabel, periodLabel, resultPeriodTotalText, resultMonthlyPaymentText, resultAmountTotalText, resultInterestTotalText, moreText, resultDownPaymentTotalText, resultCommissionsTotalText, effectiveInterestText;
 
-  EditText amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit, effectiveRateEdit;
+  EditText amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit, effectiveRateEdit , residueEdit;
 
   Spinner loanTypeSpinner;
 
   Button calculateButton, scheduleButton, typeHelpButton, typeHelpCloseButton, periodYearPlusButton, periodYearMinusButton, periodMonthPlusButton, periodMonthMinusButton, effectiveRateBtn;
 
-  PercentValueSwitchButton downPaymentButton, disposableCommissionButton, monthlyCommissionButton;
+  PercentValueSwitchButton downPaymentButton, disposableCommissionButton, monthlyCommissionButton , residueButton;
 
   ScrollView mainScrollView;
 
@@ -78,7 +78,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
     init();
-    setPriceInputFilter(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit, effectiveRateEdit);
+    setPriceInputFilter(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit, effectiveRateEdit , residueEdit);
     setIconsToButtons();
     loadSharedPreferences();
     registerEventListeners();
@@ -90,9 +90,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
   private void loadSharedPreferences() {
     try {
       storeManager = new StoreManager(getSharedPreferences(SETTINGS_NAME, 0));
-      storeManager.loadTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit);
+      storeManager.loadTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit , residueEdit);
       storeManager.loadSpinners(loanTypeSpinner);
-      storeManager.loadPercentButtons(downPaymentButton, disposableCommissionButton, monthlyCommissionButton);
+      storeManager.loadPercentButtons(downPaymentButton, disposableCommissionButton, monthlyCommissionButton, residueButton);
       if (periodYearEdit.getText() == null || periodYearEdit.getText().length() == 0) {
         periodYearEdit.setText(ZERO);
       }
@@ -122,9 +122,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
   protected void onStop() {
     super.onStop();
     try {
-      storeManager.storeTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit);
+      storeManager.storeTextViews(amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit , residueEdit);
       storeManager.storeSpinners(loanTypeSpinner);
-      storeManager.storePercentButtons(downPaymentButton, disposableCommissionButton, monthlyCommissionButton);
+      storeManager.storePercentButtons(downPaymentButton, disposableCommissionButton, monthlyCommissionButton , residueButton);
       storeManager.setBoolean(IS_ADVANCED_SHOWED, advancedViewGroup.getVisibility() == View.VISIBLE);
     }
     catch (Exception e) {
@@ -144,6 +144,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     downPaymentEdit = (EditText)findViewById(R.id.downPaymentEdit);
     disposableCommissionEdit = (EditText)findViewById(R.id.disposableCommissionEdit);
     monthlyCommissionEdit = (EditText)findViewById(R.id.monthlyCommissionEdit);
+    residueEdit = (EditText)findViewById(R.id.residueEdit);
 
     resultMonthlyPaymentText = (TextView)findViewById(R.id.resultMonthlyPaymentText);
     resultAmountTotalText = (TextView)findViewById(R.id.resultAmountTotalText);
@@ -178,6 +179,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     downPaymentButton = (PercentValueSwitchButton)findViewById(R.id.downPaymentButton);
     disposableCommissionButton = (PercentValueSwitchButton)findViewById(R.id.disposableCommissionButton);
     monthlyCommissionButton = (PercentValueSwitchButton)findViewById(R.id.monthlyCommissionButton);
+    residueButton = (PercentValueSwitchButton)findViewById(R.id.residueButton);
 
     AlertDialog.Builder effectiveRateToNominalDialogBuilder = new AlertDialog.Builder(this);
     effectiveRateToNominalDialogBuilder.setTitle(this.getString(R.string.eff2NominalConvTitle));
@@ -254,10 +256,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     downPaymentEdit.addTextChangedListener(invalidateWatcher);
     disposableCommissionEdit.addTextChangedListener(invalidateWatcher);
     monthlyCommissionEdit.addTextChangedListener(invalidateWatcher);
+    residueEdit.addTextChangedListener(invalidateWatcher);
 
     downPaymentButton.setOnClickListener(this);
     disposableCommissionButton.setOnClickListener(this);
     monthlyCommissionButton.setOnClickListener(this);
+    residueButton.setOnClickListener(this);
 
 
 
@@ -309,7 +313,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
       else if (view == moreText) {
         setupAdvancedButton(false);
       }
-      else if (view == downPaymentButton || view == disposableCommissionButton || view == monthlyCommissionButton) {
+      else if (view == downPaymentButton || view == disposableCommissionButton || view == monthlyCommissionButton|| view == residueButton) {
         invalidateLoan();
       }
     }
@@ -427,10 +431,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
       loan.setDownPaymentType(downPaymentButton.isPercent() ? Loan.PERCENT : Loan.VALUE);
       loan.setDisposableCommissionType(disposableCommissionButton.isPercent() ? Loan.PERCENT : Loan.VALUE);
       loan.setMonthlyCommissionType(monthlyCommissionButton.isPercent() ? Loan.PERCENT : Loan.VALUE);
+      loan.setResidueType(residueButton.isPercent() ? Loan.PERCENT : Loan.VALUE);
 
       loan.setDownPayment(ViewUtil.getBigDecimalValue(downPaymentEdit));
       loan.setDisposableCommission(ViewUtil.getBigDecimalValue(disposableCommissionEdit));
       loan.setMonthlyCommission(ViewUtil.getBigDecimalValue(monthlyCommissionEdit));
+      loan.setResidue(ViewUtil.getBigDecimalValue(residueEdit));
 
 
     }
@@ -452,6 +458,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
       }
       else if (e.editText == monthlyCommissionEdit) {
         showError(R.string.errorMonthlyCommission);
+      }else if (e.editText == residueEdit ) {
+        showError(R.string.errorResidue);
       }
       e.editText.requestFocus();
       mainScrollView.scrollTo(e.editText.getLeft(), e.editText.getTop());
@@ -606,11 +614,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
   public void onConfigurationChanged(Configuration newConfig) {
 
     if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
-      setInputType(InputType.TYPE_NULL, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit, effectiveRateEdit);
+      setInputType(InputType.TYPE_NULL, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit, effectiveRateEdit , residueEdit);
       //Toast.makeText(this, "HARD-keyboard", Toast.LENGTH_SHORT).show();
     }
     else {
-      setInputType(InputType.TYPE_CLASS_PHONE, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit, effectiveRateEdit);
+      setInputType(InputType.TYPE_CLASS_PHONE, amountEdit, interestEdit, fixedPaymentEdit, periodYearEdit, periodMonthEdit, downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit, effectiveRateEdit , residueEdit);
       //Toast.makeText(this, "SOFT-keyboard", Toast.LENGTH_SHORT).show();
     }
 

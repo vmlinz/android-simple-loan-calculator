@@ -11,6 +11,9 @@ public class FixedPaymentCalculator extends AbstractCalculator {
 
     public void calculate(Loan loan) {
         BigDecimal currentAmount = calculateAmountWithDownPayment(loan);
+        loan.setResiduePayment(getResiduePayment(loan));
+        boolean hasResidue = loan.getResiduePayment().compareTo( BigDecimal.ZERO) > 0;
+
         addDisposableCommission(loan, currentAmount);
 
         BigDecimal interestMonthly = loan.getInterest().divide(new BigDecimal("1200"), SCALE, MODE);
@@ -25,7 +28,7 @@ public class FixedPaymentCalculator extends AbstractCalculator {
             throw new RuntimeException("Too small fixed payment part. Count of payments is over 1000 and mobile device can't calculate too big periods.");
         }
         ArrayList<Payment> payments = new ArrayList<Payment>();
-        while (currentAmount.compareTo(BigDecimal.ZERO) > 0) {
+        while (currentAmount.compareTo(loan.getResiduePayment()) > 0) {
 
             if (currentAmount.compareTo(ma) < 0) {
                 ma = currentAmount;
@@ -33,6 +36,25 @@ public class FixedPaymentCalculator extends AbstractCalculator {
 
             interest = currentAmount.multiply(interestMonthly);
             payment = interest.add(ma);
+
+            Payment p = new Payment();
+            p.setNr(i + 1);
+            p.setInterest(interest);
+            p.setPrincipal(ma);
+            p.setBalance(currentAmount);
+
+            addPaymentWithCommission(loan, p, payment);
+
+            payments.add(p);
+
+            currentAmount = currentAmount.subtract(ma);
+            i++;
+        }
+        if(hasResidue){
+            interest = currentAmount.multiply(interestMonthly);
+            payment = currentAmount.add(interest);
+            ma = currentAmount;
+
 
             Payment p = new Payment();
             p.setNr(i + 1);

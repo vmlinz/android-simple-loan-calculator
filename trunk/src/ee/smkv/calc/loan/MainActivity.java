@@ -597,6 +597,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
           startActivity(new Intent(Intent.ACTION_VIEW, uri));
           break;
 
+        case R.id.clean:
+            cleanForm();
+            break;
       }
     }
     catch (FileCreationException e) {
@@ -605,8 +608,20 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     return true;
   }
 
+    private void cleanForm() {
+      cleanEdit("",amountEdit, interestEdit, fixedPaymentEdit,  downPaymentEdit, disposableCommissionEdit, monthlyCommissionEdit, effectiveRateEdit , residueEdit);
+      cleanEdit("0",periodYearEdit, periodMonthEdit);
+    }
 
-  private void openCompareActivity() {
+    private void cleanEdit(String value , EditText ... editTexts){
+        for (EditText editText : editTexts){
+            editText.getText().clear();
+            editText.getText().append(value);
+        }
+    }
+
+
+    private void openCompareActivity() {
     startActivity(new Intent(MainActivity.this, CompareActivity.class));
   }
 

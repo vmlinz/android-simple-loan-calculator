@@ -3,7 +3,7 @@
 
 The Simple calculator for annuity, differentiated and fixed payments.
 
-  * Platform version: Android 1.5
+  * Platform version: Android 1.5+
 
 Calculation formula for annuity monthly payment is:
 {{{

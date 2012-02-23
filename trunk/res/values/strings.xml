@@ -115,7 +115,7 @@
     <string name="eff2NominalConvTitle">Enter effective rate</string>
     <string name="eff2NominalConvMessage">Calculating of nominal interest rate based on effective rate. (calculation ignores down payments and commissions)</string>
 
-    <string name="residue">Last payment (with a remainder)</string>
+    <string name="residue">Last payment (residual payment)</string>
     <string name="residueHint">(value or percent from loan amount)</string>
     <string name="errorResidue">Please insert valid last payment (remainder)</string>
     <string name="clean">Clean form</string>

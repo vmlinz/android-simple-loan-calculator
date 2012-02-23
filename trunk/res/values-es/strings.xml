@@ -124,7 +124,7 @@
         calculo ignora cuotas iniciales y comisiones)
     </string>
 
-    <string name="residue">El último pagamento (el crédito con el resto)</string>
+    <string name="residue">Último pago (pago residual)</string>
 
 
 </resources>

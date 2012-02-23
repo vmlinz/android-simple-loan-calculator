@@ -30,7 +30,10 @@ public abstract class AbstractScheduleActivity extends Activity {
     webview = new WebView(getActivity());
     WebSettings webSettings = webview.getSettings();
     webSettings.setJavaScriptEnabled(true);
-    webSettings.setSupportZoom(false);
+    webSettings.setSupportZoom(true);
+    webSettings.setUseWideViewPort(true);
+    webSettings.setLoadWithOverviewMode(true);
+
     webview.addJavascriptInterface(getActivity(), "schedule");
 
     setContentView(webview);

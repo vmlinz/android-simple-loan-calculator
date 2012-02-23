@@ -10,8 +10,8 @@
                     android:width="1dp"
                     android:color="@color/buttonBorder"/>
             <corners
-                    android:bottomRightRadius="5dp"
-                    android:bottomLeftRadius="0dp"
+                    android:bottomRightRadius="0dp"
+                    android:bottomLeftRadius="5dp"
                     android:topLeftRadius="5dp"
                     android:topRightRadius="0dp"/>
         </shape>
@@ -27,8 +27,8 @@
                     android:width="1dp"
                     android:color="@color/buttonFocusBorder"/>
             <corners
-                    android:bottomRightRadius="5dp"
-                    android:bottomLeftRadius="0dp"
+                    android:bottomRightRadius="0dp"
+                    android:bottomLeftRadius="5dp"
                     android:topLeftRadius="5dp"
                     android:topRightRadius="0dp"/>
 
@@ -45,8 +45,8 @@
                     android:width="1dp"
                     android:color="@color/buttonPressedBorder"/>
             <corners
-                    android:bottomRightRadius="5dp"
-                    android:bottomLeftRadius="0dp"
+                    android:bottomRightRadius="0dp"
+                    android:bottomLeftRadius="5dp"
                     android:topLeftRadius="5dp"
                     android:topRightRadius="0dp"/>
         </shape>

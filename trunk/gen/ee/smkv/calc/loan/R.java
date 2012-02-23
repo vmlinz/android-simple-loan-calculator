@@ -74,11 +74,12 @@ public final class R {
         public static final int advancedViewGroup=0x7f080015;
         public static final int amountEdit=0x7f080007;
         public static final int calculateButton=0x7f08001e;
+        public static final int clean=0x7f08002e;
         public static final int cleanCompareButton=0x7f080002;
         public static final int closeCompareButton=0x7f080001;
         public static final int disposableCommissionButton=0x7f080019;
         public static final int disposableCommissionEdit=0x7f080018;
-        public static final int donateMenu=0x7f08002e;
+        public static final int donateMenu=0x7f08002f;
         public static final int downPaymentButton=0x7f080017;
         public static final int downPaymentEdit=0x7f080016;
         public static final int effectiveInterestText=0x7f080027;
@@ -147,6 +148,7 @@ public final class R {
         public static final int chartInterest=0x7f050034;
         public static final int chartTitle=0x7f050022;
         public static final int chartTotal=0x7f050035;
+        public static final int clean=0x7f050057;
         public static final int close=0x7f050019;
         public static final int commissionTotalLabel=0x7f050046;
         public static final int compareAmountLbl=0x7f050027;

@@ -125,7 +125,7 @@ public class HtmlScheduleCreator extends AbstractScheduleCreator {
                 .append(width)
                 .append("\" height=\"")
                 .append(height)
-                .append("\">Pie diagramm</canvas>")
+                .append("\"><br />Pie diagramm</canvas>")
                 .append("<canvas id=\"line\" width=\"")
                 .append(width)
                 .append("\" height=\"")

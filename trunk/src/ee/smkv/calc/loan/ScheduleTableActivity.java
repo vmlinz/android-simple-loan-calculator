@@ -17,11 +17,12 @@ public class ScheduleTableActivity extends AbstractScheduleActivity {
 
     protected String createHtml(Loan loan) {
         HtmlScheduleCreator creator = new HtmlScheduleCreator(loan, getResources());
+        int width = webview.getWidth() ;
         StringBuilder sb = new StringBuilder();
         sb.append("<html><head><style>")
                 .append(getStyle())
                 .append("</style>")
-                .append("</head><body>");
+                .append("<meta name=\"viewport\" content=\"width="+ width +"\" /></head><body>");
         try {
             creator.appendHtmlScheduleTable(sb);
             creator.appendHtmlButtons(sb);

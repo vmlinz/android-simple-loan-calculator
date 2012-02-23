@@ -11,6 +11,18 @@ monthlyInterest = annualInterest / ( 100 * 12 );
 x = ( amount * monthlyInterest ) / ( 1 - ( 1 / (( 1 + monthlyInterest ) ^ months ));
 }}}
 
+Calculating of nominal interest rate from effective rate
+{{{
+nominalRate = 12 × ((1 + effectiveRate)1/12 - 1)
+}}}
+
+Calculating effective interest rate of loan
+{{{
+loanAmount = SUM(i=1 to i=payments.length) { payments[i] / (( 1 + effectiveRate ) ^ (i/12)) }
+
+Calculation using iterative approach 
+}}}
+
 =Android Market=
 http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=market://search?q=pname:ee.smkv.calc.loan&image=qr.png
 

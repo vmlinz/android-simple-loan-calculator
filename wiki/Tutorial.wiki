@@ -1,0 +1,26 @@
+= Introduction =
+
+Simple cases how to use Simple Loan Calculator for calculating of common loans.
+
+http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/start.jpg
+
+
+= Simple usage =
+
+For example You want by a new refrig
+erator in credit. The price of it is 200.00 euro and interest rate is 14.5%  and term is 2 years. And you will get 9.65 euro per month.
+
+http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/common01.jpg http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/common02.jpg http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/common05.jpg
+
+= Loan for by house =
+
+For example You wat by a new house that price is 120'000.00 euro. Interest rate is 3.45% for 30 years. As terms of loan is 10% down payment and 50.00 euro is contact cost.
+
+http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/home01.jpg http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/home02.jpg http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/home06.jpg http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/home05.jpg  
+
+= Car loan calculation =
+For example You want buy a new vehicle that price is 15'200.00 euro with 6% interest rate. Down payment is 10%, trade in amount is 25% and contract cost eurois 63.00 euro and monthly commision is 1.5 euro.
+
+
+
+http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/car01.jpg http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/car02.jpg http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/car03.jpg http://android-simple-loan-calculator.googlecode.com/svn/wiki/thumbs/car06.jpg

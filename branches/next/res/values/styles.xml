@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Common">
+    </style>
+
+    <style name="Common.Label">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <style name="Advanced">
+    </style>
+
+    <style name="Advanced.Label">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">12dp</item>
+    </style>
+
+    <style name="Advanced.Hint">
+        <item name="android:textColor">#555555</item>
+    </style>
+
+</resources>

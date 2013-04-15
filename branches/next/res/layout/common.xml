@@ -8,7 +8,7 @@
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/amount"
-              android:textStyle="normal" style="@android:style/TextAppearance.DeviceDefault.Large"/>
+              android:textStyle="normal" style="@style/Common.Label"/>
     <EditText android:id="@+id/amountEdit"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
@@ -19,14 +19,14 @@
     <TextView android:text="@string/interest"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:textStyle="normal" style="@android:style/TextAppearance.DeviceDefault.Large"/>
+              android:textStyle="normal" style="@style/Common.Label"/>
     <EditText android:id="@+id/interestEdit"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:inputType="phone"
               android:hint="@string/interestHint"/>
 
-    <TextView style="@android:style/TextAppearance.DeviceDefault.Large" android:text="@string/period"
+    <TextView style="@style/Common.Label" android:text="@string/period"
               android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal"
               android:id="@+id/periodLabel"/>
 

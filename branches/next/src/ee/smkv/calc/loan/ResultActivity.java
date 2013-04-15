@@ -10,9 +10,9 @@ public class ResultActivity extends TabSwipeActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        addTab("Data", ResultFragment.class, new Bundle());
-        addTab("Schedule", ScheduleFragment.class, new Bundle());
-        addTab("Chart", ChartFragment.class, new Bundle());
+        addTab(getString(R.string.tabResult), ResultFragment.class, new Bundle());
+        addTab(getString(R.string.tabSchedule), ScheduleFragment.class, new Bundle());
+        addTab(getString(R.string.tabChart), ChartFragment.class, new Bundle());
     }
 
     @Override

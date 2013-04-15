@@ -14,12 +14,12 @@
             <fragment class="ee.smkv.calc.loan.CommonDataFragment"
                       android:id="@+id/commonDataFragment"
                       android:layout_width="match_parent" android:layout_height="wrap_content"/>
-            <View android:layout_width="fill_parent" android:layout_height="10dp" />
+            <View android:layout_width="fill_parent" android:layout_height="20dp" />
 
             <fragment class="ee.smkv.calc.loan.AdvancedDataFragment"
                       android:id="@+id/advancedDataFragment"
                       android:layout_width="match_parent" android:layout_height="wrap_content"/>
-            <View android:layout_width="fill_parent" android:layout_height="10dp" />
+            <View android:layout_width="fill_parent" android:layout_height="20dp" />
         </LinearLayout>
     </ScrollView>
 

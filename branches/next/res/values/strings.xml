@@ -89,6 +89,7 @@
 
     <string name="tabSchedule">Schedule</string>
     <string name="tabChart">Charts</string>
+    <string name="tabResult">Data</string>
 
     <string name="expand"> Advanced ... </string>
     <string name="hide"> Hide </string>
@@ -119,4 +120,9 @@
     <string name="residueHint">(value or percent from loan amount)</string>
     <string name="errorResidue">Please insert valid last payment (remainder)</string>
     <string name="clean">Clean form</string>
+    <string-array name="percentValueTypes">
+        <item>%</item>
+        <item>0.00</item>
+    </string-array>
+    <string name="calculationResult">Calculation result</string>
 </resources>

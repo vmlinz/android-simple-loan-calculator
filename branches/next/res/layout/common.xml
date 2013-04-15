@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:padding="10dp">
+
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/amount"
+              android:textStyle="normal" style="@android:style/TextAppearance.DeviceDefault.Large"/>
+    <EditText android:id="@+id/amountEdit"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:inputType="phone"
+              android:hint="@string/amountHint"/>
+
+
+    <TextView android:text="@string/interest"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:textStyle="normal" style="@android:style/TextAppearance.DeviceDefault.Large"/>
+    <EditText android:id="@+id/interestEdit"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:inputType="phone"
+              android:hint="@string/interestHint"/>
+
+    <TextView style="@android:style/TextAppearance.DeviceDefault.Large" android:text="@string/period"
+              android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal"
+              android:id="@+id/periodLabel"/>
+
+    <fragment class="ee.smkv.calc.loan.PeriodChooserFragment"
+                      android:id="@+id/periodChooserFragment"
+                      android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+</LinearLayout>

@@ -1,6 +1,7 @@
 package ee.smkv.calc.loan;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -12,6 +13,9 @@ import com.actionbarsherlock.view.MenuItem;
 
 
 public class StartActivity extends SherlockFragmentActivity  implements ActionBar.OnNavigationListener {
+
+    private MenuItem calculateMenuItem;
+
     /**
      * Called when the activity is first created.
      */
@@ -38,10 +42,19 @@ public class StartActivity extends SherlockFragmentActivity  implements ActionBa
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(R.string.calc)
+        calculateMenuItem = menu.add(R.string.calc);
+        calculateMenuItem
                 .setIcon(R.drawable.ic_action_calc)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if( item == calculateMenuItem ){
+            Intent myIntent = new Intent(this, ResultActivity.class);
+            startActivity(myIntent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

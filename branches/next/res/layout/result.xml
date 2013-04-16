@@ -10,6 +10,18 @@
         <LinearLayout android:orientation="vertical"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent" android:padding="15dp">
+            <TextView android:text="@string/amount"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/Result.Label"/>
+            <TextView android:id="@+id/resultAmountText"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:text="0.00"
+                      style="@style/Result.Value"/>
+
+            <View android:layout_width="fill_parent" android:layout_height="1dp"
+                  android:background="@color/Separator.Color"/>
             <TextView android:text="@string/MonthlyAmountLbl"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
@@ -20,7 +32,8 @@
                       android:text="0.00"
                       style="@style/Result.Value"/>
 
-            <View android:layout_width="fill_parent" android:layout_height="1dp" android:background="@color/Separator.Color" />
+            <View android:layout_width="fill_parent" android:layout_height="1dp"
+                  android:background="@color/Separator.Color"/>
 
             <TextView android:text="@string/IterestTotalLbl"
                       android:layout_width="fill_parent"
@@ -32,7 +45,8 @@
                       android:text="0.00"
                       style="@style/Result.Value"/>
 
-            <View android:layout_width="fill_parent" android:layout_height="1dp" android:background="@color/Separator.Color" />
+            <View android:layout_width="fill_parent" android:layout_height="1dp"
+                  android:background="@color/Separator.Color"/>
 
             <LinearLayout android:id="@+id/resultDownPaymentGroupView"
                           android:layout_width="fill_parent"
@@ -48,7 +62,8 @@
                           android:layout_height="wrap_content"
                           android:text="0.00"
                           style="@style/Result.Value"/>
-            <View android:layout_width="fill_parent" android:layout_height="1dp" android:background="@color/Separator.Color" />
+                <View android:layout_width="fill_parent" android:layout_height="1dp"
+                      android:background="@color/Separator.Color"/>
             </LinearLayout>
 
             <LinearLayout android:id="@+id/resultCommissionsGroupView"
@@ -66,7 +81,8 @@
                           android:layout_height="wrap_content"
                           android:text="0.00"
                           style="@style/Result.Value"/>
-                <View android:layout_width="fill_parent" android:layout_height="1dp" android:background="@color/Separator.Color" />
+                <View android:layout_width="fill_parent" android:layout_height="1dp"
+                      android:background="@color/Separator.Color"/>
             </LinearLayout>
 
             <TextView android:text="@string/effectiveInterestLbl"
@@ -78,7 +94,8 @@
                       android:layout_height="wrap_content"
                       android:text="0.00"
                       style="@style/Result.Value"/>
-            <View android:layout_width="fill_parent" android:layout_height="1dp" android:background="@color/Separator.Color" />
+            <View android:layout_width="fill_parent" android:layout_height="1dp"
+                  android:background="@color/Separator.Color"/>
 
             <TextView android:text="@string/AmountTotalLbl"
                       android:layout_width="fill_parent"
@@ -89,7 +106,8 @@
                       android:layout_height="wrap_content"
                       android:text="0.00"
                       style="@style/Result.Value"/>
-            <View android:layout_width="fill_parent" android:layout_height="1dp" android:background="@color/Separator.Color" />
+            <View android:layout_width="fill_parent" android:layout_height="1dp"
+                  android:background="@color/Separator.Color"/>
 
             <TextView android:text="@string/paymentsCount"
                       android:layout_width="fill_parent"

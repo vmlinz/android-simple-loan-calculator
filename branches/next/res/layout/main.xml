@@ -25,7 +25,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/calc"
                     android:id="@+id/calcButton"
-                    style="@style/Button.Calc"/>
+                    style="@style/Button.Calc" android:onClick="calculate" android:singleLine="false"/>
 
             <View android:layout_width="fill_parent" android:layout_height="20dp" />
         </LinearLayout>

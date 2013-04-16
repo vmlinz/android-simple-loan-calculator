@@ -63,7 +63,7 @@
     </style>
 
     <style name="Schedule.Data">
-
+        <item name="android:background">@drawable/row_border</item>
     </style>
     <style name="Schedule.Data.Value">
 

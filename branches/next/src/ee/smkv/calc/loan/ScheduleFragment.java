@@ -17,7 +17,7 @@ public class ScheduleFragment extends SherlockFragment {
         View view = inflater.inflate(R.layout.schedule, container, false);
         TableLayout table = (TableLayout)view.findViewById(R.id.scheduleTable);
         for(Payment payment : StartActivity.loan.getPayments()){
-            View tableRow = inflater.inflate(R.layout.schedule_row, container);
+            View tableRow = LayoutInflater.from(view.getContext()).inflate(R.layout.schedule_row, null);
             Utils.setNumber((TextView)tableRow.findViewById(R.id.schedulePaymentNr) , payment.getNr());
             Utils.setNumber((TextView)tableRow.findViewById(R.id.schedulePaymentBalance) , payment.getBalance());
             Utils.setNumber((TextView)tableRow.findViewById(R.id.schedulePaymentPrincipal) , payment.getPrincipal());

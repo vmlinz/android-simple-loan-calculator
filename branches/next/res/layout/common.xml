@@ -8,30 +8,32 @@
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/amount"
-              android:textStyle="normal" style="@style/Common.Label"/>
+              style="@style/Common.Label"/>
     <EditText android:id="@+id/amountEdit"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:inputType="phone"
-              android:hint="@string/amountHint"/>
+              android:hint="@string/amountHint"
+              style="@style/Common.Field" android:autoText="false" android:clickable="false"/>
 
 
     <TextView android:text="@string/interest"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:textStyle="normal" style="@style/Common.Label"/>
+              style="@style/Common.Label"/>
     <EditText android:id="@+id/interestEdit"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:inputType="phone"
-              android:hint="@string/interestHint"/>
+              android:hint="@string/interestHint"
+              style="@style/Common.Field"/>
 
     <TextView style="@style/Common.Label" android:text="@string/period"
-              android:layout_width="fill_parent" android:layout_height="wrap_content" android:textStyle="normal"
+              android:layout_width="fill_parent" android:layout_height="wrap_content"
               android:id="@+id/periodLabel"/>
 
     <fragment class="ee.smkv.calc.loan.PeriodChooserFragment"
-                      android:id="@+id/periodChooserFragment"
-                      android:layout_width="match_parent" android:layout_height="wrap_content"/>
+              android:id="@+id/periodChooserFragment"
+              android:layout_width="match_parent" android:layout_height="wrap_content"/>
 
 </LinearLayout>

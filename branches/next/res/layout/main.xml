@@ -20,6 +20,14 @@
                       android:id="@+id/advancedDataFragment"
                       android:layout_width="match_parent" android:layout_height="wrap_content"/>
             <View android:layout_width="fill_parent" android:layout_height="20dp" />
+            <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calc"
+                    android:id="@+id/calcButton"
+                    style="@style/Button.Calc"/>
+
+            <View android:layout_width="fill_parent" android:layout_height="20dp" />
         </LinearLayout>
     </ScrollView>
 

@@ -7,11 +7,11 @@
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/downPayment"
-              android:textStyle="normal" style="@style/Advanced.Label"/>
+              style="@style/Advanced.Label"/>
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/downPaymentHint"
-              android:textStyle="italic" style="@style/Advanced.Hint"/>
+              style="@style/Advanced.Hint"/>
 
     <TableLayout android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             <EditText android:id="@+id/downPaymentEdit"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
-
+                      style="@style/Common.Field"
                       android:inputType="phone"
                       android:hint="@string/valuePercentHint"/>
             <Spinner
@@ -35,11 +35,11 @@
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/disposableCommission"
-              android:textStyle="normal" style="@style/Advanced.Label"/>
+              style="@style/Advanced.Label"/>
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/disposableCommissionHint"
-              android:textStyle="italic" style="@style/Advanced.Hint"/>
+              style="@style/Advanced.Hint"/>
     <TableLayout android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
                  android:stretchColumns="0">
@@ -47,7 +47,7 @@
             <EditText android:id="@+id/disposableCommissionEdit"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
-
+                      style="@style/Common.Field"
                       android:inputType="phone"
                       android:hint="@string/valuePercentHint"/>
             <Spinner
@@ -62,11 +62,11 @@
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/monthlyCommission"
-              android:textStyle="normal" style="@style/Advanced.Label"/>
+              style="@style/Advanced.Label"/>
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/monthlyCommissionHint"
-              android:textStyle="italic" style="@style/Advanced.Hint"/>
+              style="@style/Advanced.Hint"/>
     <TableLayout android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
                  android:stretchColumns="0">
@@ -74,7 +74,7 @@
             <EditText android:id="@+id/monthlyCommissionEdit"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
-
+                      style="@style/Common.Field"
                       android:inputType="phone"
                       android:hint="@string/valuePercentHint"/>
             <Spinner
@@ -89,11 +89,11 @@
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/residue"
-              android:textStyle="normal" style="@style/Advanced.Label"/>
+              style="@style/Advanced.Label"/>
     <TextView android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:text="@string/residueHint"
-              android:textStyle="italic" style="@style/Advanced.Hint"/>
+              style="@style/Advanced.Hint"/>
     <TableLayout android:layout_width="fill_parent"
                  android:layout_height="wrap_content"
                  android:stretchColumns="0">
@@ -101,7 +101,7 @@
             <EditText android:id="@+id/residueEdit"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
-
+                      style="@style/Common.Field"
                       android:inputType="phone"
                       android:hint="@string/valuePercentHint"/>
             <Spinner

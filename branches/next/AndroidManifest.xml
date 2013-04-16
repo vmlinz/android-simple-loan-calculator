@@ -13,5 +13,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ResultActivity" android:label="@string/calculationResult"/>
+        <activity android:name=".TypeHelpActivity" android:label="@string/typeHelpLbl"/>
     </application>
 </manifest>

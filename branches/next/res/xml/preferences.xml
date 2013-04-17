@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+            android:key="interestType"
+            android:title="Interest type"
+            android:dialogTitle="Interest type"
+            android:entries="@array/interestTypes"
+            android:entryValues="@array/interestTypeValues"
+            android:defaultValue="nominal" />
+</PreferenceScreen>

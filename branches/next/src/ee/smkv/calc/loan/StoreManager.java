@@ -102,4 +102,13 @@ public class StoreManager {
         return loanStore;
     }
 
+    public int getInteger(String type, int defaultValue) {
+        return settings.getInt(type , defaultValue);
+    }
+
+    public void setInteger(String type, int i) {
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt(type,i);
+        editor.commit();
+    }
 }

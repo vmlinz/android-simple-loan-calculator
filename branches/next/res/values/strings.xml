@@ -111,6 +111,7 @@
 
     <string name="donate">Make a donation</string>
     <string name="effectiveInterestLbl">Effective rate ,%</string>
+    <string name="nominalInterestLbl">Nominal rate ,%</string>
     <string name="effectiveInterestCompareLbl">Effective rate ,%</string>
     <string name="effectiveRateBtn">Eff.</string>
     <string name="eff2NominalConvTitle">Enter effective rate</string>
@@ -123,6 +124,10 @@
     <string-array name="percentValueTypes">
         <item>%</item>
         <item>0.00</item>
+    </string-array>
+    <string-array name="interestTypes">
+        <item>Nominal interest rate</item>
+        <item>Effective interest rate</item>
     </string-array>
     <string name="calculationResult">Calculation result</string>
 </resources>

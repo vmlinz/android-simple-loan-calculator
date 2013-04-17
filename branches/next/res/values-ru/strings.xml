@@ -110,6 +110,7 @@
 
     <string name="donate">Сделать пожертвование</string>
     <string name="effectiveInterestLbl">Эффективная ставка, %</string>
+    <string name="nominalInterestLbl">Номинальная ставка, %</string>
     <string name="effectiveInterestCompareLbl">Эффект. ставка, %</string>
     <string name="effectiveRateBtn">Эффект.</string>
     <string name="eff2NominalConvTitle">Введите эффективную ставку</string>

@@ -26,7 +26,7 @@
             <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner"
+                    android:id="@+id/downPaymentType"
                     android:entries="@array/percentValueTypes"/>
 
         </TableRow>
@@ -53,7 +53,7 @@
             <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner1"
+                    android:id="@+id/disposableCommissionType"
                     android:entries="@array/percentValueTypes"/>
 
         </TableRow>
@@ -80,8 +80,8 @@
             <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner2"
-                    android:entries="@array/percentValueTypes"/>
+                    android:id="@+id/monthlyCommissionType"
+                    android:entries="@array/percentValueTypes" android:longClickable="false"/>
 
         </TableRow>
     </TableLayout>
@@ -107,7 +107,7 @@
             <Spinner
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/spinner3"
+                    android:id="@+id/residueType"
                     android:entries="@array/percentValueTypes"/>
 
         </TableRow>

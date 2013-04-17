@@ -13,7 +13,7 @@
         <TableLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/scheduleTable">
+                android:id="@+id/scheduleTable" android:stretchColumns="*" style="@style/Schedule" android:clickable="false">
             <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"

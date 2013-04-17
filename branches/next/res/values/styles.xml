@@ -56,17 +56,20 @@
     </style>
     <style name="Schedule.Header">
         <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/row_header</item>
     </style>
 
     <style name="Schedule.Header.Label">
            <item name="android:padding">3dp</item>
+
     </style>
 
     <style name="Schedule.Data">
-        <item name="android:background">@drawable/row_border</item>
+
     </style>
     <style name="Schedule.Data.Value">
-
+        <item name="android:padding">3dp</item>
+        <item name="android:background">@drawable/row_border</item>
     </style>
 
     <style name="Help"></style>

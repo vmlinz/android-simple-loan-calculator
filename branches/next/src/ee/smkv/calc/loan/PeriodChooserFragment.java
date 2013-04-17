@@ -29,28 +29,28 @@ public class PeriodChooserFragment extends SherlockFragment implements View.OnCl
     }
 
     public void incrementYear(View view) {
-        BigDecimal y = Utils.getNumber(years);
+        BigDecimal y = Utils.getNumber(years, BigDecimal.ZERO);
         if (y.compareTo(new BigDecimal("50")) < 0) {
             Utils.setNumber(years, y.add(BigDecimal.ONE));
         }
     }
 
     public void decrementYear(View view) {
-        BigDecimal y = Utils.getNumber(years);
+        BigDecimal y = Utils.getNumber(years, BigDecimal.ZERO);
         if (y.compareTo(BigDecimal.ZERO) > 0) {
             Utils.setNumber(years, y.subtract(BigDecimal.ONE));
         }
     }
 
     public void incrementMonth(View view) {
-        BigDecimal y = Utils.getNumber(months);
+        BigDecimal y = Utils.getNumber(months, BigDecimal.ZERO);
         if (y.compareTo(new BigDecimal("12")) < 0) {
             Utils.setNumber(months, y.add(BigDecimal.ONE));
         }
     }
 
     public void decrementMonth(View view) {
-        BigDecimal y = Utils.getNumber(months);
+        BigDecimal y = Utils.getNumber(months, BigDecimal.ZERO);
         if (y.compareTo(BigDecimal.ZERO) > 0) {
             Utils.setNumber(months, y.subtract(BigDecimal.ONE));
         }

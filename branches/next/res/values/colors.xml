@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <color name="principal">#ff4eb100</color>
+    <color name="interest">#ffc63e00</color>
+    <color name="commission">#ff0500e7</color>
 </resources>

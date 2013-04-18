@@ -46,6 +46,9 @@ public class PeriodChooserFragment extends SherlockFragment implements View.OnCl
         BigDecimal y = Utils.getNumber(months, BigDecimal.ZERO);
         if (y.compareTo(new BigDecimal("12")) < 0) {
             Utils.setNumber(months, y.add(BigDecimal.ONE));
+        } else{
+            Utils.setNumber(months, BigDecimal.ZERO);
+            incrementYear(view);
         }
     }
 

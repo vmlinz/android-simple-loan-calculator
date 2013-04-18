@@ -17,7 +17,7 @@ public class ResultFragment extends SherlockFragment {
         Utils.setNumber((TextView) view.findViewById(R.id.resultMonthlyPaymentText) , StartActivity.loan.getMinMonthlyPayment() , StartActivity.loan.getMaxMonthlyPayment());
         Utils.setNumber((TextView) view.findViewById(R.id.resultIterestTotalText) , StartActivity.loan.getTotalInterests());
         Utils.setNumber((TextView) view.findViewById(R.id.resultDownPaymentTotalText) , StartActivity.loan.getDownPaymentPayment());
-        Utils.setNumber((TextView) view.findViewById(R.id.resultCommissionsTotalText) , StartActivity.loan.getMonthlyCommissionPayment());
+        Utils.setNumber((TextView) view.findViewById(R.id.resultCommissionsTotalText) , StartActivity.loan.getCommissionsTotal());
         Utils.setNumber((TextView) view.findViewById(R.id.nominalInterestText) , StartActivity.loan.getInterest());
         Utils.setNumber((TextView) view.findViewById(R.id.effectiveInterestText) , StartActivity.loan.getEffectiveInterestRate());
         Utils.setNumber((TextView) view.findViewById(R.id.resultAmountTotalText) , StartActivity.loan.getTotalAmount());

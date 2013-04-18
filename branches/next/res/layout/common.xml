@@ -12,7 +12,7 @@
     <EditText android:id="@+id/amountEdit"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:inputType="phone"
+              android:inputType="numberDecimal"
               android:hint="@string/amountHint"
               style="@style/Common.Field" android:autoText="false" android:clickable="false"/>
 
@@ -25,12 +25,13 @@
     <EditText android:id="@+id/interestEdit"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:inputType="phone"
+              android:inputType="numberDecimal"
               android:hint="@string/interestHint"
               style="@style/Common.Field"/>
     <LinearLayout android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
-                  android:id="@+id/fixedPaymentBlock">
+                  android:id="@+id/fixedPaymentBlock"
+      android:orientation="vertical">
         <TextView android:text="@string/fixedPayment"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
@@ -38,14 +39,12 @@
         <EditText android:id="@+id/fixedPaymentEdit"
                   android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
-                  android:inputType="phone"
-                  android:hint="@string/interestHint"
+                  android:inputType="numberDecimal"
+                  android:hint=""
                   style="@style/Common.Field"/>
     </LinearLayout>
 
-    <TextView style="@style/Common.Label" android:text="@string/period"
-              android:layout_width="fill_parent" android:layout_height="wrap_content"
-              android:id="@+id/periodLabel"/>
+
 
     <fragment class="ee.smkv.calc.loan.PeriodChooserFragment"
               android:id="@+id/periodChooserFragment"

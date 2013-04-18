@@ -1,17 +1,21 @@
 package ee.smkv.calc.loan;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,38 +77,38 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
       (Spinner)findViewById(R.id.residueType)
     );
 
-    int type = storeManager.getInteger("type" , 0);
+    int type = storeManager.getInteger("type", 0);
     getSupportActionBar().setSelectedNavigationItem(type);
-    findViewById(R.id.fixedPaymentBlock).setVisibility( type == 2 ? View.VISIBLE : View.GONE);
 
-      fixInterestlabel();
+    fixInterestlabel();
   }
 
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-        fixInterestlabel();
+  @Override
+  protected void onPostResume() {
+    super.onPostResume();
+    fixInterestlabel();
+  }
+
+  private void fixInterestlabel() {
+    if (isEffectiveRate()) {
+      TextView interestLabel = (TextView)findViewById(R.id.interestLabel);
+      interestLabel.setText(getString(R.string.effectiveInterestLbl));
     }
-
-    private void fixInterestlabel() {
-        if(isEffectiveRate()){
-            TextView interestLabel = (TextView)findViewById(R.id.interestLabel);
-            interestLabel.setText( getString(R.string.effectiveInterestLbl));
-        }else {
-            TextView interestLabel = (TextView)findViewById(R.id.interestLabel);
-            interestLabel.setText( getString(R.string.interest));
-        }
+    else {
+      TextView interestLabel = (TextView)findViewById(R.id.interestLabel);
+      interestLabel.setText(getString(R.string.interest));
     }
+  }
 
-    private boolean isEffectiveRate() {
-        String interestType = PreferenceManager.getDefaultSharedPreferences(this).getString("interestType", "nominal");
-        Log.i(StartActivity.class.getName() , interestType);
-        return "effective".equals(interestType);
-    }
+  private boolean isEffectiveRate() {
+    String interestType = PreferenceManager.getDefaultSharedPreferences(this).getString("interestType", "nominal");
+    Log.i(StartActivity.class.getName(), interestType);
+    return "effective".equals(interestType);
+  }
 
 
-    @Override
+  @Override
   protected void onStop() {
     super.onStop();
     try {
@@ -121,7 +125,7 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
                                  (Spinner)findViewById(R.id.disposableCommissionType),
                                  (Spinner)findViewById(R.id.monthlyCommissionType),
                                  (Spinner)findViewById(R.id.residueType));
-      storeManager.setInteger( "type" ,getSupportActionBar().getSelectedNavigationIndex());
+      storeManager.setInteger("type", getSupportActionBar().getSelectedNavigationIndex());
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -131,7 +135,14 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
   @Override
   public boolean onNavigationItemSelected(int itemPosition, long itemId) {
     calculator = CALCULATORS[itemPosition];
-    findViewById(R.id.fixedPaymentBlock).setVisibility(itemPosition == 2 ? View.VISIBLE : View.GONE);
+    if (itemPosition == 2) {
+      findViewById(R.id.fixedPaymentBlock).setVisibility(View.VISIBLE);
+      findViewById(R.id.periodChooserFragment).setVisibility(View.GONE);
+    }
+    else {
+      findViewById(R.id.fixedPaymentBlock).setVisibility(View.GONE);
+      findViewById(R.id.periodChooserFragment).setVisibility(View.VISIBLE);
+    }
     return true;
   }
 
@@ -157,7 +168,8 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
     }
     else if (item == helpMenuItem) {
       startActivity(new Intent(this, TypeHelpActivity.class));
-    }else if (item == settingMenuItem) {
+    }
+    else if (item == settingMenuItem) {
       startActivity(new Intent(this, SettingsActivity.class));
     }
     return super.onOptionsItemSelected(item);
@@ -186,7 +198,7 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
 
     }
     else {
-      setInputType(InputType.TYPE_CLASS_PHONE
+      setInputType(InputType.TYPE_CLASS_NUMBER
         , R.id.amountEdit
         , R.id.interestEdit
         , R.id.periodMonthEdit
@@ -213,6 +225,8 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
 
     private final Context context;
     private final ProgressDialog dialog;
+    private FieldNumberFormatException numberFormatException;
+    private Exception exception;
 
     public CalculateTask(Context context) {
       this.context = context;
@@ -231,21 +245,19 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
     protected Loan doInBackground(Void... params) {
       Loan loan = new Loan();
       try {
-        loan.setLoanType(0);
+        loan.setLoanType(getSupportActionBar().getSelectedNavigationIndex());
         loan.setAmount(Utils.getNumber((EditText)findViewById(R.id.amountEdit)));
 
-          if(isEffectiveRate()){
-              BigDecimal effectiveRate = Utils.getNumber((EditText) findViewById(R.id.interestEdit));
-              BigDecimal nominalRate = new BigDecimal(1200 * (Math.pow(1 + effectiveRate.doubleValue() / 100, (double)1 / (double)12) - 1));
-              loan.setInterest(nominalRate);
+        if (isEffectiveRate()) {
+          BigDecimal effectiveRate = Utils.getNumber((EditText)findViewById(R.id.interestEdit));
+          BigDecimal nominalRate = new BigDecimal(1200 * (Math.pow(1 + effectiveRate.doubleValue() / 100, (double)1 / (double)12) - 1));
+          loan.setInterest(nominalRate);
 
-          }else{
+        }
+        else {
 
-              loan.setInterest(Utils.getNumber((EditText)findViewById(R.id.interestEdit)));
-          }
-
-        BigDecimal periodInMonths = ((PeriodChooserFragment)getSupportFragmentManager().findFragmentById(R.id.periodChooserFragment)).getPeriodInMonths();
-        loan.setPeriod(periodInMonths.intValue());
+          loan.setInterest(Utils.getNumber((EditText)findViewById(R.id.interestEdit)));
+        }
 
 
         loan.setDownPayment(Utils.getNumber((EditText)findViewById(R.id.downPaymentEdit), BigDecimal.ZERO));
@@ -260,14 +272,28 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
         loan.setResidue(Utils.getNumber((EditText)findViewById(R.id.residueEdit), BigDecimal.ZERO));
         loan.setResidueType(((Spinner)findViewById(R.id.residueType)).getSelectedItemPosition());
 
-        loan.setFixedPayment( Utils.getNumber((EditText)findViewById(R.id.fixedPaymentEdit), BigDecimal.ZERO) );
+        if (calculator instanceof FixedPaymentCalculator) {
+          loan.setFixedPayment(Utils.getNumber((EditText)findViewById(R.id.fixedPaymentEdit), BigDecimal.ZERO));
+        }
+        else {
+          BigDecimal periodInMonths = ((PeriodChooserFragment)getSupportFragmentManager().findFragmentById(R.id.periodChooserFragment)).getPeriodInMonths();
+          loan.setPeriod(periodInMonths.intValue());
+          if (periodInMonths.intValue() == 0) {
+            throw new FieldNumberFormatException(R.id.periodMonthEdit, "Period should be greater that zero");
+          }
+        }
 
         calculator.calculate(loan);
 
       }
+      catch (FieldNumberFormatException e) {
+        numberFormatException = e;
+
+
+      }
       catch (Exception e) {
         e.printStackTrace();
-        Toast.makeText(StartActivity.this, e.toString(), Toast.LENGTH_SHORT);
+        exception = e;
       }
       return loan;
     }
@@ -279,8 +305,72 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
       if (this.dialog.isShowing()) {
         this.dialog.dismiss();
       }
-      Intent myIntent = new Intent(StartActivity.this, ResultActivity.class);
-      startActivity(myIntent);
+      if (numberFormatException == null) {
+        Intent myIntent = new Intent(StartActivity.this, ResultActivity.class);
+        startActivity(myIntent);
+      }
+      else if (exception != null) {
+        Toast.makeText(StartActivity.this, exception.toString(), Toast.LENGTH_SHORT);
+      }
+      else {
+        showError();
+      }
+    }
+
+    private void showError() {
+      AlertDialog.Builder builder = new AlertDialog.Builder(StartActivity.this, R.style.Theme_Sherlock_Light_Dialog);
+      switch (numberFormatException.getId()) {
+        case R.id.amountEdit:
+          builder.setMessage(R.string.errorAmount);
+          break;
+        case R.id.interestEdit:
+          builder.setMessage(R.string.errorInterest);
+          break;
+        case R.id.fixedPaymentEdit:
+          builder.setMessage(R.string.errorFixedAmount);
+          break;
+        case R.id.periodMonthEdit:
+        case R.id.periodYearEdit:
+          builder.setMessage(R.string.errorPeriod);
+          break;
+        case R.id.downPaymentEdit:
+          builder.setMessage(R.string.errorDownPayment);
+          break;
+        case R.id.disposableCommissionEdit:
+          builder.setMessage(R.string.errorDispCommission);
+          break;
+        case R.id.monthlyCommissionEdit:
+          builder.setMessage(R.string.errorMonthlyCommission);
+          break;
+        case R.id.residueEdit:
+          builder.setMessage(R.string.errorResidue);
+          break;
+        default:
+          builder.setMessage(numberFormatException.getMessage());
+      }
+
+      builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+          focusOnView(findViewById(numberFormatException.getId()));
+        }
+      });
+
+      builder.create().show();
+
     }
   }
+
+
+  private final void focusOnView(final View view) {
+    new Handler().post(new Runnable() {
+      @Override
+      public void run() {
+        ScrollView mainScrollView = (ScrollView)findViewById(R.id.mainScrollView);
+        mainScrollView.scrollTo(0, view.getBottom());
+        view.requestFocus();
+      }
+    });
+  }
+
 }

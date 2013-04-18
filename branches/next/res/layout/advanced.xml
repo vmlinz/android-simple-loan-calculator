@@ -21,7 +21,7 @@
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       style="@style/Common.Field"
-                      android:inputType="phone"
+                      android:inputType="numberDecimal"
                       android:hint="@string/valuePercentHint"/>
             <Spinner
                     android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       style="@style/Common.Field"
-                      android:inputType="phone"
+                      android:inputType="numberDecimal"
                       android:hint="@string/valuePercentHint"/>
             <Spinner
                     android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       style="@style/Common.Field"
-                      android:inputType="phone"
+                      android:inputType="numberDecimal"
                       android:hint="@string/valuePercentHint"/>
             <Spinner
                     android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       style="@style/Common.Field"
-                      android:inputType="phone"
+                      android:inputType="numberDecimal"
                       android:hint="@string/valuePercentHint"/>
             <Spinner
                     android:layout_width="wrap_content"

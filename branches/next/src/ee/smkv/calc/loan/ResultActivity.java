@@ -8,6 +8,7 @@ public class ResultActivity extends TabSwipeActivity {
     public void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.Theme_Sherlock_Light);
         super.onCreate(savedInstanceState);
+        setTitle( getResources().getStringArray(R.array.types)[StartActivity.loan.getLoanType()]);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         addTab(getString(R.string.tabResult), ResultFragment.class, new Bundle());

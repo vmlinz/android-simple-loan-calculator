@@ -9,7 +9,7 @@
     <string name="period">Период</string>
     <string name="calc">Рассчитать</string>
     <string name="MonthlyAmountLbl">Месячный платеж</string>
-    <string name="IterestTotalLbl">Величина переплаты процентов</string>
+    <string name="IterestTotalLbl">Сумма процентов</string>
     <string name="AmountTotalLbl">Полная сумма</string>
     <string name="errorAmount">Введите корректную сумму кредита</string>
     <string name="errorFixedAmount">Введите корректную сумму фиксированного ежемесячного платежа</string>
@@ -94,7 +94,7 @@
     <string name="hide"> Свернуть </string>
     <string name="downPayment">Первый взнос</string>
     <string name="donPaymentTotalLabel">Первый взнос</string>
-    <string name="disposableCommission">Одноразовая комиссия</string>
+    <string name="disposableCommission">Единовременная комиссия</string>
     <string name="monthlyCommission">Ежемесячная комиссия</string>
     <string name="commissionTotalLabel">Комиссия всего</string>
 
@@ -116,7 +116,7 @@
     <string name="eff2NominalConvTitle">Введите эффективную ставку</string>
     <string name="eff2NominalConvMessage">Расчет номинальной процентной ставки на основаннии эффективной ставки. (расчет игнорирует первоначальный взнос и комиссии)</string>
 
-    <string name="residue">Последний платеж (кредит с остатком)</string>
+    <string name="residue">Последний платеж (остаток)</string>
     <string name="residueHint">(сумма или процент от суммы кредита)</string>
     <string name="errorResidue">Введите корректную сумму остатка</string>
 

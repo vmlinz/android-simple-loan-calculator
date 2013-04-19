@@ -9,7 +9,10 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Utils {
-  public static BigDecimal getNumber(EditText editText) throws FieldNumberFormatException {
+
+    public static final BigDecimal HUNDRED = new BigDecimal("100");
+
+    public static BigDecimal getNumber(EditText editText) throws FieldNumberFormatException {
     BigDecimal number = getNumber(editText, null);
     if (number == null) {
       throw new FieldNumberFormatException(editText.getId(), "Number if empty");
@@ -72,4 +75,9 @@ public class Utils {
       );
     }
   }
+
+    public static String percent(BigDecimal value ,BigDecimal total){
+        BigDecimal percent = value.multiply(HUNDRED).divide(total, 2, RoundingMode.HALF_EVEN);
+        return percent.toPlainString() + "%";
+    }
 }

@@ -25,6 +25,7 @@ import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ChartFragment extends SherlockFragment {
@@ -62,18 +63,17 @@ public class ChartFragment extends SherlockFragment {
     commissionRenderer.setColor(getResources().getColor(R.color.commission));
 
 
-    //renderer.setOrientation(XYMultipleSeriesRenderer.Orientation.VERTICAL);
     renderer.setAntialiasing(true);
     renderer.setZoomEnabled(false, false);
     renderer.setPanEnabled(false, false);
     renderer.setExternalZoomEnabled(false);
-    renderer.setShowGrid(true);
+    renderer.setShowGrid(false);
     renderer.setGridColor(getResources().getColor(R.color.Separator_Color));
     renderer.setBackgroundColor(getResources().getColor(R.color.abs__background_holo_light));
     renderer.setMarginsColor(getResources().getColor(R.color.abs__background_holo_light));
     renderer.setAxisTitleTextSize(getResources().getDimension(R.dimen.abs__action_bar_subtitle_text_size));
     renderer.setInScroll(false);
-    renderer.setBarSpacing(0.5);
+    //renderer.setBarSpacing(0.5);
 
     renderer.setLabelsColor(Color.BLACK);
 
@@ -109,14 +109,16 @@ public class ChartFragment extends SherlockFragment {
     renderer.setMargins(new int[]{10, 10, 10, 10});
     CategorySeries series = new CategorySeries("Pie");
 
-    series.add(getString(R.string.paymentPrincipal), loan.getAmount().doubleValue());
+      BigDecimal totalAmount = loan.getTotalAmount();
+
+      series.add(getString(R.string.paymentPrincipal )+ " (" + Utils.percent(loan.getAmount() , totalAmount) + ")", loan.getAmount().doubleValue());
     SimpleSeriesRenderer principalRenderer = new SimpleSeriesRenderer();
     principalRenderer.setDisplayChartValues(true);
     principalRenderer.setColor(getResources().getColor(R.color.principal));
     renderer.addSeriesRenderer(0, principalRenderer);
 
 
-    series.add(getString(R.string.paymentInterest), loan.getTotalInterests().doubleValue());
+    series.add(getString(R.string.paymentInterest)+ " (" + Utils.percent(loan.getTotalInterests() , totalAmount) + ")", loan.getTotalInterests().doubleValue());
     SimpleSeriesRenderer interestRenderer = new SimpleSeriesRenderer();
     interestRenderer.setDisplayChartValues(true);
     interestRenderer.setColor(getResources().getColor(R.color.interest));
@@ -124,7 +126,7 @@ public class ChartFragment extends SherlockFragment {
 
 
     if (loan.hasAnyCommission()) {
-      series.add(getString(R.string.paymentCommission), loan.getCommissionsTotal().doubleValue());
+      series.add(getString(R.string.paymentCommission)+ " (" + Utils.percent(loan.getCommissionsTotal() , totalAmount) + ")", loan.getCommissionsTotal().doubleValue());
       SimpleSeriesRenderer commissionRenderer = new SimpleSeriesRenderer();
       commissionRenderer.setDisplayChartValues(true);
       commissionRenderer.setColor(getResources().getColor(R.color.commission));

@@ -7,80 +7,90 @@
     <ScrollView android:id="@+id/mainScrollView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
+
         <LinearLayout android:orientation="vertical"
                       android:layout_width="match_parent"
                       android:layout_height="match_parent" android:padding="15dp">
-            <TextView android:text="@string/amount"
-                      android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      style="@style/Result.Label"/>
-            <TextView android:id="@+id/resultAmountText"
-                      android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      android:text="0.00"
-                      style="@style/Result.Value"/>
-
-            <View android:layout_width="fill_parent" android:layout_height="1dp"
-                  android:background="@color/Separator.Color"/>
-
-            <TextView android:text="@string/paymentsCount"
-                      android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      style="@style/Result.Label"/>
-            <TextView android:id="@+id/resultPeriodTotalText"
-                      android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      android:text="0.00"
-                      style="@style/Result.Value"/>
-            <View android:layout_width="fill_parent" android:layout_height="1dp"
-                  android:background="@color/Separator.Color"/>
-
-            <TextView android:text="@string/nominalInterestLbl"
-                      android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      style="@style/Result.Label"/>
-            <LinearLayout android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="horizontal"
-                    >
 
 
-                <TextView android:id="@+id/nominalInterestText"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:text="0.00"
-                          style="@style/Result.Value"/>
-                <TextView android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:text="%"
-                          style="@style/Result.Value"/>
-            </LinearLayout>
-            <View android:layout_width="fill_parent" android:layout_height="1dp"
-                  android:background="@color/Separator.Color"/>
+            <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:stretchColumns="*"
+                    android:background="@drawable/roundedshape">
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/amount"
+                            android:id="@+id/resultAmount"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:id="@+id/resultAmountValue"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/nominalInterestLbl"
+                            android:id="@+id/resultInterest"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:id="@+id/resultInterestValue"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/period"
+                            android:id="@+id/resultPeriod"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:id="@+id/resultPeriodValue"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/downPayment"
+                            android:id="@+id/resultDownPayment"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:id="@+id/resultDownPaymentValue"/>
+                </TableRow>
+                <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/residue"
+                            android:id="@+id/resultResidue"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00"
+                            android:id="@+id/resultResidueValue"/>
+                </TableRow>
+            </TableLayout>
 
-            <TextView android:text="@string/effectiveInterestLbl"
-                      android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
-                      style="@style/Result.Label"/>
 
-            <LinearLayout android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="horizontal"
-                    >
-
-
-                <TextView android:id="@+id/effectiveInterestText"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:text="0.00"
-                          style="@style/Result.Value"/>
-                <TextView android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:text="%"
-                          style="@style/Result.Value"/>
-            </LinearLayout>
-            <View android:layout_width="fill_parent" android:layout_height="1dp"
-                  android:background="@color/Separator.Color"/>
             <TextView android:text="@string/MonthlyAmountLbl"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
@@ -90,6 +100,22 @@
                       android:layout_height="wrap_content"
                       android:text="0.00"
                       style="@style/Result.Value"/>
+
+            <View android:layout_width="fill_parent" android:layout_height="1dp"
+                  android:background="@color/Separator.Color"/>
+
+            <TextView android:text="@string/effectiveInterestLbl"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      style="@style/Result.Label"/>
+
+
+            <TextView android:id="@+id/effectiveInterestText"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:text="0.00"
+                      style="@style/Result.Value"/>
+
 
             <View android:layout_width="fill_parent" android:layout_height="1dp"
                   android:background="@color/Separator.Color"/>
@@ -107,42 +133,18 @@
             <View android:layout_width="fill_parent" android:layout_height="1dp"
                   android:background="@color/Separator.Color"/>
 
-            <LinearLayout android:id="@+id/resultDownPaymentGroupView"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical">
+            <TextView android:text="@string/commissionTotalLabel"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
 
-                <TextView android:text="@string/donPaymentTotalLabel"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          style="@style/Result.Label"/>
-                <TextView android:id="@+id/resultDownPaymentTotalText"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:text="0.00"
-                          style="@style/Result.Value"/>
-                <View android:layout_width="fill_parent" android:layout_height="1dp"
-                      android:background="@color/Separator.Color"/>
-            </LinearLayout>
-
-            <LinearLayout android:id="@+id/resultCommissionsGroupView"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical">
-
-                <TextView android:text="@string/commissionTotalLabel"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-
-                          style="@style/Result.Label"/>
-                <TextView android:id="@+id/resultCommissionsTotalText"
-                          android:layout_width="fill_parent"
-                          android:layout_height="wrap_content"
-                          android:text="0.00"
-                          style="@style/Result.Value"/>
-                <View android:layout_width="fill_parent" android:layout_height="1dp"
-                      android:background="@color/Separator.Color"/>
-            </LinearLayout>
+                      style="@style/Result.Label"/>
+            <TextView android:id="@+id/resultCommissionsTotalText"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:text="0.00"
+                      style="@style/Result.Value"/>
+            <View android:layout_width="fill_parent" android:layout_height="1dp"
+                  android:background="@color/Separator.Color"/>
 
 
             <TextView android:text="@string/AmountTotalLbl"

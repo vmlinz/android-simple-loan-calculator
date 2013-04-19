@@ -9,6 +9,6 @@
     <color name="commission">#ff0500e7</color>
     <color name="commissionFill">#550500e7</color>
 
-    <color name="payment">#ff555555</color>
-    <color name="paymentFill">#33555555</color>
+    <color name="payment">#ff492155</color>
+    <color name="paymentFill">#33492155</color>
 </resources>

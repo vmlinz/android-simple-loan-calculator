@@ -125,7 +125,12 @@
     </string>
 
     <string name="residue">Último pago (pago residual)</string>
-
-
+    <string name="settings">Configuración</string>
+    <string-array name="interestTypes">
+        <item>Tasa de interés nominal</item>
+        <item>El tipo de interés efectivo</item>
+    </string-array>
+    <string name="interestType">Tasa de interés</string>
+    <string name="interestTypeTitle">Seleccione el método de ingreso de la tasa de interés</string>
 </resources>
 

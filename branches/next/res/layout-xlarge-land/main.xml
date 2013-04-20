@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:layout_weight="3">
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/scrollView">
+
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <fragment android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:name="ee.smkv.calc.loan.CommonDataFragment" android:id="@+id/fragment"/>
+                <fragment android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:name="ee.smkv.calc.loan.AdvancedDataFragment" android:id="@+id/fragment1"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" android:layout_weight="2">
+        <fragment android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:name="ee.smkv.calc.loan.ResultLandFragment" android:id="@+id/fragment2"
+                  android:layout_gravity="left|center_vertical"/>
+    </LinearLayout>
+</LinearLayout>

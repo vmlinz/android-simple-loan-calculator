@@ -154,7 +154,7 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
 
         helpMenuItem = menu.add(R.string.typeHelpLbl);
         helpMenuItem.setIcon(android.R.drawable.ic_menu_help);
-        settingMenuItem = menu.add("Setting");
+        settingMenuItem = menu.add(R.string.settings);
         settingMenuItem.setIcon(android.R.drawable.ic_menu_manage);
         return true;
     }
@@ -281,6 +281,7 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
                 }
 
                 calculator.calculate(loan);
+                loan.setCalculated(true);
 
             } catch (FieldNumberFormatException e) {
                 numberFormatException = e;
@@ -298,9 +299,13 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
         protected void onPostExecute(Loan loan) {
             StartActivity.loan = loan;
             closeDialog();
-            if (numberFormatException == null) {
-                Intent myIntent = new Intent(StartActivity.this, ResultActivity.class);
-                startActivity(myIntent);
+            if (numberFormatException == null && exception == null) {
+                if(findViewById(R.id.tabHost) != null){
+                    LoanDispatcher.getInstance().dispatch(loan);
+                }else{
+                    Intent myIntent = new Intent(StartActivity.this, ResultActivity.class);
+                    startActivity(myIntent);
+                }
             } else if (exception != null) {
                 Toast.makeText(StartActivity.this, exception.toString(), Toast.LENGTH_SHORT);
             } else {

@@ -125,4 +125,12 @@
         <item>0.00</item>
     </string-array>
     <string name="calculationResult">Результат расчета</string>
+    <string name="settings">Настройки</string>
+
+    <string-array name="interestTypes">
+        <item>Номинальная процентная ставка</item>
+        <item>Эффективная процентная ставка</item>
+    </string-array>
+    <string name="interestType">Процентная ставка</string>
+    <string name="interestTypeTitle">Выберите способ ввода процентной ставки</string>
 </resources>

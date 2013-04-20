@@ -103,5 +103,12 @@
     <string name="eff2NominalConvMessage">Calculating of nominal interest rate based on effective rate. (calculation ignores down payments and commissions)</string>
 
     <string name="residue">Viimane maks (lean jäägiga)</string>
+    <string name="settings">Seaded</string>
 
+    <string-array name="interestTypes">
+        <item>Nominaalne intressimäär</item>
+        <item>Efektiivne intressimäär</item>
+    </string-array>
+    <string name="interestType">Intressimäär</string>
+    <string name="interestTypeTitle">Vali intressimäära sisestamise viis</string>
 </resources>

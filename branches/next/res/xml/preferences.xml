@@ -3,8 +3,8 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <ListPreference
             android:key="interestType"
-            android:title="Interest type"
-            android:dialogTitle="Interest type"
+            android:title="@string/interestType"
+            android:dialogTitle="@string/interestTypeTitle"
             android:entries="@array/interestTypes"
             android:entryValues="@array/interestTypeValues"
             android:defaultValue="nominal" />

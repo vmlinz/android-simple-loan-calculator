@@ -130,4 +130,7 @@
         <item>Effective interest rate</item>
     </string-array>
     <string name="calculationResult">Calculation result</string>
+    <string name="settings">Settings</string>
+    <string name="interestType">Loan interest type</string>
+    <string name="interestTypeTitle">Choose default interest type</string>
 </resources>

@@ -14,6 +14,7 @@ public class Loan implements Serializable {
     public static final int PERCENT = 0;
     public static final int VALUE = 1;
 
+    private boolean calculated;
     private int loanType = 0;
     private BigDecimal amount = BigDecimal.ZERO;
     private BigDecimal interest = BigDecimal.ZERO;
@@ -259,5 +260,13 @@ public class Loan implements Serializable {
 
     public boolean hasAnyCommission() {
         return getCommissionsTotal().compareTo(BigDecimal.ZERO) > 0;
+    }
+
+    public boolean isCalculated() {
+        return calculated;
+    }
+
+    public void setCalculated(boolean calculated) {
+        this.calculated = calculated;
     }
 }

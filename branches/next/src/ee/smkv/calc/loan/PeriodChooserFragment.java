@@ -31,21 +31,21 @@ public class PeriodChooserFragment extends SherlockFragment implements View.OnCl
     public void incrementYear(View view) {
         BigDecimal y = Utils.getNumber(years, BigDecimal.ZERO);
         if (y.compareTo(new BigDecimal("50")) < 0) {
-            Utils.setNumber(years, y.add(BigDecimal.ONE));
+            Utils.setNumber(years, y.intValue() + 1);
         }
     }
 
     public void decrementYear(View view) {
         BigDecimal y = Utils.getNumber(years, BigDecimal.ZERO);
         if (y.compareTo(BigDecimal.ZERO) > 0) {
-            Utils.setNumber(years, y.subtract(BigDecimal.ONE));
+            Utils.setNumber(years, y.intValue() - 1);
         }
     }
 
     public void incrementMonth(View view) {
         BigDecimal y = Utils.getNumber(months, BigDecimal.ZERO);
         if (y.compareTo(new BigDecimal("12")) < 0) {
-            Utils.setNumber(months, y.add(BigDecimal.ONE));
+            Utils.setNumber(months, y.intValue() + 1);
         } else{
             Utils.setNumber(months, BigDecimal.ZERO);
             incrementYear(view);
@@ -55,7 +55,7 @@ public class PeriodChooserFragment extends SherlockFragment implements View.OnCl
     public void decrementMonth(View view) {
         BigDecimal y = Utils.getNumber(months, BigDecimal.ZERO);
         if (y.compareTo(BigDecimal.ZERO) > 0) {
-            Utils.setNumber(months, y.subtract(BigDecimal.ONE));
+            Utils.setNumber(months, y.intValue() - 1);
         }
     }
 

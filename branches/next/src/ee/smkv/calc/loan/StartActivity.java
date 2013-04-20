@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -82,6 +83,27 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
         getSupportActionBar().setSelectedNavigationItem(type);
 
         fixInterestlabel();
+
+        if("unknown".equals(PreferenceManager.getDefaultSharedPreferences(this).getString("interestType", "unknown"))){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.interestTypeTitle);
+            builder.setSingleChoiceItems(R.array.interestTypes, 0, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(StartActivity.this).edit();
+                    edit.putString("interestType", getResources().getStringArray(R.array.interestTypeValues)[which]);
+                    edit.commit();
+                    fixInterestlabel();
+                }
+            });
+            builder.setPositiveButton(android.R.string.ok , new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    fixInterestlabel();
+                }
+            });
+            builder.create().show();
+        }
     }
 
 

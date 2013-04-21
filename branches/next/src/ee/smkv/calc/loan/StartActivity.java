@@ -40,6 +40,8 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
 
     public static StoreManager storeManager;
     private MenuItem calculateMenuItem;
+    private MenuItem addToCompareMenuItem;
+    private MenuItem openCompareMenuItem;
     private MenuItem helpMenuItem;
     private MenuItem settingMenuItem;
     private Calculator calculator = CALCULATORS[0];
@@ -174,8 +176,21 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
                 .setIcon(R.drawable.ic_action_calc)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
+        int orientation = getResources().getConfiguration().orientation;
+        int screenLayout = getResources().getConfiguration().screenLayout;
+        if (screenLayout == Configuration.SCREENLAYOUT_SIZE_XLARGE && orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            addToCompareMenuItem = menu.add(R.string.addToCompare);
+            addToCompareMenuItem
+                    .setIcon(R.drawable.ic_action_add)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+        }
+
+
+        openCompareMenuItem = menu.add(R.string.viewCompare);
+        openCompareMenuItem.setIcon(R.drawable.ic_action_compare);
+
         helpMenuItem = menu.add(R.string.typeHelpLbl);
-        helpMenuItem.setIcon(android.R.drawable.ic_menu_help);
+        helpMenuItem.setIcon(R.drawable.ic_action_help);
         settingMenuItem = menu.add(R.string.settings);
         settingMenuItem.setIcon(android.R.drawable.ic_menu_manage);
         return true;
@@ -189,6 +204,13 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
             startActivity(new Intent(this, TypeHelpActivity.class));
         } else if (item == settingMenuItem) {
             startActivity(new Intent(this, SettingsActivity.class));
+        }else if (item == openCompareMenuItem) {
+            startActivity(new Intent(this, CompareActivity.class));
+        }else if (item == addToCompareMenuItem) {
+            if (StartActivity.loan.isCalculated()) {
+                StartActivity.storeManager.addLoan( StartActivity.loan);
+                startActivity(new Intent(this, CompareActivity.class));
+            }
         }
         return super.onOptionsItemSelected(item);
     }

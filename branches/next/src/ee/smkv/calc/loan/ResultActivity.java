@@ -1,12 +1,17 @@
 package ee.smkv.calc.loan;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.WindowManager;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 public class ResultActivity extends TabSwipeActivity {
     MenuItem addToCompareMenuItem;
+    MenuItem openCompareMenuItem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -22,10 +27,16 @@ public class ResultActivity extends TabSwipeActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        int orientation = getResources().getConfiguration().orientation;
         addToCompareMenuItem = menu.add(R.string.addToCompare);
         addToCompareMenuItem
                 .setIcon(R.drawable.ic_action_add)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+                .setShowAsAction( orientation == Configuration.ORIENTATION_PORTRAIT ?  MenuItem.SHOW_AS_ACTION_IF_ROOM : MenuItem.SHOW_AS_ACTION_NEVER );
+
+        openCompareMenuItem = menu.add(R.string.viewCompare);
+        openCompareMenuItem
+                .setIcon(R.drawable.ic_action_compare);
 
 
         return true;
@@ -45,7 +56,26 @@ public class ResultActivity extends TabSwipeActivity {
             StartActivity.storeManager.addLoan( StartActivity.loan);
             Intent myIntent = new Intent(this, CompareActivity.class);
             startActivity(myIntent);
+            return true;
+        }
+        if(item == openCompareMenuItem){
+            Intent myIntent = new Intent(this, CompareActivity.class);
+            startActivity(myIntent);
+            return true;
         }
         return false;
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        switch(newConfig.orientation) {
+            case Configuration.ORIENTATION_PORTRAIT:
+                addToCompareMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+                break;
+            case Configuration.ORIENTATION_LANDSCAPE:
+                addToCompareMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+                break;
+        }
     }
 }

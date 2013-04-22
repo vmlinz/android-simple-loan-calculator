@@ -1,6 +1,7 @@
 package ee.smkv.calc.loan;
 
 
+import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -178,7 +179,23 @@ public class ChartFragment extends SherlockFragment implements Observer {
     }
 
 
-    private class PrincipalSeries extends RangeCategorySeries {
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    if (getView().findViewById(R.id.chartLayout) != null) {
+      switch (newConfig.orientation){
+        case Configuration.ORIENTATION_LANDSCAPE:
+          ((LinearLayout)getView().findViewById(R.id.chartLayout)).setOrientation(LinearLayout.HORIZONTAL);
+          break;
+        case Configuration.ORIENTATION_PORTRAIT:
+          ((LinearLayout)getView().findViewById(R.id.chartLayout)).setOrientation(LinearLayout.VERTICAL);
+          break;
+      }
+    }
+
+  }
+
+  private class PrincipalSeries extends RangeCategorySeries {
         public PrincipalSeries(String title, List<Payment> payments) {
             super(title);
             for (Payment payment : payments) {

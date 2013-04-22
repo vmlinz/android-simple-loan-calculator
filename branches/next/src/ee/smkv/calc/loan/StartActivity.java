@@ -86,36 +86,58 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
 
         fixInterestlabel();
 
-        if("unknown".equals(PreferenceManager.getDefaultSharedPreferences(this).getString("interestType", "unknown"))){
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(R.string.interestTypeTitle);
-            builder.setSingleChoiceItems(R.array.interestTypes, 0, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(StartActivity.this).edit();
-                    edit.putString("interestType", getResources().getStringArray(R.array.interestTypeValues)[which]);
-                    edit.commit();
-                    fixInterestlabel();
-                }
-            });
-            builder.setPositiveButton(android.R.string.ok , new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    fixInterestlabel();
-                }
-            });
-            builder.create().show();
-        }
     }
 
+  public void selectInterestRateInput(View view) {
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setTitle(R.string.interestTypeTitle);
 
-    @Override
+    String type = PreferenceManager.getDefaultSharedPreferences(StartActivity.this).getString("interestType", "nominal");
+    int defaultType = 0 ;
+    if("effective".equals(type)){
+      defaultType = 1;
+    }
+
+    builder.setSingleChoiceItems(R.array.interestTypes, defaultType, new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(StartActivity.this).edit();
+            edit.putString("interestType", getResources().getStringArray(R.array.interestTypeValues)[which]);
+            edit.commit();
+            fixInterestlabel();
+            dialog.dismiss();
+        }
+    });
+
+    builder.setNegativeButton(android.R.string.cancel , new DialogInterface.OnClickListener() {
+      @Override
+      public void onClick(DialogInterface dialog, int which) {
+        dialog.dismiss();
+      }
+    });
+    builder.create().show();
+  }
+
+
+  @Override
     protected void onPostResume() {
         super.onPostResume();
         fixInterestlabel();
+
+       if( getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
+           && getResources().getConfiguration().screenLayout == Configuration.SCREENLAYOUT_SIZE_XLARGE
+           && !isTwoSideView()  ){
+         reloadActivity();
+       }
     }
 
-    private void fixInterestlabel() {
+  private void reloadActivity() {
+    tryStoreSettings();
+    finish();
+    startActivity(getIntent());
+  }
+
+  private void fixInterestlabel() {
         if (isEffectiveRate()) {
             TextView interestLabel = (TextView) findViewById(R.id.interestLabel);
             interestLabel.setText(getString(R.string.effectiveInterestLbl));
@@ -134,28 +156,32 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
 
     @Override
     protected void onStop() {
-        super.onStop();
-        try {
-            storeManager.storeTextViews((TextView) findViewById(R.id.amountEdit),
-                    (TextView) findViewById(R.id.interestEdit),
-                    (TextView) findViewById(R.id.fixedPaymentEdit),
-                    (TextView) findViewById(R.id.periodMonthEdit),
-                    (TextView) findViewById(R.id.periodYearEdit),
-                    (TextView) findViewById(R.id.downPaymentEdit),
-                    (TextView) findViewById(R.id.disposableCommissionEdit),
-                    (TextView) findViewById(R.id.monthlyCommissionEdit),
-                    (TextView) findViewById(R.id.residueEdit));
-            storeManager.storeSpinners((Spinner) findViewById(R.id.downPaymentType),
-                    (Spinner) findViewById(R.id.disposableCommissionType),
-                    (Spinner) findViewById(R.id.monthlyCommissionType),
-                    (Spinner) findViewById(R.id.residueType));
-            storeManager.setInteger("type", getSupportActionBar().getSelectedNavigationIndex());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+      tryStoreSettings();
+      super.onStop();
     }
 
-    @Override
+  private void tryStoreSettings() {
+    try {
+        storeManager.storeTextViews((TextView) findViewById(R.id.amountEdit),
+                (TextView) findViewById(R.id.interestEdit),
+                (TextView) findViewById(R.id.fixedPaymentEdit),
+                (TextView) findViewById(R.id.periodMonthEdit),
+                (TextView) findViewById(R.id.periodYearEdit),
+                (TextView) findViewById(R.id.downPaymentEdit),
+                (TextView) findViewById(R.id.disposableCommissionEdit),
+                (TextView) findViewById(R.id.monthlyCommissionEdit),
+                (TextView) findViewById(R.id.residueEdit));
+        storeManager.storeSpinners((Spinner) findViewById(R.id.downPaymentType),
+                (Spinner) findViewById(R.id.disposableCommissionType),
+                (Spinner) findViewById(R.id.monthlyCommissionType),
+                (Spinner) findViewById(R.id.residueType));
+        storeManager.setInteger("type", getSupportActionBar().getSelectedNavigationIndex());
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+  }
+
+  @Override
     public boolean onNavigationItemSelected(int itemPosition, long itemId) {
         calculator = CALCULATORS[itemPosition];
         if (itemPosition == 2) {
@@ -176,9 +202,7 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
                 .setIcon(R.drawable.ic_action_calc)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
-        int orientation = getResources().getConfiguration().orientation;
-        int screenLayout = getResources().getConfiguration().screenLayout;
-        if (screenLayout == Configuration.SCREENLAYOUT_SIZE_XLARGE && orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (isTwoSideView()) {
             addToCompareMenuItem = menu.add(R.string.addToCompare);
             addToCompareMenuItem
                     .setIcon(R.drawable.ic_action_add)
@@ -253,8 +277,11 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
             );
 
         }
-
         super.onConfigurationChanged(newConfig);
+
+          setRequestedOrientation(newConfig.orientation);
+          reloadActivity();
+
     }
 
     private void setInputType(int type, int... ids) {
@@ -344,7 +371,7 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
             StartActivity.loan = loan;
             closeDialog();
             if (numberFormatException == null && exception == null) {
-                if(findViewById(R.id.tabHost) != null){
+                if(isTwoSideView()){
                     LoanDispatcher.getInstance().dispatch(loan);
                 }else{
                     Intent myIntent = new Intent(StartActivity.this, ResultActivity.class);
@@ -420,8 +447,12 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
         }
     }
 
+  private boolean isTwoSideView() {
+    return findViewById(R.id.tabHost) != null;
+  }
 
-    private final void focusOnView(final View view) {
+
+  private final void focusOnView(final View view) {
         new Handler().post(new Runnable() {
             @Override
             public void run() {

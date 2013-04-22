@@ -22,12 +22,20 @@
               android:layout_height="wrap_content"
               style="@style/Common.Label"
             android:id="@+id/interestLabel"/>
-    <EditText android:id="@+id/interestEdit"
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+          <EditText android:id="@+id/interestEdit"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:inputType="numberDecimal"
               android:hint="@string/interestHint"
-              style="@style/Common.Field"/>
+              style="@style/Common.Field" android:layout_weight="10" android:autoText="true"/><Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="..."
+      android:id="@+id/button" android:onClick="selectInterestRateInput" android:layout_weight="1" android:background="@drawable/abs__spinner_ab_default_holo_light"/></LinearLayout>
     <LinearLayout android:layout_width="fill_parent"
                   android:layout_height="wrap_content"
                   android:id="@+id/fixedPaymentBlock"

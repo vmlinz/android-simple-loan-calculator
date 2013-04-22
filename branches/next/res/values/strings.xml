@@ -59,11 +59,14 @@
     <string name="compareTypeLbl">Loan type:</string>
     <string name="compareAmountLbl">Amount:</string>
     <string name="compareInterestLbl">Interest, %:</string>
+    <string name="compareEffectiveInterestLbl">Effective, %:</string>
     <string name="comparePeriodLbl">Period, m:</string>
     <string name="comparePaymentMaxLbl">Payment (max):</string>
     <string name="comparePaymentMinLbl">Payment (min):</string>
     <string name="compareInterestTotalLbl">Interests:</string>
     <string name="compareAmountTotalLbl">Total:</string>
+    <string name="compareDownPayment">Down payment:</string>
+    <string name="compareResiduePayment">Residue:</string>
 
     <string name="addToCompare">Add to compare</string>
     <string name="viewCompare">Compare list</string>

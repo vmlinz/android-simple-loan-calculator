@@ -63,12 +63,15 @@
     <string name="compareTypeLbl">Tipo prestamo:</string>
     <string name="compareAmountLbl">Capital:</string>
 
-    <string name="compareInterestLbl">Interes, %:</string>
+    <string name="compareInterestLbl">Nominal interes, %:</string>
+    <string name="compareEffectiveInterestLbl">Eff. interes, %:</string>
     <string name="comparePeriodLbl">Periodo, m:</string>
     <string name="comparePaymentMaxLbl">Pago (max):</string>
     <string name="comparePaymentMinLbl">Pago (min):</string>
     <string name="compareInterestTotalLbl">Intereses:</string>
     <string name="compareAmountTotalLbl">Total:</string>
+    <string name="compareDownPayment">Cuota inicial:</string>
+    <string name="compareResiduePayment">Último pago:</string>
 
     <string name="addToCompare">Agregar a comparacion</string>
     <string name="viewCompare">Lista a comparar</string>

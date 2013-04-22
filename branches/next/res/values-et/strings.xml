@@ -57,11 +57,14 @@
     <string name="compareTypeLbl">Laenu tüüp:</string>
     <string name="compareAmountLbl">Laenusumma:</string>
     <string name="compareInterestLbl">Intress, %:</string>
+    <string name="compareEffectiveInterestLbl">KKM, %:</string>
     <string name="comparePeriodLbl">Maksete arv:</string>
     <string name="comparePaymentMaxLbl">Makse (max):</string>
     <string name="comparePaymentMinLbl">Makse (min):</string>
     <string name="compareInterestTotalLbl">Intressid:</string>
     <string name="compareAmountTotalLbl">Kokku:</string>
+    <string name="compareDownPayment">Sissemaks:</string>
+    <string name="compareResiduePayment">Jääk:</string>
 
     <string name="addToCompare">Lisa võrdlusse</string>
     <string name="viewCompare">Vaata võrdlused</string>

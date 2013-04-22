@@ -1,10 +1,11 @@
 package ee.smkv.calc.loan;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import com.actionbarsherlock.app.SherlockFragment;
 
@@ -25,6 +26,12 @@ public class PeriodChooserFragment extends SherlockFragment implements View.OnCl
         inflate.findViewById(R.id.periodYearMinusButton).setOnClickListener(this);
         inflate.findViewById(R.id.periodYearPlusButton).setOnClickListener(this);
 
+        EditText monthEdit = (EditText) inflate.findViewById(R.id.periodMonthEdit);
+        EditText yearMonth = (EditText) inflate.findViewById(R.id.periodYearEdit);
+        monthEdit.addTextChangedListener(new NumberTextWatcher(12, monthEdit));
+        yearMonth.addTextChangedListener(new NumberTextWatcher(50, yearMonth));
+
+
         return inflate;
     }
 
@@ -43,7 +50,7 @@ public class PeriodChooserFragment extends SherlockFragment implements View.OnCl
     }
 
     public void incrementMonth(View view) {
-        BigDecimal y = Utils.getNumber(months, BigDecimal.ZERO);
+        BigDecimal y = getNumber();
         if (y.compareTo(new BigDecimal("12")) < 0) {
             Utils.setNumber(months, y.intValue() + 1);
         } else{
@@ -53,9 +60,17 @@ public class PeriodChooserFragment extends SherlockFragment implements View.OnCl
     }
 
     public void decrementMonth(View view) {
-        BigDecimal y = Utils.getNumber(months, BigDecimal.ZERO);
+        BigDecimal y = getNumber();
         if (y.compareTo(BigDecimal.ZERO) > 0) {
             Utils.setNumber(months, y.intValue() - 1);
+        }
+    }
+
+    private BigDecimal getNumber() {
+        try {
+            return Utils.getNumber(months, BigDecimal.ZERO);
+        } catch (FieldNumberFormatException e) {
+            return BigDecimal.ZERO;
         }
     }
 
@@ -79,6 +94,43 @@ public class PeriodChooserFragment extends SherlockFragment implements View.OnCl
 
 
     public BigDecimal getPeriodInMonths(){
-        return Utils.getNumber(years , BigDecimal.ZERO).multiply(new BigDecimal("12")).add(Utils.getNumber(months , BigDecimal.ZERO));
+        return Utils.getNumber(years , BigDecimal.ZERO).multiply(new BigDecimal("12")).add(getNumber());
+    }
+
+
+    private static class NumberTextWatcher implements TextWatcher {
+        int max;
+        EditText editText;
+        public NumberTextWatcher(int max, EditText editText) {
+            this.max = max;
+            this.editText = editText;
+        }
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            if (s.length() > 0) {
+                try {
+                    BigDecimal number = Utils.getNumber(editText);
+                    if (number.intValue() > max){
+                        editText.setText("" + max);
+                    }
+                    if (number.intValue() < 0){
+                        editText.setText("");
+                    }
+                } catch (FieldNumberFormatException e) {
+                    editText.setText("");
+                }
+            }
+        }
     }
 }

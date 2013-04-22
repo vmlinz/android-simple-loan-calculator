@@ -39,6 +39,12 @@
                 <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@string/compareEffectiveInterestLbl"
+                        android:id="@+id/compareEffectiveInterestHeader"
+                        style="@style/Compare.Header"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:text="@string/comparePeriodLbl"
                         android:id="@+id/comparePeriodHeader"
                         style="@style/Compare.Header"/>
@@ -53,6 +59,20 @@
                         android:layout_height="wrap_content"
                         android:text="@string/comparePaymentMinLbl"
                         android:id="@+id/comparePaymentMinHeader"
+                        style="@style/Compare.Header"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/compareDownPayment"
+                        android:id="@+id/compareDownPaymentHeader"
+                        style="@style/Compare.Header"/>
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/compareResiduePayment"
+                        android:id="@+id/compareResiduePaymentHeader"
                         style="@style/Compare.Header"/>
                 <TextView
                         android:layout_width="match_parent"

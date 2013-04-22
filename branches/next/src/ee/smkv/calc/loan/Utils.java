@@ -22,6 +22,20 @@ public class Utils {
         DECIMAL_FORMAT.setDecimalFormatSymbols(decimalFormatSymbols);
     }
 
+    public static BigDecimal getNumber(Editable editable , BigDecimal defaultNumber) {
+        try {
+            return getNumber(editable);
+        } catch (FieldNumberFormatException e) {
+            return defaultNumber;
+        }
+    }
+    public static BigDecimal getNumber(Editable editable) throws FieldNumberFormatException {
+        try {
+            return new BigDecimal(editable.toString());
+        } catch (NumberFormatException e) {
+            throw new FieldNumberFormatException(0 , e.getMessage());
+        }
+    }
     public static BigDecimal getNumber(EditText editText) throws FieldNumberFormatException {
         BigDecimal number = getNumber(editText, null);
         if (number == null) {

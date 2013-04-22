@@ -59,11 +59,14 @@
     <string name="compareTypeLbl">Тип:</string>
     <string name="compareAmountLbl">Сумма:</string>
     <string name="compareInterestLbl">Процент, %:</string>
+    <string name="compareEffectiveInterestLbl">Эффек. ставка, %:</string>
     <string name="comparePeriodLbl">Период, м:</string>
     <string name="comparePaymentMaxLbl">Платеж (max):</string>
     <string name="comparePaymentMinLbl">Платеж (min):</string>
     <string name="compareInterestTotalLbl">Переплата:</string>
     <string name="compareAmountTotalLbl">Всего:</string>
+    <string name="compareDownPayment">Первый взнос:</string>
+    <string name="compareResiduePayment">Остаток:</string>
 
     <string name="addToCompare">Добавить в сравнение</string>
     <string name="viewCompare">Список сравнения</string>

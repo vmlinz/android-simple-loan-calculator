@@ -29,11 +29,14 @@ public class CompareActivity extends SherlockActivity {
             ((TextView) tableRow.findViewById(R.id.compareTypeData)).setText( getResources().getStringArray(R.array.shorttypes)[loan.getLoanType()] );
             Utils.setNumber((TextView) tableRow.findViewById(R.id.compareAmountData), loan.getAmount());
             Utils.setNumber((TextView) tableRow.findViewById(R.id.compareInterestData), loan.getInterest());
+            Utils.setNumber((TextView) tableRow.findViewById(R.id.compareEffectiveInterestData), loan.getEffectiveInterestRate());
             Utils.setNumber((TextView) tableRow.findViewById(R.id.comparePeriodData), loan.getPeriod());
             Utils.setNumber((TextView) tableRow.findViewById(R.id.comparePaymentMaxData), loan.getMaxMonthlyPayment());
             Utils.setNumber((TextView) tableRow.findViewById(R.id.comparePaymentMinData), loan.getMinMonthlyPayment());
             Utils.setNumber((TextView) tableRow.findViewById(R.id.compareInterestTotalData), loan.getTotalInterests());
             Utils.setNumber((TextView) tableRow.findViewById(R.id.compareAmountTotalData), loan.getTotalAmount());
+            Utils.setNumber((TextView) tableRow.findViewById(R.id.compareDownPaymentData), loan.getDownPaymentPayment());
+            Utils.setNumber((TextView) tableRow.findViewById(R.id.compareResidueData), loan.getResiduePayment());
 
             View close = tableRow.findViewById(R.id.compareRemoveLoan);
             close.setOnClickListener( new View.OnClickListener() {

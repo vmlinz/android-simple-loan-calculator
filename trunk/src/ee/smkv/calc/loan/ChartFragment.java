@@ -85,7 +85,9 @@ public class ChartFragment extends SherlockFragment implements Observer {
         renderer.setAxisTitleTextSize(getResources().getDimension(R.dimen.abs__action_bar_subtitle_text_size));
         renderer.setInScroll(false);
         //renderer.setBarSpacing(0.5);
-
+        renderer.setLegendTextSize(getResources().getDimension(R.dimen.abs__action_bar_subtitle_text_size));
+        renderer.setXLabelsColor(Color.BLACK);
+        renderer.setYLabelsColor(0, Color.BLACK);
         renderer.setLabelsColor(Color.BLACK);
 
 
@@ -117,7 +119,7 @@ public class ChartFragment extends SherlockFragment implements Observer {
         renderer.setLabelsColor(getResources().getColor(R.color.abs__bright_foreground_holo_light));
         renderer.setLabelsTextSize(getResources().getDimension(R.dimen.abs__action_bar_subtitle_text_size));
         renderer.setBackgroundColor(getResources().getColor(R.color.abs__background_holo_light));
-        renderer.setMargins(new int[]{10, 10, 10, 10});
+        renderer.setLegendTextSize(getResources().getDimension(R.dimen.abs__action_bar_subtitle_text_size));
         CategorySeries series = new CategorySeries("Pie");
 
         BigDecimal totalAmount = loan.getTotalAmount();

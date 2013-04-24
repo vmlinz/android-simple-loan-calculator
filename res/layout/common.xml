@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:padding="10dp">
+
+    <TextView android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:text="@string/amount"
+              style="@style/Common.Label"/>
+    <EditText android:id="@+id/amountEdit"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:inputType="numberDecimal"
+              android:hint="@string/amountHint"
+              style="@style/Common.Field" android:autoText="false" android:clickable="false"/>
+
+
+    <TextView android:text="@string/interest"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              style="@style/Common.Label"
+            android:id="@+id/interestLabel"/>
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+          <EditText android:id="@+id/interestEdit"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:inputType="numberDecimal"
+              android:hint="@string/interestHint"
+              style="@style/Common.Field" android:layout_weight="10" android:autoText="true"/><Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="..."
+      android:id="@+id/button" android:onClick="selectInterestRateInput" android:layout_weight="1" android:background="@drawable/abs__spinner_ab_default_holo_light"/></LinearLayout>
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/fixedPaymentBlock"
+      android:orientation="vertical">
+        <TextView android:text="@string/fixedPayment"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  style="@style/Common.Label"/>
+        <EditText android:id="@+id/fixedPaymentEdit"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:inputType="numberDecimal"
+                  android:hint=""
+                  style="@style/Common.Field"/>
+    </LinearLayout>
+
+
+
+    <fragment class="ee.smkv.calc.loan.PeriodChooserFragment"
+              android:id="@+id/periodChooserFragment"
+              android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+</LinearLayout>

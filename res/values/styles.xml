@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="Hint.Color">#ffcfcfcf</color>
+    <color name="Advanced.Hint.Color">#ffacacac</color>
+    <color name="Separator.Color">#ffe7e7e7</color>
+
+    <style name="Common">
+    </style>
+
+    <style name="Common.Label">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <style name="Common.Field" parent="@android:style/Widget.EditText">
+        <item name="android:textColorHint">@color/Hint.Color</item>
+    </style>
+
+    <style name="Advanced">
+    </style>
+
+    <style name="Advanced.Label">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingTop">12dp</item>
+    </style>
+
+    <style name="Advanced.Hint">
+        <item name="android:textColor">@color/Advanced.Hint.Color</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="Button.Calc" parent="@android:style/Widget.Button">
+        <item name="android:drawableLeft">@drawable/ic_action_calc</item>
+    </style>
+
+    <style name="Result">
+    </style>
+
+    <style name="Result.Label">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingTop">15dp</item>
+    </style>
+
+    <style name="Result.Value">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="Schedule">
+
+    </style>
+    <style name="Schedule.Header">
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/row_header</item>
+    </style>
+
+    <style name="Schedule.Header.Label">
+           <item name="android:padding">3dp</item>
+
+    </style>
+
+    <style name="Schedule.Data">
+
+    </style>
+    <style name="Schedule.Data.Value">
+        <item name="android:padding">3dp</item>
+        <item name="android:background">@drawable/row_border</item>
+    </style>
+
+    <style name="Help"></style>
+    <style name="Help.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+    <style name="Help.Content">
+        <item name="android:paddingBottom">15dp</item>
+    </style>
+
+    <style name="Compare"></style>
+    <style name="Compare.Empty"></style>
+    <style name="Compare.Header">
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">right</item>
+        <item name="android:background">@drawable/row_border</item>
+        <item name="android:padding">4dp</item>
+    </style>
+    <style name="Compare.Data">
+        <item name="android:background">@drawable/row_border</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+
+</resources>

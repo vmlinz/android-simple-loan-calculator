@@ -404,7 +404,14 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
         }
 
         private void showError() {
-            AlertDialog.Builder builder = new AlertDialog.Builder(StartActivity.this, R.style.Theme_Sherlock_Light_Dialog);
+            AlertDialog.Builder builder;
+            try {
+                builder =  new AlertDialog.Builder(StartActivity.this,  R.style.Theme_Sherlock_Light_Dialog);
+            } catch (NoSuchMethodError e) {
+                builder =  new AlertDialog.Builder(StartActivity.this);
+            }
+
+
             switch (numberFormatException.getId()) {
                 case R.id.amountEdit:
                     builder.setMessage(R.string.errorAmount);

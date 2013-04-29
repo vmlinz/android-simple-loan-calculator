@@ -8,7 +8,7 @@ public class TypeHelpActivity extends SherlockActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.Theme_Sherlock_Light);
+        setTheme(ThemeResolver.getActivityTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.help);
 

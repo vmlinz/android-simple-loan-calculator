@@ -4,4 +4,8 @@
         <item>nominal</item>
         <item>effective</item>
     </string-array>
+    <string-array name="applicationThemes">
+        <item>light</item>
+        <item>dark</item>
+    </string-array>
 </resources>

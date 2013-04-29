@@ -136,4 +136,9 @@
     </string-array>
     <string name="interestType">Процентная ставка</string>
     <string name="interestTypeTitle">Выберите способ ввода процентной ставки</string>
+    <string name="applicationTheme">Тема оформления</string>
+        <string-array name="applicationThemeLabels">
+            <item>Светлая</item>
+            <item>Темная</item>
+        </string-array>
 </resources>

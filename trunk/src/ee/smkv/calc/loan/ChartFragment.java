@@ -80,16 +80,17 @@ public class ChartFragment extends SherlockFragment implements Observer {
         renderer.setExternalZoomEnabled(false);
         renderer.setShowGrid(false);
         renderer.setGridColor(getResources().getColor(R.color.Separator_Color));
-        renderer.setBackgroundColor(getResources().getColor(R.color.abs__background_holo_light));
-        renderer.setMarginsColor(getResources().getColor(R.color.abs__background_holo_light));
         renderer.setAxisTitleTextSize(getResources().getDimension(R.dimen.abs__action_bar_subtitle_text_size));
         renderer.setInScroll(false);
-        //renderer.setBarSpacing(0.5);
         renderer.setLegendTextSize(getResources().getDimension(R.dimen.abs__action_bar_subtitle_text_size));
-        renderer.setXLabelsColor(Color.BLACK);
-        renderer.setYLabelsColor(0, Color.BLACK);
-        renderer.setLabelsColor(Color.BLACK);
+        int textColor = ThemeResolver.getTextColor(view.getContext());
+        int bgColor = ThemeResolver.getBackgroundColor(view.getContext());
+        renderer.setXLabelsColor(textColor);
+        renderer.setYLabelsColor(0, textColor);
+        renderer.setLabelsColor(textColor);
 
+        renderer.setBackgroundColor(bgColor);
+        renderer.setMarginsColor(bgColor);
 
         renderer.addSeriesRenderer(0, principalRenderer);
         dataset.addSeries(0, new PrincipalSeries(getString(R.string.paymentPrincipal), loan.getPayments()).toXYSeries());

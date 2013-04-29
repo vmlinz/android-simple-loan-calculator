@@ -15,7 +15,7 @@ public class ResultActivity extends TabSwipeActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.Theme_Sherlock_Light);
+        setTheme(ThemeResolver.getActivityTheme(this));
         super.onCreate(savedInstanceState);
         setTitle(getResources().getStringArray(R.array.shorttypes)[StartActivity.loan.getLoanType()]);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

@@ -14,7 +14,7 @@ import java.util.Set;
 public class CompareActivity extends SherlockActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.Theme_Sherlock_Light);
+        setTheme(ThemeResolver.getActivityTheme(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compare);
 

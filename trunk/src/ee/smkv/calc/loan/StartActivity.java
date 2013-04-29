@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -47,9 +48,12 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
     private Calculator calculator = CALCULATORS[0];
     private CalculateTask calculateTask;
 
+    private int currentTheme;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.Theme_Sherlock_Light);
+        currentTheme = ThemeResolver.getActivityTheme(this);
+        setTheme(currentTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         setTitle("");
@@ -88,56 +92,60 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
 
     }
 
-  public void selectInterestRateInput(View view) {
-    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    builder.setTitle(R.string.interestTypeTitle);
+    public void selectInterestRateInput(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.interestTypeTitle);
 
-    String type = PreferenceManager.getDefaultSharedPreferences(StartActivity.this).getString("interestType", "nominal");
-    int defaultType = 0 ;
-    if("effective".equals(type)){
-      defaultType = 1;
+        String type = PreferenceManager.getDefaultSharedPreferences(StartActivity.this).getString("interestType", "nominal");
+        int defaultType = 0;
+        if ("effective".equals(type)) {
+            defaultType = 1;
+        }
+
+        builder.setSingleChoiceItems(R.array.interestTypes, defaultType, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(StartActivity.this).edit();
+                edit.putString("interestType", getResources().getStringArray(R.array.interestTypeValues)[which]);
+                edit.commit();
+                fixInterestlabel();
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
 
-    builder.setSingleChoiceItems(R.array.interestTypes, defaultType, new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(StartActivity.this).edit();
-            edit.putString("interestType", getResources().getStringArray(R.array.interestTypeValues)[which]);
-            edit.commit();
-            fixInterestlabel();
-            dialog.dismiss();
-        }
-    });
 
-    builder.setNegativeButton(android.R.string.cancel , new DialogInterface.OnClickListener() {
-      @Override
-      public void onClick(DialogInterface dialog, int which) {
-        dialog.dismiss();
-      }
-    });
-    builder.create().show();
-  }
-
-
-  @Override
+    @Override
     protected void onPostResume() {
         super.onPostResume();
         fixInterestlabel();
 
-       if( getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
-           && getResources().getConfiguration().screenLayout == Configuration.SCREENLAYOUT_SIZE_XLARGE
-           && !isTwoSideView()  ){
-         reloadActivity();
-       }
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE
+                && getResources().getConfiguration().screenLayout == Configuration.SCREENLAYOUT_SIZE_XLARGE
+                && !isTwoSideView()) {
+            reloadActivity();
+        } else if (currentTheme != ThemeResolver.getActivityTheme(this)) {
+            reloadActivity();
+        }
+
+
     }
 
-  private void reloadActivity() {
-    tryStoreSettings();
-    finish();
-    startActivity(getIntent());
-  }
+    private void reloadActivity() {
+        tryStoreSettings();
+        finish();
+        startActivity(getIntent());
+    }
 
-  private void fixInterestlabel() {
+    private void fixInterestlabel() {
         if (isEffectiveRate()) {
             TextView interestLabel = (TextView) findViewById(R.id.interestLabel);
             interestLabel.setText(getString(R.string.effectiveInterestLbl));
@@ -156,32 +164,32 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
 
     @Override
     protected void onStop() {
-      tryStoreSettings();
-      super.onStop();
+        tryStoreSettings();
+        super.onStop();
     }
 
-  private void tryStoreSettings() {
-    try {
-        storeManager.storeTextViews((TextView) findViewById(R.id.amountEdit),
-                (TextView) findViewById(R.id.interestEdit),
-                (TextView) findViewById(R.id.fixedPaymentEdit),
-                (TextView) findViewById(R.id.periodMonthEdit),
-                (TextView) findViewById(R.id.periodYearEdit),
-                (TextView) findViewById(R.id.downPaymentEdit),
-                (TextView) findViewById(R.id.disposableCommissionEdit),
-                (TextView) findViewById(R.id.monthlyCommissionEdit),
-                (TextView) findViewById(R.id.residueEdit));
-        storeManager.storeSpinners((Spinner) findViewById(R.id.downPaymentType),
-                (Spinner) findViewById(R.id.disposableCommissionType),
-                (Spinner) findViewById(R.id.monthlyCommissionType),
-                (Spinner) findViewById(R.id.residueType));
-        storeManager.setInteger("type", getSupportActionBar().getSelectedNavigationIndex());
-    } catch (Exception e) {
-        e.printStackTrace();
+    private void tryStoreSettings() {
+        try {
+            storeManager.storeTextViews((TextView) findViewById(R.id.amountEdit),
+                    (TextView) findViewById(R.id.interestEdit),
+                    (TextView) findViewById(R.id.fixedPaymentEdit),
+                    (TextView) findViewById(R.id.periodMonthEdit),
+                    (TextView) findViewById(R.id.periodYearEdit),
+                    (TextView) findViewById(R.id.downPaymentEdit),
+                    (TextView) findViewById(R.id.disposableCommissionEdit),
+                    (TextView) findViewById(R.id.monthlyCommissionEdit),
+                    (TextView) findViewById(R.id.residueEdit));
+            storeManager.storeSpinners((Spinner) findViewById(R.id.downPaymentType),
+                    (Spinner) findViewById(R.id.disposableCommissionType),
+                    (Spinner) findViewById(R.id.monthlyCommissionType),
+                    (Spinner) findViewById(R.id.residueType));
+            storeManager.setInteger("type", getSupportActionBar().getSelectedNavigationIndex());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-  }
 
-  @Override
+    @Override
     public boolean onNavigationItemSelected(int itemPosition, long itemId) {
         calculator = CALCULATORS[itemPosition];
         if (itemPosition == 2) {
@@ -228,11 +236,11 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
             startActivity(new Intent(this, TypeHelpActivity.class));
         } else if (item == settingMenuItem) {
             startActivity(new Intent(this, SettingsActivity.class));
-        }else if (item == openCompareMenuItem) {
+        } else if (item == openCompareMenuItem) {
             startActivity(new Intent(this, CompareActivity.class));
-        }else if (item == addToCompareMenuItem) {
+        } else if (item == addToCompareMenuItem) {
             if (StartActivity.loan.isCalculated()) {
-                StartActivity.storeManager.addLoan( StartActivity.loan);
+                StartActivity.storeManager.addLoan(StartActivity.loan);
                 startActivity(new Intent(this, CompareActivity.class));
             }
         }
@@ -279,8 +287,8 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
         }
         super.onConfigurationChanged(newConfig);
 
-          setRequestedOrientation(newConfig.orientation);
-          reloadActivity();
+        setRequestedOrientation(newConfig.orientation);
+        reloadActivity();
 
     }
 
@@ -371,9 +379,9 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
             StartActivity.loan = loan;
             closeDialog();
             if (numberFormatException == null && exception == null) {
-                if(isTwoSideView()){
+                if (isTwoSideView()) {
                     LoanDispatcher.getInstance().dispatch(loan);
-                }else{
+                } else {
                     Intent myIntent = new Intent(StartActivity.this, ResultActivity.class);
                     startActivity(myIntent);
                 }
@@ -404,14 +412,7 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
         }
 
         private void showError() {
-            AlertDialog.Builder builder;
-            try {
-                builder =  new AlertDialog.Builder(StartActivity.this,  R.style.Theme_Sherlock_Light_Dialog);
-            } catch (NoSuchMethodError e) {
-                builder =  new AlertDialog.Builder(StartActivity.this);
-            }
-
-
+            AlertDialog.Builder builder = new AlertDialog.Builder(StartActivity.this);
             switch (numberFormatException.getId()) {
                 case R.id.amountEdit:
                     builder.setMessage(R.string.errorAmount);
@@ -454,12 +455,12 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
         }
     }
 
-  private boolean isTwoSideView() {
-    return findViewById(R.id.tabHost) != null;
-  }
+    private boolean isTwoSideView() {
+        return findViewById(R.id.tabHost) != null;
+    }
 
 
-  private final void focusOnView(final View view) {
+    private final void focusOnView(final View view) {
         new Handler().post(new Runnable() {
             @Override
             public void run() {

@@ -4,7 +4,8 @@
             android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:id="@+id/chartLayout">
+                    android:id="@+id/chartLayout"
+                    android:padding="5dp">
 
           <LinearLayout android:layout_width="fill_parent"
                         android:layout_height="fill_parent"

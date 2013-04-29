@@ -136,4 +136,10 @@
     <string name="settings">Settings</string>
     <string name="interestType">Loan interest type</string>
     <string name="interestTypeTitle">Choose default interest type</string>
+
+    <string name="applicationTheme">Visual Theme</string>
+    <string-array name="applicationThemeLabels">
+        <item>Light theme</item>
+        <item>Dark theme</item>
+    </string-array>
 </resources>

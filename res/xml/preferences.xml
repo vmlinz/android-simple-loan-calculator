@@ -8,4 +8,11 @@
             android:entries="@array/interestTypes"
             android:entryValues="@array/interestTypeValues"
             android:defaultValue="nominal" />
+    <ListPreference
+                android:key="theme"
+                android:title="@string/applicationTheme"
+                android:dialogTitle="@string/applicationTheme"
+                android:entries="@array/applicationThemeLabels"
+                android:entryValues="@array/applicationThemes"
+                android:defaultValue="light" />
 </PreferenceScreen>

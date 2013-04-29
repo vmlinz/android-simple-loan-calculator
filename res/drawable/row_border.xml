@@ -9,7 +9,7 @@
   <!-- This is the main color -->
   <item android:bottom="1dp">
      <shape>
-           <solid android:color="#ffffff"/>
+           <solid android:color="@color/abs__background_holo_light"/>
      </shape>
 </item>
 </layer-list>

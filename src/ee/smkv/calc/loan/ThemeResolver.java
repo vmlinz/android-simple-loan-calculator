@@ -54,4 +54,8 @@ public class ThemeResolver {
         return preferences.getString("theme", LIGHT);
     }
 
+    public static boolean isLight(Context context) {
+        String theme = getThemeName(context);
+        return LIGHT.equals(theme);
+    }
 }

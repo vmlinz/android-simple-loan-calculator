@@ -21,6 +21,7 @@ public class CompareActivity extends SherlockActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
 
+      if (StartActivity.storeManager != null) {
         Set<Loan> loans = StartActivity.storeManager.getLoans();
         final LinearLayout placeholder = (LinearLayout) findViewById(R.id.compareDataPlaceholder);
         for (final Loan loan : loans){
@@ -49,6 +50,7 @@ public class CompareActivity extends SherlockActivity {
 
             placeholder.addView(tableRow);
         }
+      }
     }
 
     @Override

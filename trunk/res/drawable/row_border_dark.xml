@@ -3,13 +3,13 @@
 <!-- This is the line -->
   <item>
       <shape>
-          <solid android:color="@color/abs__holo_blue_light"/>
+          <solid android:color="@color/Separator.Color"/>
       </shape>
 </item>
   <!-- This is the main color -->
-  <item android:bottom="4dp">
+  <item android:bottom="1dp">
      <shape>
-           <solid android:color="@color/abs__background_holo_light"/>
+           <solid android:color="@color/abs__background_holo_dark"/>
      </shape>
-  </item>
+</item>
 </layer-list>

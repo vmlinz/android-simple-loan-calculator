@@ -16,6 +16,9 @@ public class ResultFragment extends SherlockFragment implements Observer {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.result, container, false);
 
+        int bg = ThemeResolver.isLight(view.getContext()) ? R.drawable.roundedshape : R.drawable.roundedshape_dark;
+        view.findViewById(R.id.resultInputLoanData).setBackground(getResources().getDrawable(bg));
+
         setupResult(view);
 
         LoanDispatcher.getInstance().addObserver(this);

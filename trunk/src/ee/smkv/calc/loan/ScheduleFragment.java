@@ -2,6 +2,7 @@ package ee.smkv.calc.loan;
 
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockFragment;
 import ee.smkv.calc.loan.model.Loan;
@@ -28,9 +30,22 @@ public class ScheduleFragment extends SherlockFragment implements Observer {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.schedule, container, false);
 
+        TableLayout table = (TableLayout) view.findViewById(R.id.scheduleTable);
+        TableRow tableHeader = (TableRow) table.getChildAt(0);
+        int bg = ThemeResolver.isLight(view.getContext()) ? R.drawable.row_header : R.drawable.row_header_dark;
+        tableHeader.setBackgroundResource(bg);
+        applyBackground(tableHeader, bg);
+
         setupScheduleTableData(view);
         LoanDispatcher.getInstance().addObserver(this);
         return view;
+    }
+
+    private void applyBackground(ViewGroup viewGroup, int bg) {
+        Drawable background = getResources().getDrawable(bg);
+        for (int i = 0; i < viewGroup.getChildCount(); i++) {
+            viewGroup.getChildAt(i).setBackground(background);
+        }
     }
 
     private void setupScheduleTableData(View view) {
@@ -60,6 +75,7 @@ public class ScheduleFragment extends SherlockFragment implements Observer {
 
     @Override
     public void update(Observable observable, Object data) {
+        getView().findViewById(R.id.scheduleScrollView).setVisibility(View.GONE);
         setupScheduleTableData(getView());
     }
 
@@ -67,11 +83,13 @@ public class ScheduleFragment extends SherlockFragment implements Observer {
 
         private final Context context;
         private final ProgressBar progressBar;
+        private final int background;
 
 
         public CreateScheduleTableTask(Context context, ProgressBar progressBar) {
             this.context = context;
             this.progressBar = progressBar;
+            background = ThemeResolver.isLight(context) ? R.drawable.row_border : R.drawable.row_border_dark;
 
         }
 
@@ -91,7 +109,7 @@ public class ScheduleFragment extends SherlockFragment implements Observer {
 
 
             if (loan.hasDownPayment() || loan.hasDisposableCommission()) {
-                View tableRow = LayoutInflater.from(context).inflate(R.layout.schedule_row, null);
+                ViewGroup tableRow = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.schedule_row, null);
                 Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentNr), 0);
                 Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentBalance), loan.getAmount());
                 Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentPrincipal), loan.getDownPaymentPayment());
@@ -101,12 +119,14 @@ public class ScheduleFragment extends SherlockFragment implements Observer {
                 if (!hasAnyCommission) {
                     tableRow.findViewById(R.id.schedulePaymentCommission).setVisibility(View.GONE);
                 }
+                tableRow.setBackgroundResource(background);
+                applyBackground(tableRow , background);
                 list.add(tableRow);
                 this.publishProgress(0);
             }
 
             for (Payment payment : payments) {
-                View tableRow = LayoutInflater.from(context).inflate(R.layout.schedule_row, null);
+                ViewGroup tableRow = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.schedule_row, null);
                 Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentNr), payment.getNr());
                 Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentBalance), payment.getBalance());
                 Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentPrincipal), payment.getPrincipal());
@@ -116,6 +136,8 @@ public class ScheduleFragment extends SherlockFragment implements Observer {
                 if (!hasAnyCommission) {
                     tableRow.findViewById(R.id.schedulePaymentCommission).setVisibility(View.GONE);
                 }
+                tableRow.setBackgroundResource(background);
+                applyBackground(tableRow , background);
                 list.add(tableRow);
                 this.publishProgress(payment.getNr());
             }
@@ -134,7 +156,7 @@ public class ScheduleFragment extends SherlockFragment implements Observer {
             TableLayout table = (TableLayout) getView().findViewById(R.id.scheduleTable);
 
             int childCount = table.getChildCount();
-            for(int i = 1 ; i < childCount ; i++ ){
+            for (int i = 1; i < childCount; i++) {
                 table.removeViewAt(1);
             }
 

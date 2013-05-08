@@ -31,7 +31,7 @@ public class ResultActivity extends TabSwipeActivity {
         int orientation = getResources().getConfiguration().orientation;
         addToCompareMenuItem = menu.add(R.string.addToCompare);
         addToCompareMenuItem
-                .setIcon(R.drawable.ic_action_add)
+                .setIcon(ThemeResolver.getAddToCompareIcon(this))
                 .setShowAsAction( orientation == Configuration.ORIENTATION_PORTRAIT ?  MenuItem.SHOW_AS_ACTION_IF_ROOM : MenuItem.SHOW_AS_ACTION_NEVER );
 
         openCompareMenuItem = menu.add(R.string.viewCompare);

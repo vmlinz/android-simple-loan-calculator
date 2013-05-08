@@ -11,4 +11,6 @@
 
     <color name="payment">#ff492155</color>
     <color name="paymentFill">#33492155</color>
+
+  <color name="backgroundLight">#FFFFFFFF</color>
 </resources>

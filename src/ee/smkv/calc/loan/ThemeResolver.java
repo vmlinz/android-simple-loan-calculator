@@ -18,7 +18,7 @@ public class ThemeResolver {
     private static final int TEXT_COLOR_DARK = R.color.abs__primary_text_holo_dark;
 
 
-    private static final int BACKGROUND_COLOR_LIGHT = R.color.abs__background_holo_light;
+    private static final int BACKGROUND_COLOR_LIGHT = R.color.backgroundLight;
     private static final int BACKGROUND_COLOR_DARK = R.color.abs__background_holo_dark;
 
 
@@ -58,4 +58,12 @@ public class ThemeResolver {
         String theme = getThemeName(context);
         return LIGHT.equals(theme);
     }
+
+  public static int getAddToCompareIcon(Context context) {
+    return isLight(context) ? R.drawable.ic_action_add : R.drawable.ic_action_add_dark ;
+  }
+
+  public static int getCalculateIcon(Context context) {
+    return isLight(context) ? R.drawable.ic_action_calc : R.drawable.ic_action_calc_dark ;
+  }
 }

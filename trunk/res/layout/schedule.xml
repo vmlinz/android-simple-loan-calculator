@@ -14,10 +14,10 @@
     <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/scheduleScrollView" android:padding="5dp" android:fillViewport="false" android:visibility="gone">
+            android:id="@+id/scheduleScrollView" android:padding="5dp" android:fillViewport="false" android:visibility="visible">
         <HorizontalScrollView
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent" android:fillViewport="true">
         <TableLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"

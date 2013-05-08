@@ -207,13 +207,13 @@ public class StartActivity extends SherlockFragmentActivity implements ActionBar
     public boolean onCreateOptionsMenu(Menu menu) {
         calculateMenuItem = menu.add(R.string.calc);
         calculateMenuItem
-                .setIcon(R.drawable.ic_action_calc)
+                .setIcon(ThemeResolver.getCalculateIcon(this))
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
         if (isTwoSideView()) {
             addToCompareMenuItem = menu.add(R.string.addToCompare);
             addToCompareMenuItem
-                    .setIcon(R.drawable.ic_action_add)
+                    .setIcon(ThemeResolver.getAddToCompareIcon(this))
                     .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         }
 

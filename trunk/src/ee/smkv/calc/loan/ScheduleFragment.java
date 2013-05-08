@@ -44,7 +44,7 @@ public class ScheduleFragment extends SherlockFragment implements Observer {
     private void applyBackground(ViewGroup viewGroup, int bg) {
         Drawable background = getResources().getDrawable(bg);
         for (int i = 0; i < viewGroup.getChildCount(); i++) {
-            viewGroup.getChildAt(i).setBackground(background);
+            viewGroup.getChildAt(i).setBackgroundDrawable(background);
         }
     }
 

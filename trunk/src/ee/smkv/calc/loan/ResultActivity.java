@@ -8,10 +8,12 @@ import android.view.Display;
 import android.view.WindowManager;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+import ee.smkv.calc.loan.export.ExportDialog;
 
 public class ResultActivity extends TabSwipeActivity {
     MenuItem addToCompareMenuItem;
     MenuItem openCompareMenuItem;
+    MenuItem exportMenuItem;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +40,7 @@ public class ResultActivity extends TabSwipeActivity {
         openCompareMenuItem
                 .setIcon(R.drawable.ic_action_compare);
 
-
+        exportMenuItem = menu.add(R.string.exportToEmail);
         return true;
     }
 
@@ -61,6 +63,11 @@ public class ResultActivity extends TabSwipeActivity {
         if(item == openCompareMenuItem){
             Intent myIntent = new Intent(this, CompareActivity.class);
             startActivity(myIntent);
+            return true;
+        }
+        if(item == exportMenuItem){
+            ExportDialog dialog = new ExportDialog(this, ThemeResolver.getDialogTheme(this));
+            dialog.show();
             return true;
         }
         return false;

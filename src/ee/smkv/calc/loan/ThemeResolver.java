@@ -11,7 +11,9 @@ public class ThemeResolver {
     private static final String DARK = "dark";
 
     private static final int ACTIVITY_THEME_LIGHT = R.style.Theme_Sherlock_Light;
+    private static final int DIALOG_THEME_LIGHT = R.style.Theme_Sherlock_Light_Dialog;
     private static final int ACTIVITY_THEME_DARK = R.style.Theme_Sherlock;
+    private static final int DIALOG_THEME_DARK = R.style.Theme_Sherlock_Dialog;
 
 
     private static final int TEXT_COLOR_LIGHT = R.color.abs__primary_text_holo_light;
@@ -66,4 +68,13 @@ public class ThemeResolver {
   public static int getCalculateIcon(Context context) {
     return isLight(context) ? R.drawable.ic_action_calc : R.drawable.ic_action_calc_dark ;
   }
+
+    public static int getDialogTheme(Context context) {
+        String theme = getThemeName(context);
+        if (LIGHT.equals(theme)) {
+            return DIALOG_THEME_LIGHT;
+        } else {
+            return DIALOG_THEME_DARK;
+        }
+    }
 }

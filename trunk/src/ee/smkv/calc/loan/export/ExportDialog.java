@@ -3,13 +3,20 @@ package ee.smkv.calc.loan.export;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import ee.smkv.calc.loan.R;
+import ee.smkv.calc.loan.StartActivity;
 import ee.smkv.calc.loan.ThemeResolver;
+import ee.smkv.calc.loan.model.Loan;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ExportDialog extends Dialog {
@@ -43,7 +50,7 @@ public class ExportDialog extends Dialog {
         gridView.setAdapter(new BaseAdapter() {
             @Override
             public int getCount() {
-                return 3;
+                return 2;
             }
 
             @Override
@@ -61,8 +68,8 @@ public class ExportDialog extends Dialog {
                 ImageView imageView;
                 if (convertView == null) {  // if it's not recycled, initialize some attributes
                     imageView = new ImageView(getContext());
-                    imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-                    imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//                    imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+                    imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                     imageView.setPadding(8, 8, 8, 8);
                 } else {
                     imageView = (ImageView) convertView;
@@ -70,14 +77,12 @@ public class ExportDialog extends Dialog {
 
                 switch (position) {
                     case 0:
-                        imageView.setImageResource(ThemeResolver.isLight(getContext()) ? R.drawable.txt : R.drawable.txt_dark);
+                        imageView.setImageResource(R.drawable.txt );
                         break;
                     case 1:
-                        imageView.setImageResource(ThemeResolver.isLight(getContext()) ? R.drawable.html : R.drawable.html_dark);
+                        imageView.setImageResource( R.drawable.html);
                         break;
-                    case 2:
-                        imageView.setImageResource(ThemeResolver.isLight(getContext()) ? R.drawable.pdf : R.drawable.pdf_dark);
-                        break;
+
                 }
 
 
@@ -87,10 +92,56 @@ public class ExportDialog extends Dialog {
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Toast.makeText(getContext(), "" + position, Toast.LENGTH_SHORT).show();
+              try {
+                Intent sendIntent = new Intent(Intent.ACTION_SEND);
+                Uri uri  = null;
+                switch (position) {
+                  case 0:
+                    uri = createTxtExport(StartActivity.loan);
+                    break;
+                  case 1:
+                    uri = createHtmlExport(StartActivity.loan);
+                    break;
+
+                }
+
+                sendIntent.putExtra(Intent.EXTRA_SUBJECT, getContext().getString(R.string.app_name));
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "File attached.");
+                sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
+                getContext().startActivity(Intent.createChooser(sendIntent, "Select application"));
+              }
+              catch (IOException e) {
+                e.printStackTrace();
+              }
             }
+
+
         });
     }
+
+  private Uri createHtmlExport(Loan loan) throws IOException {
+    FileOutputStream fos = null;
+    try {
+      String name = "loan_export.html";
+      fos = getContext().openFileOutput(name, Context.MODE_WORLD_READABLE);
+      File file = new File(getContext().getFilesDir(), name);
+
+      fos.write("Test".getBytes());
+
+      return  Uri.fromFile(file);
+    }
+    finally {
+      if (fos != null) {
+        fos.close();
+      }
+    }
+
+
+  }
+
+  private Uri createTxtExport(Loan loan) {
+    return null;
+  }
 }
 
 

@@ -66,9 +66,8 @@ public class ExportDialog extends Dialog {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
                 ImageView imageView;
-                if (convertView == null) {  // if it's not recycled, initialize some attributes
+                if (convertView == null) {
                     imageView = new ImageView(getContext());
-//                    imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
                     imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                     imageView.setPadding(8, 8, 8, 8);
                 } else {
@@ -104,11 +103,12 @@ public class ExportDialog extends Dialog {
                     break;
 
                 }
-
+                sendIntent.setType("text/plain");
                 sendIntent.putExtra(Intent.EXTRA_SUBJECT, getContext().getString(R.string.app_name));
                 sendIntent.putExtra(Intent.EXTRA_TEXT, "File attached.");
                 sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
                 getContext().startActivity(Intent.createChooser(sendIntent, "Select application"));
+                dismiss();
               }
               catch (IOException e) {
                 e.printStackTrace();
@@ -126,7 +126,7 @@ public class ExportDialog extends Dialog {
       fos = getContext().openFileOutput(name, Context.MODE_WORLD_READABLE);
       File file = new File(getContext().getFilesDir(), name);
 
-      fos.write("Test".getBytes());
+      new HtmlExporter(loan , this.getContext()).write(fos);
 
       return  Uri.fromFile(file);
     }
@@ -139,8 +139,22 @@ public class ExportDialog extends Dialog {
 
   }
 
-  private Uri createTxtExport(Loan loan) {
-    return null;
+  private Uri createTxtExport(Loan loan) throws IOException{
+      FileOutputStream fos = null;
+     try {
+       String name = "loan_export.txt";
+       fos = getContext().openFileOutput(name, Context.MODE_WORLD_READABLE);
+       File file = new File(getContext().getFilesDir(), name);
+
+       new TxtExporter(loan , this.getContext()).write(fos);
+
+       return  Uri.fromFile(file);
+     }
+     finally {
+       if (fos != null) {
+         fos.close();
+       }
+     }
   }
 }
 

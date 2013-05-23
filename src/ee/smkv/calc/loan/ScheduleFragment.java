@@ -115,7 +115,7 @@ public class ScheduleFragment extends SherlockFragment implements Observer {
                 Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentPrincipal), loan.getDownPaymentPayment());
                 Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentInterest), 0);
                 Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentCommission), loan.getDisposableCommissionPayment());
-                Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentAmount), loan.getDownPaymentPayment());
+                Utils.setNumber((TextView) tableRow.findViewById(R.id.schedulePaymentAmount), loan.getDownPaymentPayment().add(loan.getDisposableCommissionPayment()));
                 if (!hasAnyCommission) {
                     tableRow.findViewById(R.id.schedulePaymentCommission).setVisibility(View.GONE);
                 }
